@@ -19,12 +19,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		
-		System.out.println("MemberController update()");
-		
-		String id = (String) session.getAttribute("id");
-		
-		//MemberDTO memberDTO = memberService.getMember(id);
-		//model.addAttribute("memberDTO", memberDTO);
+		System.out.println("Test");
 		
 		return "member/update";
 		
