@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mappers.memberMapper">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="getMember" resultType="com.itwillbs.domain.MemberDTO">
+		select * from member where id=#{id}
+	</select>
+	
+	<update id="updateMember">
+		update member set name=#{name}, address=#{address}, tel=#{tel} where id=#{id}
+	</update>
+	
+</mapper>
