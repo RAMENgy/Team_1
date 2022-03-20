@@ -50,31 +50,27 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
-                        <h2>Update</h2>
+                        <h2>회원 정보</h2>
                         <form action="#">
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="userid">아이디</label>
+                                <input type="text" id="userid">
                             </div>
                             <div class="group-input">
-                                <label for="pass">Password *</label>
-                                <input type="text" id="pass">
+                                <label for="name">이름</label>
+                                <input type="text" id="name">
                             </div>
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="password">비밀번호</label>
+                                <input type="text" id="password">
                             </div>
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="address">주소</label>
+                                <input type="text" id="address">
                             </div>
                             <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
-                            </div>
-                            <div class="group-input">
-                                <label for="username">Username or email address *</label>
-                                <input type="text" id="username">
+                                <label for="tel">연락처</label>
+                                <input type="text" id="tel">
                             </div>
 
                             <button type="submit" class="site-btn register-btn">update</button>
