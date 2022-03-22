@@ -54,15 +54,15 @@
                         <form action="#">
                             <div class="group-input">
                                 <label for="userid">아이디</label>
-                                <input type="text" id="userid">
+                                <input type="text" id="userid" value="${memberDTO.userid}" readonly>
                             </div>
                             <div class="group-input">
                                 <label for="name">이름</label>
-                                <input type="text" id="name" value="${memberDTO.id}" readonly>
+                                <input type="text" id="name" value="${memberDTO.name}">
                             </div>
                             <div class="group-input">
                                 <label for="password">비밀번호</label>
-                                <input type="text" id="password" value="${memberDTO.password}">
+                                <input type="password" id="password">
                             </div>
                             <div class="group-input">
                                 <label for="address">주소</label>

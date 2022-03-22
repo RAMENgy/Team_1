@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO getMember(String id) {
 		System.out.println("test getMember");
-		return null;
+		return memberDAO.getMember(id);
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class MemberController {
 		System.out.println("Test");
 		
 		//String id = (String) session.getAttribute("id");
-		String id = "test";
+		String id = "asdasd";
 		MemberDTO memberDTO = memberService.getMember(id);
 		model.addAttribute("memberDTO", memberDTO);
 		
