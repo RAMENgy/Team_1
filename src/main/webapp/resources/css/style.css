@@ -1004,7 +1004,7 @@ ol {
 .single-banner .inner-text {
 	position: absolute;
 	left: 0;
-	top: 0;
+	top: 85px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -3903,7 +3903,7 @@ ol {
 
 @media only screen and (min-width: 1200px) {
 	.container {
-		max-width: 1170px;
+		max-width: 1250px;
 	}
 }
 

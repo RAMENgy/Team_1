@@ -20,7 +20,7 @@ public class MemberController {
 	private MemberService memberService;
 	// 서비스 생성 오류
 //	
-	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		
 		System.out.println("Test");
@@ -30,7 +30,7 @@ public class MemberController {
 		MemberDTO memberDTO = memberService.getMember(id);
 		//model.addAttribute("memberDTO", memberDTO);
 		
-		return "member/update";
+		return "main/index";
 		
 	}
 }

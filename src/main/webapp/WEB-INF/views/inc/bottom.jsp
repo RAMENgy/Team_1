@@ -7,12 +7,12 @@
             <div class="col-lg-3">
                 <div class="footer-left">
                     <div class="footer-logo">
-                        <a href="#"><img src="${pageContext.request.contextPath }/resources/img/footer-logo.png" alt=""></a>
+                        <a href="#"><img src="${pageContext.request.contextPath }/resources/img/Team_1-logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: 60-49 Road 11378 New York</li>
-                        <li>Phone: +65 11.188.888</li>
-                        <li>Email: hello.colorlib@gmail.com</li>
+                        <li>Address: ITWILL 1강의실</li>
+                        <li>Phone: +82 000-0000-0000</li>
+                        <li>Email: Team_1-Team_Project@gogo.com</li>
                     </ul>
                     <div class="footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
