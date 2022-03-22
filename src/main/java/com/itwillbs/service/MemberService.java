@@ -6,4 +6,5 @@ public interface MemberService {
 	
 	public MemberDTO getMember(String id); // test
 	public void updateMember(MemberDTO memberDTO);
+	public MemberDTO userCheck(MemberDTO memberDTO);
 }

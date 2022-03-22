@@ -51,28 +51,28 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>회원 정보</h2>
-                        <form action="#">
+                        <form action="${pageContext.request.contextPath }/member/updatePro" id="join" method="post">
                             <div class="group-input">
                                 <label for="userid">아이디</label>
-                                <input type="text" id="userid" value="${memberDTO.userid}" readonly>
+                                <input type="text" id="userid" name="userid" value="${memberDTO.userid}" readonly>
                             </div>
                             <div class="group-input">
                                 <label for="name">이름</label>
-                                <input type="text" id="name" value="${memberDTO.name}">
+                                <input type="text" id="name" name="name" value="${memberDTO.name}">
                             </div>
                             <div class="group-input">
                                 <label for="password">비밀번호</label>
-                                <input type="password" id="password">
+                                <input type="password" id="password" name="password">
                             </div>
                             <div class="group-input">
                                 <label for="address">주소</label>
-                                <input type="text" id="address" value="${memberDTO.address}">
+                                <input type="text" id="address" name="address" value="${memberDTO.address}">
                             </div>
                             <div class="group-input">
                                 <label for="tel">연락처</label>
-                                <input type="text" id="tel" value="${memberDTO.tel}">
+                                <input type="text" id="tel" name="tel" value="${memberDTO.tel}">
                             </div>
-
+							<input type="submit" value="Submit" class="submit">
                             <button type="submit" class="site-btn register-btn">update</button>
                         </form>
                     </div>
