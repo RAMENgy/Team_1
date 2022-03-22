@@ -5,11 +5,8 @@ import java.security.Timestamp;
 public class BasketDTO {
 
 	private int id;
-	private String subject;
-	private String img;
-	private String content;
-	private int amount;
-	private Timestamp date;
+	private int member_id;
+	private int product_id;
 	
 	public int getId() {
 		return id;
@@ -17,36 +14,20 @@ public class BasketDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSubject() {
-		return subject;
+	public int getMember_id() {
+		return member_id;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
 	}
-	public String getImg() {
-		return img;
+	public int getProduct_id() {
+		return product_id;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-	public Timestamp getDate() {
-		return date;
-	}
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
+	
+	
 	
 
 	
