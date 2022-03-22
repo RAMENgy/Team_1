@@ -8,23 +8,30 @@
             <div class="ht-left">
                 <div class="mail-service">
                     <i class=" fa fa-envelope"></i>
-                    hello.colorlib@gmail.com
+                    Team_1-Team_Project@gogo.com
                 </div>
                 <div class="phone-service">
                     <i class=" fa fa-phone"></i>
-                    +65 11.188.888
+                    +82 000-0000-0000
                 </div>
             </div>
             <div class="ht-right">
-                <a href="${pageContext.request.contextPath }/member/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                <div class="lan-selector">
-                    <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                        <option value='yt' data-image="${pageContext.request.contextPath }/resources/img/flag-1.jpg" data-imagecss="flag yt"
-                            data-title="English">English</option>
-                        <option value='yu' data-image="${pageContext.request.contextPath }/resources/img/flag-2.jpg" data-imagecss="flag yu"
-                            data-title="Bangladesh">German </option>
-                    </select>
-                </div>
+            	
+            	<!-- 로그인/회원정보 섹션 시작  -->
+            	
+				<c:if test="${ ! empty sessionScope.userid }">
+				    <a href="${pageContext.request.contextPath }/member/logout" class="login-panel"><i class="fa fa-user-times"></i>로그아웃　</a>
+				    <a href="${pageContext.request.contextPath }/member/update" class="login-panel"><i class="fa fa-user-circle"></i>정보수정　</a>	
+					<span class="login-panel">${sessionScope.userid }님　</span> 
+				</c:if>
+                <c:if test="${ empty sessionScope.userid }">
+					<a href="${pageContext.request.contextPath }/member/join" class="login-panel"><i class="fa fa-user-plus"></i>Join Us　</a>
+				    <a href="${pageContext.request.contextPath }/member/login" class="login-panel"><i class="fa fa-user"></i>Login　</a>
+				</c:if>
+				
+				
+                
+                <!-- 로그인/회원정보 섹션 끝  -->
                 
                 <div class="top-social">
                     <a href="#"><i class="ti-facebook"></i></a>
@@ -40,17 +47,16 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
-                        <a href="./index.html">
-                            <img src="${pageContext.request.contextPath }/resources/img/logo.png" alt="">
+                        <a href="${pageContext.request.contextPath }/main/main">
+                            <img src="${pageContext.request.contextPath }/resources/img/Team_1-logo.png" alt="">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-7 col-lg-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">All Categories</button>
+                        <button type="button" class="category-btn">통합검색</button>
                         <form action="#" class="input-group">
-                            <input type="text" placeholder="What do you need?">
-                            <button type="button"><i class="ti-search"></i></button>
+                            <input type="text" placeholder="검색어를 입력하세요.">
                         </form>
                     </div>
                 </div>
@@ -58,12 +64,12 @@
                     <ul class="nav-right">
                         <li class="heart-icon"><a href="#">
                                 <i class="icon_heart_alt"></i>
-                                <span>1</span>
+                                <span>좋</span>
                             </a>
                         </li>
                         <li class="cart-icon"><a href="#">
                                 <i class="icon_bag_alt"></i>
-                                <span>3</span>
+                                <span>장</span>
                             </a>
                             <div class="cart-hover">
                                 <div class="select-items">
@@ -73,40 +79,44 @@
                                                 <td class="si-pic"><img src="${pageContext.request.contextPath }/resources/img/select-product-1.jpg" alt=""></td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
+                                                        <p>장바구니 항목 가격</p>
+                                                        <h6>장바구니 항목 이름</h6>
                                                     </div>
                                                 </td>
                                                 <td class="si-close">
                                                     <i class="ti-close"></i>
+                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
+                                                    기능 고민중 불필요시 삭제 -->
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="si-pic"><img src="${pageContext.request.contextPath }/resources/img/select-product-2.jpg" alt=""></td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
+                                                        <p>장바구니 항목 가격</p>
+                                                        <h6>장바구니 항목 이름</h6>
                                                     </div>
                                                 </td>
                                                 <td class="si-close">
                                                     <i class="ti-close"></i>
+                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
+                                                    기능 고민중 불필요시 삭제 -->
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="select-total">
-                                    <span>total:</span>
-                                    <h5>$120.00</h5>
+                                    <span>장바구니 합계 금액</span>
+                                    <h5>ㅇㅇㅇㅇ원</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
-                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    <a href="#" class="primary-btn view-card">구매하러가기</a>
+                                    <a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
                                 </div>
                             </div>
                         </li>
-                        <li class="cart-price">$150.00</li>
+                        <li class="cart-price">현재 장바구니 금액</li>
                     </ul>
                 </div>
             </div>
@@ -117,40 +127,48 @@
             <div class="nav-depart">
                 <div class="depart-btn">
                     <i class="ti-menu"></i>
-                    <span>All departments</span>
+                    <span>카테고리</span>
+                    <!-- 불필요시 삭제 -->
                     <ul class="depart-hover">
-                        <li class="active"><a href="#">Women’s Clothing</a></li>
-                        <li><a href="#">Men’s Clothing</a></li>
-                        <li><a href="#">Underwear</a></li>
-                        <li><a href="#">Kid's Clothing</a></li>
-                        <li><a href="#">Brand Fashion</a></li>
-                        <li><a href="#">Accessories/Shoes</a></li>
-                        <li><a href="#">Luxury Brands</a></li>
-                        <li><a href="#">Brand Outdoor Apparel</a></li>
+                        <li class="active"><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
+                        <li><a href="#">???</a></li>
                     </ul>
                 </div>
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./shop.html">Shop</a></li>
-                    <li><a href="#">Collection</a>
+                    <li><a href="${pageContext.request.contextPath }/main/main">홈으로</a></li>
+                    <li><a href="./shop.html">식자재 둘러보기</a></li>
+                    <li><a href="#">레시피 둘러보기</a>
                         <ul class="dropdown">
-                            <li><a href="#">Men's</a></li>
-                            <li><a href="#">Women's</a></li>
-                            <li><a href="#">Kid's</a></li>
+                            <li><a href="#">이번주 인기 레시피</a></li>
+                            <li><a href="#">지난 인기 레시피</a></li>
+                            <li><a href="#">전체 레시피 모아보기</a></li>
                         </ul>
                     </li>
-                    <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
-                    <li><a href="#">Pages</a>
+                    <li><a href="./blog.html">자유게시판</a></li>
+                    <li><a href="./contact.html">고객센터</a>
+                   		<ul class="dropdown">
+                            <li><a href="#">진행중인 이벤트</a></li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">업데이트</a></li>
+                            <li><a href="#">QnA</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">마이페이지</a>
                         <ul class="dropdown">
-                            <li><a href="./blog-details.html">Blog Details</a></li>
-                            <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                            <li><a href="./check-out.html">Checkout</a></li>
-                            <li><a href="./faq.html">Faq</a></li>
-                            <li><a href="./register.html">Register</a></li>
-                            <li><a href="./login.html">Login</a></li>
+                            <li><a href="./blog-details.html">회원정보조회</a></li>
+                            <li><a href="./shopping-cart.html">장바구니</a></li>
+                            <li><a href="./check-out.html">구매내역보기</a></li>
+                            <li><a href="./faq.html">나의 QnA</a></li>
+                            <li><a href="./register.html">???</a></li>
+                            <li><a href="./login.html">???</a></li>
                         </ul>
                     </li>
                 </ul>

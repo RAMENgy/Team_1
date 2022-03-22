@@ -18,17 +18,13 @@ public class MemberController {
 	
 	@Inject
 	private MemberService memberService;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
+	public String main(HttpSession session, Model model) {
+		
+		
+		return "main/index";
+	}
 	
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public String login() {
@@ -37,7 +33,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberDTO memberDTO, HttpSession session) {
-		
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
 		
 		if (ckDTO!=null) {
@@ -80,5 +75,7 @@ public class MemberController {
 			return "member/msg";
 		}
 	}
+	
+	
+	
 }
-

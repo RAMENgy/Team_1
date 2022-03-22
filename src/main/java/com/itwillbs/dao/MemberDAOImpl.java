@@ -34,7 +34,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public MemberDTO userCheck(MemberDTO memberDTO) {
-		System.out.println("MemberDAOImpl getMember()");
+		System.out.println("MemberDAOImpl userCheck()");
 		System.out.println(memberDTO.getUserid());
 		return sqlSession.selectOne(namespace+".userCheck", memberDTO);
 	}
