@@ -49,6 +49,12 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main/main";
+	}
+	
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
 		
