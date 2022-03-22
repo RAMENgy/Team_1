@@ -58,19 +58,19 @@
                             </div>
                             <div class="group-input">
                                 <label for="name">이름</label>
-                                <input type="text" id="name">
+                                <input type="text" id="name" value="${memberDTO.id}" readonly>
                             </div>
                             <div class="group-input">
                                 <label for="password">비밀번호</label>
-                                <input type="text" id="password">
+                                <input type="text" id="password" value="${memberDTO.password}">
                             </div>
                             <div class="group-input">
                                 <label for="address">주소</label>
-                                <input type="text" id="address">
+                                <input type="text" id="address" value="${memberDTO.address}">
                             </div>
                             <div class="group-input">
                                 <label for="tel">연락처</label>
-                                <input type="text" id="tel">
+                                <input type="text" id="tel" value="${memberDTO.tel}">
                             </div>
 
                             <button type="submit" class="site-btn register-btn">update</button>

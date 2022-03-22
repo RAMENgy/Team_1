@@ -28,7 +28,7 @@ public class MemberController {
 		//String id = (String) session.getAttribute("id");
 		String id = "test";
 		MemberDTO memberDTO = memberService.getMember(id);
-		//model.addAttribute("memberDTO", memberDTO);
+		model.addAttribute("memberDTO", memberDTO);
 		
 		return "member/update";
 		

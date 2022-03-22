@@ -18,6 +18,12 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("test getMember");
 		return null;
 	}
+
+	@Override
+	public void updateMember(MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+	}
+	
 	
 	
 }
