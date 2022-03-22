@@ -14,11 +14,15 @@
 	
 	
 	<select id="getMember" resultType="com.itwillbs.domain.MemberDTO">
-		select * from member where id=#{id}
+		select * from member where userid=#{userid}
 	</select>
 	
 	<update id="updateMember">
-		update member set name=#{name}, address=#{address}, tel=#{tel} where id=#{id}
+		update member set name=#{name}, address=#{address}, tel=#{tel} where userid=#{userid}
 	</update>
+	
+	<select id="userCheck" resultType="com.itwillbs.domain.MemberDTO">
+		select * from member where userid=#{userid} and password=#{password}
+	</select>
 	
 </mapper>
