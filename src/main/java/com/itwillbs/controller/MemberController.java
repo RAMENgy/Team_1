@@ -43,7 +43,6 @@ public class MemberController {
 		if (ckDTO!=null) {
 			session.setAttribute("userid", memberDTO.getUserid());
 			return "redirect:/main/main";
-			
 		} else {
 			return "member/msg";
 		}
