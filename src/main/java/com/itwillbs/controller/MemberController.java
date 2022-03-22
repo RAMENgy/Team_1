@@ -18,17 +18,10 @@ public class MemberController {
 	
 	@Inject
 	private MemberService memberService;
-	// 서비스 생성 오류
-//	
+
 	@RequestMapping(value = "/main/main", method = RequestMethod.GET)
 	public String main(HttpSession session, Model model) {
 		
-		System.out.println("Test");
-		
-		//String id = (String) session.getAttribute("id");
-		String id = "test";
-		MemberDTO memberDTO = memberService.getMember(id);
-		//model.addAttribute("memberDTO", memberDTO);
 		
 		return "main/index";
 	}
@@ -40,7 +33,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberDTO memberDTO, HttpSession session) {
-		
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
 		
 		if (ckDTO!=null) {

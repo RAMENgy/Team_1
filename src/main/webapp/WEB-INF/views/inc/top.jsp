@@ -16,7 +16,22 @@
                 </div>
             </div>
             <div class="ht-right">
-                <a href="${pageContext.request.contextPath }/member/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
+            	
+            	<!-- 로그인/회원정보 섹션 시작  -->
+            	
+				<c:if test="${ ! empty sessionScope.userid }">
+				    <a href="${pageContext.request.contextPath }/member/logout" class="login-panel"><i class="fa fa-user-times"></i>로그아웃　</a>
+				    <a href="${pageContext.request.contextPath }/member/update" class="login-panel"><i class="fa fa-user-circle"></i>정보수정　</a>	
+					<span class="login-panel">${sessionScope.userid }님　</span> 
+				</c:if>
+                <c:if test="${ empty sessionScope.userid }">
+					<a href="${pageContext.request.contextPath }/member/join" class="login-panel"><i class="fa fa-user-plus"></i>Join Us　</a>
+				    <a href="${pageContext.request.contextPath }/member/login" class="login-panel"><i class="fa fa-user"></i>Login　</a>
+				</c:if>
+				
+				
+                
+                <!-- 로그인/회원정보 섹션 끝  -->
                 
                 <div class="top-social">
                     <a href="#"><i class="ti-facebook"></i></a>
