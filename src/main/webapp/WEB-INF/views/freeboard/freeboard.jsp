@@ -69,7 +69,7 @@
 							
 							<!-- 글 영역 시작 -->
 							<tbody>
-								<c:forEach var="i" begin="1" end="15">
+								<c:forEach var="i" begin="1" end="20">
 									<tr>
 										<td>${i }</td>
 										<td>제목</td>
