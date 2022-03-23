@@ -22,20 +22,16 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public MemberDTO getMember(String id) {
-		System.out.println("MemberDAOImpl getMember()");
 		return sqlSession.selectOne(namespace+".getMember", id);
 	}
 	
 	@Override
 	public void updateMember(MemberDTO memberDTO) {
-		System.out.println("MemberDAOImpl updateMember()");
 		sqlSession.update(namespace+".updateMember", memberDTO);
 	}
 
 	@Override
 	public MemberDTO userCheck(MemberDTO memberDTO) {
-		System.out.println("MemberDAOImpl userCheck()");
-		System.out.println(memberDTO.getUserid());
 		return sqlSession.selectOne(namespace+".userCheck", memberDTO);
 	}
 	

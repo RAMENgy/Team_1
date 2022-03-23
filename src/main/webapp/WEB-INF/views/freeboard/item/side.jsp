@@ -23,7 +23,7 @@
             <div class="recent-blog">
                 <a href="#" class="rb-item">
                     <div class="rb-pic">
-                        <img src="img/blog/recent-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-1.jpg" alt="">
                     </div>
                     <div class="rb-text">
                         <h6>The Personality Trait That Makes...</h6>
@@ -32,7 +32,7 @@
                 </a>
                 <a href="#" class="rb-item">
                     <div class="rb-pic">
-                        <img src="img/blog/recent-2.jpg" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-2.jpg" alt="">
                     </div>
                     <div class="rb-text">
                         <h6>The Personality Trait That Makes...</h6>
@@ -41,7 +41,7 @@
                 </a>
                 <a href="#" class="rb-item">
                     <div class="rb-pic">
-                        <img src="img/blog/recent-3.jpg" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-3.jpg" alt="">
                     </div>
                     <div class="rb-text">
                         <h6>The Personality Trait That Makes...</h6>
@@ -50,7 +50,7 @@
                 </a>
                 <a href="#" class="rb-item">
                     <div class="rb-pic">
-                        <img src="img/blog/recent-4.jpg" alt="">
+                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-4.jpg" alt="">
                     </div>
                     <div class="rb-text">
                         <h6>The Personality Trait That Makes...</h6>

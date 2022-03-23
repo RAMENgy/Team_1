@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -53,7 +54,35 @@
                 
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row">
-                        
+                    	<!-- 게시판 영역 시작 -->
+                    	<h3>자유 게시판 테스트</h3>
+                        <table class="table table-hover" style="text-align: center;">
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>날짜</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+							
+							<!-- 글 영역 시작 -->
+							<tbody>
+								<c:forEach var="i" begin="1" end="15">
+									<tr>
+										<td>${i }</td>
+										<td>제목</td>
+										<td>이름</td>
+										<td>날짜</td>
+										<td>조회수</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+							<!-- 글 영역 끝 -->
+							
+						</table>
+						<!-- 게시판 영역 끝 -->
                     </div>
                 </div>
             </div>
