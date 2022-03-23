@@ -48,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <!-- 사이드 바 시작 -->
-                <jsp:include page="inc/side.jsp"></jsp:include>
+                <jsp:include page="item/side.jsp"></jsp:include>
                 <!-- 사이드 바 끝 -->
                 
                 <div class="col-lg-9 order-1 order-lg-2">
