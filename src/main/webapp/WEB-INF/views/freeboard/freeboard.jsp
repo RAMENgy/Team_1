@@ -53,7 +53,7 @@
                 <!-- 사이드 바 끝 -->
                 
                 <div class="col-lg-9 order-1 order-lg-2">
-                    <div class="row">
+                    <div class="row container">
                     	<!-- 게시판 영역 시작 -->
                     	<h3>자유 게시판 테스트</h3>
                         <table class="table table-hover" style="text-align: center;">
@@ -69,13 +69,14 @@
 							
 							<!-- 글 영역 시작 -->
 							<tbody>
-								<c:forEach var="i" begin="1" end="15">
+								<c:forEach var="fbDTO" items="${boardList }">
 									<tr>
-										<td>${i }</td>
-										<td>제목</td>
-										<td>이름</td>
-										<td>날짜</td>
-										<td>조회수</td>
+										<td>${fbDTO.id}</td>
+										<td>${fbDTO.subject}</td>
+										<td>${fbDTO.member_id}</td>
+										<!-- TODO member_id 기반 name get 하기 -->
+										<td>${fbDTO.date}</td>
+										<td>${fbDTO.readcount}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -83,6 +84,17 @@
 							
 						</table>
 						<!-- 게시판 영역 끝 -->
+						
+						
+						<!-- 페이지 번호 영역 시작 -->
+						<div class="col">
+							<ul class="pagination justify-content-center">
+								<c:forEach var="i" begin="1" end="5">
+									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/freeboard?pageNum=${i }">${i }</a></li>
+								</c:forEach>
+							</ul>
+						</div>
+						<!-- 페이지 번호 영역 끝 -->
                     </div>
                 </div>
             </div>
