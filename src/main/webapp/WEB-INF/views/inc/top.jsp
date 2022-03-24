@@ -164,7 +164,7 @@
                     <li><a href="#">마이페이지</a>
                         <ul class="dropdown">
                             <li><a href="./blog-details.html">회원정보조회</a></li>
-                            <li><a href="./shopping-cart.html">장바구니</a></li>
+                            <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
                             <li><a href="./check-out.html">구매내역보기</a></li>
                             <li><a href="./faq.html">나의 QnA</a></li>
                             <li><a href="./register.html">???</a></li>

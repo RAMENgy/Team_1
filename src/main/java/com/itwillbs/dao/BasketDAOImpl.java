@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.BasketDTO;
+import com.itwillbs.domain.ProductDTO;
 
 @Repository
 public class BasketDAOImpl implements BasketDAO {
@@ -24,7 +25,7 @@ public class BasketDAOImpl implements BasketDAO {
 	}
 	
 	@Override
-	public List<BasketDTO> basketList(){
+	public List<ProductDTO> basketList(String id){
 		return sqlSession.selectList(namespace+".basketList");
 	}
 	

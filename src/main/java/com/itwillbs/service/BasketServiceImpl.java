@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.BasketDAO;
 import com.itwillbs.domain.BasketDTO;
+import com.itwillbs.domain.ProductDTO;
 
 @Service
 public class BasketServiceImpl implements BasketService {
@@ -26,8 +27,8 @@ public class BasketServiceImpl implements BasketService {
 	
 	//장바구니 목록 조회
 	@Override
-	public List<BasketDTO> basketList(){
-		return basketDAO.basketList();
+	public List<ProductDTO> basketList(String id){
+		return basketDAO.basketList(id);
 	}
 	
 }

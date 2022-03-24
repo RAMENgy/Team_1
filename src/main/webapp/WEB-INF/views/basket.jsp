@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -65,12 +66,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            	<c:forEach var="productDTO" items="${basketList }">
                            		<tr>
-                                    <td class="cart-pic first-row"></td>
-                                    <td class="cart-title first-row">
-                                        <h5>상품이름</h5>
+                                    <td class="cart-pic first-row">
+                                    	${productDTO.img}
                                     </td>
-                                    <td class="p-price first-row">가격</td>
+                                    <td class="cart-title first-row">
+                                        ${productDTO.subject }
+                                    </td>
+                                    <td class="p-price first-row">
+                                    	${productDTO.amount }
+                                    </td>
                                     <td class="qua-col first-row">
                                         <div class="quantity">
                                             <div class="pro-qty">
@@ -81,6 +87,7 @@
                                     <td class="total-price first-row">최종가격</td>
                                     <td class="close-td first-row"><i class="ti-close"></i></td>
                                 </tr> 
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
