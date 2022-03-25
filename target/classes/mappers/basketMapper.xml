@@ -11,8 +11,10 @@
   	
   	<select id="basketList" resultType="com.itwillbs.domain.ProductDTO">
   		select p.subject, p.img, p.amount
-  		from product p join basket b
-  		on (p.id = b.product_id)
+  		from product p, basket b, member m
+  		where m.id = b.member_id
+  		and p.id = b.product_id
+  		and b.member_id=#{id}
   		
   	</select>
   

@@ -11,6 +11,6 @@ public interface BasketService {
 	public void insertBasket(BasketDTO basketDTO);
 	
 	//장바구니 목록 조회
-	public List<ProductDTO> basketList(String id);
+	public List<BasketDTO> basketList(int member_id);
 	
 }

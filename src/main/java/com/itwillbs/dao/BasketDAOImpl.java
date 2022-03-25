@@ -25,8 +25,8 @@ public class BasketDAOImpl implements BasketDAO {
 	}
 	
 	@Override
-	public List<ProductDTO> basketList(String id){
-		return sqlSession.selectList(namespace+".basketList");
+	public List<BasketDTO> basketList(int member_id){
+		return sqlSession.selectList(namespace+".basketList", member_id);
 	}
 	
 }

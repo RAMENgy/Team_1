@@ -27,8 +27,8 @@ public class BasketServiceImpl implements BasketService {
 	
 	//장바구니 목록 조회
 	@Override
-	public List<ProductDTO> basketList(String id){
-		return basketDAO.basketList(id);
+	public List<BasketDTO> basketList(int member_id){
+		return basketDAO.basketList(member_id);
 	}
 	
 }
