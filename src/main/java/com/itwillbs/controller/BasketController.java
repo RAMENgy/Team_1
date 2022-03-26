@@ -43,7 +43,7 @@ public class BasketController {
 			
 			model.addAttribute("basketList", basketList);
 			
-			return "basket";
+			return "basket/basketlist";
 			
 		} else {
 			

@@ -16,7 +16,18 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
 
-    <jsp:include page="inc/css.jsp"></jsp:include>
+    <jsp:include page="../inc/css.jsp"></jsp:include>
+    
+    <script type="text/javascript">
+    	function f1() {
+    		if (confirm("장바구니에서 삭제하시겠습니까?") == true){
+    			location.href="delete"
+    		} else {
+    			return false;
+    		}
+    	}
+    </script>
+    
     
 </head>
 
@@ -28,7 +39,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <jsp:include page="inc/top.jsp"></jsp:include>
+    <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- Header End -->
    
 
@@ -85,7 +96,7 @@
                                         </div>
                                     </td>
                                     <td class="total-price first-row">최종가격</td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    <td class="close-td first-row"><i class="ti-close" onclick="f1()"></i></td>
                                 </tr> 
                                 </c:forEach>
                             </tbody>
@@ -122,15 +133,15 @@
     <!-- Shopping Cart Section End -->
 
     <!-- Partner Logo Section Begin -->
-    <jsp:include page="inc/partner.jsp"></jsp:include>
+    <jsp:include page="../inc/partner.jsp"></jsp:include>
     <!-- Partner Logo Section End -->
 
     <!-- Footer Section Begin -->
-	<jsp:include page="inc/bottom.jsp"></jsp:include>
+	<jsp:include page="../inc/bottom.jsp"></jsp:include>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <jsp:include page="inc/js.jsp"></jsp:include>
+    <jsp:include page="../inc/js.jsp"></jsp:include>
 </body>
 
 </html>
