@@ -26,6 +26,7 @@ public class BasketController {
 	@Inject
 	private MemberService memberService;
 	
+	//장바구니 목록 조회
 	@RequestMapping(value = "/basket", method = RequestMethod.GET)
 	public String basketList(Model model, HttpSession session) {
 		
@@ -46,13 +47,26 @@ public class BasketController {
 			return "basket/basketlist";
 			
 		} else {
-			
-			return "redirect:/main/main";
-		}
-		
-		
-	}
 
+			return "basket/nosession";
+		
+		}
+	}
+	
+	
+	//장바구니 삭제
+	@RequestMapping(value = "basket/delete", method = RequestMethod.GET)
+	public String delete(HttpServletRequest request) {
+		
+		System.out.println("BasketController 장바구니삭제");
+		
+		int id=Integer.parseInt(request.getParameter("id"));
+		
+		System.out.println(id);
+		basketService.delete(id);
+		
+		return "redirect:/basket";
+	}
 	
 
 }

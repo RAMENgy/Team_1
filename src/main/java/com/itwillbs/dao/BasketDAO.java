@@ -7,9 +7,12 @@ import com.itwillbs.domain.ProductDTO;
 
 public interface BasketDAO {
 
-	//새 장바구니 추가
+		//새 장바구니 추가
 		public void insertBasket(BasketDTO basketDTO);
 		
 		//장바구니 목록 조회
 		public List<BasketDTO> basketList(int member_id);
+		
+		//장바구니 삭제
+		public void delete(int id);
 }

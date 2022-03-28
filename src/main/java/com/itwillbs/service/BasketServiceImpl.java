@@ -31,4 +31,10 @@ public class BasketServiceImpl implements BasketService {
 		return basketDAO.basketList(member_id);
 	}
 	
+	//장바구니 삭제
+		@Override
+		public void delete(int id) {
+			basketDAO.delete(id);
+		}
+	
 }
