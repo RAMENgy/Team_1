@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-lg-3 text-right col-lg-3">
                     <ul class="nav-right">
-                        <li class="heart-icon"><a href="#">
+                        <li class="heart-icon"><a href="${pageContext.request.contextPath }/like/likelist">
                                 <i class="icon_heart_alt"></i>
                                 <span>좋</span>
                             </a>
@@ -167,7 +167,7 @@
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
                             <li><a href="./check-out.html">구매내역보기</a></li>
                             <li><a href="./faq.html">나의 QnA</a></li>
-                            <li><a href="./register.html">???</a></li>
+                            <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
                             <li><a href="./login.html">???</a></li>
                         </ul>
                     </li>
