@@ -148,12 +148,12 @@
                     <li><a href="#">레시피 둘러보기</a>
                         <ul class="dropdown">
                             <li><a href="#">이번주 인기 레시피</a></li>
-                            <li><a href="#">지난 인기 레시피</a></li>
                             <li><a href="#">전체 레시피 모아보기</a></li>
+                            <li><a href="#">레시피 작성하기</a></li>
                         </ul>
                     </li>
-                    <li><a href="./blog.html">자유게시판</a></li>
-                    <li><a href="./contact.html">고객센터</a>
+                    <li><a href="${pageContext.request.contextPath }/freeboard">자유게시판</a></li>
+                    <li><a href="#">고객센터</a>
                    		<ul class="dropdown">
                             <li><a href="#">진행중인 이벤트</a></li>
                             <li><a href="#">공지사항</a></li>
@@ -163,12 +163,12 @@
                     </li>
                     <li><a href="#">마이페이지</a>
                         <ul class="dropdown">
-                            <li><a href="./blog-details.html">회원정보조회</a></li>
+                            <li><a href="#">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
-                            <li><a href="./check-out.html">구매내역보기</a></li>
-                            <li><a href="./faq.html">나의 QnA</a></li>
+                            <li><a href="#">구매내역보기</a></li>
+                            <li><a href="#">나의 QnA</a></li>
                             <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
-                            <li><a href="./login.html">???</a></li>
+                            <li><a href="#">???</a></li>
                         </ul>
                     </li>
                 </ul>
