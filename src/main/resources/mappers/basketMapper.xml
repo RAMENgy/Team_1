@@ -5,18 +5,25 @@
   
   <mapper namespace="com.itwillbs.mappers.basketMapper">
   
+  	<!-- 장바구니 추가 -->
   	<insert id="insertBasket">
   		insert into basket(id, member_id, product_id) values(#{id}, #{member_id}, #{product_id})
   	</insert>
   	
+  	<!-- 장바구니 목록 -->
   	<select id="basketList" resultType="com.itwillbs.domain.ProductDTO">
-  		select p.subject, p.img, p.amount
-  		from product p, basket b, member m
-  		where m.id = b.member_id
-  		and p.id = b.product_id
-  		and b.member_id=#{id}
-  		
+  		SELECT b.id, p.subject, p.img, p.amount
+  		FROM product p
+  		JOIN basket b
+  		ON p.id = b.product_id
+  		WHERE b.member_id=#{member_id}
   	</select>
+  	
+  	<!-- 장바구니 삭제 -->
+  	<delete id="delete">
+  		DELETE FROM basket 
+  		WHERE id=#{id}
+  	</delete> 
   
   
   

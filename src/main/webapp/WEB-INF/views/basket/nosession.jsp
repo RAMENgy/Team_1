@@ -18,16 +18,6 @@
 
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
-    <script type="text/javascript">
-    	function f1(id) {
-    	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
-    			location.href="basket/delete?id="+id
-    		} else {
-    			return;
-    		}
-    	}
-    </script>
-    
     
 </head>
 
@@ -77,28 +67,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            	<c:forEach var="basketList" items="${basketList }">
-                           		<tr>
-                                    <td class="cart-pic first-row">
-                                    	${basketList.img}
+                            	<tr>
+                            		
+                                    <td class="cart-pic first-row" colspan="6">
+                                    	로그인 해 주세요.
                                     </td>
-                                    <td class="cart-title first-row">
-                                        ${basketList.subject }
+                                   <!--  <td class="cart-title first-row">
+                                        
                                     </td>
                                     <td class="p-price first-row">
-                                    	${basketList.amount }
+                                    	
                                     </td>
                                     <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
+                                       
                                     </td>
-                                    <td class="total-price first-row">최종가격</td>
-                                    <td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>
+                                    <td class="total-price first-row"></td>
+                                    <td class="close-td first-row">  
+                                   		   
+                                    </td> -->
                                 </tr> 
-                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

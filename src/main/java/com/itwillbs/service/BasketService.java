@@ -13,4 +13,6 @@ public interface BasketService {
 	//장바구니 목록 조회
 	public List<BasketDTO> basketList(int member_id);
 	
+	//장바구니 삭제
+	public void delete(int id);
 }
