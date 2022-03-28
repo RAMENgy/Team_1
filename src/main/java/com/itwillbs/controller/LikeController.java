@@ -12,7 +12,7 @@ import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.service.MemberService;
 
 @Controller
-public class LikeBoardController {
+public class LikeController {
 	
 		
 	@Inject
