@@ -57,6 +57,7 @@
                         <button type="button" class="category-btn">통합검색</button>
                         <form action="#" class="input-group">
                             <input type="text" placeholder="검색어를 입력하세요.">
+                            
                         </form>
                     </div>
                 </div>
@@ -67,7 +68,7 @@
                                 <span>좋</span>
                             </a>
                         </li>
-                        <li class="cart-icon"><a href="#">
+                        <li class="cart-icon"><a href="${pageContext.request.contextPath }/basket">
                                 <i class="icon_bag_alt"></i>
                                 <span>장</span>
                             </a>
@@ -111,7 +112,7 @@
                                     <h5>ㅇㅇㅇㅇ원</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">구매하러가기</a>
+                                    <a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
                                     <a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
                                 </div>
                             </div>
