@@ -77,28 +77,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            	<c:forEach var="basketList" items="${basketList }">
-                           		<tr>
-                                    <td class="cart-pic first-row">
-                                    	${basketList.img}
-                                    </td>
-                                    <td class="cart-title first-row">
-                                        ${basketList.subject }
-                                    </td>
-                                    <td class="p-price first-row">
-                                    	${basketList.amount }
-                                    </td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price first-row">최종가격</td>
-                                    <td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>
-                                </tr> 
-                                </c:forEach>
+                            	<c:choose>
+                           			<c:when test="${empty basketList }">
+                           				<tr>
+                           					<td class="cart-pic first-row" colspan="6">
+                                    			장바구니가 비었습니다.
+                                    		</td>
+                                    	</tr>
+                           			</c:when>
+                           			<c:otherwise>
+                           				<c:forEach var="basketList" items="${basketList }">
+                           				<tr>
+                           					<td class="cart-pic first-row">
+                                    			${basketList.img}
+                                   			</td>
+                                    		<td class="cart-title first-row">
+                                       			${basketList.subject }
+                                    		</td>
+                                    		<td class="p-price first-row">
+                                    			${basketList.amount }
+                                    		</td>
+                                    		<td class="qua-col first-row">
+                                       			<div class="quantity">
+                                            		<div class="pro-qty">
+                                               			<input type="text" value="1">
+                                            		</div>
+                                        		</div>
+                                   			</td>
+                                    		<td class="total-price first-row">최종가격</td>
+                                    		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>
+                                		</tr> 
+                                		</c:forEach>
+                           			</c:otherwise>
+                           		</c:choose>
                             </tbody>
                         </table>
                     </div>
@@ -122,7 +133,7 @@
                                  <!--    <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">최종가격 <span>얼마</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="order" class="proceed-btn">주문하기</a>
                             </div>
                         </div>
                     </div>
