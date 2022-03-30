@@ -68,5 +68,21 @@ public class BasketController {
 		return "redirect:/basket";
 	}
 	
+	
+	//장바구니 수량 변경
+	@RequestMapping(value = "basket/update", method = RequestMethod.GET)
+	public String update(HttpServletRequest request) {
+		
+		System.out.println("BasketController 장바구니 수량변경");
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		int count = basketService.getCount(id);
+		
+		
+		basketService.update(count);
+		System.out.println(count);
+		return "redirect:/basket";
+	}	
+	
 
 }

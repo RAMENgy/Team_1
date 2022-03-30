@@ -32,9 +32,21 @@ public class BasketServiceImpl implements BasketService {
 	}
 	
 	//장바구니 삭제
-		@Override
-		public void delete(int id) {
-			basketDAO.delete(id);
-		}
+	@Override
+	public void delete(int id) {
+		basketDAO.delete(id);
+	}
+	
+	//장바구니 수량 가져오기
+	@Override
+	public int getCount(int id) {
+		return basketDAO.getCount(id);
+	}
+	
+	//장바구니 수량 변경
+	@Override
+	public void update(int count) {
+		basketDAO.update(count);
+	}
 	
 }

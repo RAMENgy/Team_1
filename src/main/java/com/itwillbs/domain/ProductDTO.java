@@ -10,6 +10,14 @@ public class ProductDTO {
 	private String content;
 	private int amount;
 	private Timestamp date;
+	private int count;
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	
 	public int getId() {
 		return id;
