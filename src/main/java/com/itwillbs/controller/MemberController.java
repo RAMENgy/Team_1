@@ -26,6 +26,11 @@ public class MemberController {
 		return "main/index";
 	}
 	
+	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
+	public String join() {
+		return "member/join";
+	}
+	
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public String login() {
 		return "member/login";
