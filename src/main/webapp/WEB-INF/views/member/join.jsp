@@ -44,9 +44,9 @@
 			document.fr.id.focus();
 			return;
 		}
-		//창열기
+// 		//창열기
 		var id=document.fr.id.value;
-		window.open("userCheck.jsp?id="+id,"","width=400,height=300");
+		window.open("userCheck.jsp?userid="+id,"","width=400,height=300");
 	}
  </script>
  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
@@ -54,7 +54,7 @@
  	$(document).ready(function(){
  		$('#join').submit(function(){
 //  			alert("전송");
-				// 아이디 비밀번호 이름 이메일 비어있으면 제어
+// 				아이디 비밀번호 이름 이메일 비어있으면 제어
 				if($('#userid').val()==""){
 					alert("아이디 입력하세요");
 					$('#userid').focus();
@@ -66,9 +66,9 @@
 					$('#password').focus();
 					return false;
 				}
-				if($('#password').val()!=$('#pass2').val()){
+				if($('#password').val()!=$('#password2').val()){
 					alert("비밀번호 틀림 입력하세요");
-					$('#pass2').focus();
+					$('#password2').focus();
 					return false;
 				}
 				
@@ -91,8 +91,28 @@
 				}
 				
  		});//
- 				
- 	});//
+ 		
+ 		//아이디 중복체크
+ 		// class="dup" 버튼을 클릭했을때 
+ 		$('.dup').click(function(){
+//  			alert("클릭");
+			$.ajax({
+				url:"${pageContext.request.contextPath }/member/userCheck2",
+				data:{"userid":$('#userid').val()},
+				success:function(rdata){
+					if(rdata=='idok'){
+						rdata="아이디 사용가능";
+					}else{
+						rdata="아이디 중복";
+					}
+					// id="divdup" 에 리턴받은 값 넣기
+					$('#divdup').html(rdata);
+				}
+			});//
+
+ 		});//
+
+});//
  </script>
 </head>
 <body>
@@ -117,7 +137,7 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="login-form">
                         <h2>회원가입</h2>
-                        <form action="${pageContext.request.contextPath }/member/joinPro" method="post">
+                        <form action="${pageContext.request.contextPath }/member/joinPro" method="post" id="join">
                             <div class="group-input">
                                 <label for="userid">아이디</label>
                                 <input type="text" id="userid" name="userid">
@@ -133,7 +153,7 @@
                             
                              <div class="group-input">
                                 <label for="password">비밀번호 확인</label>
-                                <input type="password" id="password" name="password2">
+                                <input type="password" id="password2" name="password2">
                             </div>
                             
                              <div class="group-input">
@@ -150,11 +170,10 @@
                                 <label for="tel">휴대전화</label>
                                 <input type="tel" id="tel" name="tel">  
                             </div>
-                            <div class="btn_area">
-                    <button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>
-                </div>
-                 <button type="submit" class="site-btn login-btn">로그인</button>
-
+                            
+                            <button type="submit" class="site-btn login-btn">회원가입</button>
+ 
+ 
                         </form>
                     </div>
                 </div>
@@ -164,12 +183,6 @@
     <!-- Register Form Section End -->
 
 <article>
-<form action="joinPro.jsp" id="join" method="post" name="fr">
-<div class="clear"></div>
-<div id="buttons">
-<input type="submit" value="Submit" class="submit">
-</div>
-</form>
 </article>
 
 </div>

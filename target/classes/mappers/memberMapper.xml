@@ -25,4 +25,9 @@
 		select * from member where userid=#{userid} and password=#{password}
 	</select>
 	
+	<insert id="insertMember">
+		insert into member(userid,name,password,address,tel,point,grade,sign_date) 
+		values(#{userid},#{name},#{password},#{address},#{tel},#{point},#{grade},#{date})
+	</insert>
+	
 </mapper>
