@@ -1,5 +1,7 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO userCheck(MemberDTO memberDTO) {
 		return memberDAO.userCheck(memberDTO);
+	}
+
+	@Override
+	public void insertMember(MemberDTO memberDTO) {
+		memberDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		memberDAO.insertMember(memberDTO);
+		
 	}
 	
 	

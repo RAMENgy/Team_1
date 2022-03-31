@@ -31,6 +31,13 @@ public class MemberController {
 		return "member/join";
 	}
 	
+	@RequestMapping(value = "/member/joinPro", method = RequestMethod.POST)
+	public String joinPro(MemberDTO memberDTO, HttpSession session) {
+		memberService.insertMember(memberDTO);
+		
+		return "redirect:/member/login";
+	}
+	
 	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
 	public String login() {
 		return "member/login";

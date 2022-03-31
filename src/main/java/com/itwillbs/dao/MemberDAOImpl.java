@@ -34,6 +34,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO userCheck(MemberDTO memberDTO) {
 		return sqlSession.selectOne(namespace+".userCheck", memberDTO);
 	}
+
+	@Override
+	public void insertMember(MemberDTO memberDTO) {
+		sqlSession.insert(namespace+".insertMember", memberDTO);
+		
+	}
 	
 	
 	
