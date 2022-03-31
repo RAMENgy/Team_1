@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -53,56 +54,56 @@
                         <!-- <div class="checkout-content">
                             <a href="#" class="content-btn">Click Here To Login</a>
                         </div> -->
-                        <h4>주문 정보</h4>
+                        <h4>주문고객</h4>
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="fir">First Name<span>*</span></label>
-                                <input type="text" id="fir">
+                                <label for="fir">이름<span>*</span></label>
+                                <input type="text" id="fir" value="${memberDTO.name }" readonly>
+                            	<br>
+                                <label for="phone">전화번호<span>*</span></label>
+                                <input type="text" id="phone" value="${memberDTO.tel }" readonly>
                             </div>
-                            <div class="col-lg-6">
-                                <label for="last">Last Name<span>*</span></label>
-                                <input type="text" id="last">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="cun-name">Company Name</label>
-                                <input type="text" id="cun-name">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="cun">Country<span>*</span></label>
-                                <input type="text" id="cun">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="street">Street Address<span>*</span></label>
-                                <input type="text" id="street" class="street-first">
-                                <input type="text">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="zip">Postcode / ZIP (optional)</label>
-                                <input type="text" id="zip">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="town">Town / City<span>*</span></label>
-                                <input type="text" id="town">
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="email">Email Address<span>*</span></label>
-                                <input type="text" id="email">
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="phone">Phone<span>*</span></label>
-                                <input type="text" id="phone">
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="create-item">
+                        </div>
+                    	
+                    	<br><br>
+                    
+                        <h4>배송정보</h4>
+                        <div class="create-item">
                                     <label for="acc-create">
-                                        Create an account?
+                                        주문자 정보와 동일
                                         <input type="checkbox" id="acc-create">
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
+                        </div>
+                                
+                        <br>
+                       
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="fir">이름<span>*</span></label>
+                                <input type="text" id="fir">
                             </div>
+                            <div class="col-lg-6">
+                                <label for="last">전화번호<span>*</span></label>
+                                <input type="text" id="last">
+                            </div>
+                           
+                            <div class="col-lg-12">
+                                <label for="cun-name">주소</label>
+                                <input type="text" id="cun-name">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="cun">우편번호<span>*</span></label>
+                                <input type="text" id="cun">
+                            </div>
+                           
+                            
+                            
+                            
                         </div>
                     </div>
+                    
+                    
                     <div class="col-lg-6">
                         <div class="checkout-content">
                             <input type="text" placeholder="Enter Your Coupon Code">
@@ -112,9 +113,9 @@
                             <div class="order-total">
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                    <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
+                                    <c:forEach var="basketList" items="${basketList }">
+                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span>${basketList.amount }</span></li>
+                                    </c:forEach>
                                     <li class="fw-normal">Subtotal <span>$240.00</span></li>
                                     <li class="total-price">Total <span>$240.00</span></li>
                                 </ul>
