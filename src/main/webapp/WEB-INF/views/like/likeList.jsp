@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -127,94 +129,97 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="blog-item">
                                 <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-1.jpg" alt="">
+                                    <img src="${lDTO.img}" alt="">
                                 </div>
+                                <c:forEach var="lDTO" items="${boardList }">
                                 <div class="bi-text">
                                     <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4>
+                                        <h4>${lDTO.subject }</h4>
                                     </a>
-                                    <p>travel <span>- May 19, 2019</span></p>
+                                    <p>${lDTO.member_id} <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span></p>
 	                                <form action="deleteLikeList">
 	                                <button type="submit">   	
                                    	<i class="fa fa-trash" aria-hidden="true"></i>
                                    	</button> &lt;- 좋아요한 레시피에서 즉시 삭제 기능 구현?
                                    	</form>
                                 </div>
+                                </c:forEach>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-2.jpg" alt="">
-                                </div>
-                                <div class="bi-text">
-                                    <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4>
-                                    </a>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
-                                    <form action="deleteLikeList">
-	                                <button type="submit">   	
-                                   	<i class="fa fa-trash" aria-hidden="true"></i>
-                                   	</button> &lt;- 구현 및 추가여부 검토중...
-                                   	</form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-3.jpg" alt="">
-                                </div>
-                                <div class="bi-text">
-                                    <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4>
-                                    </a>
-                                    <p>travel <span>- May 19, 2019</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-4.jpg" alt="">
-                                </div>
-                                <div class="bi-text">
-                                    <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4>
-                                    </a>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-5.jpg" alt="">
-                                </div>
-                                <div class="bi-text">
-                                    <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기…</h4>
-                                    </a>
-                                    <p>Model <span>- May 19, 2019</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-6">
-                            <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/img/blog/blog-6.jpg" alt="">
-                                </div>
-                                <div class="bi-text">
-                                    <a href="./blog-details.html">
-                                        <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4>
-                                    </a>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
-                                </div>
-                            </div>
-                        </div>
+<!--                         <div class="col-lg-6 col-sm-6"> -->
+<!--                             <div class="blog-item"> -->
+<!--                                 <div class="bi-pic"> -->
+<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-2.jpg" alt=""> --%>
+<!--                                 </div> -->
+<!--                                 <div class="bi-text"> -->
+<!--                                     <a href="./blog-details.html"> -->
+<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
+<!--                                     </a> -->
+<%--                                     <p>${lDTO.id } <span><fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span></p> --%>
+<!--                                     <form action="deleteLikeList"> -->
+<!-- 	                                <button type="submit">   	 -->
+<!--                                    	<i class="fa fa-trash" aria-hidden="true"></i> -->
+<!--                                    	</button> &lt;- 구현 및 추가여부 검토중... -->
+<!--                                    	</form> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="col-lg-6 col-sm-6"> -->
+<!--                             <div class="blog-item"> -->
+<!--                                 <div class="bi-pic"> -->
+<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-3.jpg" alt=""> --%>
+<!--                                 </div> -->
+<!--                                 <div class="bi-text"> -->
+<!--                                     <a href="./blog-details.html"> -->
+<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
+<!--                                     </a> -->
+<!--                                     <p>travel <span>- May 19, 2019</span></p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="col-lg-6 col-sm-6"> -->
+<!--                             <div class="blog-item"> -->
+<!--                                 <div class="bi-pic"> -->
+<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-4.jpg" alt=""> --%>
+<!--                                 </div> -->
+<!--                                 <div class="bi-text"> -->
+<!--                                     <a href="./blog-details.html"> -->
+<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
+<!--                                     </a> -->
+<!--                                     <p>Fashion <span>- May 19, 2019</span></p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="col-lg-6 col-sm-6"> -->
+<!--                             <div class="blog-item"> -->
+<!--                                 <div class="bi-pic"> -->
+<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-5.jpg" alt=""> --%>
+<!--                                 </div> -->
+<!--                                 <div class="bi-text"> -->
+<!--                                     <a href="./blog-details.html"> -->
+<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기…</h4> -->
+<!--                                     </a> -->
+<!--                                     <p>Model <span>- May 19, 2019</span></p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="col-lg-6 col-sm-6"> -->
+<!--                             <div class="blog-item"> -->
+<!--                                 <div class="bi-pic"> -->
+<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-6.jpg" alt=""> --%>
+<!--                                 </div> -->
+<!--                                 <div class="bi-text"> -->
+<!--                                     <a href="./blog-details.html"> -->
+<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
+<!--                                     </a> -->
+<!--                                     <p>Fashion <span>- May 19, 2019</span></p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
                         <div class="col-lg-12">
                             <div class="loading-more">
                                 <i class="icon_loading"></i>
+                                
                                 <a href="#">
                                     더 펼쳐보기(펼쳐보기 없이 그냥 한번에 다 보여주는게 나아보임)
                                 </a>
@@ -230,7 +235,7 @@
     <!-- Partner Logo Section Begin -->
 <%--     <jsp:include page="../inc/partner.jsp"></jsp:include> --%>
     <!-- Partner Logo Section End -->
-
+	
     <!-- Footer Section Begin -->
     <jsp:include page="../inc/bottom.jsp"></jsp:include>
     <!-- Footer Section End -->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.itwillbs.mappers.likeMapper">
+  
+  <select id="getBoardList" resultType="com.itwillbs.domain.RecipeDTO">
+		select l.id, r.subject, r.member_id, r.img, r.ingredient, r.content, r.readcount, r.like, r.date
+		from recipe_board r join like_list l
+		where l.member_id=#{member_id}
+		order by l.id desc limit #{startRow},#{pageSize}
+  </select>
+  
+  
+  <select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from like_list
+	</select>
+  
+  
+  </mapper>
