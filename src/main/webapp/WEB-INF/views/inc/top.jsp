@@ -22,7 +22,7 @@
 				<c:if test="${ ! empty sessionScope.userid }">
 				    <a href="${pageContext.request.contextPath }/member/logout" class="login-panel"><i class="fa fa-user-times"></i>로그아웃　</a>
 				    <a href="${pageContext.request.contextPath }/member/update" class="login-panel"><i class="fa fa-user-circle"></i>정보수정　</a>	
-					<span class="login-panel">${sessionScope.userid }님　</span> 
+					<span class="login-panel">${sessionScope.name }님　</span> 
 				</c:if>
                 <c:if test="${ empty sessionScope.userid }">
 					<a href="${pageContext.request.contextPath }/member/join" class="login-panel"><i class="fa fa-user-plus"></i>Join Us　</a>
