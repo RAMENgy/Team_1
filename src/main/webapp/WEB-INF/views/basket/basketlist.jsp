@@ -104,7 +104,7 @@
                                             		</div>
                                         		</div>
                                    			</td>
-                                    		<td class="total-price first-row">최종가격</td>
+                                    		<td class="total-price first-row">${basketList.subprice }</td>
                                     		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>
                                 		</tr> 
                                 		</c:forEach>

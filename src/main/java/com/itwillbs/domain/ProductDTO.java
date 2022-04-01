@@ -11,7 +11,14 @@ public class ProductDTO {
 	private int amount;
 	private Timestamp date;
 	private int count;
+	private int subprice;
 	
+	public int getSubprice() {
+		return subprice;
+	}
+	public void setSubprice(int subprice) {
+		this.subprice = subprice;
+	}
 	public int getCount() {
 		return count;
 	}

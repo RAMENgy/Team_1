@@ -12,7 +12,7 @@
   	
   	<!-- 장바구니 목록 -->
   	<select id="basketList" resultType="com.itwillbs.domain.ProductDTO">
-  		SELECT b.id, p.subject, p.img, p.amount, b.count
+  		SELECT b.id, p.subject, p.img, p.amount, b.count, (p.amount)*(b.count) subprice
   		FROM product p
   		JOIN basket b
   		ON p.id = b.product_id
