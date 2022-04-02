@@ -49,4 +49,10 @@ public class BasketServiceImpl implements BasketService {
 		basketDAO.update(count);
 	}
 	
+	//장바구니 금액 합계
+	@Override
+	public int sumMoney(int member_id) {
+		return basketDAO.sumMoney(member_id);
+	}
+	
 }

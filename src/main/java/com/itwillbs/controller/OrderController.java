@@ -1,6 +1,8 @@
 package com.itwillbs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -27,6 +29,7 @@ public class OrderController {
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(HttpSession session, Model model) {
 		
+		Map<String, Object> map=new HashMap<>();
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO memberDTO = memberService.getMember(userid);
 				
@@ -35,8 +38,11 @@ public class OrderController {
 		int member_id = memberDTO.getId();
 		
 		List<BasketDTO> basketList = basketService.basketList(member_id);
-		
 		model.addAttribute("basketList", basketList);
+		
+		int sumMoney = basketService.sumMoney(member_id);
+		map.put("sumMoney", sumMoney);
+		model.addAttribute("map", map);
 		
 		return "order/orderinfo";
 	}

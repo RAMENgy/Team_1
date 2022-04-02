@@ -39,6 +39,14 @@
   		WHERE id=#{id}
   	</update>
   
+  	<!-- 장바구니 금액 합계 -->
+  	<select id="sumMoney" resultType="java.lang.Integer">
+  		SELECT sum((p.amount)*(b.count))
+  		FROM product p
+  		JOIN basket b
+  		ON p.id = b.product_id
+  		WHERE b.member_id=#{member_id}
+  	</select>
   
   
   </mapper>

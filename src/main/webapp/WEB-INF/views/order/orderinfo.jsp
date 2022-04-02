@@ -113,7 +113,7 @@
                                     <c:forEach var="basketList" items="${basketList }">
                                     <li class="fw-normal">${basketList.subject } * ${basketList.count } <span>${basketList.subprice }</span></li>
                                     </c:forEach>
-                                    <li class="total-price">총액 <span>$240.00</span></li>
+                                    <li class="total-price">총액 <span>${map.sumMoney }</span></li>
                                 </ul>
                                 <div class="payment-check">
                                     <div class="pc-item">

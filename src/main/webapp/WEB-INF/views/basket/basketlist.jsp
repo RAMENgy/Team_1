@@ -26,6 +26,7 @@
     			return;
     		}
     	}
+    	
     </script>
     
     
@@ -113,6 +114,13 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                    
+                    <c:choose>
+                    <c:when test="${empty basketList }">
+                    
+                    
+                    
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
@@ -127,16 +135,50 @@
                                 </form>
                             </div>
                         </div>
+                       
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
-                                <ul>
-                                 <!--    <li class="subtotal">Subtotal <span>$240.00</span></li> -->
-                                    <li class="cart-total">최종가격 <span>얼마</span></li>
-                                </ul>
-                                <a href="order" class="proceed-btn">주문하기</a>
+                                	<ul>
+                                    	<li class="cart-total">최종가격 <span>0</span></li>
+	                                </ul>
+                                	<a href="order" class="proceed-btn">주문하기</a>
                             </div>
                         </div>
+                       
                     </div>
+                    </c:when>
+                    
+					<c:otherwise>
+					
+					 <div class="row">
+                        <div class="col-lg-4">
+                            <div class="cart-buttons">
+                                <a href="#" class="primary-btn continue-shop">쇼핑계속하기</a>
+                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                            </div>
+                            <div class="discount-coupon">
+                                <h6>Discount Codes</h6>
+                                <form action="#" class="coupon-form">
+                                    <input type="text" placeholder="Enter your codes">
+                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                </form>
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-4 offset-lg-4">
+                            <div class="proceed-checkout">
+                                	<ul>
+                                    	<li class="cart-total">최종가격 <span>${map.sumMoney}</span></li>
+	                                </ul>
+                                	<a href="order" class="proceed-btn">주문하기</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+					
+					</c:otherwise>					                    
+                    
+                    </c:choose>
                 </div>
             </div>
         </div>

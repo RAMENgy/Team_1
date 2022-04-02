@@ -21,4 +21,7 @@ public interface BasketService {
 	
 	//장바구니 수량변경
 	public void update(int count);
+	
+	//장바구니 금액 합계
+	public int sumMoney(int member_id);
 }

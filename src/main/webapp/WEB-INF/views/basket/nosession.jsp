@@ -107,9 +107,9 @@
                             <div class="proceed-checkout">
                                 <ul>
                                  <!--    <li class="subtotal">Subtotal <span>$240.00</span></li> -->
-                                    <li class="cart-total">최종가격 <span>얼마</span></li>
+                                    <li class="cart-total">최종가격 <span>0</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="#" class="proceed-btn">주문하기</a>
                             </div>
                         </div>
                     </div>
