@@ -33,10 +33,11 @@ public class LikeController {
 		System.out.println("LikeBoardController likeList()");
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
-		int member_id = ckDTO.getId();
-		System.out.println(member_id);
+		
 		
 		if(ckDTO != null) {
+		int member_id = ckDTO.getId();
+		System.out.println(member_id);
 		// 한화면에 보여줄 글개수 설정
 //		int pageSize=15;
 //		
