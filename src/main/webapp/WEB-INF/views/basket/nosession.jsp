@@ -109,7 +109,7 @@
                                  <!--    <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">최종가격 <span>0</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">주문하기</a>
+                                <a href="order" class="proceed-btn">주문하기</a>
                             </div>
                         </div>
                     </div>

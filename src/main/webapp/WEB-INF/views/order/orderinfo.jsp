@@ -17,6 +17,22 @@
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
+    
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('#acc-create').click(function(){
+    			
+    					alert("주문자정보와 동일 ajax");
+    			
+    		});
+    	});
+    	
+    	
+    
+    </script>
+    
+    
 </head>
 
 <body>

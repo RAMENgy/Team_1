@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,16 +37,35 @@ public class OrderController {
 				
 		model.addAttribute("memberDTO", memberDTO); 
 		
-		int member_id = memberDTO.getId();
+		if(memberDTO != null) {
+			
+			int member_id = memberDTO.getId();
+			
+			List<BasketDTO> basketList = basketService.basketList(member_id);
+			model.addAttribute("basketList", basketList);
+			
+			int sumMoney = basketService.sumMoney(member_id);
+			map.put("sumMoney", sumMoney);
+			model.addAttribute("map", map);
+			
+			return "order/orderinfo";
+			
+		} else {
+			
+			return "order/msg";
+		}
 		
-		List<BasketDTO> basketList = basketService.basketList(member_id);
-		model.addAttribute("basketList", basketList);
+	}
+	
+	@RequestMapping(value="/order/orderinfojason", method=RequestMethod.GET)
+	public ResponseEntity<MemberDTO> orderinfojason(HttpSession session){
 		
-		int sumMoney = basketService.sumMoney(member_id);
-		map.put("sumMoney", sumMoney);
-		model.addAttribute("map", map);
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO memberDTO = memberService.getMember(userid);
 		
-		return "order/orderinfo";
+		
+		ResponseEntity<MemberDTO> entity = new ResponseEntity<MemberDTO>(memberDTO, HttpStatus.OK);
+		return entity;
 	}
 
 }
