@@ -56,16 +56,5 @@ public class OrderController {
 		}
 		
 	}
-	
-	@RequestMapping(value="/order/orderinfojason", method=RequestMethod.GET)
-	public ResponseEntity<MemberDTO> orderinfojason(HttpSession session){
-		
-		String userid = (String)session.getAttribute("userid");
-		MemberDTO memberDTO = memberService.getMember(userid);
-		
-		
-		ResponseEntity<MemberDTO> entity = new ResponseEntity<MemberDTO>(memberDTO, HttpStatus.OK);
-		return entity;
-	}
 
 }
