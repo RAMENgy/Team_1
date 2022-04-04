@@ -8,13 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
 
 
 
 @Controller
 public class MemberController {
+	
+	@Inject
+	private LikeService likeService;
 	
 	@Inject
 	private MemberService memberService;
@@ -46,10 +51,16 @@ public class MemberController {
 	@RequestMapping(value = "/member/loginPro", method = RequestMethod.POST)
 	public String loginPro(MemberDTO memberDTO, HttpSession session) {
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
-		
+		LikeDTO lDTO = new LikeDTO();
 		if (ckDTO!=null) {
 			session.setAttribute("userid", memberDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
+			lDTO.setMember_id(ckDTO.getId());
+			// 내가 좋아요 누른 항목 갯수 찾기
+			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
+			// 세션명 likecount에 저장
+			
+			System.out.println("좋아요 수"+likeService.getBoardCount(lDTO.getMember_id()));
 			System.out.println(ckDTO.getName());
 			return "redirect:/main/main";
 		} else {

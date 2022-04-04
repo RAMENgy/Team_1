@@ -24,8 +24,8 @@ public class LikeDAOImpl implements LikeDAO {
 	}
 
 	@Override
-	public int getBoardCount() {
-		return sqlSession.selectOne(namespace+".getBoardCount");
+	public int getBoardCount(int member_id) {
+		return sqlSession.selectOne(namespace+".getBoardCount", member_id);
 	}
 	
 	

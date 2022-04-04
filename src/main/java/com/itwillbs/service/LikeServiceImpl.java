@@ -36,8 +36,8 @@ public class LikeServiceImpl implements LikeService{
 	}
 
 	@Override
-	public int getBoardCount() {
-		return likeDAO.getBoardCount();
+	public int getBoardCount(int member_id) {
+		return likeDAO.getBoardCount(member_id);
 	}
 
 }

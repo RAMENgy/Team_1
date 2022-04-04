@@ -9,6 +9,6 @@ public interface LikeService {
 	
 	public List<LikeDTO> getBoardList(int member_id);
 	
-	public int getBoardCount();
+	public int getBoardCount(int member_id);
 
 }
