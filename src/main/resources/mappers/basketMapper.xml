@@ -41,7 +41,7 @@
   
   	<!-- 장바구니 금액 합계 -->
   	<select id="sumMoney" resultType="java.lang.Integer">
-  		SELECT sum((p.amount)*(b.count))
+  		SELECT ifnull(sum((p.amount)*(b.count)),0)
   		FROM product p
   		JOIN basket b
   		ON p.id = b.product_id
