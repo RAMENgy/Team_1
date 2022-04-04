@@ -40,4 +40,15 @@ public class LikeServiceImpl implements LikeService{
 		return likeDAO.getBoardCount(member_id);
 	}
 
+	@Override
+	public void deleteBoard(int id) {
+		likeDAO.deleteBoard(id);
+		
+	}
+
+	@Override
+	public LikeDTO getBoard(int member_id) {
+		return likeDAO.getBoard(member_id);
+	}
+
 }

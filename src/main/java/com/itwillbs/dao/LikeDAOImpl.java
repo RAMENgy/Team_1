@@ -27,6 +27,16 @@ public class LikeDAOImpl implements LikeDAO {
 	public int getBoardCount(int member_id) {
 		return sqlSession.selectOne(namespace+".getBoardCount", member_id);
 	}
+
+	@Override
+	public void deleteBoard(int id) {
+		sqlSession.delete(namespace+".deleteBoard", id);
+	}
+
+	@Override
+	public LikeDTO getBoard(int member_id) {
+		return sqlSession.selectOne(namespace+".getBoard", member_id);
+	}
 	
 	
 }

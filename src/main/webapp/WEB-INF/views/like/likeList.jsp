@@ -18,6 +18,16 @@
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
+    <script type="text/javascript">
+    	function f1(id) {
+    	 	if (confirm("좋아요목록에서 삭제하시겠습니까?") == true){
+    			location.href="${pageContext.request.contextPath }/like/deleteLikeList?id="+id
+    		} else {
+    			return;
+    		}
+    	}
+    	
+    </script>
 </head>
 
 <body>
@@ -134,14 +144,13 @@
                                 <c:forEach var="lDTO" items="${boardList }">
                                 <div class="bi-text">
                                     <a href="./blog-details.html">
-                                        <h4>${lDTO.subject }</h4>
+                                        <h4>${lDTO.id}. ${lDTO.subject }</h4>
                                     </a>
-                                    <p>${lDTO.member_id} <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span></p>
-	                                <form action="deleteLikeList">
-	                                <button type="submit">   	
-                                   	<i class="fa fa-trash" aria-hidden="true"></i>
-                                   	</button> &lt;- 좋아요한 레시피에서 즉시 삭제 기능 구현?
-                                   	</form>
+                                    <p>
+                                    ${lDTO.member_id}(작성자 id값) <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>
+                                    <button><i class="fa fa-trash" aria-hidden="true" onclick="f1(${lDTO.id})"></i></button>
+                                    </p>
+                                   	
                                 </div>
                                 </c:forEach>
                             </div>

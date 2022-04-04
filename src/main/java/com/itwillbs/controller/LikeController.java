@@ -37,7 +37,7 @@ public class LikeController {
 		
 		if(ckDTO != null) {
 		int member_id = ckDTO.getId();
-		System.out.println(member_id);
+		System.out.println("회원번호 : "+member_id);
 		// 한화면에 보여줄 글개수 설정
 //		int pageSize=15;
 //		
@@ -92,4 +92,18 @@ public class LikeController {
 		
 		
 	}
+	
+	@RequestMapping(value = "/like/deleteLikeList", method = RequestMethod.GET)
+	public String deletelike(HttpServletRequest request, HttpSession session) {
+		System.out.println("LikeController deletelike ");
+		int id=Integer.parseInt(request.getParameter("id"));
+		LikeDTO lDTO = new LikeDTO();
+		lDTO.setId(id);
+		System.out.println("삭제되는 좋아요 게시글 번호"+id);
+		
+		likeService.deleteBoard(id);
+		
+		return "redirect:/like/likelist";
+	}
+	
 }
