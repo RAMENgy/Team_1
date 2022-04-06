@@ -33,13 +33,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public int getBoardCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return freeBoardDAO.getBoardCount();
 	}
 
 	@Override
 	public void updateReadcount(int num) {
-		// TODO Auto-generated method stub
 		
 	}
 	

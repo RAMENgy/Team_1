@@ -87,14 +87,33 @@
 						
 						
 						<!-- 페이지 번호 영역 시작 -->
-						
 						<div class="col">
 							<ul class="pagination justify-content-center">
-								<c:forEach var="i" begin="1" end="5">
-									<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/freeboard?pageNum=${i }">${i }</a></li>
+								<c:choose>
+									<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/freeboard?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+									</c:otherwise>
+								</c:choose>
+								
+								<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/freeboard?pageNum=${i}">${i} </a></li>
 								</c:forEach>
+								
+							
+								<c:choose>
+									<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/freeboard?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</div>
+						
 						<!-- 페이지 번호 영역 끝 -->
                     </div>
                 </div>

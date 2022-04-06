@@ -25,8 +25,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public int getBoardCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(namespace+".getBoardCount");
 	}
 
 	@Override
