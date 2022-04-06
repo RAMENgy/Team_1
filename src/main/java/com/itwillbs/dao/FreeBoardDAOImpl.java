@@ -22,5 +22,18 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeBoardDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	}
+
+	@Override
+	public int getBoardCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void updateReadcount(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }

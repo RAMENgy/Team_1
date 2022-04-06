@@ -87,6 +87,7 @@
 						
 						
 						<!-- 페이지 번호 영역 시작 -->
+						
 						<div class="col">
 							<ul class="pagination justify-content-center">
 								<c:forEach var="i" begin="1" end="5">
