@@ -21,6 +21,7 @@
     <script type="text/javascript">
     	function f1(id) {
     	 	if (confirm("좋아요목록에서 삭제하시겠습니까?") == true){
+    	 		
     			location.href="${pageContext.request.contextPath }/like/deleteLikeList?id="+id
     		} else {
     			return;
