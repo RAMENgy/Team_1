@@ -101,7 +101,6 @@
 								<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/freeboard?pageNum=${i}">${i} </a></li>
 								</c:forEach>
-								
 							
 								<c:choose>
 									<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
