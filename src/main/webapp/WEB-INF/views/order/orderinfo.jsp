@@ -73,7 +73,7 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="#" class="checkout-form">
+            <form action="${pageContext.request.contextPath }/order/insertOrder" class="checkout-form">
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- <div class="checkout-content">
@@ -106,16 +106,16 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="jname">이름<span>*</span></label>
-                                <input type="text" id="jname">
+                                <input type="text" id="jname" name="receiver_name">
                             </div>
                             <div class="col-lg-6">
                                 <label for="jtel">전화번호<span>*</span></label>
-                                <input type="text" id="jtel">
+                                <input type="text" id="jtel" name="receiver_tel">
                             </div>
                            
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
-                                <input type="text" id="jaddress">
+                                <input type="text" id="jaddress" name="address">
                             </div>
                             <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
@@ -127,9 +127,6 @@
                     
                     
                     <div class="col-lg-6">
-                        <div class="checkout-content">
-                            <input type="text" placeholder="Enter Your Coupon Code">
-                        </div>
                         <div class="place-order">
                             <h4>주문 확인</h4>
                             <div class="order-total">
