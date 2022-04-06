@@ -36,21 +36,29 @@
 
  </script>
  <![endif]-->
- <script type="text/javascript">
- 	function userCheck() {
-// 		alert("중복체크");
-		if(document.fr.id.value==""){
-			alert("아이디 입력하세요");
-			document.fr.id.focus();
-			return;
-		}
-// 		//창열기
-		var id=document.fr.id.value;
-		window.open("userCheck.jsp?userid="+id,"","width=400,height=300");
-	}
- </script>
  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
  <script type="text/javascript">
+ 
+
+ 	$(document).ready(function(){
+ 		// id="ibtn" 중복확인 클릭
+ 		$('#ibtn').click(function(){
+//  			alert("메시지");
+ 			$.ajax({
+ 				url:'${pageContext.request.contextPath }/member/idcheck',
+ 				data:{"userid":$('#userid').val()},
+ 				success:function(rdata){
+ 					if(rdata=='iddup'){
+ 						rdata="아이디 중복";
+ 					}else{
+ 						rdata="아이디 사용가능"
+ 					}
+ 					$('#iddiv').html(rdata);
+ 				}
+ 			});
+ 		});//
+ 	});//
+
  	$(document).ready(function(){
  		$('#join').submit(function(){
 //  			alert("전송");
@@ -91,26 +99,7 @@
 				}
 				
  		});//
- 		
- 		//아이디 중복체크
- 		// class="dup" 버튼을 클릭했을때 
- 		$('.dup').click(function(){
-//  			alert("클릭");
-			$.ajax({
-				url:"${pageContext.request.contextPath }/member/userCheck2",
-				data:{"userid":$('#userid').val()},
-				success:function(rdata){
-					if(rdata=='idok'){
-						rdata="아이디 사용가능";
-					}else{
-						rdata="아이디 중복";
-					}
-					// id="divdup" 에 리턴받은 값 넣기
-					$('#divdup').html(rdata);
-				}
-			});//
 
- 		});//
 
 });//
  </script>
@@ -142,8 +131,8 @@
                                 <label for="userid">아이디</label>
                                 <input type="text" id="userid" name="userid">
                                 <!-- onclick="userCheck()" -->
-								<input type="button" value="중복확인" class="dup"><br>
-								<label></label><div id="divdup"></div>
+								<input type="button" value="중복확인" id="ibtn"><br>
+								<label></label><div id="iddiv"></div>
                             </div>
   
                             <div class="group-input">
