@@ -14,5 +14,14 @@ public interface FoodService {
 	public int getmeatCount();
 	public int getvegetableCount();
 	public int getfruitCount();
-	
+	public List<FoodDTO> foodlistSearch(PageDTO pageDTO);
+	public int getFoodCountSearch(PageDTO pageDTO);
+	public List<FoodDTO> meatlistSearch(PageDTO pageDTO);
+	public int getmeatCountSearch(PageDTO pageDTO);
+
+	public List<FoodDTO> vegetablelistSearch(PageDTO pageDTO);
+	public int getvegetableCountSearch(PageDTO pageDTO);
+
+	public List<FoodDTO> fruitlistSearch(PageDTO pageDTO);
+	public int getfruitCountSearch(PageDTO pageDTO);
 }

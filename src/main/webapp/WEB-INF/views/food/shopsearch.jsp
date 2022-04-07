@@ -54,7 +54,7 @@
                         <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
                         <ul class="filter-catagories">
                         	</br>
-                           <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
+                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
                             <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
                             <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
                         </ul>
@@ -72,7 +72,7 @@
                             
                          
                             
-                         <c:forEach var="fDTO" items="${vegetableList}">
+                         <c:forEach var="fDTO" items="${foodList}">
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     
@@ -82,7 +82,7 @@
                                         <a href="#">
                                             <h5>${fDTO.name }</h5>
                                         </a>
-                                         <div class="product-price">
+                                        <div class="product-price">
                                             ${fDTO.price }원
   
                                         </div>
@@ -90,29 +90,33 @@
                                 </div>
                             </div>
                          </c:forEach>
-                         
-                        </div>
-                         <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">이전</a>
+                       
+                        
+                    </div>
+                    <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
+						<a href="${pageContext.request.contextPath }/food/serach?pageNum=${pageDTO.startPage-pageDTO.pageBlock}&search=${pageDTO.search}">이전</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}">${i} </a>
+						<a href="${pageContext.request.contextPath }/food/serach?pageNum=${i}&search=${pageDTO.search}">${i} </a>
 						</c:forEach>
 						
 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a>
+						<a href="${pageContext.request.contextPath }/food/serach?pageNum=${pageDTO.startPage+pageDTO.pageBlock}&search=${pageDTO.search}">다음</a>
 						</c:if>
-						<form action="${pageContext.request.contextPath }/vegetable/search" method="get">
+						
+						 </div>
+						<form action="${pageContext.request.contextPath }/food/search" method="get">
 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
 							<button type="submit">검색</button>
 						</form>
-                        </div>
-                    </div>
                 </div>
+                
             </div>
+
         </div>
     </section>
+    
     <!-- Product Shop Section End -->
 
   <!-- Partner Logo Section Begin -->
@@ -125,6 +129,8 @@
 
     <!-- Js Plugins -->
     <jsp:include page="../inc/js.jsp"></jsp:include>
+    
+    
 </body>
 
 </html>

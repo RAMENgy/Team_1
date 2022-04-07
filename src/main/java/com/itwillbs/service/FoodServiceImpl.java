@@ -92,5 +92,77 @@ public class FoodServiceImpl implements FoodService{
 		// TODO Auto-generated method stub
 		return foodDAO.getfruitCount();
 	}
+	@Override
+	public List<FoodDTO> foodlistSearch(PageDTO pageDTO) {
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		
+		pageDTO.setStartRow(startRow-1);
+		return foodDAO.foodlistSearch(pageDTO);
+	}
+	@Override
+	public int getFoodCountSearch(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return foodDAO.getFoodCountSearch(pageDTO);
+	}
+	@Override
+	public List<FoodDTO> meatlistSearch(PageDTO pageDTO) {
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		
+		pageDTO.setStartRow(startRow-1);
+		return foodDAO.meatlistSearch(pageDTO);
+	}
+	@Override
+	public int getmeatCountSearch(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return foodDAO.getmeatCountSearch(pageDTO);
+	}
+	@Override
+	public List<FoodDTO> vegetablelistSearch(PageDTO pageDTO) {
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		
+		pageDTO.setStartRow(startRow-1);
+		return foodDAO.vegetablelistSearch(pageDTO);
+	}
+	@Override
+	public int getvegetableCountSearch(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return foodDAO.getvegetableCountSearch(pageDTO);
+	}
+	@Override
+	public List<FoodDTO> fruitlistSearch(PageDTO pageDTO) {
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		
+		pageDTO.setStartRow(startRow-1);
+		return foodDAO.fruitlistSearch(pageDTO);
+	}
+	@Override
+	public int getfruitCountSearch(PageDTO pageDTO) {
+		// TODO Auto-generated method stub
+		return foodDAO.getfruitCountSearch(pageDTO);
+	}
 
 }

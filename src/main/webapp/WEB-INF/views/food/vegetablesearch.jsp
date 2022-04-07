@@ -93,15 +93,15 @@
                          
                         </div>
                          <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">이전</a>
+						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}&search=${pageDTO.search}">이전</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}">${i} </a>
+						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}&search=${pageDTO.search}">${i} </a>
 						</c:forEach>
 						
 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a>
+						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}&search=${pageDTO.search}">다음</a>
 						</c:if>
 						<form action="${pageContext.request.contextPath }/vegetable/search" method="get">
 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              

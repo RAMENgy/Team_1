@@ -37,4 +37,25 @@ select * from food where cate=3 order by num desc limit #{startRow},#{pageSize}<
 	<select id="getMaxNumvegetable" resultType="java.lang.Integer">
 		select max(num) from board where cate=2
 	</select>
+	<select id="foodListSearch" resultType="com.itwillbs.domain.FoodDTO">
+		select * from food where name like #{search} order by num desc limit #{startRow},#{pageSize}</select>
+  	<select id="getfoodCountSearch" resultType="java.lang.Integer">
+		select count(*) from food where name like #{search}
+	</select>
+	<select id="meatListSearch" resultType="com.itwillbs.domain.FoodDTO">
+		select * from food where name like #{search} and cate=1 order by num desc limit #{startRow},#{pageSize}</select>
+  	<select id="getmeatCountSearch" resultType="java.lang.Integer">
+		select count(*) from food where name like #{search} and cate=1
+	</select>
+	<select id="vegetableListSearch" resultType="com.itwillbs.domain.FoodDTO">
+		select * from food where name like #{search} and cate=2 order by num desc limit #{startRow},#{pageSize}</select>
+  	<select id="getvegetableCountSearch" resultType="java.lang.Integer">
+		select count(*) from food where name like #{search} and cate=2
+	</select>
+	<select id="fruitListSearch" resultType="com.itwillbs.domain.FoodDTO">
+		select * from food where name like #{search} and cate=3 order by num desc limit #{startRow},#{pageSize}</select>
+  	<select id="getfruitCountSearch" resultType="java.lang.Integer">
+		select count(*) from food where name like #{search} and cate=3
+	</select>
+  
   </mapper>

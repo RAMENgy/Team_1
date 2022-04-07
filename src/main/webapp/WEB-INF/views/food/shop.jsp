@@ -94,7 +94,7 @@
                         
                     </div>
                     <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-						<a href="${pageContext.request.contextPath }/food/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
+						<a href="${pageContext.request.contextPath }/food/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">이전</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
@@ -102,12 +102,15 @@
 						</c:forEach>
 						
 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-						<a href="${pageContext.request.contextPath }/food/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
+						<a href="${pageContext.request.contextPath }/food/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a>
 						</c:if>
 						
 						 </div>
-						 <input type="text" name="search" id="search">                
-						<input type="button" value="검색" id="searchbtn">
+						<form action="${pageContext.request.contextPath }/food/search" method="get">
+							
+						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
+							<button type="submit">검색</button>
+						</form>
                 </div>
                 
             </div>

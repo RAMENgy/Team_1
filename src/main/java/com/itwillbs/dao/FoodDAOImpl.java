@@ -63,5 +63,38 @@ public class FoodDAOImpl implements FoodDAO{
 	public int getfruitCount() {
 		return sqlSession.selectOne(namespace+".getfruitCount");
 	}
+	@Override
+	public List<FoodDTO> foodlistSearch(PageDTO pageDTO) {
+
+		return sqlSession.selectList(namespace+".foodListSearch",pageDTO);
+	}
+	@Override
+	public int getFoodCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getfoodCountSearch",pageDTO);
+	}
+	@Override
+	public List<FoodDTO> meatlistSearch(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".meatListSearch",pageDTO);
+	}
+	@Override
+	public int getmeatCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getmeatCountSearch",pageDTO);
+	}
+	@Override
+	public List<FoodDTO> vegetablelistSearch(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".vegetableListSearch",pageDTO);
+	}
+	@Override
+	public int getvegetableCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getvegetableCountSearch",pageDTO);
+	}
+	@Override
+	public List<FoodDTO> fruitlistSearch(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".fruitListSearch",pageDTO);
+	}
+	@Override
+	public int getfruitCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getfruitCountSearch",pageDTO);
+	}
 
 }
