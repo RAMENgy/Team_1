@@ -2,13 +2,24 @@ package com.itwillbs.domain;
 
 import java.sql.Timestamp;
 
-public class RecipeDTO {
+public class RecipeBoardDTO {
 	private int id;
 	private int member_id;
 	private String subject;
+	private String img;
+	private String ingredient;
 	private String content;
 	private int readcount;
+	private int like;
 	private Timestamp date;
+	
+	
+	public int getLike() {
+		return like;
+	}
+	public void setLike(int like) {
+		this.like = like;
+	}
 	public int getId() {
 		return id;
 	}
@@ -26,6 +37,18 @@ public class RecipeDTO {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getIngredient() {
+		return ingredient;
+	}
+	public void setIngredient(String ingredient) {
+		this.ingredient = ingredient;
 	}
 	public String getContent() {
 		return content;
@@ -45,6 +68,5 @@ public class RecipeDTO {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
-	
 	
 }

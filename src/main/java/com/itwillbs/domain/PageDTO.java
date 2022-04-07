@@ -13,7 +13,15 @@ public class PageDTO {
 	private int count;
 	private int pageCount;
 	
+	//검색어
+	private String search;
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getPageSize() {
 		return pageSize;
 	}
