@@ -140,12 +140,13 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="blog-item">
                                 <div class="bi-pic">
-                                    <img src="${lDTO.img}" alt="">
                                 </div>
-                                <c:forEach var="lDTO" items="${boardList }">
+                                <c:forEach var="lDTO" items="${boardList }" varStatus="status">
                                 <div class="bi-text">
+                                	<img src="${lDTO.img }" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"/>
+                                	<!-- img칼럼 값 없을때 "이미지 없음" 표시 -->
                                     <a href="./blog-details.html">
-                                        <h4>${lDTO.id}. ${lDTO.subject }</h4>
+                                        <h4>${lDTO.id}. ${lDTO.subject } </h4>
                                     </a>
                                     <p>
                                     ${lDTO.member_id}(작성자 id값) <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>

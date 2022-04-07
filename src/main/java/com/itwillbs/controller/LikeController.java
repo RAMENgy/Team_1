@@ -46,7 +46,7 @@ public class LikeController {
 		
 		// likecount 세션값 재설정
 		
-		System.out.println("좋아요 수"+likeService.getBoardCount(lDTO.getMember_id()));
+		System.out.println("좋아요 수 : "+likeService.getBoardCount(lDTO.getMember_id()));
 		
 		List<LikeDTO> boardList=likeService.getBoardList(member_id);
 		
