@@ -152,8 +152,19 @@
             <nav class="nav-menu mobile-menu">
                 <ul>
                     <li><a href="${pageContext.request.contextPath }/main/main">홈으로</a></li>
+<<<<<<< HEAD
                     <li><a href="./shop.html">식자재 둘러보기</a></li>
                     <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
+=======
+                    <li><a href="${pageContext.request.contextPath }/food/list">식자재 둘러보기</a>
+                    	<ul class="dropdown">
+                            <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
+                            <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
+                            <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
+                        </ul>
+                        </li>
+                    <li><a href="#">레시피 둘러보기</a>
+>>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
                         <ul class="dropdown">
                             <li><a href="#">이번주 인기 레시피</a></li>
                             <li><a href="${pageContext.request.contextPath }/recipeboard/list">전체 레시피 모아보기</a></li>
@@ -166,7 +177,7 @@
                             <li><a href="#">진행중인 이벤트</a></li>
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">업데이트</a></li>
-                            <li><a href="#">QnA</a></li>
+                            <li><a href="${pageContext.request.contextPath }/board/list">QnA</a></li>
                         </ul>
                     </li>
                     <li><a href="#">마이페이지</a>

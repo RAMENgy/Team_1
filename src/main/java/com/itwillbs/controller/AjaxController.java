@@ -29,4 +29,21 @@ public class AjaxController {
 		ResponseEntity<MemberDTO> entity = new ResponseEntity<MemberDTO>(memberDTO, HttpStatus.OK);
 		return entity;
 	}
+	
+	@RequestMapping(value = "/member/idcheck", method = RequestMethod.GET)
+	public ResponseEntity<String> testidcheck(HttpServletRequest request){
+		String result="";
+		String userid=request.getParameter("userid");
+		MemberDTO memberDTO=memberService.getMember(userid);
+		if(memberDTO!=null) {
+			//아이디 있음 => 아이디 중복
+			result="iddup";
+		}else {
+			//아이디 없음 => 아이디 사용가능
+			result="idok";
+		}
+		ResponseEntity<String> entity=new ResponseEntity<String>(result, HttpStatus.OK);
+		
+		return entity;
+	}
 }

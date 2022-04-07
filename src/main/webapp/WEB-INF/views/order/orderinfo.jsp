@@ -21,15 +21,24 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     	$(document).ready(function(){
-    		$('#acc-create').click(function(){
-    			
-    					alert("주문자정보와 동일 ajax");
-    			
+    		$.ajax({
+    			url:'${pageContext.request.contextPath }/order/orderinfojson',
+    			dataType:'json',
+    			success:function(rdata){
+    				$('#acc-create').change(function(){
+    					if($('#acc-create').is(':checked')){
+        					$('#jname').val("${memberDTO.name}");
+           					$('#jtel').val("${memberDTO.tel}");
+           					$('#jaddress').val("${memberDTO.address}");
+        				} else{
+        					$('#jname').val("");
+           					$('#jtel').val("");
+           					$('#jaddress').val("");
+        				}
+    				});
+    			}
     		});
     	});
-    	
-    	
-    
     </script>
     
     
@@ -64,7 +73,7 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="#" class="checkout-form">
+            <form action="${pageContext.request.contextPath }/order/insertOrder" class="checkout-form">
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- <div class="checkout-content">
@@ -96,17 +105,17 @@
                        
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="fir">이름<span>*</span></label>
-                                <input type="text" id="fir">
+                                <label for="jname">이름<span>*</span></label>
+                                <input type="text" id="jname" name="receiver_name">
                             </div>
                             <div class="col-lg-6">
-                                <label for="last">전화번호<span>*</span></label>
-                                <input type="text" id="last">
+                                <label for="jtel">전화번호<span>*</span></label>
+                                <input type="text" id="jtel" name="receiver_tel">
                             </div>
                            
                             <div class="col-lg-12">
-                                <label for="cun-name">주소</label>
-                                <input type="text" id="cun-name">
+                                <label for="jaddress">주소</label>
+                                <input type="text" id="jaddress" name="address">
                             </div>
                             <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
@@ -118,9 +127,6 @@
                     
                     
                     <div class="col-lg-6">
-                        <div class="checkout-content">
-                            <input type="text" placeholder="Enter Your Coupon Code">
-                        </div>
                         <div class="place-order">
                             <h4>주문 확인</h4>
                             <div class="order-total">

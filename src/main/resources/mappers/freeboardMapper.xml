@@ -9,5 +9,8 @@
 		select * from freeboard order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(id) from freeboard
+	</select>
 	
 </mapper>

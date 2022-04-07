@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.itwillbs.mappers.orderMapper">
+  
+  
+	  <!-- 주문정보 넣기 -->
+	  <insert id="insertOrder">
+		INSERT INTO order_info(member_id, product_id, basket_id, receiver_name, receiver_tel, address, status, date)
+	  	VALUES(#{member_id}, #{product_id}, #{basket_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})
+	  </insert>
+  
+  </mapper>
+  

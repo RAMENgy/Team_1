@@ -29,43 +29,44 @@ public class FreeBoardController {
 	@RequestMapping(value = "/freeboard", method = RequestMethod.GET)
 	public String freeBoard(HttpServletRequest request, Model model) {
 		
-		String pageNum	= request.getParameter("pageNum");
-		PageDTO pageDTO	= getPageParameter(pageNum);
+		int pageSize=2;
+		
+		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
+		String pageNum=request.getParameter("pageNum");
+		if(pageNum==null) {
+			pageNum="1";
+		}
 		
 		
-		List<FreeBoardDTO> boardList = freeBoardService.getBoardList(pageDTO);
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
 		
+		List<FreeBoardDTO> boardList=freeBoardService.getBoardList(pageDTO);
+		
+		int count=freeBoardService.getBoardCount();
+		
+		int currentPage=Integer.parseInt(pageNum);
+		int pageBlock=5;
+		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+		int endPage=startPage+pageBlock-1;
+		int pageCount=count / pageSize +  (count % pageSize == 0 ?0:1);
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+		
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
+		// 디비에서 가져온 글을 model 담아서 notice.jsp 전달
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
 		
 		return "freeboard/freeboard";
 	}
-	
-	private PageDTO getPageParameter(String pageNum) {
-		
-		PageDTO pDTO = new PageDTO();
-		
-		if(pageNum==null) {
-			pageNum="1";
-		}
-		
-		int pageSize	= 15;
-		int pageBlock	= 10;
-		int currentPage	= Integer.parseInt(pageNum);
-		int startPage	= (currentPage-1) / pageBlock * pageBlock+1;
-		int endPage		= startPage + pageBlock - 1;
-//		int count		= bDAO.getBoardCount();
-//		int pageCount	= count / pageSize +  (count % pageSize == 0 ? 0 : 1);
-		
-//		if(endPage > pageCount){
-//			endPage = pageCount;
-//		}
-		
-		
-		pDTO.setPageSize(pageSize);
-		pDTO.setPageNum(pageNum);
-		pDTO.setCurrentPage(currentPage);
-		return pDTO;
-	}
+
 	
 }

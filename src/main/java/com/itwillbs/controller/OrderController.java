@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.OrderDTO;
 import com.itwillbs.service.BasketService;
 import com.itwillbs.service.MemberService;
+import com.itwillbs.service.OrderService;
 
 @Controller
 public class OrderController {
@@ -27,6 +29,9 @@ public class OrderController {
 	
 	@Inject
 	private MemberService memberService;
+	
+	@Inject
+	private OrderService orderService;
 	
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(HttpSession session, Model model) {
@@ -55,6 +60,16 @@ public class OrderController {
 			return "order/msg";
 		}
 		
+	}
+	
+	
+	//주문정보 넣기
+	@RequestMapping(value="/order/insertOrder", method = RequestMethod.GET)
+	public String insertOrder(OrderDTO orderDTO) {
+		
+		orderService.insertOrder(orderDTO);
+		
+		return "redirect:/main/main";
 	}
 
 }

@@ -30,5 +30,17 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		return freeBoardDAO.getBoardList(pageDTO);
 	}
+
+	@Override
+	public int getBoardCount() {
+		return freeBoardDAO.getBoardCount();
+	}
+
+	@Override
+	public void updateReadcount(int num) {
+		
+	}
+	
+	
 	
 }
