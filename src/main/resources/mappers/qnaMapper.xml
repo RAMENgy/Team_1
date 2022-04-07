@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.itwillbs.mappers.qnaMapper">
+  
+    <insert id="writeBoard">
+		insert into qna_board(member_id,subject,content,readcount,date) 
+		values(#{member_id},#{subject},#{content},#{readcount},#{date})
+	</insert>
+	
+    <insert id="qnawriteBoard">
+		insert into qna_board(member_id,subject,content,readcount,date) 
+		values(#{member_id},#{subject},#{content},#{readcount},#{date})
+	</insert>
+	
+	<insert id="commentBoard">
+		insert into qna_comment(member_id,qna_board_id,content,date)
+		values(#{member_id},#{qna_board_id},#{content},#{date})
+	</insert>
+	
+	<select id="getCommentBoard" resultType="com.itwillbs.domain.CommentDTO">
+		select * from qna_comment where qna_board_id=#{qna_board_id}
+	</select>
+	
+    <select id="getMaxNum" resultType="java.lang.Integer">
+		select max(id) from qna_board
+	</select>
+	
+	<select id="getBoardList" resultType="com.itwillbs.domain.QnaDTO">
+		select * from qna_board order by id desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from qna_board
+	</select>
+	
+	<select id="getBoard" resultType="com.itwillbs.domain.QnaDTO">
+		select * from qna_board where id=#{id}
+	</select>
+	
+	<update id="updateReadcount">
+		update qna_board set readcount=readcount+1 where id=#{id}
+	</update>
+	
+	<update id="updateBoard">
+		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete from qna_board where id=#{id}
+	</delete>
+	 
+<!-- 	<insert id="commentBoard">
+		insert into
+	</insert>  -->
+	
+  </mapper>

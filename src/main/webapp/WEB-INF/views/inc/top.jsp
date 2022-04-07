@@ -172,7 +172,7 @@
                             <li><a href="#">진행중인 이벤트</a></li>
                             <li><a href="#">공지사항</a></li>
                             <li><a href="#">업데이트</a></li>
-                            <li><a href="#">QnA</a></li>
+                            <li><a href="${pageContext.request.contextPath }/board/list">QnA</a></li>
                         </ul>
                     </li>
                     <li><a href="#">마이페이지</a>
