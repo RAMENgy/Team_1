@@ -78,12 +78,12 @@
                                     
                                     <div class="pi-text">
                                  
-                                        <div class="catagory-name">${fDTO.name }</div>
+                                          <div class="catagory-name">${fDTO.subject }</div>
                                         <a href="#">
-                                            <h5>${fDTO.name }</h5>
+                                            <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">
-                                            ${fDTO.price }원
+                                            ${fDTO.amount }원
   
                                         </div>
                                     </div>
