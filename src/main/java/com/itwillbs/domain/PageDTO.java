@@ -13,10 +13,7 @@ public class PageDTO {
 	private int count;
 	private int pageCount;
 	
-<<<<<<< HEAD
 	//검색어
-=======
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
 	private String search;
 	
 	public String getSearch() {

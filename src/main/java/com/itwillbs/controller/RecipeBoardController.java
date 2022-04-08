@@ -149,7 +149,7 @@ public class RecipeBoardController {
 	}	
 	
 	// 가상주소 http://localhost:8080/github/recipeboard/updatePro
-	@RequestMapping(value = "/board/updatePro", method = RequestMethod.POST)
+	@RequestMapping(value = "/recipeboard/updatePro", method = RequestMethod.POST)
 		public String updatePro(RecipeBoardDTO recipeBoardDTO) {
 		System.out.println("RecipeBoardController updatePro() ");
 		//디비작업

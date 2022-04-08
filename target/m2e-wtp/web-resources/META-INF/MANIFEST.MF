@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: SAMSUNG
 Build-Jdk: 16.0.2
 Created-By: Maven Integration for Eclipse
 
-=======
-Manifest-Version: 1.0
-Built-By: ghgkg
-Build-Jdk: 16.0.2
-Created-By: Maven Integration for Eclipse
-
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git

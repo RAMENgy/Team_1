@@ -152,24 +152,19 @@
             <nav class="nav-menu mobile-menu">
                 <ul>
                     <li><a href="${pageContext.request.contextPath }/main/main">홈으로</a></li>
-<<<<<<< HEAD
-                    <li><a href="./shop.html">식자재 둘러보기</a></li>
-                    <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
-=======
                     <li><a href="${pageContext.request.contextPath }/food/list">식자재 둘러보기</a>
                     	<ul class="dropdown">
                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
                             <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
                             <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
                         </ul>
-                        </li>
-                    <li><a href="#">레시피 둘러보기</a>
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
+                    </li>
+                    <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
                         <ul class="dropdown">
                             <li><a href="#">이번주 인기 레시피</a></li>
                             <li><a href="${pageContext.request.contextPath }/recipeboard/list">전체 레시피 모아보기</a></li>
                             <li><a href="${pageContext.request.contextPath }/recipeboard/write">레시피 작성하기</a></li>
-                        </ul>
+                    </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath }/freeboard">자유게시판</a></li>
                     <li><a href="#">고객센터</a>

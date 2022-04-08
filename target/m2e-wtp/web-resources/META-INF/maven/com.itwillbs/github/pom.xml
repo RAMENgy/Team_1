@@ -60,7 +60,6 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.2.2</version>
 		</dependency>
-<<<<<<< HEAD
 		
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
@@ -90,7 +89,6 @@
 		    <version>2.5.4</version>
 		</dependency>
 				
-=======
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
@@ -98,7 +96,6 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.5.4</version>
 		</dependency>
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
 				
 		<!-- AspectJ -->
 		<dependency>
