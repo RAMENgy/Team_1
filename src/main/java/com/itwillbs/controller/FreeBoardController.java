@@ -29,11 +29,11 @@ public class FreeBoardController {
 	@RequestMapping(value = "/freeboard", method = RequestMethod.GET)
 	public String freeBoard(HttpServletRequest request, Model model) {
 		
-		int pageSize=2;
+		int pageSize=10;
 		
 		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
 		String pageNum=request.getParameter("pageNum");
-		if(pageNum==null) {
+		if (pageNum == null) {
 			pageNum="1";
 		}
 		
@@ -66,6 +66,21 @@ public class FreeBoardController {
 		model.addAttribute("pageDTO", pageDTO);
 		
 		return "freeboard/freeboard";
+	}
+	
+	@RequestMapping(value = "/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request, Model model) {
+		
+		String num = request.getParameter("num");
+		if (num == null) {
+			num = "1";
+		}
+		int intNum = Integer.parseInt(num);
+		FreeBoardDTO FBDTO = freeBoardService.getBoard(intNum);
+		
+		model.addAttribute("FBDTO", FBDTO);
+		
+		return "board/content";
 	}
 
 	
