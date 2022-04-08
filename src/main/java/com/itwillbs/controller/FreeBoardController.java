@@ -68,20 +68,5 @@ public class FreeBoardController {
 		return "freeboard/freeboard";
 	}
 	
-	@RequestMapping(value = "/content", method = RequestMethod.GET)
-	public String content(HttpServletRequest request, Model model) {
-		
-		String num = request.getParameter("num");
-		if (num == null) {
-			num = "1";
-		}
-		int intNum = Integer.parseInt(num);
-		FreeBoardDTO FBDTO = freeBoardService.getBoard(intNum);
-		
-		model.addAttribute("FBDTO", FBDTO);
-		
-		return "board/content";
-	}
-
 	
 }

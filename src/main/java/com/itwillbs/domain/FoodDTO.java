@@ -1,40 +1,56 @@
 package com.itwillbs.domain;
 
+import java.sql.Timestamp;
+
 public class FoodDTO {
-	private int num;
-	private int cate;
-	private String name;
-	private String file;
-	private int price;
-	public int getNum() {
-		return num;
+	private int id;
+	private String subject;
+	private String img;
+	private String content;
+	private int amount;
+	private int type;
+	private Timestamp date;
+	public int getId() {
+		return id;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public int getCate() {
-		return cate;
+	public String getSubject() {
+		return subject;
 	}
-	public void setCate(int cate) {
-		this.cate = cate;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
-	public String getName() {
-		return name;
+	public String getImg() {
+		return img;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setImg(String img) {
+		this.img = img;
 	}
-	public String getFile() {
-		return file;
+	public String getContent() {
+		return content;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public int getPrice() {
-		return price;
+	public int getAmount() {
+		return amount;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public Timestamp getDate() {
+		return date;
+	}
+	public void setDate(Timestamp date) {
+		this.date = date;
 	}
 	
 }
