@@ -24,4 +24,5 @@ public interface FoodService {
 
 	public List<FoodDTO> fruitlistSearch(PageDTO pageDTO);
 	public int getfruitCountSearch(PageDTO pageDTO);
+	public FoodDTO getfood(int id);
 }

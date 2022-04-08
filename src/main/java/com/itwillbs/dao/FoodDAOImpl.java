@@ -96,5 +96,11 @@ public class FoodDAOImpl implements FoodDAO{
 	public int getfruitCountSearch(PageDTO pageDTO) {
 		return sqlSession.selectOne(namespace+".getfruitCountSearch",pageDTO);
 	}
+	@Override
+	public FoodDTO getfood(int id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".getfood",id);
+				
+	}
 
 }

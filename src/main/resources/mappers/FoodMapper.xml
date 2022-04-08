@@ -57,5 +57,7 @@ select * from product where type=3 order by id desc limit #{startRow},#{pageSize
   	<select id="getfruitCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=3
 	</select>
-  
+  <select id="getfood" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where id=#{id}
+	</select>
   </mapper>

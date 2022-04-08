@@ -397,5 +397,20 @@ public class foodController {
 		
 		model.addAttribute("foodList", foodList);
 		return "food/meatsearch";
+	
+	}
+	
+	@RequestMapping(value = "/food/content", method = RequestMethod.GET)
+	public String content(HttpServletRequest request, Model model) {
+		int id=Integer.parseInt(request.getParameter("id"));
+		
+		// num에 대한 글 가져오기
+		FoodDTO foodDTO=foodService.getfood(id);
+		
+		// 디비에서 가져온 글을 model 담아서 content.jsp 전달
+		model.addAttribute("foodDTO", foodDTO);
+		
+		// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "food/content";
 	}
 }

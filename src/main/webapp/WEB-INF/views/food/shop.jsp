@@ -78,8 +78,8 @@
                                     
                                     <div class="pi-text">
                                  
-                                        <div class="catagory-name">${fDTO.subject }</div>
-                                        <a href="#">
+                                        <div class="catagory-name"></div>
+                                        <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
                                             <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">

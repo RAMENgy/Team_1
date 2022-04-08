@@ -164,5 +164,10 @@ public class FoodServiceImpl implements FoodService{
 		// TODO Auto-generated method stub
 		return foodDAO.getfruitCountSearch(pageDTO);
 	}
+	@Override
+	public FoodDTO getfood(int id) {
+		// TODO Auto-generated method stub
+		return foodDAO.getfood(id);
+	}
 
 }
