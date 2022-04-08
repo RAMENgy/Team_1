@@ -6,7 +6,8 @@
   <mapper namespace="com.itwillbs.mappers.likeMapper">
   
 	  	<select id="getBoardList" resultType="com.itwillbs.domain.RecipeBoardDTO">
-			select l.id, r.subject, r.member_id, r.img, r.ingredient, r.content, r.readcount, r.like, r.date
+			select l.id, r.subject, r.member_id, r.img, r.ingredient,
+			r.content, r.readcount, r.like_count, r.date
 			from recipe_board r join like_list l
 			where l.member_id=#{member_id} and r.id = l.recipe_board_id
 			order by l.id desc
@@ -26,6 +27,17 @@
   		<select id="getBoard" resultType="com.itwillbs.domain.LikeDTO">
   			select * from like_list
   			where member_id=#{member_id}
+  		</select>
+  		
+  		<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
+  			select l.id, r.subject, r.member_id, r.img, r.ingredient,
+  			r.content, r.readcount, r.like_count, r.date
+			from recipe_board r 
+			join like_list l
+			where r.id = l.recipe_board_id
+			and l.member_id=#{member_id}
+			and r.subject like #{like_search}
+			order by l.id desc;
   		</select>
   
   </mapper>

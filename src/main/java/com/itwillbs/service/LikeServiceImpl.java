@@ -51,4 +51,14 @@ public class LikeServiceImpl implements LikeService{
 		return likeDAO.getBoard(member_id);
 	}
 
+	@Override
+	public List<LikeDTO> getBoardListSearch(int member_id) {
+		return likeDAO.getBoardListSearch(member_id);
+	}
+
+	@Override
+	public int getBoardCountSearch(int member_id) {
+		return likeDAO.getBoardCountSearch(member_id);
+	}
+
 }

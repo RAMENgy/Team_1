@@ -14,5 +14,7 @@ public interface LikeService {
 
 	public void deleteBoard(int id);
 	
-
+	public List<LikeDTO> getBoardListSearch(int member_id);
+	
+	public int getBoardCountSearch(int member_id);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RecipeDTO;
 import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
 
@@ -73,6 +74,36 @@ public class LikeController {
 		likeService.deleteBoard(id);
 		
 		return "redirect:/like/likelist";
+	}
+	
+	@RequestMapping(value = "like/likesearch", method = RequestMethod.GET) 
+	public String likelistsearch(Model model, HttpSession session,HttpServletRequest request) {
+		System.out.println("LikeBoardController likeListSearch()");
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		LikeDTO lDTO = new LikeDTO();
+		if(ckDTO != null) {
+			String search = request.getParameter("search");
+			String like_search="%"+search+"%";
+			
+			int member_id = ckDTO.getId();
+			System.out.println("회원번호 : "+member_id);
+			lDTO.setMember_id(member_id);
+			
+			
+			RecipeDTO rDTO = new RecipeDTO();
+			rDTO.setLike_search(like_search);
+			
+			System.out.println("검색어 : "+rDTO.getLike_search());
+		
+			List<LikeDTO> boardList=likeService.getBoardListSearch(member_id);
+			
+			model.addAttribute("boardList", boardList);
+			
+			return "like/likeListSearch";
+			} else {
+				return "needLoginMsg";
+			}
 	}
 	
 }

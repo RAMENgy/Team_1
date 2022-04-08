@@ -13,4 +13,8 @@ public interface LikeDAO {
 	public void deleteBoard(int id);
 	
 	public LikeDTO getBoard(int member_id);
+	
+	public List<LikeDTO> getBoardListSearch(int member_id);
+	
+	public int getBoardCountSearch(int member_id);
 }

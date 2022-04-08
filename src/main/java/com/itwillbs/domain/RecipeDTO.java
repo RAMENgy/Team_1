@@ -10,8 +10,10 @@ public class RecipeDTO {
 	private String ingredient;
 	private String content;
 	private int readcount;
-	private int like;
+	private int like_count;
 	private Timestamp date;
+	private String like_search;
+	
 	public int getId() {
 		return id;
 	}
@@ -60,11 +62,17 @@ public class RecipeDTO {
 	public void setIngredient(String ingredient) {
 		this.ingredient = ingredient;
 	}
-	public int getLike() {
-		return like;
+	public int getLike_count() {
+		return like_count;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
+	}
+	public String getLike_search() {
+		return like_search;
+	}
+	public void setLike_search(String likesearch) {
+		this.like_search = likesearch;
 	}
 	
 	
