@@ -83,12 +83,13 @@
                                 <div class="select-items">
                                     <table>
                                         <tbody>
+                                        <c:forEach var="basketList" items="${basketList }">
                                             <tr>
-                                                <td class="si-pic"><img src="${pageContext.request.contextPath }/resources/img/select-product-1.jpg" alt=""></td>
+                                                <td class="si-pic"><img src="${basketList.img }" alt=""></td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
-                                                        <p>장바구니 항목 가격</p>
-                                                        <h6>장바구니 항목 이름</h6>
+                                                        <p>${basketList.amount }</p>
+                                                        <h6>${basketList.subject }</h6>
                                                     </div>
                                                 </td>
                                                 <td class="si-close">
@@ -97,26 +98,14 @@
                                                     기능 고민중 불필요시 삭제 -->
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="si-pic"><img src="${pageContext.request.contextPath }/resources/img/select-product-2.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>장바구니 항목 가격</p>
-                                                        <h6>장바구니 항목 이름</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
-                                                    기능 고민중 불필요시 삭제 -->
-                                                </td>
-                                            </tr>
+                                         </c:forEach>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="select-total">
                                     <span>장바구니 합계 금액</span>
-                                    <h5>ㅇㅇㅇㅇ원</h5>
+                                    <h5>${map.sumMoney }</h5>
                                 </div>
                                 <div class="select-button">
                                     <a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
