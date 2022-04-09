@@ -29,15 +29,26 @@
   			where member_id=#{member_id}
   		</select>
   		
-  		<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
+  		<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeDTO">
   			select l.id, r.subject, r.member_id, r.img, r.ingredient,
   			r.content, r.readcount, r.like_count, r.date
 			from recipe_board r 
 			join like_list l
 			where r.id = l.recipe_board_id
-			and l.member_id=#{member_id}
+			and l.member_id=#{search_id}
 			and r.subject like #{like_search}
 			order by l.id desc;
   		</select>
+  		
+  		<select id="getBoardCountSearch" resultType="java.lang.Integer">
+			select count(*)
+			from recipe_board r 
+			join like_list l
+			where r.id = l.recipe_board_id
+			and l.member_id=#{search_id}
+			and r.subject like #{like_search}
+			order by l.id desc;
+			
+		</select>
   
   </mapper>

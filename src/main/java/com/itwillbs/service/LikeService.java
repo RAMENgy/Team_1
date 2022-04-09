@@ -3,6 +3,7 @@ package com.itwillbs.service;
 import java.util.List;
 
 import com.itwillbs.domain.LikeDTO;
+import com.itwillbs.domain.RecipeDTO;
 
 public interface LikeService {
 	
@@ -14,7 +15,7 @@ public interface LikeService {
 
 	public void deleteBoard(int id);
 	
-	public List<LikeDTO> getBoardListSearch(int member_id);
+	public List<LikeDTO> getBoardListSearch(RecipeDTO rDTO);
 	
-	public int getBoardCountSearch(int member_id);
+	public int getBoardCountSearch(RecipeDTO rDTO);
 }

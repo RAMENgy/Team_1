@@ -93,10 +93,11 @@ public class LikeController {
 			
 			RecipeDTO rDTO = new RecipeDTO();
 			rDTO.setLike_search(like_search);
+			rDTO.setSearch_id(member_id);
 			
 			System.out.println("검색어 : "+rDTO.getLike_search());
 		
-			List<LikeDTO> boardList=likeService.getBoardListSearch(member_id);
+			List<LikeDTO> boardList=likeService.getBoardListSearch(rDTO);
 			
 			model.addAttribute("boardList", boardList);
 			

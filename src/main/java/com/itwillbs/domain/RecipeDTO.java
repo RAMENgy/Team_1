@@ -13,7 +13,14 @@ public class RecipeDTO {
 	private int like_count;
 	private Timestamp date;
 	private String like_search;
+	private int search_id;
 	
+	public int getSearch_id() {
+		return search_id;
+	}
+	public void setSearch_id(int search_id) {
+		this.search_id = search_id;
+	}
 	public int getId() {
 		return id;
 	}

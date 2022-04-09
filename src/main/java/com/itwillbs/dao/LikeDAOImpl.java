@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RecipeDTO;
 
 @Repository
 public class LikeDAOImpl implements LikeDAO {
@@ -39,13 +40,13 @@ public class LikeDAOImpl implements LikeDAO {
 	}
 
 	@Override
-	public List<LikeDTO> getBoardListSearch(int member_id) {
-		return sqlSession.selectList(namespace+".getBoardListSearch", member_id);
+	public List<LikeDTO> getBoardListSearch(RecipeDTO rDTO) {
+		return sqlSession.selectList(namespace+".getBoardListSearch", rDTO);
 	}
 
 	@Override
-	public int getBoardCountSearch(int member_id) {
-		return sqlSession.selectOne(namespace+".getBoardCountSearch", member_id);
+	public int getBoardCountSearch(RecipeDTO rDTO) {
+		return sqlSession.selectOne(namespace+".getBoardCountSearch", rDTO);
 	}
 	
 	

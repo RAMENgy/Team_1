@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.dao.LikeDAO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RecipeDTO;
 
 @Service
 public class LikeServiceImpl implements LikeService{
@@ -52,13 +53,13 @@ public class LikeServiceImpl implements LikeService{
 	}
 
 	@Override
-	public List<LikeDTO> getBoardListSearch(int member_id) {
-		return likeDAO.getBoardListSearch(member_id);
+	public List<LikeDTO> getBoardListSearch(RecipeDTO rDTO) {
+		return likeDAO.getBoardListSearch(rDTO);
 	}
 
 	@Override
-	public int getBoardCountSearch(int member_id) {
-		return likeDAO.getBoardCountSearch(member_id);
+	public int getBoardCountSearch(RecipeDTO rDTO) {
+		return likeDAO.getBoardCountSearch(rDTO);
 	}
 
 }

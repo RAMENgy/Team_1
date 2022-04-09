@@ -3,6 +3,7 @@ package com.itwillbs.dao;
 import java.util.List;
 
 import com.itwillbs.domain.LikeDTO;
+import com.itwillbs.domain.RecipeDTO;
 
 public interface LikeDAO {
 	
@@ -14,7 +15,7 @@ public interface LikeDAO {
 	
 	public LikeDTO getBoard(int member_id);
 	
-	public List<LikeDTO> getBoardListSearch(int member_id);
+	public List<LikeDTO> getBoardListSearch(RecipeDTO rDTO);
 	
-	public int getBoardCountSearch(int member_id);
+	public int getBoardCountSearch(RecipeDTO rDTO);
 }
