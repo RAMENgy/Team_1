@@ -30,7 +30,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public void updateReadcount(int id) {
-
+		sqlSession.update(namespace+".updateReadcount",id);
 	}
 
 	@Override

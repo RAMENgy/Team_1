@@ -37,8 +37,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void updateReadcount(int num) {
-		
+	public void updateReadcount(int id) {
+		freeBoardDAO.updateReadcount(id);
 	}
 
 	@Override
@@ -55,6 +55,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public FreeBoardDTO getBoard(int id) {
+		updateReadcount(id);
 		return freeBoardDAO.getBoard(id);
 	}
 
@@ -65,7 +66,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void deleteBoard(int num) {
+	public void deleteBoard(int id) {
 		// TODO Auto-generated method stub
 		
 	}

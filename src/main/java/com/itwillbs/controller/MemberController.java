@@ -53,6 +53,7 @@ public class MemberController {
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
 		LikeDTO lDTO = new LikeDTO();
 		if (ckDTO!=null) {
+			session.setAttribute("id", memberDTO.getId());
 			session.setAttribute("userid", memberDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
 			lDTO.setMember_id(ckDTO.getId());

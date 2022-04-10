@@ -17,4 +17,8 @@
 		select * from freeboard where id=#{id}
 	</select>
 	
+	<update id="updateReadcount">
+		update freeboard set readcount=readcount+1 where id=#{id}
+	</update>
+	
 </mapper>

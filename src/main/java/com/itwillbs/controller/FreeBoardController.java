@@ -84,5 +84,13 @@ public class FreeBoardController {
 		return "freeboard/fcontent";
 	}
 	
+	@RequestMapping(value = "/free/write", method = RequestMethod.GET)
+	public String freeWrite(HttpServletRequest request, Model model) {
+		
+		
+		
+		return "freeboard/fwrite";
+	}
+	
 	
 }
