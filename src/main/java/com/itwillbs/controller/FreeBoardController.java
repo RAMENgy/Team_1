@@ -26,7 +26,7 @@ public class FreeBoardController {
 	@Inject
 	private FreeBoardService freeBoardService;
 	
-	@RequestMapping(value = "/freeboard", method = RequestMethod.GET)
+	@RequestMapping(value = "/free/board", method = RequestMethod.GET)
 	public String freeBoard(HttpServletRequest request, Model model) {
 		
 		int pageSize=10;
@@ -66,6 +66,22 @@ public class FreeBoardController {
 		model.addAttribute("pageDTO", pageDTO);
 		
 		return "freeboard/freeboard";
+	}
+	
+	@RequestMapping(value = "/free/content", method = RequestMethod.GET)
+	public String freeContent(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		if (id == null) {
+			id = "1";
+		}
+		int intId = Integer.parseInt(id);
+		FreeBoardDTO FBDTO = freeBoardService.getBoard(intId);
+		
+		model.addAttribute("FBDTO", FBDTO);
+		
+		
+		return "freeboard/fcontent";
 	}
 	
 	

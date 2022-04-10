@@ -13,4 +13,8 @@
 		select count(id) from freeboard
 	</select>
 	
+	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
+		select * from freeboard where id=#{id}
+	</select>
+	
 </mapper>

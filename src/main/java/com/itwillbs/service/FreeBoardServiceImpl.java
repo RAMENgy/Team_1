@@ -40,6 +40,36 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public void updateReadcount(int num) {
 		
 	}
+
+	@Override
+	public void writeBoard(FreeBoardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FreeBoardDTO getBoard(int id) {
+		return freeBoardDAO.getBoard(id);
+	}
+
+	@Override
+	public void updateBoard(FreeBoardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	

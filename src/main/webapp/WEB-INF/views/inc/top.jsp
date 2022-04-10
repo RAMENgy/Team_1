@@ -155,7 +155,7 @@
                             <li><a href="${pageContext.request.contextPath }/recipeboard/write">레시피 작성하기</a></li>
                     </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath }/freeboard">자유게시판</a></li>
+                    <li><a href="${pageContext.request.contextPath }/free/board">자유게시판</a></li>
                     <li><a href="#">고객센터</a>
                    		<ul class="dropdown">
                             <li><a href="#">진행중인 이벤트</a></li>

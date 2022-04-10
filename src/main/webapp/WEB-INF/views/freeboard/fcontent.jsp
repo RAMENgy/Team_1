@@ -52,15 +52,19 @@
                 <jsp:include page="item/side.jsp"></jsp:include>
                 <!-- 사이드 바 끝 -->
                 <!-- 글 내용 시작 -->
-                <table class="table">
-					<tr><td>글번호</td><td>${FBDTO.id }</td>
-					     <td>글쓴날짜</td><td>${FBDTO.date }</td></tr>
-					<tr><td>글쓴이</td><td>${FBDTO.member_id }</td>
-					    <td>조회수</td><td>${FBDTO.readcount }</td></tr>
-					<tr><td>글제목</td><td colspan="3">${FBDTO.subject }</td></tr>
-					
-					<tr><td>글내용</td><td colspan="3" style="white-space:pre">${FBDTO.content }</td></tr>
-				</table>
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="row container">
+		                <table class="table">
+							<tr><td>글번호</td><td>${FBDTO.id }</td>
+							     <td>글쓴날짜</td><td>${FBDTO.date }</td></tr>
+							<tr><td>글쓴이</td><td>${FBDTO.member_id }</td>
+							    <td>조회수</td><td>${FBDTO.readcount }</td></tr>
+							<tr><td>글제목</td><td colspan="3">${FBDTO.subject }</td></tr>
+							
+							<tr><td>글내용</td><td colspan="3" style="white-space:pre">${FBDTO.content }</td></tr>
+						</table>
+					</div>
+				</div>
                 
                 <!-- 글 내용 끝 -->
                 

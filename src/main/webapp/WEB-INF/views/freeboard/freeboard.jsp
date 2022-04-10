@@ -55,7 +55,7 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row container">
                     	<!-- 게시판 영역 시작 -->
-                    	<h3>자유 게시판 테스트</h3>
+                    	<h3>자유 게시판</h3>
                         <table class="table table-hover" style="text-align: center;">
 							<thead>
 								<tr>
@@ -69,14 +69,14 @@
 							
 							<!-- 글 영역 시작 -->
 							<tbody>
-								<c:forEach var="fbDTO" items="${boardList }">
-									<tr>
-										<td>${fbDTO.id}</td>
-										<td>${fbDTO.subject}</td>
-										<td>${fbDTO.member_id}</td>
+								<c:forEach var="FBDTO" items="${boardList }">
+									<tr onclick="location.href='${pageContext.request.contextPath }/free/content?id=${FBDTO.id}'">
+										<td>${FBDTO.id}</td>
+										<td>${FBDTO.subject}</td>
+										<td>${FBDTO.member_id}</td>
 										<!-- TODO member_id 기반 name get 하기 -->
-										<td>${fbDTO.date}</td>
-										<td>${fbDTO.readcount}</td>
+										<td>${FBDTO.date}</td>
+										<td>${FBDTO.readcount}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -91,7 +91,7 @@
 							<ul class="pagination justify-content-center">
 								<c:choose>
 									<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
-										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/freeboard?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/free/board?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
@@ -99,12 +99,12 @@
 								</c:choose>
 								
 								<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/freeboard?pageNum=${i}">${i} </a></li>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/free/board?pageNum=${i}">${i} </a></li>
 								</c:forEach>
 							
 								<c:choose>
 									<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
-										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/freeboard?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/free/board?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>

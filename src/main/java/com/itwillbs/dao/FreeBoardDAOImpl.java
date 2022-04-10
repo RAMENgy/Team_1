@@ -29,10 +29,39 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public void updateReadcount(int num) {
+	public void updateReadcount(int id) {
+
+	}
+
+	@Override
+	public void writeBoard(FreeBoardDTO boardDTO) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Integer getMaxNum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FreeBoardDTO getBoard(int id) {
+		return sqlSession.selectOne(namespace+".getBoard", id);
+	}
+
+	@Override
+	public void updateBoard(FreeBoardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBoard(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 }
