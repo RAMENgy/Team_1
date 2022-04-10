@@ -83,34 +83,77 @@
                                 <div class="select-items">
                                     <table>
                                         <tbody>
-                                        <c:forEach var="basketList" items="${basketList }">
-                                            <tr>
-                                                <td class="si-pic"><img src="${basketList.img }" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>${basketList.amount }</p>
-                                                        <h6>${basketList.subject }</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
+                                        	
+                                        	<c:choose>
+                                        		<c:when test="${empty sessionScope.userid }">
+                                        		<tr>
+                                                	<td class="si-text">
+                                                    	<div class="product-selected">
+                                                        	<p>로그인 해 주세요.</p>
+                                                    	</div>
+                                                	</td>
+                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
+                                                    기능 고민중 불필요시 삭제 -->
+                                            		</tr>
+                                        		</c:when>
+                           						<c:when test="${empty basketList }">
+                           							<tr>
+                                                	<td class="si-text">
+                                                    	<div class="product-selected">
+                                                        	<p>장바구니가 비었습니다.</p>
+                                                    	</div>
+                                                	</td>
+                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
+                                                    기능 고민중 불필요시 삭제 -->
+                                            		</tr>
+                           						</c:when>
+                           						<c:otherwise>
+                                        		<c:forEach var="basketList" items="${basketList }">
+                                           			<tr>
+                                               		<td class="si-pic"><img src="${basketList.img }" alt=""></td>
+                                                	<td class="si-text">
+                                                    	<div class="product-selected">
+                                                        	<p>${basketList.amount }</p>
+                                                        	<h6>${basketList.subject }</h6>
+                                                    	</div>
+                                                	</td>
+                                                	<td class="si-close">
                                                     <i class="ti-close"></i>
                                                     <!-- 항목 옆에 X표시 누르면 바로 삭제?
                                                     기능 고민중 불필요시 삭제 -->
-                                                </td>
-                                            </tr>
-                                         </c:forEach>
-                                            
+                                                	</td>
+                                            		</tr>
+                                         		</c:forEach>
+                                         		</c:otherwise>
+                                         	</c:choose>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="select-total">
-                                    <span>장바구니 합계 금액</span>
-                                    <h5>${map.sumMoney }</h5>
-                                </div>
-                                <div class="select-button">
-                                    <a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
-                                    <a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
-                                </div>
+                           			<c:choose>
+                           				<c:when test="${empty sessionScope.userid }">
+                           				
+                           				</c:when>
+                           				<c:when test="${empty basketList }">
+                           					<div class="select-total">
+                                   				<span>장바구니 합계 금액</span>
+                                    			<h5>0</h5>
+                                			</div>
+                                			<div class="select-button">
+                                   				<a href="${pageContext.request.contextPath }/food/list" class="primary-btn view-card">쇼핑하러가기</a>
+                                			</div>
+                           				</c:when>
+                           				<c:otherwise>
+                                			<div class="select-total">
+                                   				<span>장바구니 합계 금액</span>
+                                    			<h5>${map.sumMoney }</h5>
+                                			</div>
+                                			<div class="select-button">
+                                   				<a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
+                                    			<a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
+                                			</div>
+                                		</c:otherwise>
+                                	</c:choose>
+                                	
                             </div>
                         </li>
                         <li class="cart-price">현재 장바구니 금액</li>
