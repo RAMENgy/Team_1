@@ -72,7 +72,7 @@
                             <button type="submit" class="site-btn login-btn">로그인</button>
                         </form>
                         <div class="switch-login">
-                            <a href="./register.html" class="or-login">회원가입</a>
+                            <a href="${pageContext.request.contextPath }/member/join" class="or-login">회원가입</a>
                         </div>
                     </div>
                 </div>
