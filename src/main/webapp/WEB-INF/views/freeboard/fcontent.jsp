@@ -66,11 +66,11 @@
 						
 						<c:if test="${!empty sessionScope.id }">
 							<c:if test="${FBDTO.member_id eq sessionScope.id }">
-								<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/update?id=${FBDTO.id }'">글수정</button>
-								<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/delete?id=${FBDTO.id }'">글삭제</button>
+								<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/update?id=${FBDTO.id }'">글수정</button>
+								<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/delete?id=${FBDTO.id }'">글삭제</button>
 							</c:if>
 						</c:if>
-						<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/board'">글목록</button>
+						<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/board'">글목록</button>
 					</div>
 				</div>
                 

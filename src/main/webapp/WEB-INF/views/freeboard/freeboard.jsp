@@ -85,7 +85,7 @@
 						</table>
 						<!-- 게시판 영역 끝 -->
 						<c:if test="${!empty sessionScope.userid }">
-							<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/write'">글쓰기</button>
+							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/write'">글쓰기</button>
 						</c:if>
 						
 						<!-- 페이지 번호 영역 시작 -->
