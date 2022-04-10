@@ -21,4 +21,8 @@
 		update freeboard set readcount=readcount+1 where id=#{id}
 	</update>
 	
+	<delete id="deleteBoard">
+		delete from freeboard where id=#{id}
+	</delete>
+	
 </mapper>

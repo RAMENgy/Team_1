@@ -53,8 +53,8 @@ public class MemberController {
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
 		LikeDTO lDTO = new LikeDTO();
 		if (ckDTO!=null) {
-			session.setAttribute("id", memberDTO.getId());
-			session.setAttribute("userid", memberDTO.getUserid());
+			session.setAttribute("id", ckDTO.getId());
+			session.setAttribute("userid", ckDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
 			lDTO.setMember_id(ckDTO.getId());
 			// 내가 좋아요 누른 항목 갯수 찾기

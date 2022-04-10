@@ -87,10 +87,15 @@ public class FreeBoardController {
 	@RequestMapping(value = "/free/write", method = RequestMethod.GET)
 	public String freeWrite(HttpServletRequest request, Model model) {
 		
-		
-		
 		return "freeboard/fwrite";
 	}
 	
+	@RequestMapping(value = "/free/delete", method = RequestMethod.GET)
+	public String freeDelete(HttpServletRequest request, HttpSession session) {
+		// 세션 본인 판별 => 권한 지급
+		int id = Integer.parseInt(request.getParameter("id"));
+		freeBoardService.deleteBoard(id);
+		return "redirect:/free/board";
+	}
 	
 }

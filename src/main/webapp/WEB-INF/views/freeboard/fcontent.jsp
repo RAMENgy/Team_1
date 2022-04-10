@@ -64,9 +64,8 @@
 							<tr><td>글내용</td><td colspan="3" style="white-space:pre">${FBDTO.content }</td></tr>
 						</table>
 						
-						
-						<c:if test="${!empty sessionScope.userid }">
-							<c:if test="${FBDTO.id eq sessionScope.userid }">
+						<c:if test="${!empty sessionScope.id }">
+							<c:if test="${FBDTO.member_id eq sessionScope.id }">
 								<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/update?id=${FBDTO.id }'">글수정</button>
 								<button class="btn btn-outline-dark" type="submit" class="btn" onclick="location.href='${pageContext.request.contextPath }/free/delete?id=${FBDTO.id }'">글삭제</button>
 							</c:if>

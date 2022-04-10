@@ -67,8 +67,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public void deleteBoard(int id) {
-		// TODO Auto-generated method stub
-		
+		freeBoardDAO.deleteBoard(id);
 	}
 	
 	
