@@ -64,13 +64,57 @@
 							<tr><td>글내용</td><td colspan="3" style="white-space:pre">${FBDTO.content }</td></tr>
 						</table>
 						
+						<!-- 댓글 리스트 null 인지 판별 후 -->
+						<table class="table">
+						 	<thead>
+								<tr>
+									<th>작성자</th>
+									<th>댓글내용 ㅇㅇㅇㅇㅇㅇ</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="FBDTO" items="${boardList }">
+								<!-- 댓글 리스트 받아오기 -->
+									<tr>
+										<td>작성자</td>
+										<td>내용</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+							
+						</table>
+						<!-- 댓글 리스트 끝 -->
+						
+						<!-- session 로그인 여부 판별 후 댓글 입력 창 생성 -->
 						<c:if test="${!empty sessionScope.id }">
-							<c:if test="${FBDTO.member_id eq sessionScope.id }">
-								<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/update?id=${FBDTO.id }'">글수정</button>
-								<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/delete?id=${FBDTO.id }'">글삭제</button>
+						<div class="blog-details-inner">
+							<div class="leave-comment">
+	                            <h4>댓글 남기기</h4>
+	                            <form action="#" class="comment-form">
+	                                <div class="">
+	                                    <div class="col-lg-12">
+	                                        <textarea placeholder="Messages"></textarea>
+	                                        <button type="submit" class="site-btn">Send message</button>
+	                                        <!-- ajax? -->
+	                                    </div>
+	                                </div>
+	                            </form>
+	                        </div>
+                        </div>
+                        </c:if>
+                        <!-- 댓글 입력 창 끝 -->
+                        
+                        <!-- session 로그인 여부 판별 후 글 수정 삭제 버튼 생성-->
+						<div class="row container">
+							<c:if test="${!empty sessionScope.id }">
+								<c:if test="${FBDTO.member_id eq sessionScope.id }">
+									<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/update?id=${FBDTO.id }'">글수정</button>
+									<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/delete?id=${FBDTO.id }'">글삭제</button>
+								</c:if>
 							</c:if>
-						</c:if>
-						<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/board'">글목록</button>
+							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/free/board'">글목록</button>
+						</div>
+						<!-- 글 수정 삭제 버튼 끝 -->
 					</div>
 				</div>
                 
@@ -79,6 +123,8 @@
             </div>
         </div>
     </section>
+    
+    
     <!-- Blog Section End -->
 
 

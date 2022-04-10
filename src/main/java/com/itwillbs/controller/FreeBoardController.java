@@ -90,6 +90,12 @@ public class FreeBoardController {
 		return "freeboard/fwrite";
 	}
 	
+	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
+	public String freeUpdate(HttpServletRequest request, Model model) {
+		
+		return "freeboard/fupdate";
+	}
+	
 	@RequestMapping(value = "/free/delete", method = RequestMethod.GET)
 	public String freeDelete(HttpServletRequest request, HttpSession session) {
 		// 세션 본인 판별 => 권한 지급
@@ -97,5 +103,8 @@ public class FreeBoardController {
 		freeBoardService.deleteBoard(id);
 		return "redirect:/free/board";
 	}
+	
+	/* 아래서 부터는 Comment */
+	
 	
 }
