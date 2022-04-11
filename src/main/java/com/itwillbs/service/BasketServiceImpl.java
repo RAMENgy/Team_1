@@ -37,6 +37,12 @@ public class BasketServiceImpl implements BasketService {
 		basketDAO.delete(id);
 	}
 	
+	//장바구니 전체삭제
+	@Override
+	public void deleteAll(int member_id) {
+		basketDAO.deleteAll(member_id);
+	}
+	
 	//장바구니 수량 가져오기
 	@Override
 	public int getCount(int id) {

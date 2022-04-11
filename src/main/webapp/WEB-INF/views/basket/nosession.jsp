@@ -92,15 +92,8 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">쇼핑계속하기</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
-                            </div>
-                            <div class="discount-coupon">
-                                <h6>Discount Codes</h6>
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
-                                </form>
+                                <a href="food/list" class="primary-btn continue-shop">쇼핑계속하기</a>
+                                <a href="basket/deleteAll" class="primary-btn up-cart">장바구니 전체 삭제</a>
                             </div>
                         </div>
                         <div class="col-lg-4 offset-lg-4">

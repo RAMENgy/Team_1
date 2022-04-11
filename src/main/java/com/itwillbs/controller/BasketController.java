@@ -61,6 +61,7 @@ public class BasketController {
 	}
 	
 	
+	
 	//장바구니 삭제
 	@RequestMapping(value = "basket/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request) {
@@ -75,6 +76,27 @@ public class BasketController {
 		return "redirect:/basket";
 	}
 	
+	
+	//장바구니 전체 삭제
+	@RequestMapping(value = "basket/deleteAll", method = RequestMethod.GET)
+	public String deleteAll(HttpSession session, HttpServletRequest request) {
+		
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		
+		if(ckDTO != null) {
+			
+			int member_id = ckDTO.getId();
+			basketService.deleteAll(member_id);
+			
+			return "basket/basketlist";
+			
+		} else {
+			
+			return "basket/nosession";
+		}
+		
+	}
 	
 	//장바구니 수량 변경
 	@RequestMapping(value = "basket/update", method = RequestMethod.GET)

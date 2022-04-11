@@ -25,6 +25,12 @@
   		WHERE id=#{id}
   	</delete> 
   	
+  	<!-- 장바구니 전체삭제 -->
+  	<delete id="deleteAll">
+  		DELETE FROM basket
+  		WHERE member_id=#{member_id}
+  	</delete>
+  	
     <!-- 장바구니 수량 가져오기 -->
     <select id="getCount" resultType="java.lang.Integer">
     	SELECT count
