@@ -38,7 +38,7 @@
                     <div class="breadcrumb-text product-more">
                         <a href="./home.html"><i class="fa fa-home"></i> Home</a>
                         <a href="./center.html">Center</a>
-                        <span>QnA</span>
+                        <span>Notice</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,6 @@
 					<th>제목</th> 
 					<th>작성자</th> 
 					<th>작성일자</th> 
-					<th>조회수</th>
 				</tr>
 			</thead>
 
@@ -65,7 +64,6 @@
     		<td class="left">${qDTO.subject}</td>
     		<td>${qDTO.member_id}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
-    		<td>${qDTO.readcount}</td>
 		</tr> 
 	</c:forEach> 
 	
@@ -74,13 +72,28 @@
 				
 				<input type="text" class="input_box" name="검색" maxlength="20">
 				<input type="button" class="btn btn-default" value="검색" maxlength="20">
-				<input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
+				<input type="button" value="글쓰기" class="btn btn-default" 
+				onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
 			</td> 
 		</tr>
 		</table>
 
-	</div>
-</div>
+
+<c:if test="${ ! empty sessionScope.userid }">
+
+	<c:if test="${sessionScope.userid eq 'admin'}">
+	
+<input type="button" value="글수정" class="btn" 
+onclick="location.href='${pageContext.request.contextPath }/board/update?num=${qnaDTO.num}'">
+<input type="button" value="글삭제" class="btn" 
+onclick="location.href='${pageContext.request.contextPath }/board/delete?num=${qnaDTO.num}'">	
+	
+	</c:if>
+	
+</c:if>
+
+<input type="button" value="글목록" class="btn" style="float: right;"
+onclick="location.href='${pageContext.request.contextPath }/board/list'">	
 	
 <c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
 <a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
