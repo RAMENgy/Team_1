@@ -80,10 +80,6 @@
 		
 	</c:if>
 	
-	<!-- 답변 -->
-	<%-- <c:if test="${sessionScope.loginuser.userid == 'admin'}">
-		<input type="button" value="답변" class="btn" 
-		onclick="location.href='${pageContext.request.contextPath }/board/comment?id=> --%>
 	
 </c:if>
 
@@ -104,10 +100,15 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
 		<table id="tablebox" class="table">
 		<%-- <tr><td>작성자</td>
     			<td><input type="text" name="member_id" value="${sessionScope.id}" ></td></tr> --%>
-    	<tr><td>답변</td><td colspan="3">${commentDTO.content}</td></tr>		
+    	<tr><td>답변</td><td colspan="3">${commentDTO.content}</td></tr>
+    			<tr><td></td><td>
+    			<input type="button" value="답변삭제" class="btn" style="float: right;">
+   				<input type="button" value="답변수정" class="btn" style="float: right;">	
+   				</td></tr>
 		</table>  
 	
 	</c:if>
+
 
 
 <!-- 댓글 쓰기 화면 -->
@@ -128,6 +129,7 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
    			<tr>
    				<td colspan="10">
    				<input type="submit" value="답변저장" class="btn" style="float: right;">
+   				
    				</td>
    				
    			</tr>
@@ -137,6 +139,7 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
 </div>
 	</c:if>
 
+<!-- 댓글 수정화면  -->
 
 
 
