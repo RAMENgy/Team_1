@@ -43,16 +43,10 @@ public class BasketServiceImpl implements BasketService {
 		basketDAO.deleteAll(member_id);
 	}
 	
-	//장바구니 수량 가져오기
-	@Override
-	public int getCount(int id) {
-		return basketDAO.getCount(id);
-	}
-	
 	//장바구니 수량 변경
 	@Override
-	public void update(int count) {
-		basketDAO.update(count);
+	public void update(BasketDTO basketDTO) {
+		basketDAO.update(basketDTO);
 	}
 	
 	//장바구니 금액 합계

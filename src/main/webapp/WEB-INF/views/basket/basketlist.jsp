@@ -99,11 +99,15 @@
                                     			${basketList.amount }
                                     		</td>
                                     		<td class="qua-col first-row">
+                                    			<form action="${pageContext.request.contextPath }/basket/update">
+                                    			<input type="hidden" value="${basketList.id }" name="id">
                                        			<div class="quantity">
                                             		<div class="pro-qty">
-                                               			<input type="text" value="${basketList.count }">
+                                               			<input type="text" value="${basketList.count }" name="count">
                                             		</div>
                                         		</div>
+                                        		<button type="submit">변경</button>
+                                        		</form>
                                    			</td>
                                     		<td class="total-price first-row">${basketList.subprice }</td>
                                     		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>

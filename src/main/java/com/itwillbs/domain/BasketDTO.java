@@ -7,7 +7,14 @@ public class BasketDTO {
 	private int id;
 	private int member_id;
 	private int product_id;
+	private int count;
 	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getId() {
 		return id;
 	}

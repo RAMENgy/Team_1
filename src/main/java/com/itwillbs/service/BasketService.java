@@ -19,11 +19,8 @@ public interface BasketService {
 	//장바구니 전체삭제
 	public void deleteAll(int member_id);
 	
-	//장바구니 수량 가져오기
-	public int getCount(int id);
-	
 	//장바구니 수량변경
-	public void update(int count);
+	public void update(BasketDTO basketDTO);
 	
 	//장바구니 금액 합계
 	public int sumMoney(int member_id);
