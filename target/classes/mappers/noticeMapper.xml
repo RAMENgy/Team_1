@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.itwillbs.mappers.boardMapper">
+
+	<insert id="writeBoard">
+		insert into board(num,pass,name,subject,content,readcount,date,file) 
+		values(#{num},#{pass},#{name},#{subject},#{content},#{readcount},#{date},#{file})
+	</insert>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(num) from board
+	</select>
+	
+	<select id="getBoardList" resultType="com.itwillbs.domain.NoticeDTO">
+		select * from board order by num desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCount" resultType="java.lang.Integer">
+		select count(*) from board
+	</select>
+	
+	<select id="getBoard" resultType="com.itwillbs.domain.NoticeDTO">
+		select * from board where num=#{num}
+	</select>
+	
+	<update id="updateReadcount">
+		update board set readcount=readcount+1 where num=#{num}
+	</update>
+	
+	<update id="updateBoard">
+		update board set subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+	
+	<delete id="deleteBoard">
+		delete from board where num=#{num}
+	</delete>
+	
+	<select id="getBoardListSearch" resultType="com.itwillbs.domain.NoticeDTO">
+		select * from board where subject like #{search} order by num desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCountSearch" resultType="java.lang.Integer">
+		select count(*) from board  where subject like #{search}
+	</select>
+	
+</mapper>
