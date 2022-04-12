@@ -23,31 +23,31 @@ public class NoticeController {
 	@Inject
 	private NoticeService noticeService;
 	
-	//	가상주소 http://localhost:8080/Team_1/board/write
-	@RequestMapping(value = "/board/write", method = RequestMethod.GET)
+	//	가상주소 http://localhost:8080/Team_1/notice/write
+	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
 	public String write() {
 		System.out.println("NoticeController write() ");
 
-		// /WEB-INF/views/center/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "center/write";
+		// /WEB-INF/views/notice/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "notice/write";
 	}
 
-	//	가상주소 http://localhost:8080/Team_1/board/writePro
-	@RequestMapping(value = "/board/writePro", method = RequestMethod.POST)
+	//	가상주소 http://localhost:8080/Team_1/notice/writePro
+	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
 	public String writePro(NoticeDTO noticeDTO) {
 		System.out.println("NoticeController writePro() ");
 		// member_id
 		noticeDTO.setMember_id(2);
 
 		noticeService.writeBoard(noticeDTO);
-		// /WEB-INF/views/center/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "redirect:/board/list";
+		// /WEB-INF/views/notice/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "redirect:/notice/list";
 
 	}
 
-	//	가상주소 http://localhost:8080/Team_1/board/list
-	//	가상주소 http://localhost:8080/Team_1/board/list?pageNum=3
-	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
+	//	가상주소 http://localhost:8080/Team_1/notice/list
+	//	가상주소 http://localhost:8080/Team_1/notice/list?pageNum=3
+	@RequestMapping(value = "/notice/list", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model) {
 		System.out.println("NoticeController list() ");
 		// 한화면에 보여줄 글개수 설정
@@ -90,14 +90,14 @@ public class NoticeController {
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
 
-		// /WEB-INF/views/center/notice.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "center/board";
+		// /WEB-INF/views/notice/notice.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "notice/notice";
 	}
 
 
 
-	// 가상주소 http://localhost:8080/Team_1/board/update?num=1
-	@RequestMapping(value = "/board/update", method = RequestMethod.GET)
+	// 가상주소 http://localhost:8080/Team_1/notice/update?num=1
+	@RequestMapping(value = "/notice/update", method = RequestMethod.GET)
 	public String update(HttpServletRequest request, Model model) {
 		System.out.println("NoticeController update() ");
 		int num = Integer.parseInt(request.getParameter("id"));
@@ -109,26 +109,24 @@ public class NoticeController {
 		model.addAttribute("noticeDTO", noticeDTO);
 
 		// /WEB-INF/views/center/update.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "center/update";
+		return "notice/notice";
 	}
 
-	//	가상주소 http://localhost:8080/Team_1/board/updatePro
-	@RequestMapping(value = "/board/updatePro", method = RequestMethod.POST)
+	//	가상주소 http://localhost:8080/Team_1/notice/updatePro
+	@RequestMapping(value = "/notice/updatePro", method = RequestMethod.POST)
 	public String updatePro(NoticeDTO noticeDTO) {
 		System.out.println("NoticeController updatePro() ");
 
 		noticeService.updateBoard(noticeDTO);
 
-		// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
-		// response.sendRedirect("/board/list");
-		return "redirect:/board/list";
+		// 가상주소 로그인주소 이동 //list (주소줄에 주소가 바뀌면서 이동)
+		// response.sendRedirect("/notice/list");
+		return "redirect:/notice/list";
 	}
 
-	// 가상주소 http://localhost:8080/Team_1/board/delete?num=1
-	// /board/delete get방식
-	// deleteBoard(boardDTO);
-	// redirect:/board/list
-	@RequestMapping(value = "/board/delete", method = RequestMethod.GET)
+	// 가상주소 http://localhost:8080/Team_1/notice/delete?num=1
+	// redirect:/notice/list
+	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)
 	public String delete(HttpServletRequest request) {
 		System.out.println("NoticeController delete() ");
 //		int num=Integer.parseInt(request.getParameter("num"));
@@ -138,8 +136,8 @@ public class NoticeController {
 		// num에 대한 글 삭제
 		noticeService.deleteBoard(num);
 
-		// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
-		// response.sendRedirect("/board/list");
-		return "redirect:/board/list";
+		// 가상주소 로그인주소 이동 /notice/list (주소줄에 주소가 바뀌면서 이동)
+		// response.sendRedirect("/notice/list");
+		return "redirect:/notice/list";
 	}
 }
