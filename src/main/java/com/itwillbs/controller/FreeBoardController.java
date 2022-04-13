@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -90,9 +91,17 @@ public class FreeBoardController {
 		return "freeboard/fwrite";
 	}
 	
+	@RequestMapping(value = "/free/writePro", method = RequestMethod.POST)
+	public String writePro(FreeBoardDTO FBDTO){
+		FBDTO.setId(freeBoardService.getMaxNum()+1);
+		FBDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		
+		freeBoardService.writeBoard(FBDTO);
+		return "redirect:/free/board";
+	}
+	
 	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
 	public String freeUpdate(HttpServletRequest request, Model model) {
-		
 		return "freeboard/fupdate";
 	}
 	
