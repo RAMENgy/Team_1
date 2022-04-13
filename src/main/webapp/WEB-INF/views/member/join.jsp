@@ -49,9 +49,9 @@
  				data:{"userid":$('#userid').val()},
  				success:function(rdata){
  					if(rdata=='iddup'){
- 						rdata="아이디 중복";
+ 						rdata="이미 사용중인 아이디 입니다";
  					}else{
- 						rdata="아이디 사용가능"
+ 						rdata="사용가능한 아이디 입니다"
  					}
  					$('#iddiv').html(rdata);
  				}
@@ -152,7 +152,7 @@
                             
                             <div class="group-input">
                                 <label for="address">주소</label>
-                                <input type="address" id="address" name="address">  
+                                <input type="address" id="address" name="address">
                             </div>
                             
                             <div class="group-input">
