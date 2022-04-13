@@ -199,11 +199,9 @@
                     </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath }/free/board">자유게시판</a></li>
-                    <li><a href="#">고객센터</a>
+                    <li><a href="${pageContext.request.contextPath }/notice/list">고객센터</a>
                    		<ul class="dropdown">
-                            <li><a href="#">진행중인 이벤트</a></li>
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">업데이트</a></li>
+                            <li><a href="${pageContext.request.contextPath }/notice/list">공지사항/이벤트</a></li>
                             <li><a href="${pageContext.request.contextPath }/board/list">QnA</a></li>
                         </ul>
                     </li>
@@ -211,7 +209,7 @@
                         <ul class="dropdown">
                             <li><a href="#">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
-                            <li><a href="#">구매내역보기</a></li>
+                            <li><a href="${pageContext.request.contextPath }/order/orderlist"">구매내역보기</a></li>
                             <li><a href="#">나의 QnA</a></li>
                             <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
                             <li><a href="#">???</a></li>

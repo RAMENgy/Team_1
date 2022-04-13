@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,11 +19,6 @@ import com.itwillbs.service.FreeBoardService;
 @Controller
 public class FreeBoardController {
 	
-	/*
-	 * Mapping 주소 : 주소 창 입력 시 Mapping 시킬 주소
-	 * return 주소 : 실제 경로 주소
-	 */
-	
 	@Inject
 	private FreeBoardService freeBoardService;
 	
@@ -31,7 +27,6 @@ public class FreeBoardController {
 		
 		int pageSize=10;
 		
-		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
 		String pageNum=request.getParameter("pageNum");
 		if (pageNum == null) {
 			pageNum="1";
@@ -61,7 +56,6 @@ public class FreeBoardController {
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 		
-		// 디비에서 가져온 글을 model 담아서 notice.jsp 전달
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
 		
@@ -85,15 +79,31 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value = "/free/write", method = RequestMethod.GET)
-	public String freeWrite(HttpServletRequest request, Model model) {
-		
+	public String freeWrite() {
 		return "freeboard/fwrite";
+	}
+	
+	@RequestMapping(value = "/free/writePro", method = RequestMethod.POST)
+	public String freeWritePro(FreeBoardDTO FBDTO){
+		FBDTO.setId(freeBoardService.getMaxNum()+1);
+		FBDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		
+		freeBoardService.writeBoard(FBDTO);
+		return "redirect:/free/board";
 	}
 	
 	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
 	public String freeUpdate(HttpServletRequest request, Model model) {
-		
+		int id = Integer.parseInt(request.getParameter("id"));
+		FreeBoardDTO FBDTO = freeBoardService.getBoard(id);
+		model.addAttribute("FBDTO", FBDTO);
 		return "freeboard/fupdate";
+	}
+	
+	@RequestMapping(value = "/free/updatePro", method = RequestMethod.POST)
+	public String freeUpdatePro(FreeBoardDTO FBDTO){
+		freeBoardService.updateBoard(FBDTO);
+		return "redirect:/free/board";
 	}
 	
 	@RequestMapping(value = "/free/delete", method = RequestMethod.GET)

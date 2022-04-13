@@ -42,15 +42,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void writeBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void writeBoard(FreeBoardDTO FBDTO) {
+		freeBoardDAO.writeBoard(FBDTO);
 	}
 
 	@Override
 	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer num = freeBoardDAO.getMaxNum(); 
+		return num == null ? 0 : num;
 	}
 
 	@Override
@@ -60,9 +59,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void updateBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void updateBoard(FreeBoardDTO FBDTO) {
+		freeBoardDAO.updateBoard(FBDTO);
 	}
 
 	@Override

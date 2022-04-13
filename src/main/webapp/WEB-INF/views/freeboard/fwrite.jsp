@@ -55,7 +55,19 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row container">
                     	<!-- 글쓰기 영역 시작 -->
-                    	
+                    	<form class="" action="${pageContext.request.contextPath }/free/writePro" method="post">
+						<table class="table" id="notice">
+						<tr><td>이름</td>
+						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.id }" readonly></td></tr>
+						<tr><td>제목</td>
+						    <td><input class="form-control" type="text" id="subject" name="subject"></td></tr>
+						<tr><td>내용</td>
+						    <td><textarea class="form-control" id="content" name="content" rows="10" cols="20"></textarea></td></tr>
+						</table>
+						
+						<button class="btn btn-outline-dark m-sm-1" type="submit">글쓰기</button>
+						<button class="btn btn-outline-dark m-sm-1" type="button" onclick="location.href='${pageContext.request.contextPath }/free/board'">글목록</button>
+						</form>
                     	<!-- 글쓰기 영역 끝 -->
                     </div>
                 </div>

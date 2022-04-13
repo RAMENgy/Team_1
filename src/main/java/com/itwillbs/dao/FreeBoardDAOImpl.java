@@ -34,15 +34,13 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public void writeBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void writeBoard(FreeBoardDTO FBDTO) {
+		sqlSession.insert(namespace+".writeBoard", FBDTO);
 	}
 
 	@Override
 	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 
 	@Override
@@ -51,9 +49,8 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public void updateBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void updateBoard(FreeBoardDTO FBDTO) {
+		sqlSession.update(namespace+".updateBoard", FBDTO);
 	}
 
 	@Override
