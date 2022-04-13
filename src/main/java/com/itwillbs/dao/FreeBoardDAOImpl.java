@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -22,7 +23,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeBoardDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	}
-
+	
 	@Override
 	public int getBoardCount() {
 		return sqlSession.selectOne(namespace+".getBoardCount");
@@ -39,8 +40,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public Integer getMaxNum() {
-		return sqlSession.selectOne(namespace+".getMaxNum");
+	public Integer getMaxNum(boolean isFreeBoard) {
+		if (isFreeBoard) return sqlSession.selectOne(namespace+".getMaxNum");
+		else return sqlSession.selectOne(namespace+".getMaxNumComment");
 	}
 
 	@Override
@@ -57,6 +59,17 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public void deleteBoard(int id) {
 		sqlSession.delete(namespace+".deleteBoard", id);
 	}
+
+	@Override
+	public void writeComment(FBCommentDTO FBCDTO) {
+		sqlSession.insert(namespace+".writeComment", FBCDTO);
+	}
+
+	@Override
+	public List<FBCommentDTO> getCommentList(int content_id) {
+		return sqlSession.selectList(namespace+".getCommentList", content_id);
+	}
+	
 	
 	
 	

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.FreeBoardDAO;
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -47,8 +48,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public Integer getMaxNum() {
-		Integer num = freeBoardDAO.getMaxNum(); 
+	public Integer getMaxNum(boolean isFreeBoard) {
+		Integer num = freeBoardDAO.getMaxNum(isFreeBoard); 
 		return num == null ? 0 : num;
 	}
 
@@ -67,7 +68,16 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public void deleteBoard(int id) {
 		freeBoardDAO.deleteBoard(id);
 	}
-	
+
+	@Override
+	public void writeComment(FBCommentDTO FBCDTO) {
+		freeBoardDAO.writeComment(FBCDTO);
+	}
+
+	@Override
+	public List<FBCommentDTO> getCommentList(int content_id) {
+		return freeBoardDAO.getCommentList(content_id);
+	}
 	
 	
 	
