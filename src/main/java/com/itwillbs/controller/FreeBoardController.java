@@ -19,11 +19,6 @@ import com.itwillbs.service.FreeBoardService;
 @Controller
 public class FreeBoardController {
 	
-	/*
-	 * Mapping 주소 : 주소 창 입력 시 Mapping 시킬 주소
-	 * return 주소 : 실제 경로 주소
-	 */
-	
 	@Inject
 	private FreeBoardService freeBoardService;
 	
@@ -32,7 +27,6 @@ public class FreeBoardController {
 		
 		int pageSize=10;
 		
-		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
 		String pageNum=request.getParameter("pageNum");
 		if (pageNum == null) {
 			pageNum="1";
@@ -62,7 +56,6 @@ public class FreeBoardController {
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 		
-		// 디비에서 가져온 글을 model 담아서 notice.jsp 전달
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("pageDTO", pageDTO);
 		
@@ -86,7 +79,7 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value = "/free/write", method = RequestMethod.GET)
-	public String freeWrite(HttpServletRequest request, Model model) {
+	public String freeWrite() {
 		return "freeboard/fwrite";
 	}
 	
@@ -101,7 +94,9 @@ public class FreeBoardController {
 	
 	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
 	public String freeUpdate(HttpServletRequest request, Model model) {
-		/* 폼에 데이터 전달 ㄱ */
+		int id = Integer.parseInt(request.getParameter("id"));
+		FreeBoardDTO FBDTO = freeBoardService.getBoard(id);
+		model.addAttribute("FBDTO", FBDTO);
 		return "freeboard/fupdate";
 	}
 	

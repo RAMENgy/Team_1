@@ -52,8 +52,21 @@
 		delete from qna_board where id=#{id}
 	</delete>
 	 
-<!-- 	<insert id="commentBoard">
-		insert into
-	</insert>  -->
+	<!-- <update id="commentupdateBoard">
+		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
+	</update>
+	
+	<delete id="commentdeleteBoard">
+		delete from qna_board where id=#{id}
+	</delete> -->
+	
+	<select id="getBoardListSearch" resultType="com.itwillbs.domain.QnaDTO">
+		select * from qna_board where subject like #{search} order by id desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCountSearch" resultType="java.lang.Integer">
+		select count(*) from qna_board  where subject like #{search}
+	</select>
+	
 	
   </mapper>

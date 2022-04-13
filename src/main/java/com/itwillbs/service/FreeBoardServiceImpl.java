@@ -60,8 +60,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public void updateBoard(FreeBoardDTO FBDTO) {
-		// TODO Auto-generated method stub
-		
+		freeBoardDAO.updateBoard(FBDTO);
 	}
 
 	@Override

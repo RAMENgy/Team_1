@@ -199,11 +199,9 @@
                     </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath }/free/board">자유게시판</a></li>
-                    <li><a href="#">고객센터</a>
+                    <li><a href="${pageContext.request.contextPath }/notice/list">고객센터</a>
                    		<ul class="dropdown">
-                            <li><a href="#">진행중인 이벤트</a></li>
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">업데이트</a></li>
+                            <li><a href="${pageContext.request.contextPath }/notice/list">공지사항/이벤트</a></li>
                             <li><a href="${pageContext.request.contextPath }/board/list">QnA</a></li>
                         </ul>
                     </li>

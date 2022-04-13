@@ -50,8 +50,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public void updateBoard(FreeBoardDTO FBDTO) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update(namespace+".updateBoard", FBDTO);
 	}
 
 	@Override
