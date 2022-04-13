@@ -38,22 +38,22 @@ select * from product where type=3 order by id desc limit #{startRow},#{pageSize
 		select max(num) from product where type=2
 	</select>
 	<select id="foodListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getfoodCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search}
 	</select>
 	<select id="meatListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=1 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=1 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getmeatCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=1
 	</select>
 	<select id="vegetableListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=2 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=2 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getvegetableCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=2
 	</select>
 	<select id="fruitListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=3 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=3 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getfruitCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=3
 	</select>
