@@ -87,12 +87,11 @@ public class FreeBoardController {
 	
 	@RequestMapping(value = "/free/write", method = RequestMethod.GET)
 	public String freeWrite(HttpServletRequest request, Model model) {
-		
 		return "freeboard/fwrite";
 	}
 	
 	@RequestMapping(value = "/free/writePro", method = RequestMethod.POST)
-	public String writePro(FreeBoardDTO FBDTO){
+	public String freeWritePro(FreeBoardDTO FBDTO){
 		FBDTO.setId(freeBoardService.getMaxNum()+1);
 		FBDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		
@@ -102,7 +101,14 @@ public class FreeBoardController {
 	
 	@RequestMapping(value = "/free/update", method = RequestMethod.GET)
 	public String freeUpdate(HttpServletRequest request, Model model) {
+		/* 폼에 데이터 전달 ㄱ */
 		return "freeboard/fupdate";
+	}
+	
+	@RequestMapping(value = "/free/updatePro", method = RequestMethod.POST)
+	public String freeUpdatePro(FreeBoardDTO FBDTO){
+		freeBoardService.updateBoard(FBDTO);
+		return "redirect:/free/board";
 	}
 	
 	@RequestMapping(value = "/free/delete", method = RequestMethod.GET)
