@@ -71,25 +71,18 @@
 	
 		<tr>
 			<td colspan="10">
+				
 				<form action="${pageContext.request.contextPath }/board/search" method="get">
 					<input type="text" name="search" class="input_box">
 					<input type="submit" value="검색" class="btn btn-default">
 					</form>
-				
-				
+				<input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
 			</td> 
 		</tr>
 		</table>
-<!-- <input type="text" class="input_box" name="검색" >
+<!-- <input type="text" class="input_box" name="검색" maxlength="20">
 				<input type="button" class="btn btn-default" value="검색" maxlength="20"> -->
-				
-<c:if test="${!empty sessionScope.userid }">
-
-<input type="button" value="글쓰기" class="btn btn-default"
-onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
 	
-	</c:if>
-
 	
 <c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
 <a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>

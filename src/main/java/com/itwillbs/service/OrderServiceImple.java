@@ -1,6 +1,7 @@
 package com.itwillbs.service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -19,11 +20,14 @@ public class OrderServiceImple implements OrderService {
 	@Override
 	public void insertOrder(OrderDTO orderDTO) {
 		
-		orderDTO.setMember_id(1);	//수정해야됨
-		orderDTO.setProduct_id(1);	//수정해야됨
-		orderDTO.setBasket_id(1);	//수정해야됨
-		orderDTO.setStatus("주문완료");
-		orderDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		orderDAO.insertOrder(orderDTO);
+		
+			orderDAO.insertOrder(orderDTO);
+		
+	}
+	
+	//주문내역 조회
+	@Override
+	public List<OrderDTO> orderList(int member_id){
+		return orderDAO.orderList(member_id);
 	}
 }

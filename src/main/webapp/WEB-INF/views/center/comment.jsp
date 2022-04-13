@@ -59,7 +59,7 @@
 <div id="tablebox">   
 <form action="${pageContext.request.contextPath }/board/commentPro" method="post">
 	<table class="table" style="text-align: center;">
-		<%-- <tr><td>작성자</td>
+	    <%-- <tr><td>작성자</td>
     			<td><input type="text" name="member_id" value="${sessionScope.id}" ></td></tr> --%>
     	<tr><td>답변</td><td colspan="3">${commentDTO.content}</td></tr>		
 	</table>  

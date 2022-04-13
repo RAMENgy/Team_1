@@ -6,11 +6,21 @@
   <mapper namespace="com.itwillbs.mappers.orderMapper">
   
   
-	  <!-- 주문정보 넣기 -->
-	  <insert id="insertOrder">
-		INSERT INTO order_info(member_id, product_id, basket_id, receiver_name, receiver_tel, address, status, date)
-	  	VALUES(#{member_id}, #{product_id}, #{basket_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})
-	  </insert>
-  
+	<!-- 주문정보 넣기 -->
+	<insert id="insertOrder">
+			INSERT INTO order_info(member_id, product_id, basket_id, receiver_name, receiver_tel, address, status, date)
+			VALUES
+				(#{member_id}, #{product_id}, #{basket_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})
+	</insert>
+	
+	<!-- 주문내역 조회 -->
+	<select id="orderList" resultType="com.itwillbs.domain.OrderDTO">
+  		SELECT * 
+  		FROM order_info o
+  		JOIN member m
+  		WHERE m.id=#{member_id}
+  	</select>
+	
+  		
   </mapper>
   

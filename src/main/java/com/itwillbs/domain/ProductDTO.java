@@ -4,12 +4,25 @@ import java.sql.Timestamp;
 
 public class ProductDTO {
 
-	private int id;
+	private int bid;
+	private int pid;
 	private String subject;
 	private String img;
 	private String content;
 	private int amount;
 	private Timestamp date;
+	public int getBid() {
+		return bid;
+	}
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
 	private int count;
 	private int subprice;
 	
@@ -26,12 +39,7 @@ public class ProductDTO {
 		this.count = count;
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getSubject() {
 		return subject;
 	}

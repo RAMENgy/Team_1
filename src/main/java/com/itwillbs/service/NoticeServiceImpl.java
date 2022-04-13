@@ -1,5 +1,6 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.dao.NoticeDAO;
 import com.itwillbs.domain.NoticeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.QnaDTO;
 
 @Service
 public class NoticeServiceImpl implements NoticeService{
@@ -18,50 +20,80 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public void writeBoard(NoticeDTO noticeDTO) {
-		// TODO Auto-generated method stub
+		
+		noticeDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		
+		noticeDAO.writeBoard(noticeDTO);
 		
 	}
 
-	@Override
-	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<NoticeDTO> getBoardList(PageDTO pageDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+	
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+	
+		pageDTO.setStartRow(startRow-1);
+		return noticeDAO.getBoardList(pageDTO);
 	}
 
 	@Override
 	public int getBoardCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.getBoardCount();
 	}
 
 	@Override
 	public NoticeDTO getBoard(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getBoard(num);
 	}
 
 	@Override
 	public void updateReadcount(int num) {
-		// TODO Auto-generated method stub
+		noticeDAO.updateReadcount(num);
 		
 	}
 
 	@Override
 	public void updateBoard(NoticeDTO noticeDTO) {
-		// TODO Auto-generated method stub
+		noticeDAO.updateBoard(noticeDTO);
 		
 	}
 
 	@Override
 	public void deleteBoard(int num) {
-		// TODO Auto-generated method stub
+		noticeDAO.deleteBoard(num);
 		
+	}
+	
+	@Override
+	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO) {
+	// pageSize , pageNum 가져옴
+	// currentPage, startRow , endRow 구하기 
+	
+	int currentPage=Integer.parseInt(pageDTO.getPageNum());
+	int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+	int endRow=startRow+pageDTO.getPageSize()-1;
+	
+	pageDTO.setCurrentPage(currentPage);
+	pageDTO.setStartRow(startRow);
+	pageDTO.setEndRow(endRow);
+	
+
+	pageDTO.setStartRow(startRow-1);
+		
+		
+		return noticeDAO.getBoardListSearch(pageDTO);
+	}
+
+	@Override
+	public int getBoardCountSearch(PageDTO pageDTO) {
+		return noticeDAO.getBoardCountSearch(pageDTO);
 	}
 	
 }

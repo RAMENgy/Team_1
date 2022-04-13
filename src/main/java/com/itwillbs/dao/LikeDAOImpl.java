@@ -48,6 +48,11 @@ public class LikeDAOImpl implements LikeDAO {
 	public int getBoardCountSearch(RecipeDTO rDTO) {
 		return sqlSession.selectOne(namespace+".getBoardCountSearch", rDTO);
 	}
+
+	@Override
+	public List<LikeDTO> getReList(RecipeDTO rDTO) {
+		return sqlSession.selectList(namespace+".getReList", rDTO);
+	}
 	
 	
 }
