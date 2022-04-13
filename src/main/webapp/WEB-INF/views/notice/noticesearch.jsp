@@ -38,7 +38,7 @@
                     <div class="breadcrumb-text product-more">
                         <a href="./home.html"><i class="fa fa-home"></i> Home</a>
                         <a href="./center.html">Center</a>
-                        <span>QnA</span>
+                        <span>Notice</span>
                     </div>
                 </div>
             </div>
@@ -55,54 +55,60 @@
 					<th>제목</th> 
 					<th>작성자</th> 
 					<th>작성일자</th> 
-					<th>조회수</th>
 				</tr>
 			</thead>
 
-	<c:forEach var="qDTO" items="${boardList }">
-		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
-    		<td>${qDTO.id}</td>
-    		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.member_id}</td>
-    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
-    		<td>${qDTO.readcount}</td>
+	<c:forEach var="nDTO" items="${boardList }">
+		<tr onclick="location.href='${pageContext.request.contextPath }/notice/content?id=${nDTO.id}'">
+    		<td>${nDTO.id}</td>
+    		<td class="left">${nDTO.subject}</td>
+    		<td>${nDTO.member_id}</td>
+    		<td><fmt:formatDate value="${nDTO.date}" pattern="yyyy.MM.dd"/> </td>
 		</tr> 
 	</c:forEach> 
 	
 		<tr>
 			<td colspan="10">
-				<form action="${pageContext.request.contextPath }/board/search" method="get">
+				
+				<form action="${pageContext.request.contextPath }/notice/search" method="get">
 					<input type="text" name="search" class="input_box">
 					<input type="submit" value="검색" class="btn btn-default">
 					</form>
 				
-				
 			</td> 
 		</tr>
 		</table>
-<!-- <input type="text" class="input_box" name="검색" >
-				<input type="button" class="btn btn-default" value="검색" maxlength="20"> -->
-				
-<c:if test="${!empty sessionScope.userid }">
+		
+<%-- <input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/notice/write'"> --%>
 
-<input type="button" value="글쓰기" class="btn btn-default"
-onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
+<c:if test="${ ! empty sessionScope.userid }">
+
+	<c:if test="${sessionScope.userid eq 'admin'}">
+	
+<input type="button" value="글쓰기" class="btn btn-default" 
+onclick="location.href='${pageContext.request.contextPath }/notice/write'">		
+<input type="button" value="글수정" class="btn" 
+onclick="location.href='${pageContext.request.contextPath }/notice/update?num=${noticeDTO.num}'">
+<input type="button" value="글삭제" class="btn" 
+onclick="location.href='${pageContext.request.contextPath }/notice/delete?num=${noticeDTO.num}'">	
 	
 	</c:if>
+	
+</c:if>
 
 	
 <c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
+<a href="${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
 </c:if>
 
 <c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${i}">${i} </a>
+<a href="${pageContext.request.contextPath }/notice/list?pageNum=${i}">${i} </a>
 </c:forEach>
 
 <c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
-</c:if>	
-	
+<a href="${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
+</c:if>		
+
 	</div>
 </div>
 		

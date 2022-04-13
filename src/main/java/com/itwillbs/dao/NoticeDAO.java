@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itwillbs.domain.NoticeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.QnaDTO;
 
 public interface NoticeDAO {
 	
@@ -22,4 +23,9 @@ public void writeBoard(NoticeDTO noticeDTO);
 	public void updateBoard(NoticeDTO noticeDTO);
 	
 	public void deleteBoard(int num);
+	
+	// 검색
+	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO);
+			
+	public int getBoardCountSearch(PageDTO pageDTO);
 }
