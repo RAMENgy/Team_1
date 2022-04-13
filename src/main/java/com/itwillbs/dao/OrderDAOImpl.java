@@ -1,5 +1,7 @@
 package com.itwillbs.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,5 +21,11 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public void insertOrder(OrderDTO orderDTO) {
 		sqlSession.insert(namespace+".insertOrder", orderDTO);
+	}
+	
+	//주문내역 조회
+	@Override
+	public List<OrderDTO> orderList(int member_id){
+		return sqlSession.selectList(namespace+".orderList", member_id);
 	}
 }

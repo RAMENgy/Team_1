@@ -211,7 +211,7 @@
                         <ul class="dropdown">
                             <li><a href="#">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
-                            <li><a href="#">구매내역보기</a></li>
+                            <li><a href="${pageContext.request.contextPath }/order/orderlist"">구매내역보기</a></li>
                             <li><a href="#">나의 QnA</a></li>
                             <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
                             <li><a href="#">???</a></li>

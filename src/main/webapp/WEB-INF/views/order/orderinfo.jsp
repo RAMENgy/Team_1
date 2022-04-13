@@ -73,7 +73,12 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="${pageContext.request.contextPath }/order/insertOrder" class="checkout-form">
+            <form action="${pageContext.request.contextPath }/order/insertorder" class="checkout-form">
+            	<c:forEach var="basketList" items="${basketList }">
+            		<input type="hidden" value="${memberDTO.id }" name="member_id">
+	            	<input type="hidden" value="${basketList.bid }" name="basket_id">
+    	        	<input type="hidden" value="${basketList.pid }" name="product_id">
+            	</c:forEach>
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- <div class="checkout-content">
@@ -137,7 +142,7 @@
                                     </c:forEach>
                                     <li class="total-price">총액 <span>${map.sumMoney }</span></li>
                                 </ul>
-                                <div class="payment-check">
+                                <!-- <div class="payment-check">
                                     <div class="pc-item">
                                         <label for="pc-check">
                                             Cheque Payment
@@ -152,9 +157,9 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="order-btn">
-                                    <button type="submit" class="site-btn place-btn">Place Order</button>
+                                    <button type="submit" class="site-btn place-btn">주문하기</button>
                                 </div>
                             </div>
                         </div>
