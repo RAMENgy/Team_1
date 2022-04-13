@@ -80,6 +80,7 @@
                                  
                                         <div class="catagory-name"></div>
                                         <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
+                                           	<img alt="" src="">
                                             <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">
