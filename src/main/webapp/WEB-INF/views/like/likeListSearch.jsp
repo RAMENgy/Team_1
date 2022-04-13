@@ -84,7 +84,7 @@
                             <h4>최근 작성된 레시피</h4>
                             <div class="recent-blog">
                             <c:forEach var="reDTO" items="${reList }">
-                                <a href="#" class="rb-item">
+                                <a href="${pageContext.request.contextPath }/recipeboard/content?id=${reDTO.id}" class="rb-item">
                                     <div class="rb-pic">
                                         <img src="${reDTO.img }" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                     </div>
@@ -147,7 +147,7 @@
                                 <div class="bi-text">
                                 	<img src="${lDTO.img }" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"/>
                                 	<!-- img칼럼 값 없을때 "이미지 없음" 표시 -->
-                                    <a href="./blog-details.html">
+                                    <a href="${pageContext.request.contextPath }/recipeboard/content?id=${lDTO.re_id}">
                                         <h4>${lDTO.id}. ${lDTO.subject } </h4>
                                     </a>
                                     <p>
