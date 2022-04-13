@@ -62,4 +62,9 @@ public class LikeServiceImpl implements LikeService{
 		return likeDAO.getBoardCountSearch(rDTO);
 	}
 
+	@Override
+	public List<LikeDTO> getReList(RecipeDTO rDTO) {
+		return likeDAO.getReList(rDTO);
+	}
+
 }
