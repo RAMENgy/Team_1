@@ -78,6 +78,7 @@
 								<c:forEach var="FBCDTO" items="${CommentList }">
 								<!-- 댓글 리스트 받아오기 -->
 									<tr>
+										<!-- id코드로 id 이름 가져오기 -->
 										<td>${FBCDTO.member_id}</td>
 										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
 										<td>${FBCDTO.content}</td>
