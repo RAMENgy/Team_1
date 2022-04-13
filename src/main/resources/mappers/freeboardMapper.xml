@@ -34,8 +34,21 @@
 		select max(id) from freeboard
 	</select>
 	
+	<select id="getMaxNumComment" resultType="java.lang.Integer">
+		select max(id) from freeboard_comment
+	</select>
+	
 	<update id="updateBoard">
 		update freeboard set subject=#{subject}, content=#{content} where id=#{id}
 	</update>
+	
+	<insert id="writeComment">
+		insert into freeboard_comment(id,member_id,freeboard_id,content,date)
+		values(#{id},#{member_id},#{freeboard_id},#{content},#{date})
+	</insert>
+	
+	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
+		select * from freeboard_comment where freeboard_id=#{content_id}
+	</select>
 	
 </mapper>

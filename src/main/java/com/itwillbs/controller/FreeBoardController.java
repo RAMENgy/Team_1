@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.FreeBoardService;
@@ -71,9 +72,11 @@ public class FreeBoardController {
 		}
 		int intId = Integer.parseInt(id);
 		FreeBoardDTO FBDTO = freeBoardService.getBoard(intId);
-		
 		model.addAttribute("FBDTO", FBDTO);
 		
+		List<FBCommentDTO> CommentList=freeBoardService.getCommentList(intId);
+		
+		model.addAttribute("CommentList", CommentList);
 		
 		return "freeboard/fcontent";
 	}
@@ -85,7 +88,7 @@ public class FreeBoardController {
 	
 	@RequestMapping(value = "/free/writePro", method = RequestMethod.POST)
 	public String freeWritePro(FreeBoardDTO FBDTO){
-		FBDTO.setId(freeBoardService.getMaxNum()+1);
+		FBDTO.setId(freeBoardService.getMaxNum(true)+1);
 		FBDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		
 		freeBoardService.writeBoard(FBDTO);
@@ -116,5 +119,13 @@ public class FreeBoardController {
 	
 	/* 아래서 부터는 Comment */
 	
+	@RequestMapping(value = "/free/writeComment", method = RequestMethod.POST)
+	public String freeWriteComment(FBCommentDTO FBCDTO, HttpSession session){
+		FBCDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		FBCDTO.setMember_id((int) session.getAttribute("id"));
+		FBCDTO.setId(freeBoardService.getMaxNum(false)+1);
+		freeBoardService.writeComment(FBCDTO);
+		return "redirect:/free/content?id="+FBCDTO.getFreeboard_id();
+	}
 	
 }

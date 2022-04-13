@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -56,7 +57,7 @@
                     <div class="row container">
 		                <table class="table">
 							<tr><td>글번호</td><td>${FBDTO.id }</td>
-							     <td>글쓴날짜</td><td>${FBDTO.date }</td></tr>
+							     <td>글쓴날짜</td><td><fmt:formatDate value="${FBDTO.date}" pattern="yyyy.MM.dd"/></td></tr>
 							<tr><td>글쓴이</td><td>${FBDTO.member_id }</td>
 							    <td>조회수</td><td>${FBDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="3">${FBDTO.subject }</td></tr>
@@ -69,15 +70,17 @@
 						 	<thead>
 								<tr>
 									<th>작성자</th>
-									<th>댓글내용 ㅇㅇㅇㅇㅇㅇ</th>
+									<th>날짜</th>
+									<th>댓글</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="FBDTO" items="${boardList }">
+								<c:forEach var="FBCDTO" items="${CommentList }">
 								<!-- 댓글 리스트 받아오기 -->
 									<tr>
-										<td>작성자</td>
-										<td>내용</td>
+										<td>${FBCDTO.member_id}</td>
+										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
+										<td>${FBCDTO.content}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -90,10 +93,11 @@
 						<div class="blog-details-inner">
 							<div class="leave-comment">
 	                            <h4>댓글 남기기</h4>
-	                            <form action="#" class="comment-form">
+	                            <form class="comment-form" action="${pageContext.request.contextPath }/free/writeComment" method="post">
 	                                <div class="">
 	                                    <div class="col-lg-12">
-	                                        <textarea placeholder="Messages"></textarea>
+	                                    	<input type="hidden" name="freeboard_id" value="${FBDTO.id }">
+	                                        <textarea placeholder="Messages" name="content"></textarea>
 	                                        <button type="submit" class="site-btn">Send message</button>
 	                                        <!-- ajax? -->
 	                                    </div>
