@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -73,11 +75,12 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="${pageContext.request.contextPath }/order/insertorder" class="checkout-form">
-            	<c:forEach var="basketList" items="${basketList }">
-            		<input type="hidden" value="${memberDTO.id }" name="member_id">
-	            	<input type="hidden" value="${basketList.bid }" name="basket_id">
-    	        	<input type="hidden" value="${basketList.pid }" name="product_id">
+            <form action="${pageContext.request.contextPath }/order/insertorder" method="post" class="checkout-form">
+            	<input type="hidden" value="${memberDTO.id }" name="member_id">
+            	<c:forEach var="basketList" items="${basketList }" varStatus="status">
+	            	<input type="hidden" value="${basketList.bid }" name="basketlist[${status.index }].id">
+    	        	<input type="hidden" value="${basketList.pid }" name="basketlist[${status.index }].product_id">
+    	        	<input type="hidden" value="${basketList.count }" name="basketlist[${status.index }].count">
             	</c:forEach>
                 <div class="row">
                     <div class="col-lg-6">
@@ -138,9 +141,9 @@
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
                                     <c:forEach var="basketList" items="${basketList }">
-                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span>${basketList.subprice }</span></li>
+                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
-                                    <li class="total-price">총액 <span>${map.sumMoney }</span></li>
+                                    <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">
