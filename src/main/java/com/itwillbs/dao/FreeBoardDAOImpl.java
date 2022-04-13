@@ -41,11 +41,8 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public Integer getMaxNum(boolean isFreeBoard) {
-		if (isFreeBoard) {
-			return sqlSession.selectOne(namespace+".getMaxNum");
-		} else {
-			return sqlSession.selectOne(namespace+".getMaxNumComment");
-		}
+		if (isFreeBoard) return sqlSession.selectOne(namespace+".getMaxNum");
+		else return sqlSession.selectOne(namespace+".getMaxNumComment");
 	}
 
 	@Override
