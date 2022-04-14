@@ -143,16 +143,8 @@
                                     <c:forEach var="basketList" items="${basketList }">
                                     <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
-<<<<<<< HEAD
-                                    <li class="total-price">총액 <span>${map.sumMoney - sessionScope.point}</span></li>
-                                    <li>
-                                    <label for="point">
-                                        포인트 사용하기
-                                        <input type="checkbox" id="point">
-                                    </label></li>
-=======
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
+                                    <li class="total-price">사용 가능 포인트 <span>${sessionScope.point }원</span></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">
