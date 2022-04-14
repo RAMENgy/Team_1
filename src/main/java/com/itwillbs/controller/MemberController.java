@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -61,6 +62,20 @@ public class MemberController {
 		
 		}
 	  
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request) {
+		String ca = request.getParameter("casearch");
+		
+		String search = request.getParameter("search");
+		if(ca.equals("food")) {
+			return "redirect:/food/search?search-food="+search;
+			
+		} else if(ca.equals("recipe")) {
+			return "main/main";
+		}
+		return "main/main";
 	}
 	 
 

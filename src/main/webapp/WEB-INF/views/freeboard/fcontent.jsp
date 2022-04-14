@@ -58,7 +58,7 @@
 		                <table class="table">
 							<tr><td>글번호</td><td>${FBDTO.id }</td>
 							     <td>글쓴날짜</td><td><fmt:formatDate value="${FBDTO.date}" pattern="yyyy.MM.dd"/></td></tr>
-							<tr><td>글쓴이</td><td>${FBDTO.member_id }</td>
+							<tr><td>글쓴이</td><td>${FBDTO.name }</td>
 							    <td>조회수</td><td>${FBDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="3">${FBDTO.subject }</td></tr>
 							
@@ -79,7 +79,7 @@
 								<!-- 댓글 리스트 받아오기 -->
 									<tr>
 										<!-- id코드로 id 이름 가져오기 -->
-										<td>${FBCDTO.member_id}</td>
+										<td>${FBCDTO.name}</td>
 										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
 										<td>${FBCDTO.content}</td>
 									</tr>

@@ -69,6 +69,11 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FBCommentDTO> getCommentList(int content_id) {
 		return sqlSession.selectList(namespace+".getCommentList", content_id);
 	}
+
+	@Override
+	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getSearchList", pageDTO);
+	}
 	
 	
 	

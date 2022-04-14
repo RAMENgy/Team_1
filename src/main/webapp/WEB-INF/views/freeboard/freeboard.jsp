@@ -74,7 +74,7 @@
 									<tr onclick="location.href='${pageContext.request.contextPath }/free/content?id=${FBDTO.id}'">
 										<td>${FBDTO.id}</td>
 										<td>${FBDTO.subject}</td>
-										<td>${FBDTO.member_id}</td>
+										<td>${FBDTO.name}</td>
 										<!-- TODO member_id 기반 name get 하기 -->
 										<td><fmt:formatDate value="${FBDTO.date}" pattern="yyyy.MM.dd"/></td>
 										<td>${FBDTO.readcount}</td>

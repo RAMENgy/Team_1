@@ -78,6 +78,20 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public List<FBCommentDTO> getCommentList(int content_id) {
 		return freeBoardDAO.getCommentList(content_id);
 	}
+
+	@Override
+	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO) {
+		int currentPage =	Integer.parseInt(pageDTO.getPageNum());
+		int startRow 	= 	(currentPage-1) * pageDTO.getPageSize() + 1;
+		int endRow		=	startRow + pageDTO.getPageSize() - 1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		pageDTO.setStartRow(startRow-1);
+		
+		return freeBoardDAO.getSearchList(pageDTO);
+	}
 	
 	
 	

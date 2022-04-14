@@ -55,9 +55,14 @@
                 </div>
                 <div class="col-lg-7 col-lg-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">통합검색</button>
-                        <form action="#" class="input-group">
-                            <input type="text" placeholder="검색어를 입력하세요.">
+<!--                         <button type="button" class="category-btn">통합검색</button> -->
+                        <form action="${pageContext.request.contextPath }/search" class="input-group">
+							<select name="casearch">
+							<option>---카테고리를 선택하세요---</option>
+							<option value="food">식품</option>
+							<option value="recipe">레시피</option>
+							</select>
+                            <input type="text" name="search" placeholder="검색어를 입력하세요.">
                             
                         </form>
                     </div>
@@ -166,21 +171,21 @@
     <div class="nav-item">
         <div class="container">
             <div class="nav-depart">
-                <div class="depart-btn">
-                    <i class="ti-menu"></i>
-                    <span>카테고리</span>
-                    <!-- 불필요시 삭제 -->
-                    <ul class="depart-hover">
-                        <li class="active"><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                    </ul>
-                </div>
+<!--                 <div class="depart-btn"> -->
+<!--                     <i class="ti-menu"></i> -->
+<!--                     <span>카테고리</span> -->
+<!--                     불필요시 삭제 -->
+<!--                     <ul class="depart-hover"> -->
+<!--                         <li class="active"><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>

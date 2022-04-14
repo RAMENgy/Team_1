@@ -9,6 +9,7 @@ public class FreeBoardDTO {
 	private String content;
 	private int readcount;
 	private Timestamp date;
+	private String name;
 	
 	public int getId() {
 		return id;
@@ -45,6 +46,12 @@ public class FreeBoardDTO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
