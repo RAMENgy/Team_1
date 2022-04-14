@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select f.id, m.name, f.subject, f.content,
+		select f.id, f.member_id, m.name, f.subject, f.content,
 		f.readcount, f.date  from freeboard f
 		join member m
 		on f.member_id=m.id where f.id=#{id}
