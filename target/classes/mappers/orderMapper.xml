@@ -6,20 +6,57 @@
   <mapper namespace="com.itwillbs.mappers.orderMapper">
   
   
-	<!-- 주문정보 넣기 -->
-	<insert id="insertOrder">
-			INSERT INTO order_info(member_id, product_id, basket_id, receiver_name, receiver_tel, address, status, date)
-			VALUES
-				(#{member_id}, #{product_id}, #{basket_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})
+	<!-- 주문 정보 넣기 -->
+	<insert id="insertOrder1">
+		INSERT INTO order_info(member_id, receiver_name, receiver_tel, address, status, date)
+		VALUES(#{member_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})	
+	</insert>  
+	
+	<!-- 주문 상품 정보 넣기 -->
+	<insert id="insertOrder2" parameterType="java.util.List">
+		INSERT INTO order_info_product(order_info_id, product_id, basket_id, count)
+		VALUES
+			<foreach collection="basketlist" item="item" separator=",">
+				(#{order_info_id}, #{item.product_id}, #{item.id}, #{item.count})
+			</foreach>
 	</insert>
 	
 	<!-- 주문내역 조회 -->
 	<select id="orderList" resultType="com.itwillbs.domain.OrderDTO">
   		SELECT * 
-  		FROM order_info o
-  		JOIN member m
-  		WHERE m.id=#{member_id}
+  		FROM order_info
+  		WHERE member_id=#{member_id}
   	</select>
+  	
+	<!-- 주문 상세 내역 -->
+	<select id="orderDetail" resultType="com.itwillbs.domain.OrderDTO">
+		SELECT *
+		FROM order_info
+		WHERE id=#{id}
+	</select>
+
+  	<!-- 주문상품 내역 -->
+  	<select id="orderpList" resultType="com.itwillbs.domain.BasketDTO">
+  		SELECT *, (p.amount*op.count) subprice
+  		FROM order_info_product op
+  		JOIN product p
+  		ON p.id=op.product_id
+  		WHERE op.order_info_id=#{id}
+  	</select>
+  	
+  	<!-- 상세주문 합계 -->
+  	<select id="sumMoney" resultType="java.lang.Integer">
+  		SELECT ifnull(sum((p.amount)*(op.count)),0)
+  		FROM order_info_product op
+  		JOIN product p
+  		ON p.id = op.product_id
+  		WHERE op.order_info_id=#{id}
+  	</select>
+  	
+  	<select id="getMaxId" resultType="java.lang.Integer">
+		SELECT max(id)
+		FROM order_info
+	</select>
 	
   		
   </mapper>
