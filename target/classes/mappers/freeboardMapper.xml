@@ -61,7 +61,7 @@
 		on f.member_id = m.id
 		where f.freeboard_id=#{content_id}
 	</select>
-	
+	  
 	<select id="getSearchList" resultType="com.itwillbs.domain.FreeBoardDTO">
 		select f.id, m.name, f.subject, f.content,
 		f.readcount, f.date  from freeboard f
