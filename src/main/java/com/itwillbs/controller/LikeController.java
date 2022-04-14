@@ -1,6 +1,8 @@
 package com.itwillbs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -11,16 +13,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecipeDTO;
+import com.itwillbs.service.BasketService;
 import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
 
 @Controller
 public class LikeController {
 	
+	
+	@Inject
+	private BasketService basketService;
 	
 	@Inject
 	private LikeService likeService;
@@ -30,6 +37,9 @@ public class LikeController {
 	
 	@RequestMapping(value = "like/likelist", method = RequestMethod.GET)
 	public String likelist(Model model, HttpSession session,HttpServletRequest request) {
+		// ----------------------------------
+		Map<String, Object> map=new HashMap<>();
+		// ------------------------------------
 		
 		System.out.println("LikeBoardController likeList()");
 		String userid = (String)session.getAttribute("userid");
@@ -41,6 +51,16 @@ public class LikeController {
 		int member_id = ckDTO.getId();
 		System.out.println("회원번호 : "+member_id);
 		lDTO.setMember_id(ckDTO.getId());
+		// -------------------------------
+		List<BasketDTO> basketList = basketService.basketList(member_id);
+		
+		model.addAttribute("basketList", basketList);
+		
+		int sumMoney = basketService.sumMoney(member_id);
+		map.put("sumMoney", sumMoney);
+		model.addAttribute("map", map);
+		// -------------------------------
+		
 		// likelist에 좋아요한 id값 = 현재 접속중인 id
 		
 		// 내가 좋아요 누른 항목 갯수 찾기

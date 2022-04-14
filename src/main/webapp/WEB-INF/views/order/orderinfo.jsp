@@ -10,7 +10,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>주문하기</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -140,7 +140,12 @@
                                     <c:forEach var="basketList" items="${basketList }">
                                     <li class="fw-normal">${basketList.subject } * ${basketList.count } <span>${basketList.subprice }</span></li>
                                     </c:forEach>
-                                    <li class="total-price">총액 <span>${map.sumMoney }</span></li>
+                                    <li class="total-price">총액 <span>${map.sumMoney - sessionScope.point}</span></li>
+                                    <li>
+                                    <label for="point">
+                                        포인트 사용하기
+                                        <input type="checkbox" id="point">
+                                    </label></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">
