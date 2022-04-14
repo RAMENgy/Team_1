@@ -95,16 +95,17 @@ public class QnaServiceImpl implements QnaService{
 	
 	
 
-	/*
-	 * @Override public void commentupdateBoard(QnaDTO qnaDTO) {
-	 * qnaDAO.commentupdateBoard(qnaDTO);
-	 * 
-	 * }
-	 * 
-	 * @Override public void commentdeleteBoard(int num) { qnaDAO.deleteBoard(num);
-	 * 
-	 * }
-	 */
+	@Override
+	public void commentupdateBoard(CommentDTO commentDTO) {
+		qnaDAO.commentupdateBoard(commentDTO);
+		
+	}
+
+	@Override
+	public void commentdeleteBoard(int num) {
+		qnaDAO.commentdeleteBoard(num);
+		
+	}
 
 	@Override
 	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO) {

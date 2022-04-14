@@ -82,17 +82,20 @@ public class QnaDAOImpl implements QnaDAO{
 		return sqlSession.selectOne(namespace+".getCommentBoard", qna_board_id);
 	}
 	
-	/*
-	 * @Override public void commentupdateBoard(QnaDTO qnaDTO) {
-	 * sqlSession.update(namespace+".commentupdateBoard", qnaDTO);
-	 * 
-	 * }
-	 * 
-	 * @Override public void commentdeleteBoard(int num) { int id=num;
-	 * sqlSession.delete(namespace+".commentdeleteBoard", id);
-	 * 
-	 * }
-	 */
+	
+
+	@Override
+	public void commentupdateBoard(CommentDTO commentDTO) {
+		sqlSession.update(namespace+".commentupdateBoard", commentDTO);
+		
+	}
+
+	@Override
+	public void commentdeleteBoard(int num) {
+		int id=num;
+		sqlSession.delete(namespace+".commentdeleteBoard", id);
+		
+	}
 
 	@Override
 	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO) {

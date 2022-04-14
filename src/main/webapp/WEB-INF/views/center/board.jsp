@@ -46,6 +46,8 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
+ 
+                
 <div class="col-lg-9 order-1 order-lg-2">
     <div class="row container">
 		<table class="table table-hover" style="text-align: center;">
@@ -59,38 +61,77 @@
 				</tr>
 			</thead>
 
-	<c:forEach var="qDTO" items="${boardList }">
+	 <c:forEach var="qDTO" items="${boardList }">
+	<c:if test="${ ! empty sessionScope.id }">
+
+	<c:if test="${sessionScope.id eq qnaDTO.member_id}">
+	<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
+		<td>${qDTO.id}</td>
+    		<td class="left">${qDTO.subject}</td>
+    		<td>${qDTO.name}</td>
+    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
+    		<td>${qDTO.readcount}</td>
+    	</tr>
+		</c:if>
+	</c:if>
+	<c:if test="${sessionScope.userid eq 'admin' } ">
+		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
+		<td>${qDTO.id}</td>
+    		<td class="left">${qDTO.subject}</td>
+    		<td>${sessionScope.id } ${qDTO.name}${qDTO.member_id }</td>
+    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
+    		<td>${qDTO.readcount}</td>
+    	</tr>
+	</c:if> 	
+	
+	
+<%-- 	<c:if test="${ ! (sessionScope.id eq qnaDTO.member_id  || sessionScope.userid eq 'admin') } ">
+		<tr> 
+			
+	</c:if> --%>
+<%-- 	<c:if test="${empty sessionScope.id }">
+		<tr> 
+			
+    	</c:if> --%>
+    	
+			
+		</c:forEach>  
+		
+		<%-- <c:forEach var="qDTO" items="${boardList }">
 		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
     		<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.member_id}</td>
+    		<td>${qDTO.name}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
     		<td>${qDTO.readcount}</td>
 		</tr> 
-	</c:forEach> 
+	</c:forEach>  --%>
+	
+    		
+
+		
+		
+
 	
 		<tr>
 			<td colspan="10">
 				<form action="${pageContext.request.contextPath }/board/search" method="get">
 					<input type="text" name="search" class="input_box">
-					<input type="submit" value="검색" class="btn btn-default">
+					<input type="submit" value="검색" class="btn btn-outline-dark m-sm-1">
 					</form>
+			
 				
-				
-			</td> 
+				<c:if test="${!empty sessionScope.userid }">
+
+					<input type="button" value="글쓰기" class="btn btn-outline-dark m-sm-1"
+					onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
+	
+				</c:if>
+			</td>
+		 
 		</tr>
-		</table>
-<!-- <input type="text" class="input_box" name="검색" >
-				<input type="button" class="btn btn-default" value="검색" maxlength="20"> -->
-				
-<c:if test="${!empty sessionScope.userid }">
+	</table>
 
-<input type="button" value="글쓰기" class="btn btn-default"
-onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
-	
-	</c:if>
-
-	
 <c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
 <a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
 </c:if>
@@ -103,8 +144,10 @@ onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
 <a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
 </c:if>	
 	
-	</div>
+
+  </div>
 </div>
+          
 		
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

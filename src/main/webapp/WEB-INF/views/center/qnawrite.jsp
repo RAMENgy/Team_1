@@ -59,10 +59,9 @@
     <div class="row container"> -->
 <div id="tablebox">   
 <form action="${pageContext.request.contextPath }/board/qnawritePro" method="post">
+	<input type="hidden" name="member_id" value="${sessionScope.id}"> 
 	<table class="table table-hover" style="text-align: center;">
-		<tr><td>작성자</td>
-    			<td><input type="text" name="member_id" value="${sessionScope.id}" ></td></tr> 
-    	<thead>
+
 			<tr><td>제목</td>
    				<td><input type="text" name="subject" class="form-control"></td></tr>
 			<tr><td>내용</td>

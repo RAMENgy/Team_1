@@ -29,11 +29,11 @@ public interface QnaDAO {
 	
 	public CommentDTO getCommentBoard(int num);
 	
-	/*
-	 * public void commentupdateBoard(QnaDTO qnaDTO);
-	 * 
-	 * public void commentdeleteBoard(int num);
-	 */
+	
+	public void commentupdateBoard(CommentDTO commentDTO);
+	
+	public void commentdeleteBoard(int num);
+	
 	
 	
 	// 검색

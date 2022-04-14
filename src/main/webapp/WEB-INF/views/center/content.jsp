@@ -69,7 +69,7 @@
 <tr><td>제목</td><td colspan="3">${qnaDTO.subject}</td></tr>
 <tr><td>글내용</td><td colspan="3">${qnaDTO.content}</td></tr>
 
-
+<!-- 관리자, 작성자만 볼 수 있게 -->
 
 <tr>
 	<td colspan="10">
@@ -107,12 +107,14 @@
    				</td></tr>
 		</table>  
 	 </c:if> 
-		
+
+<!-- 댓글 수정  -->		
 	<c:if test="${ sessionScope.userid eq 'admin'  }">
 	<div id="tablebox">
-	<form action="${pageContext.request.contextPath }/board/commentupdate" method="post">
+	<form action="${pageContext.request.contextPath }/board/commentupdatePro" method="post">
 	
-	<input type="hidden" name="id" value="${commentDTO.id}"> 
+	<input type="hidden" name="id" value="${commentDTO.id}">
+	<input type="hidden" name="qna_board_id" value="${commentDTO.qna_board_id}"> 
 
 		<table class="table table-hover" style="text-align: center;">
 			<thead>
@@ -148,7 +150,6 @@
 	<form action="${pageContext.request.contextPath }/board/commentPro" method="post">
 	
 	<input type="hidden" name="qna_board_id" value="${qnaDTO.id}"> 
-<%-- <input type="hidden" name="id" value="${commentDTO.id}"> --%> 
 		<table class="table table-hover" style="text-align: center;">
 			<thead>
 				<tr><td>답변</td>

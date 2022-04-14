@@ -74,9 +74,9 @@
 				
 				<form action="${pageContext.request.contextPath }/board/search" method="get">
 					<input type="text" name="search" class="input_box">
-					<input type="submit" value="검색" class="btn btn-default">
+					<input type="submit" value="검색" class="btn">
 					</form>
-				<input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
+				<input type="button" value="글쓰기" class="btn" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
 			</td> 
 		</tr>
 		</table>
