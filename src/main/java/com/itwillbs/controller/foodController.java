@@ -421,9 +421,9 @@ public class foodController {
 	
 			foodService.basket(basketDTO);
 		
-			
+		 
 			// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
-			// 	response.sendRedirect("/board/list");
+			// 	response.sendRedirect("/board/list";
 			return "redirect:/food/list";
 
 	}
