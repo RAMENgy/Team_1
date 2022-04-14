@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.PageDTO;
 @Repository
@@ -101,6 +102,14 @@ public class FoodDAOImpl implements FoodDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".getfood",id);
 				
+	}
+	@Override
+	public void basket(BasketDTO basketDTO) {
+		sqlSession.insert(namespace+".basket", basketDTO);		
+	}
+	@Override
+	public Integer basketgetMaxNum() {
+		return sqlSession.selectOne(namespace+".basketgetMaxNum");
 	}
 
 }

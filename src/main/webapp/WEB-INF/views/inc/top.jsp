@@ -22,7 +22,8 @@
 				<c:if test="${ ! empty sessionScope.userid }">
 				    <a href="${pageContext.request.contextPath }/member/logout" class="login-panel"><i class="fa fa-user-times"></i>로그아웃　</a>
 				    <a href="${pageContext.request.contextPath }/member/update" class="login-panel"><i class="fa fa-user-circle"></i>정보수정　</a>	
-					<span class="login-panel">${sessionScope.name }님　</span> 
+					<span class="login-panel">${sessionScope.name }님
+					현재포인트 : <span style="color: blue;">${sessionScope.point}</span>점　</span> 
 				</c:if>
                 <c:if test="${ empty sessionScope.userid }">
 					<a href="${pageContext.request.contextPath }/member/join" class="login-panel"><i class="fa fa-user-plus"></i>Join Us　</a>
@@ -54,9 +55,14 @@
                 </div>
                 <div class="col-lg-7 col-lg-7">
                     <div class="advanced-search">
-                        <button type="button" class="category-btn">통합검색</button>
-                        <form action="#" class="input-group">
-                            <input type="text" placeholder="검색어를 입력하세요.">
+<!--                         <button type="button" class="category-btn">통합검색</button> -->
+                        <form action="${pageContext.request.contextPath }/search" class="input-group">
+							<select name="casearch">
+							<option>---카테고리를 선택하세요---</option>
+							<option value="food">식품</option>
+							<option value="recipe">레시피</option>
+							</select>
+                            <input type="text" name="search" placeholder="검색어를 입력하세요.">
                             
                         </form>
                     </div>
@@ -96,7 +102,7 @@
                                                     기능 고민중 불필요시 삭제 -->
                                             		</tr>
                                         		</c:when>
-                           						<c:when test="${empty basketList }">
+                           						<c:when test="${empty sessionScope.basketList }">
                            							<tr>
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
@@ -108,7 +114,7 @@
                                             		</tr>
                            						</c:when>
                            						<c:otherwise>
-                                        		<c:forEach var="basketList" items="${basketList }">
+                                        		<c:forEach var="basketList" items="${sessionScope.basketList }">
                                            			<tr>
                                                		<td class="si-pic"><img src="${basketList.img }" alt=""></td>
                                                 	<td class="si-text">
@@ -165,21 +171,21 @@
     <div class="nav-item">
         <div class="container">
             <div class="nav-depart">
-                <div class="depart-btn">
-                    <i class="ti-menu"></i>
-                    <span>카테고리</span>
-                    <!-- 불필요시 삭제 -->
-                    <ul class="depart-hover">
-                        <li class="active"><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                        <li><a href="#">???</a></li>
-                    </ul>
-                </div>
+<!--                 <div class="depart-btn"> -->
+<!--                     <i class="ti-menu"></i> -->
+<!--                     <span>카테고리</span> -->
+<!--                     불필요시 삭제 -->
+<!--                     <ul class="depart-hover"> -->
+<!--                         <li class="active"><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                         <li><a href="#">???</a></li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>

@@ -68,16 +68,20 @@
                    
                     <div class="product-list">
                         <div class="row">
+                        <form action="${pageContext.request.contextPath }/food/basket" method="post">
+                           <input type="hidden" name="member_id" value="${sessionScope.id}">
+                           <input type="hidden" name="product_id" value="${foodDTO.id}">
                            <table id="notice">
 							<tr><td>이름 :</td><td> ${foodDTO.subject}</td><tr>
 							<tr><td>가격 :</td><td> ${foodDTO.amount} 원</td><tr>
 							<tr><td>내용 :</td><td> ${foodDTO.content}</td><tr>
+							<tr><td>수량 :</td><td> <input type="number" name="count"></td><tr>
 							<tr><td>
-							<form action="#" method="get">
-							<button type="submit" class="site-btn login-btn">장바구니담기</button>
-							</form>
+						
+							<button type="submit" class="site-btn login-btn" name="basket">장바구니담기</button>
 							</td></tr>
                          </table>
+                         </form>
                         
                          
                         
