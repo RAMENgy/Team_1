@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.BasketService;
 import com.itwillbs.service.FoodService;
 import com.itwillbs.service.MemberService;
 
@@ -26,7 +28,8 @@ public class foodController {
 	private FoodService foodService;
 	@Inject
 	private MemberService memberService;
-	
+	@Inject
+	private BasketService basketService;
 	@RequestMapping(value = "/food/list", method = RequestMethod.GET)
 	public String food(HttpServletRequest request, Model model) {
 
@@ -415,12 +418,14 @@ public class foodController {
 	}
 	@RequestMapping(value = "/food/basket", method = RequestMethod.POST)
 	public String writePro(BasketDTO basketDTO) {
+	
+			foodService.basket(basketDTO);
 		
-		foodService.basket(basketDTO);
-		System.out.println();
-		// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
-		// 	response.sendRedirect("/board/list");
-		return "redirect:/food/list";
+			
+			// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
+			// 	response.sendRedirect("/board/list");
+			return "redirect:/food/list";
+
 	}
 	
 	 

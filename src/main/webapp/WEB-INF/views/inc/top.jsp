@@ -114,7 +114,7 @@
                                             		</tr>
                            						</c:when>
                            						<c:otherwise>
-                                        		<c:forEach var="basketList" items="${sessionScope.basketList }">
+                                        		<c:forEach var="basketList" items="${basketList }">
                                            			<tr>
                                                		<td class="si-pic"><img src="${basketList.img }" alt=""></td>
                                                 	<td class="si-text">
