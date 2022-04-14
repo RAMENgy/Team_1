@@ -70,43 +70,72 @@
 <tr><td>글내용</td><td colspan="3">${qnaDTO.content}</td></tr>
 
 
-<!-- <div> -->
+
 <tr>
 	<td colspan="10">
 <c:if test="${ ! empty sessionScope.id }">
 
 	<c:if test="${sessionScope.id eq qnaDTO.member_id}">
 	
-		
+	<input type="button" value="글수정" class="btn" style="float: right;"
+	onclick="location.href='${pageContext.request.contextPath }/board/update?id=${qnaDTO.id}'">
+	<input type="button" value="글삭제" class="btn" style="float: right;"
+	onclick="location.href='${pageContext.request.contextPath }/board/delete?id=${qnaDTO.id}'">	
+
+	<input type="button" value="글목록" class="btn" style="float: right;"
+	onclick="location.href='${pageContext.request.contextPath }/board/list'">
+
 	</c:if>
 	
 	
 </c:if>
 
-<input type="button" value="글수정" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/board/update?id=${qnaDTO.id}'">
-<input type="button" value="글삭제" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/board/delete?id=${qnaDTO.id}'">	
 
-<input type="button" value="글목록" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/board/list'">
-<!-- </div> -->
 	</td>
 </tr>	
 </table>
 
 <!-- 댓글 내용  -->
 	<c:if test="${! empty commentDTO }">
+	  <c:if test="${ sessionScope.userid ne 'admin'  }"> 
 		<table id="tablebox" class="table">
 		<%-- <tr><td>작성자</td>
     			<td><input type="text" name="member_id" value="${sessionScope.id}" ></td></tr> --%>
     	<tr><td>답변</td><td colspan="3">${commentDTO.content}</td></tr>
     			<tr><td></td><td>
-    			<input type="button" value="답변삭제" class="btn" style="float: right;">
-   				<input type="button" value="답변수정" class="btn" style="float: right;">	
+    			
    				</td></tr>
 		</table>  
+	 </c:if> 
+		
+	<c:if test="${ sessionScope.userid eq 'admin'  }">
+	<div id="tablebox">
+	<form action="${pageContext.request.contextPath }/board/commentupdate" method="post">
 	
+	<input type="hidden" name="id" value="${commentDTO.id}"> 
+
+		<table class="table table-hover" style="text-align: center;">
+			<thead>
+				<tr><td>답변 수정</td>
+					
+    				<td><textarea name="content" rows="10" cols="40" class="form-control">${commentDTO.content }</textarea></td></tr>
+   			</thead>
+   			
+   			<tr>
+   				<td colspan="10">
+   				<input type="submit" value="답변수정" class="btn" style="float: right;">
+   				<input type="button" value="답변삭제" class="btn" style="float: right;" 
+				onclick="location.href='${pageContext.request.contextPath }/board/commentdelete?id=${commentDTO.id }'">
+   				</td>
+   				
+   			</tr>
+   			
+		</table>
+	</form>
+				
+   				
+</div>
+	</c:if> 
 	</c:if>
 
 
@@ -114,11 +143,12 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
 <!-- 댓글 쓰기 화면 -->
 
 	<c:if test="${ empty commentDTO }">
+	<c:if test="${ sessionScope.userid eq 'admin' }">
 	<div id="tablebox">
 	<form action="${pageContext.request.contextPath }/board/commentPro" method="post">
 	
-	<input type="hidden" name="qna_board_id" value="${qnaDTO.id}">
-	<input type="hidden" name="member_id" value="2">
+	<input type="hidden" name="qna_board_id" value="${qnaDTO.id}"> 
+<%-- <input type="hidden" name="id" value="${commentDTO.id}"> --%> 
 		<table class="table table-hover" style="text-align: center;">
 			<thead>
 				<tr><td>답변</td>
@@ -137,11 +167,8 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
 		</table>
 	</form>
 </div>
+</c:if>	
 	</c:if>
-
-<!-- 댓글 수정화면  -->
-
-
 
 
     <!-- Partner Logo Section Begin -->

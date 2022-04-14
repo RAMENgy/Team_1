@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.FreeBoardDAO;
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -42,15 +43,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void writeBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void writeBoard(FreeBoardDTO FBDTO) {
+		freeBoardDAO.writeBoard(FBDTO);
 	}
 
 	@Override
-	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getMaxNum(boolean isFreeBoard) {
+		Integer num = freeBoardDAO.getMaxNum(isFreeBoard); 
+		return num == null ? 0 : num;
 	}
 
 	@Override
@@ -60,16 +60,38 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public void updateBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void updateBoard(FreeBoardDTO FBDTO) {
+		freeBoardDAO.updateBoard(FBDTO);
 	}
 
 	@Override
 	public void deleteBoard(int id) {
 		freeBoardDAO.deleteBoard(id);
 	}
-	
+
+	@Override
+	public void writeComment(FBCommentDTO FBCDTO) {
+		freeBoardDAO.writeComment(FBCDTO);
+	}
+
+	@Override
+	public List<FBCommentDTO> getCommentList(int content_id) {
+		return freeBoardDAO.getCommentList(content_id);
+	}
+
+	@Override
+	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO) {
+		int currentPage =	Integer.parseInt(pageDTO.getPageNum());
+		int startRow 	= 	(currentPage-1) * pageDTO.getPageSize() + 1;
+		int endRow		=	startRow + pageDTO.getPageSize() - 1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		pageDTO.setStartRow(startRow-1);
+		
+		return freeBoardDAO.getSearchList(pageDTO);
+	}
 	
 	
 	

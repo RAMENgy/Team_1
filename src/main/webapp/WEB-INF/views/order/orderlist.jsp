@@ -18,17 +18,6 @@
 
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
-    <script type="text/javascript">
-    	function f1(id) {
-    	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
-    			location.href="basket/delete?id="+id
-    		} else {
-    			return;
-    		}
-    	}
-    	
-    </script>
-    
     
 </head>
 
@@ -69,6 +58,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                	<th>주문 일자</th>
                                     <th>Image</th>
                                     <th class="p-name">상품</th>
                                     <th>가격</th>
@@ -79,27 +69,27 @@
                             </thead>
                             <tbody>
                             	<c:choose>
-                           			<c:when test="${empty basketList }">
+                           			<c:when test="${empty orderList }">
                            				<tr>
-                           					<td class="cart-pic first-row" colspan="6">
-                                    			장바구니가 비었습니다.
+                           					<td class="cart-pic first-row" colspan="7">
+                                    			주문 내역이 없습니다.
                                     		</td>
                                     	</tr>
                            			</c:when>
                            			<c:otherwise>
-                           				<c:forEach var="basketList" items="${basketList }">
+                           				<c:forEach var="orderList" items="${orderList }">
                            				<tr>
                            					<td class="cart-pic first-row">
-                                    			${basketList.img}
+                                    			${orderList.date }
                                    			</td>
                                     		<td class="cart-title first-row">
-                                       			${basketList.subject }
+                                       			${orderList.product_id }
                                     		</td>
                                     		<td class="p-price first-row">
-                                    			${basketList.amount }
+                                    			
                                     		</td>
                                     		<td class="qua-col first-row">
-                                    			<form action="${pageContext.request.contextPath }/basket/update">
+                                    			<%-- <form action="${pageContext.request.contextPath }/basket/update">
                                     			<input type="hidden" value="${basketList.bid }" name="id">
                                        			<div class="quantity">
                                             		<div class="pro-qty">
@@ -107,9 +97,9 @@
                                             		</div>
                                         		</div>
                                         		<button type="submit">변경</button>
-                                        		</form>
+                                        		</form> --%>
                                    			</td>
-                                    		<td class="total-price first-row">${basketList.subprice }</td>
+                                    		<td class="total-price first-row"></td>
                                     		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.bid })"></i></td>
                                 		</tr> 
                                 		</c:forEach>

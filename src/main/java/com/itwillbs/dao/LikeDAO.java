@@ -18,4 +18,6 @@ public interface LikeDAO {
 	public List<LikeDTO> getBoardListSearch(RecipeDTO rDTO);
 	
 	public int getBoardCountSearch(RecipeDTO rDTO);
+	
+	public List<LikeDTO> getReList(RecipeDTO rDTO);
 }

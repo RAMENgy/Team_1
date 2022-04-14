@@ -65,7 +65,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
                     <div class="blog-sidebar">
                         <div class="search-form">
-                            <h4>내 좋아요 레시피 검색</h4>
+                            <h4>내가 좋아요한 레시피 검색</h4>
                             <form action="${pageContext.request.contextPath }/like/likesearch" method="get">
                                 <input type="text" placeholder="검색어를 입력하세요" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -81,44 +81,46 @@
 <!--                             </ul> -->
 <!--                         </div> -->
                         <div class="recent-post">
-                            <h4>최근 게시글 영역</h4>
+                            <h4>최근 작성된 레시피</h4>
                             <div class="recent-blog">
+                            <c:forEach var="reDTO" items="${reList }">
                                 <a href="#" class="rb-item">
                                     <div class="rb-pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-1.jpg" alt="">
+                                        <img src="${reDTO.img }" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                     </div>
                                     <div class="rb-text">
-                                        <h6>삭제 검토중 (없어도 될듯))</h6>
-                                        <p>ㅇㅇㅇㅇ<span>ㅇㅇㅇㅇ</span></p>
+                                        <h6>${reDTO.subject }</h6>
+                                        <p>${reDTO.member_id }<span> - <fmt:formatDate value="${reDTO.date }" pattern="yyyy.MM.dd"/></span></p>
                                     </div>
                                 </a>
-                                <a href="#" class="rb-item">
-                                    <div class="rb-pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-2.jpg" alt="">
-                                    </div>
-                                    <div class="rb-text">
-                                        <h6>아니면 select max(num)-1 from recipe</h6>
-                                        <p>Fashion <span>- May 19, 2019</span></p>
-                                    </div>
-                                </a>
-                                <a href="#" class="rb-item">
-                                    <div class="rb-pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-3.jpg" alt="">
-                                    </div>
-                                    <div class="rb-text">
-                                        <h6>select max(num)-2 from recipe 이런식으로 보여주기</h6>
-                                        <p>ddd <span>- ddd</span></p>
-                                    </div>
-                                </a>
-                                <a href="#" class="rb-item">
-                                    <div class="rb-pic">
-                                        <img src="${pageContext.request.contextPath }/resources/img/blog/recent-4.jpg" alt="">
-                                    </div>
-                                    <div class="rb-text">
-                                        <h6>The Personality Trait That Makes...</h6>
-                                        <p>Fashion <span>- May 19, 2019</span></p>
-                                    </div>
-                                </a>
+                            </c:forEach>
+<!--                                 <a href="#" class="rb-item"> -->
+<!--                                     <div class="rb-pic"> -->
+<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-2.jpg" alt=""> --%>
+<!--                                     </div> -->
+<!--                                     <div class="rb-text"> -->
+<!--                                         <h6>아니면 select max(num)-1 from recipe</h6> -->
+<!--                                         <p>Fashion <span>- May 19, 2019</span></p> -->
+<!--                                     </div> -->
+<!--                                 </a> -->
+<!--                                 <a href="#" class="rb-item"> -->
+<!--                                     <div class="rb-pic"> -->
+<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-3.jpg" alt=""> --%>
+<!--                                     </div> -->
+<!--                                     <div class="rb-text"> -->
+<!--                                         <h6>select max(num)-2 from recipe 이런식으로 보여주기</h6> -->
+<!--                                         <p>ddd <span>- ddd</span></p> -->
+<!--                                     </div> -->
+<!--                                 </a> -->
+<!--                                 <a href="#" class="rb-item"> -->
+<!--                                     <div class="rb-pic"> -->
+<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-4.jpg" alt=""> --%>
+<!--                                     </div> -->
+<!--                                     <div class="rb-text"> -->
+<!--                                         <h6>The Personality Trait That Makes...</h6> -->
+<!--                                         <p>Fashion <span>- May 19, 2019</span></p> -->
+<!--                                     </div> -->
+<!--                                 </a> -->
                             </div>
                         </div>
 <!--                         <div class="blog-tags"> -->
@@ -135,7 +137,7 @@
 <!--                         </div> -->
                     </div>
                 </div>
-                <div class="col-lg-9 order-1 order-lg-2">
+                <div class="col-lg-9 order-1 order-lg-2" style="padding-left: 20%;">
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="blog-item">
@@ -227,15 +229,15 @@
 <!--                                 </div> -->
 <!--                             </div> -->
 <!--                         </div> -->
-                        <div class="col-lg-12">
-                            <div class="loading-more">
-                                <i class="icon_loading"></i>
+<!--                         <div class="col-lg-12"> -->
+<!--                             <div class="loading-more"> -->
+<!--                                 <i class="icon_loading"></i> -->
                                 
-                                <a href="#">
-                                    더 펼쳐보기(펼쳐보기 없이 그냥 한번에 다 보여주는게 나아보임)
-                                </a>
-                            </div>
-                        </div>
+<!--                                 <a href="#"> -->
+<!--                                     더 펼쳐보기(펼쳐보기 없이 그냥 한번에 다 보여주는게 나아보임) -->
+<!--                                 </a> -->
+<!--                             </div> -->
+<!--                         </div> -->
                     </div>
                 </div>
             </div>

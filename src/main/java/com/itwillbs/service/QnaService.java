@@ -8,7 +8,7 @@ import com.itwillbs.domain.PageDTO;
 
 public interface QnaService {
 	
-public void writeBoard(QnaDTO qnaDTO);
+	public void writeBoard(QnaDTO qnaDTO);
 	
 	public List<QnaDTO> getBoardList(PageDTO pageDTO);
 	
@@ -27,4 +27,15 @@ public void writeBoard(QnaDTO qnaDTO);
 	public void commentBoard(CommentDTO commentDTO);
 	
 	public CommentDTO getCommentBoard(int num);
+	
+	/*
+	 * public void commentupdateBoard(QnaDTO qnaDTO);
+	 * 
+	 * public void commentdeleteBoard(int num);
+	 */
+	
+	// 검색 
+	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO);
+		
+	public int getBoardCountSearch(PageDTO pageDTO);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.NoticeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.QnaDTO;
 
 @Repository
 public class NoticeDAOImpl implements NoticeDAO{
@@ -20,51 +21,59 @@ public class NoticeDAOImpl implements NoticeDAO{
 
 	@Override
 	public void writeBoard(NoticeDTO noticeDTO) {
-		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".writeBoard", noticeDTO);
 		
 	}
 
 	@Override
 	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace+".getMaxNum");
 	}
 
 	@Override
 	public List<NoticeDTO> getBoardList(PageDTO pageDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	}
 
 	@Override
 	public int getBoardCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(namespace+".getBoardCount");
 	}
 
 	@Override
 	public NoticeDTO getBoard(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		int id=num;
+		return sqlSession.selectOne(namespace+".getBoard", id);
 	}
 
 	@Override
 	public void updateReadcount(int num) {
-		// TODO Auto-generated method stub
+		int id=num;
+		sqlSession.update(namespace+".updateReadcount", id);
 		
 	}
 
 	@Override
 	public void updateBoard(NoticeDTO noticeDTO) {
-		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".updateBoard", noticeDTO);
 		
 	}
 
 	@Override
 	public void deleteBoard(int num) {
-		// TODO Auto-generated method stub
+		int id=num;
+		sqlSession.delete(namespace+".deleteBoard", id);
 		
 	}
 	
+	@Override
+	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getBoardListSearch", pageDTO);
+	}
+
+	@Override
+	public int getBoardCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
+	}
 	
 }

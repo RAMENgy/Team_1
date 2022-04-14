@@ -6,7 +6,11 @@
 <mapper namespace="com.itwillbs.mappers.freeboardMapper">
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select * from freeboard order by id desc limit #{startRow},#{pageSize}
+		select f.id, m.name, f.subject, f.content,
+		f.readcount, f.date  from freeboard f
+		join member m
+		on f.member_id=m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
@@ -14,7 +18,10 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select * from freeboard where id=#{id}
+		select f.id, m.name, f.subject, f.content,
+		f.readcount, f.date  from freeboard f
+		join member m
+		on f.member_id=m.id where f.id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
@@ -24,5 +31,42 @@
 	<delete id="deleteBoard">
 		delete from freeboard where id=#{id}
 	</delete>
+	
+	<insert id="writeBoard">
+		insert into freeboard(id,member_id,subject,content,readcount,date) 
+		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
+	</insert>
+	
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(id) from freeboard
+	</select>
+	
+	<select id="getMaxNumComment" resultType="java.lang.Integer">
+		select max(id) from freeboard_comment
+	</select>
+	
+	<update id="updateBoard">
+		update freeboard set subject=#{subject}, content=#{content} where id=#{id}
+	</update>
+	
+	<insert id="writeComment">
+		insert into freeboard_comment(id,member_id,freeboard_id,content,date)
+		values(#{id},#{member_id},#{freeboard_id},#{content},#{date})
+	</insert>
+	
+	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
+		select f.id, m.name, f.freeboard_id, f.content, f.date 
+		from freeboard_comment f 
+		join member m
+		where f.freeboard_id=#{content_id}
+	</select>
+	
+	<select id="getSearchList" resultType="com.itwillbs.domain.FreeBoardDTO">
+		select f.id, m.name, f.subject, f.content,
+		f.readcount, f.date  from freeboard f
+		join member m
+		on f.member_id=m.id
+		where f.subject like #{search} order by id desc limit #{startRow},#{pageSize}
+	</select>
 	
 </mapper>

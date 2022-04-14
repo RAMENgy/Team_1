@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -61,6 +62,20 @@ public class MemberController {
 		}
 	  
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request) {
+		String ca = request.getParameter("casearch");
+		
+		String search = request.getParameter("search");
+		if(ca.equals("food")) {
+			return "redirect:/food/search?search-food="+search;
+			
+		} else if(ca.equals("recipe")) {
+			return "main/main";
+		}
+		return "main/main";
+	}
 	 
 
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
@@ -88,6 +103,8 @@ public class MemberController {
 			session.setAttribute("id", ckDTO.getId());
 			session.setAttribute("userid", ckDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
+			session.setAttribute("point", ckDTO.getPoint());
+			System.out.println("회원 포인트 : "+ckDTO.getPoint());
 			lDTO.setMember_id(ckDTO.getId());
 			// 내가 좋아요 누른 항목 갯수 찾기
 			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
