@@ -76,54 +76,27 @@
     <section class="checkout-section spad">
         <div class="container">
             <form action="${pageContext.request.contextPath }/order/insertorder" method="post" class="checkout-form">
-            	<input type="hidden" value="${memberDTO.id }" name="member_id">
-            	<c:forEach var="basketList" items="${basketList }" varStatus="status">
-	            	<input type="hidden" value="${basketList.bid }" name="basketlist[${status.index }].id">
-    	        	<input type="hidden" value="${basketList.pid }" name="basketlist[${status.index }].product_id">
-    	        	<input type="hidden" value="${basketList.count }" name="basketlist[${status.index }].count">
-            	</c:forEach>
+            	
                 <div class="row">
                     <div class="col-lg-6">
-                        <!-- <div class="checkout-content">
-                            <a href="#" class="content-btn">Click Here To Login</a>
-                        </div> -->
-                        <h4>주문고객</h4>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="fir">이름<span>*</span></label>
-                                <input type="text" id="fir" value="${memberDTO.name }" readonly>
-                            	<br>
-                                <label for="phone">전화번호<span>*</span></label>
-                                <input type="text" id="phone" value="${memberDTO.tel }" readonly>
-                            </div>
-                        </div>
-                    	
-                    	<br><br>
                     
                         <h4>배송정보</h4>
-                        <div class="create-item">
-                                    <label for="acc-create">
-                                        주문자 정보와 동일
-                                        <input type="checkbox" id="acc-create">
-                                        <span class="checkmark"></span>
-                                    </label>
-                        </div>
                                 
                         <br>
                        
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="jname">이름<span>*</span></label>
-                                <input type="text" id="jname" name="receiver_name">
+                                <input type="text" id="jname" name="receiver_name" value="${orderDTO.receiver_name }">
                             </div>
                             <div class="col-lg-6">
                                 <label for="jtel">전화번호<span>*</span></label>
-                                <input type="text" id="jtel" name="receiver_tel">
+                                <input type="text" id="jtel" name="receiver_tel" value="${orderDTO.receiver_tel }">
                             </div>
                            
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
-                                <input type="text" id="jaddress" name="address">
+                                <input type="text" id="jaddress" name="address" value="${orderDTO.address }">
                             </div>
                             <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
@@ -140,30 +113,12 @@
                             <div class="order-total">
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
-                                    <c:forEach var="basketList" items="${basketList }">
-                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
+                                    <c:forEach var="orderpList" items="${orderpList }">
+                                    <li class="fw-normal">${orderpList.subject } * ${orderpList.count }개 <span><fmt:formatNumber type="number" value="${orderpList.subprice }"/>원</span></li>
                                     </c:forEach>
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
                                 </ul>
-                                <!-- <div class="payment-check">
-                                    <div class="pc-item">
-                                        <label for="pc-check">
-                                            Cheque Payment
-                                            <input type="checkbox" id="pc-check">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                    <div class="pc-item">
-                                        <label for="pc-paypal">
-                                            Paypal
-                                            <input type="checkbox" id="pc-paypal">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div> -->
-                                <div class="order-btn">
-                                    <button type="submit" class="site-btn place-btn">주문하기</button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

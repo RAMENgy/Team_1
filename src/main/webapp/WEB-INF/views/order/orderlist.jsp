@@ -18,6 +18,12 @@
 
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
+    <script type="text/javascript">
+    	function f1(id) {
+    		location.href="orderdetail?id="+id
+    	}
+    	
+    </script>
     
 </head>
 
@@ -58,20 +64,17 @@
                         <table>
                             <thead>
                                 <tr>
-                                	<th>주문 일자</th>
-                                    <th>Image</th>
-                                    <th class="p-name">상품</th>
-                                    <th>가격</th>
-                                    <th>수량</th>
-                                    <th>총 가격</th>
-                                    <th><i class="ti-close"></i></th>
+                                	<th>주문 번호</th>
+                                    <th>주문 일자</th>
+                                    <th></th>
+                                    <th>상태</th>
                                 </tr>
                             </thead>
                             <tbody>
                             	<c:choose>
                            			<c:when test="${empty orderList }">
                            				<tr>
-                           					<td class="cart-pic first-row" colspan="7">
+                           					<td class="cart-pic first-row" colspan="4">
                                     			주문 내역이 없습니다.
                                     		</td>
                                     	</tr>
@@ -80,27 +83,18 @@
                            				<c:forEach var="orderList" items="${orderList }">
                            				<tr>
                            					<td class="cart-pic first-row">
-                                    			${orderList.date }
+                                    			${orderList.id }
                                    			</td>
                                     		<td class="cart-title first-row">
-                                       			${orderList.product_id }
-                                    		</td>
-                                    		<td class="p-price first-row">
-                                    			
+                                    			${orderList.date }
                                     		</td>
                                     		<td class="qua-col first-row">
-                                    			<%-- <form action="${pageContext.request.contextPath }/basket/update">
-                                    			<input type="hidden" value="${basketList.bid }" name="id">
-                                       			<div class="quantity">
-                                            		<div class="pro-qty">
-                                               			<input type="text" value="${basketList.count }" name="count">
-                                            		</div>
-                                        		</div>
-                                        		<button type="submit">변경</button>
-                                        		</form> --%>
+                                    			<input type="button" value="상세보기" onclick="f1(${orderList.id})">
                                    			</td>
-                                    		<td class="total-price first-row"></td>
-                                    		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.bid })"></i></td>
+                                    		<td class="total-price first-row">
+                                    			${orderList.status }
+                                    		</td>
+                                    		
                                 		</tr> 
                                 		</c:forEach>
                            			</c:otherwise>
@@ -108,62 +102,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    
-                    <c:choose>
-                    <c:when test="${empty basketList }">
-                    
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">쇼핑계속하기</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
-                            </div>
-                        </div>
-                       
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                	<ul>
-                                    	<li class="cart-total">최종가격 <span>0</span></li>
-	                                </ul>
-                                	<a href="order" class="proceed-btn">주문하기</a>
-                            </div>
-                        </div>
-                       
-                    </div>
-                    </c:when>
-                    
-					<c:otherwise>
-					
-					 <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="food/list" class="primary-btn continue-shop">쇼핑계속하기</a>
-                                <a href="basket/deleteAll" class="primary-btn up-cart">장바구니 전체 삭제</a>
-                            </div>
-                            <!-- <div class="discount-coupon">
-                                <h6>Discount Codes</h6>
-                                <form action="#" class="coupon-form">
-                                    <input type="text" placeholder="Enter your codes">
-                                    <button type="submit" class="site-btn coupon-btn">Apply</button>
-                                </form>
-                            </div> -->
-                        </div>
-                       
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                	<ul>
-                                    	<li class="cart-total">최종가격 <span>${map.sumMoney}</span></li>
-	                                </ul>
-                                	<a href="order" class="proceed-btn">주문하기</a>
-                            </div>
-                        </div>
-                       
-                    </div>
-					
-					</c:otherwise>					                    
-                    
-                    </c:choose>
                 </div>
             </div>
         </div>

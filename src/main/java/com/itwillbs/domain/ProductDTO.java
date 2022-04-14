@@ -10,7 +10,10 @@ public class ProductDTO {
 	private String img;
 	private String content;
 	private int amount;
+	private int count;
+	private int subprice;
 	private Timestamp date;
+	
 	public int getBid() {
 		return bid;
 	}
@@ -23,9 +26,6 @@ public class ProductDTO {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
-	private int count;
-	private int subprice;
-	
 	public int getSubprice() {
 		return subprice;
 	}
@@ -38,8 +38,6 @@ public class ProductDTO {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
-
 	public String getSubject() {
 		return subject;
 	}
