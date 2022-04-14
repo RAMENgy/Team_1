@@ -89,6 +89,8 @@ public class MemberController {
 			session.setAttribute("id", ckDTO.getId());
 			session.setAttribute("userid", ckDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
+			session.setAttribute("point", ckDTO.getPoint());
+			System.out.println("회원 포인트 : "+ckDTO.getPoint());
 			lDTO.setMember_id(ckDTO.getId());
 			// 내가 좋아요 누른 항목 갯수 찾기
 			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
