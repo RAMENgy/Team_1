@@ -56,7 +56,7 @@
                 <div class="col-lg-7 col-lg-7">
                     <div class="advanced-search">
 <!--                         <button type="button" class="category-btn">통합검색</button> -->
-                        <form action="${pageContext.request.contextPath }/search" class="input-group">
+                        <form action="${pageContext.request.contextPath }/search" class="input-group" method="post">
 							<select name="casearch">
 							<option>---카테고리를 선택하세요---</option>
 							<option value="food">식품</option>

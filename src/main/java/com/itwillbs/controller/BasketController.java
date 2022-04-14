@@ -89,11 +89,11 @@ public class BasketController {
 			int member_id = ckDTO.getId();
 			basketService.deleteAll(member_id);
 			
-			return "basket/basketlist";
+			return "redirect:/basket";
 			
 		} else {
 			
-			return "basket/nosession";
+			return "redirect:/basket/nosession";
 		}
 		
 	}

@@ -58,6 +58,7 @@
 		select f.id, m.name, f.freeboard_id, f.content, f.date 
 		from freeboard_comment f 
 		join member m
+		on f.member_id = m.id
 		where f.freeboard_id=#{content_id}
 	</select>
 	
