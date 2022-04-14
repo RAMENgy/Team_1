@@ -40,6 +40,8 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.insert(namespace+".insertMember", memberDTO);
 		
 	}
+
+	
 	
 	
 	

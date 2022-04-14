@@ -7,21 +7,11 @@ public class OrderDTO {
 
 	private int id;
 	private int member_id;
-	private int product_id;
-	private int basket_id;
 	private String receiver_name;
 	private String receiver_tel;
 	private String address;
 	private String status;
 	private Timestamp date;
-	private List<BasketDTO> basketlist;
-	
-	public List<BasketDTO> getBasketlist() {
-		return basketlist;
-	}
-	public void setBasketlist(List<BasketDTO> basketlist) {
-		this.basketlist = basketlist;
-	}
 	public int getId() {
 		return id;
 	}
@@ -34,18 +24,7 @@ public class OrderDTO {
 	public void setMember_id(int member_id) {
 		this.member_id = member_id;
 	}
-	public int getProduct_id() {
-		return product_id;
-	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
-	}
-	public int getBasket_id() {
-		return basket_id;
-	}
-	public void setBasket_id(int basket_id) {
-		this.basket_id = basket_id;
-	}
+
 	public String getReceiver_name() {
 		return receiver_name;
 	}

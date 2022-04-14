@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.FoodDAO;
+import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -168,6 +169,17 @@ public class FoodServiceImpl implements FoodService{
 	public FoodDTO getfood(int id) {
 		// TODO Auto-generated method stub
 		return foodDAO.getfood(id);
+	}
+	@Override
+	public void basket(BasketDTO basketDTO) {
+		if(foodDAO.basketgetMaxNum()!=null) {
+			// 글이 있는 경우 
+			basketDTO.setId(foodDAO.basketgetMaxNum()+1);
+		}else {
+			// 글이 없는 경우 
+			basketDTO.setId(1);
+		}
+		foodDAO.basket(basketDTO);
 	}
 
 }

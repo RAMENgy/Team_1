@@ -2,6 +2,7 @@ package com.itwillbs.service;
 
 import java.util.List;
 
+import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -25,4 +26,5 @@ public interface FoodService {
 	public List<FoodDTO> fruitlistSearch(PageDTO pageDTO);
 	public int getfruitCountSearch(PageDTO pageDTO);
 	public FoodDTO getfood(int id);
+	public void basket(BasketDTO basketDTO);
 }

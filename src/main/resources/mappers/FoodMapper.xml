@@ -5,15 +5,15 @@
   
   <mapper namespace="com.itwillbs.mappers.FoodMapper">
   
-<select id="foodList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product order by id desc limit #{startRow},#{pageSize}</select>
-  <select id="meatList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=1 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="vegetableList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=2 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="fruitList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=3 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="getMaxNum" resultType="java.lang.Integer">
+	<select id="foodList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="meatList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=1 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="vegetableList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=2 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="fruitList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=3 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="getMaxNum" resultType="java.lang.Integer">
 		select max(num) from product
 	</select>
 	<select id="getfoodCount" resultType="java.lang.Integer">
@@ -57,7 +57,14 @@ select * from product where type=3 order by id desc limit #{startRow},#{pageSize
   	<select id="getfruitCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=3
 	</select>
-  <select id="getfood" resultType="com.itwillbs.domain.FoodDTO">
+  	<select id="getfood" resultType="com.itwillbs.domain.FoodDTO">
 		select * from product where id=#{id}
+	</select>
+	<insert id="basket">
+	insert into basket(id,member_id,product_id,count) 
+		values(#{id}, #{member_id}, #{product_id},#{count})
+	</insert>
+	<select id="basketgetMaxNum" resultType="java.lang.Integer">
+		select max(id) from basket
 	</select>
   </mapper>
