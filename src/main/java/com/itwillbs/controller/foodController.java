@@ -421,12 +421,6 @@ public class foodController {
 	public String writePro(BasketDTO basketDTO,HttpSession session,Model model) {
 	
 			foodService.basket(basketDTO);
-			int userid = (Integer)session.getAttribute("id");
-			
-			List<BasketDTO> basketList = basketService.basketList(userid);
-			
-			model.addAttribute("basketList", basketList);
-
 			
 			return "redirect:/food/list";
 				
