@@ -75,10 +75,12 @@
 							<tr><td>이름 :</td><td> ${foodDTO.subject}</td><tr>
 							<tr><td>가격 :</td><td> ${foodDTO.amount} 원</td><tr>
 							<tr><td>내용 :</td><td> ${foodDTO.content}</td><tr>
+							<c:if test = "${! empty sessionScope.id}" >
 							<tr><td>수량 :</td><td> <input type="number" name="count"></td><tr>
 							<tr><td>
-						
+	
 							<button type="submit" class="site-btn login-btn" name="basket">장바구니담기</button>
+							</c:if>
 							</td></tr>
                          </table>
                          </form>

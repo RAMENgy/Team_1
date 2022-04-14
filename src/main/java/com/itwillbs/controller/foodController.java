@@ -217,6 +217,7 @@ public class foodController {
 	@RequestMapping(value = "/food/search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model) {
 		String search = request.getParameter("search-food");
+		System.out.println(search);
 		String search2 = "%" + search + "%";
 		int pageSize = 12;
 
@@ -417,14 +418,12 @@ public class foodController {
 		return "food/content";
 	}
 	@RequestMapping(value = "/food/basket", method = RequestMethod.POST)
-	public String writePro(BasketDTO basketDTO) {
+	public String writePro(BasketDTO basketDTO,HttpSession session,Model model) {
 	
 			foodService.basket(basketDTO);
-		
-		 
-			// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
-			// 	response.sendRedirect("/board/list";
+			
 			return "redirect:/food/list";
+				
 
 	}
 	

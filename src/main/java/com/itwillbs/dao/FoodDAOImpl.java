@@ -99,7 +99,6 @@ public class FoodDAOImpl implements FoodDAO{
 	}
 	@Override
 	public FoodDTO getfood(int id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".getfood",id);
 				
 	}

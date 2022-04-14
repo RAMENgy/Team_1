@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,12 +65,15 @@ public class MemberController {
 	  
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(HttpServletRequest request) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String search(HttpServletRequest request) throws Exception {
 		String ca = request.getParameter("casearch");
-		
+
 		String search = request.getParameter("search");
+		search = URLEncoder.encode(search,"UTF-8");
+		System.out.println(search);
 		if(ca.equals("food")) {
+			
 			return "redirect:/food/search?search-food="+search;
 			
 		} else if(ca.equals("recipe")) {

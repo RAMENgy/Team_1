@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select f.id, m.name, f.subject, f.content,
+		select f.id, f.member_id, m.name, f.subject, f.content,
 		f.readcount, f.date  from freeboard f
 		join member m
 		on f.member_id=m.id where f.id=#{id}
@@ -58,9 +58,10 @@
 		select f.id, m.name, f.freeboard_id, f.content, f.date 
 		from freeboard_comment f 
 		join member m
+		on f.member_id = m.id
 		where f.freeboard_id=#{content_id}
 	</select>
-	
+	  
 	<select id="getSearchList" resultType="com.itwillbs.domain.FreeBoardDTO">
 		select f.id, m.name, f.subject, f.content,
 		f.readcount, f.date  from freeboard f
