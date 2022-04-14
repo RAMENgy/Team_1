@@ -41,13 +41,14 @@ public class MemberController {
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
 		
+		
 		if(ckDTO != null) {
 			
 			int member_id = ckDTO.getId();
 			
 			List<BasketDTO> basketList = basketService.basketList(member_id);
 			
-			session.setAttribute("basketList", basketList);
+			model.addAttribute("basketList", basketList);
 			
 			int sumMoney = basketService.sumMoney(member_id);
 			map.put("sumMoney", sumMoney);
@@ -74,7 +75,6 @@ public class MemberController {
 		} else if(ca.equals("recipe")) {
 			return "main/main";
 		}
-	
 		return "main/main";
 	}
 	 
