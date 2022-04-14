@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class MemberController {
 			
 			List<BasketDTO> basketList = basketService.basketList(member_id);
 			
-			session.setAttribute("basketList", basketList);
+			model.addAttribute("basketList", basketList);
 			
 			int sumMoney = basketService.sumMoney(member_id);
 			map.put("sumMoney", sumMoney);
@@ -63,12 +64,15 @@ public class MemberController {
 	  
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(HttpServletRequest request) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String search(HttpServletRequest request) throws Exception {
 		String ca = request.getParameter("casearch");
-		
+
 		String search = request.getParameter("search");
+		search = URLEncoder.encode(search,"UTF-8");
+		System.out.println(search);
 		if(ca.equals("food")) {
+			
 			return "redirect:/food/search?search-food="+search;
 			
 		} else if(ca.equals("recipe")) {
@@ -104,7 +108,7 @@ public class MemberController {
 			session.setAttribute("id", ckDTO.getId());
 			session.setAttribute("userid", ckDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
-			session.setAttribute("point", ckDTO.getPoint());
+			session.setAttribute("point", (Integer)ckDTO.getPoint());
 			System.out.println("회원 포인트 : "+ckDTO.getPoint());
 			lDTO.setMember_id(ckDTO.getId());
 			// 내가 좋아요 누른 항목 갯수 찾기
