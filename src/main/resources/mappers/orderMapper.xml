@@ -26,6 +26,7 @@
   		SELECT * 
   		FROM order_info
   		WHERE member_id=#{member_id}
+  		ORDER BY id DESC
   	</select>
   	
 	<!-- 주문 상세 내역 -->
