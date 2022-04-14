@@ -40,14 +40,13 @@ public class MemberController {
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
 		
-		
 		if(ckDTO != null) {
 			
 			int member_id = ckDTO.getId();
 			
 			List<BasketDTO> basketList = basketService.basketList(member_id);
 			
-			model.addAttribute("basketList", basketList);
+			session.setAttribute("basketList", basketList);
 			
 			int sumMoney = basketService.sumMoney(member_id);
 			map.put("sumMoney", sumMoney);

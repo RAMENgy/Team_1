@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.SessionScope;
 
 import com.itwillbs.dao.FoodDAO;
 import com.itwillbs.domain.BasketDTO;
@@ -416,7 +417,7 @@ public class foodController {
 	public String writePro(BasketDTO basketDTO) {
 		
 		foodService.basket(basketDTO);
-		
+		System.out.println();
 		// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
 		// 	response.sendRedirect("/board/list");
 		return "redirect:/food/list";

@@ -96,7 +96,7 @@
                                                     기능 고민중 불필요시 삭제 -->
                                             		</tr>
                                         		</c:when>
-                           						<c:when test="${empty basketList }">
+                           						<c:when test="${empty sessionScope.basketList }">
                            							<tr>
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
@@ -108,7 +108,7 @@
                                             		</tr>
                            						</c:when>
                            						<c:otherwise>
-                                        		<c:forEach var="basketList" items="${basketList }">
+                                        		<c:forEach var="basketList" items="${sessionScope.basketList }">
                                            			<tr>
                                                		<td class="si-pic"><img src="${basketList.img }" alt=""></td>
                                                 	<td class="si-text">
