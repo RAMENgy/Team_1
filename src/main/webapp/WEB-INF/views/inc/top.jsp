@@ -102,7 +102,7 @@
                                                     기능 고민중 불필요시 삭제 -->
                                             		</tr>
                                         		</c:when>
-                           						<c:when test="${empty sessionScope.basketList }">
+                           						<c:when test="${empty basketList }">
                            							<tr>
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
