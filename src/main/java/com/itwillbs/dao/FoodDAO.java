@@ -30,5 +30,6 @@ public interface FoodDAO {
 	public FoodDTO getfood(int id);
 	public void basket(BasketDTO basketDTO);
 	public Integer basketgetMaxNum();
+	public void writeFood(FoodDTO foodDTO);
 }
 	

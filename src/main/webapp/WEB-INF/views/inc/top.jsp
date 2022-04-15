@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header Section Begin -->
 <script type="text/javascript">
-    	function f1(id) {
+    	function basketdel(id) {
     	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
     			location.href="basket/delete?id="+id
     		} else {
@@ -66,7 +66,6 @@
                 <div class="col-lg-7 col-lg-7">
                         <form action="${pageContext.request.contextPath }/search" class="input-group" method="post">
                     <div class="advanced-search">
-<!--                         <button type="button" class="category-btn">통합검색</button> -->
 							<select name="casearch" class="category-btn">
 							<option>검색옵션</option>
 							<option value="food">식품</option>
@@ -108,8 +107,6 @@
                                                         	<p>로그인 해 주세요.</p>
                                                     	</div>
                                                 	</td>
-                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
-                                                    기능 고민중 불필요시 삭제 -->
                                             		</tr>
                                         		</c:when>
                            						<c:when test="${empty sessionScope.balist }">
@@ -119,8 +116,6 @@
                                                         	<p>장바구니가 비었습니다.</p>
                                                     	</div>
                                                 	</td>
-                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
-                                                    기능 고민중 불필요시 삭제 -->
                                             		</tr>
                            						</c:when>
                            						<c:otherwise>
@@ -130,13 +125,11 @@
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
                                                         	<p>${basketList.amount }</p>
-                                                        	<h6>${basketList.subject }</h6>
+                                                        	<h6>${basketList.subject } * ${basketList.count }</h6>
                                                     	</div>
                                                 	</td>
                                                 	<td class="si-close">
-                                                    <i class="ti-close" onclick="f1(${basketList.bid })"></i>
-                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
-                                                    기능 고민중 불필요시 삭제 -->
+                                                    <i class="ti-close" onclick="basketdel(${basketList.bid })"></i>
                                                 	</td>
                                             		</tr>
                                          		</c:forEach>
@@ -165,7 +158,6 @@
                                 			</div>
                                 			<div class="select-button">
                                    				<a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
-                                    			<a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
                                 			</div>
                                 		</c:otherwise>
                                 	</c:choose>
@@ -181,21 +173,6 @@
     <div class="nav-item">
         <div class="container">
             <div class="nav-depart">
-<!--                 <div class="depart-btn"> -->
-<!--                     <i class="ti-menu"></i> -->
-<!--                     <span>카테고리</span> -->
-<!--                     불필요시 삭제 -->
-<!--                     <ul class="depart-hover"> -->
-<!--                         <li class="active"><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                     </ul> -->
-<!--                 </div> -->
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
@@ -205,6 +182,11 @@
                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
                             <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
                             <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
+                            <c:if test = "${1==sessionScope.id}" >
+                            <li><a href="${pageContext.request.contextPath }/food/write">제품등록</a></li>
+                            
+                            	
+								</c:if>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
