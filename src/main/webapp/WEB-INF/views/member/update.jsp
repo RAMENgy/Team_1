@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
-                        <h2>회원 정보</h2>
+                        <h2>회원 정보 수정</h2>
                         <form action="${pageContext.request.contextPath }/member/updatePro" method="post">
                             <div class="group-input">
                                 <label for="userid">아이디</label>
@@ -72,7 +72,7 @@
                                 <label for="tel">연락처</label>
                                 <input type="text" id="tel" name="tel" value="${memberDTO.tel}">
                             </div>
-                            <button type="submit" class="site-btn register-btn">update</button>
+                            <button type="submit" class="site-btn register-btn">수정하기</button>
                         </form>
                     </div>
                 </div>

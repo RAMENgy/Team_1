@@ -223,7 +223,7 @@
                     </li>
                     <li><a href="#">마이페이지</a>
                         <ul class="dropdown">
-                            <li><a href="#">회원정보조회</a></li>
+                            <li><a href="${pageContext.request.contextPath }/member/info">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath }/order/orderlist">구매내역보기</a></li>
                             <li><a href="#">나의 QnA</a></li>
