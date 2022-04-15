@@ -44,8 +44,15 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
-<!-- id="tablebox" -->
-<body>
+
+ <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
+                
 	<div class="col-lg-9 order-1 order-lg-2">
       <div class="row container">
 		<table class="table">
@@ -126,8 +133,7 @@
 	</c:if> 
 	</c:if>
 	
-	</div>
-</div>
+
 
 
 <!-- 댓글 쓰기 화면 -->
@@ -147,7 +153,7 @@
    			
    			<tr>
    				<td colspan="10">
-   				<input type="submit" value="답변저장" class="btn" style="float: right;">
+   				<input type="submit" value="답변저장" class="btn" >
    				
    				</td>
    				
@@ -159,7 +165,11 @@
 
 	</c:if>	
 </c:if>
-  
+	</div>
+</div>  
+</div>
+        </div>
+    </section>
 
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

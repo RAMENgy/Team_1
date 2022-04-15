@@ -16,21 +16,6 @@
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<style type="text/css">
-	#tablebox{
-		width: 600px;
-		margin: 0 auto;
-	}
-</style>
-
 </head>
 
 <body>
@@ -54,11 +39,20 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
+    
+    <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
 
-<div id="tablebox">   
+<div class="col-lg-9 order-1 order-lg-2">
+    <div class="row container">   
 <form action="${pageContext.request.contextPath }/notice/updatePro" method="post">
 	<input type="hidden" name="id" value="${noticeDTO.id}">
-	<table class="table table-hover" style="text-align: center;">
+	<table class="table" style="text-align: center;">
 	
     	<thead>
 			<tr><td>제목</td>
@@ -76,8 +70,11 @@
 </div>
 </form>
 
-
 </div>
+</div>
+</div>
+        </div>
+    </section>
 
  <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

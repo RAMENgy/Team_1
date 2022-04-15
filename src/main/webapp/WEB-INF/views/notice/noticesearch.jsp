@@ -45,6 +45,14 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
+    
+     <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
 
 <div class="col-lg-9 order-1 order-lg-2">
     <div class="row container">
@@ -66,51 +74,64 @@
     		<td><fmt:formatDate value="${nDTO.date}" pattern="yyyy.MM.dd"/> </td>
 		</tr> 
 	</c:forEach> 
-	
-		<tr>
-			<td colspan="10">
-				
-				<form action="${pageContext.request.contextPath }/notice/search" method="get">
-					<input type="text" name="search" class="input_box">
-					<input type="submit" value="검색" class="btn btn-default">
-					</form>
-				
-			</td> 
-		</tr>
-		</table>
-		
-<%-- <input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/notice/write'"> --%>
 
+		
+	
+
+		
+	</table>	
+	
 <c:if test="${ ! empty sessionScope.userid }">
 
 	<c:if test="${sessionScope.userid eq 'admin'}">
 	
-<input type="button" value="글쓰기" class="btn btn-default" 
+<input type="button" value="글쓰기" class="btn btn-outline-dark m-sm-1" 
 onclick="location.href='${pageContext.request.contextPath }/notice/write'">		
-<input type="button" value="글수정" class="btn" 
-onclick="location.href='${pageContext.request.contextPath }/notice/update?num=${noticeDTO.num}'">
-<input type="button" value="글삭제" class="btn" 
-onclick="location.href='${pageContext.request.contextPath }/notice/delete?num=${noticeDTO.num}'">	
+
 	
 	</c:if>
-	
-</c:if>
+
 
 	
-<c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
-<a href="${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
 </c:if>
-
-<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-<a href="${pageContext.request.contextPath }/notice/list?pageNum=${i}">${i} </a>
-</c:forEach>
-
-<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-<a href="${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
-</c:if>		
-
-	</div>
 </div>
+</div>
+</div>
+</div>
+
+
+	
+<!-- 페이지 번호 영역 시작 -->
+<div class="col">
+	<ul class="pagination justify-content-center">
+		<c:choose>
+			<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
+				<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/notice/list?pageNum=${i}">${i} </a></li>
+		</c:forEach>
+	
+		<c:choose>
+			<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
+				<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+</div>
+
+<!-- 페이지 번호 영역 끝 -->	
+
+
+    </section>
 		
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

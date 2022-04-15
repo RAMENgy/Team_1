@@ -43,7 +43,11 @@
 	</update>
 	
 	<delete id="deleteBoard">
-		delete from qna_board where id=#{id}
+		delete from a,b
+		using qna_board as a
+		left join qna_comment as b
+		on a.id = b.qna_board_id
+		where b.qna_board_id = #{id}
 	</delete>
 	 
 	<!--  댓글 -->
