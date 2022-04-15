@@ -49,21 +49,10 @@
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
-                        <ul class="filter-catagories">
-                        	</br>
-                           <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
-                            <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
-                            <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
-                        </ul>
-                    </div>
-                   
-                    
-                    
-                    
-                </div>
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
+                
                 <div class="col-lg-9 order-1 order-lg-2">
                    
                     <div class="product-list">
@@ -92,14 +81,43 @@
                          </c:forEach>
                          
                         </div>
-                         <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}&search=${pageDTO.search}">이전</a>
-						</c:if>
+                        
+                        <div class="col">
+							<ul class="pagination justify-content-center">
+								<c:choose>
+									<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+									</c:otherwise>
+								</c:choose>
+								
+								<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}">${i} </a></li>
+								</c:forEach>
+							
+								<c:choose>
+									<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
+										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+						</div>
+                        
+                        
+<%--                          <c:if test="${pageDTO.startPage > pageDTO.pageBlock }"> --%>
+<%-- 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}&search=${pageDTO.search}">이전</a> --%>
+<%-- 						</c:if> --%>
 						
-						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}&search=${pageDTO.search}">${i} </a>
-						</c:forEach>
+<%-- 						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1"> --%>
+<%-- 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}&search=${pageDTO.search}">${i} </a> --%>
+<%-- 						</c:forEach> --%>
 						
+<<<<<<< HEAD
 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}&search=${pageDTO.search}">다음</a>
 						</c:if>
@@ -113,6 +131,15 @@
 							<button type="submit" >제품등록</button>
 						</form>
 						</c:if>
+=======
+<%-- 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }"> --%>
+<%-- 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}&search=${pageDTO.search}">다음</a> --%>
+<%-- 						</c:if> --%>
+<%-- 						<form action="${pageContext.request.contextPath }/vegetable/search" method="get"> --%>
+<!-- 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >               -->
+<!-- 							<button type="submit">검색</button> -->
+<!-- 						</form> -->
+>>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
                         </div>
                     </div>
                 </div>
