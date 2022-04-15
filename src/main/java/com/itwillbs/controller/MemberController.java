@@ -81,8 +81,7 @@ public class MemberController {
 			
 		} else if(ca.equals("recipe")) {
 			return "main/main";
-		}
-		return "main/main";
+		} else return "searchmsg";
 	}
 	 
 

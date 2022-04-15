@@ -64,18 +64,18 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-lg-7">
+                        <form action="${pageContext.request.contextPath }/search" class="input-group" method="post">
                     <div class="advanced-search">
 <!--                         <button type="button" class="category-btn">통합검색</button> -->
-                        <form action="${pageContext.request.contextPath }/search" class="input-group" method="post">
-							<select name="casearch">
-							<option>---카테고리를 선택하세요---</option>
+							<select name="casearch" class="category-btn">
+							<option>검색옵션</option>
 							<option value="food">식품</option>
 							<option value="recipe">레시피</option>
 							</select>
-                            <input type="text" name="search" placeholder="검색어를 입력하세요.">
+                            <input type="text" id="mainsearch" name="search" placeholder="검색어를 입력하세요.">
                             
-                        </form>
                     </div>
+                        </form>
                 </div>
                 <div class="col-lg-3 text-right col-lg-3">
                     <ul class="nav-right">
