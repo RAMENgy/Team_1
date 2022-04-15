@@ -2,6 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header Section Begin -->
+<script type="text/javascript">
+    	function f1(id) {
+    	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
+    			location.href="basket/delete?id="+id
+    		} else {
+    			return;
+    		}
+    	}
+    	
+</script>
 <header class="header-section">
     <div class="header-top">
         <div class="container">
@@ -124,7 +134,7 @@
                                                     	</div>
                                                 	</td>
                                                 	<td class="si-close">
-                                                    <i class="ti-close"></i>
+                                                    <i class="ti-close" onclick="f1(${basketList.bid })"></i>
                                                     <!-- 항목 옆에 X표시 누르면 바로 삭제?
                                                     기능 고민중 불필요시 삭제 -->
                                                 	</td>
@@ -213,9 +223,9 @@
                     </li>
                     <li><a href="#">마이페이지</a>
                         <ul class="dropdown">
-                            <li><a href="#">회원정보조회</a></li>
+                            <li><a href="${pageContext.request.contextPath }/member/info">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
-                            <li><a href="${pageContext.request.contextPath }/order/orderlist"">구매내역보기</a></li>
+                            <li><a href="${pageContext.request.contextPath }/order/orderlist">구매내역보기</a></li>
                             <li><a href="#">나의 QnA</a></li>
                             <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
                             <li><a href="#">???</a></li>

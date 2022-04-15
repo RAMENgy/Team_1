@@ -65,7 +65,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
                     <div class="blog-sidebar">
                         <div class="search-form">
-                            <h4>내가 좋아요한 레시피 검색</h4>
+                            <h4>내 좋아요한 레시피 검색</h4>
                             <form action="${pageContext.request.contextPath }/like/likesearch" method="get">
                                 <input type="text" placeholder="검색어를 입력하세요" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>

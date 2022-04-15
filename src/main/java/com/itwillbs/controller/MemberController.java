@@ -131,6 +131,14 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/main/main";
 	}
+	
+	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
+	public String info(HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
+		MemberDTO memberDTO = memberService.getMember(userid);
+		model.addAttribute("memberDTO", memberDTO);
+		return "member/info";
+	}
 
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
