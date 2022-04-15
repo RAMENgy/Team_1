@@ -41,6 +41,13 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 
+	@Override
+	public void deleteMember(int id) {
+		sqlSession.delete(namespace+".deleteMember", id);
+	}
+	
+	
+
 	
 	
 	

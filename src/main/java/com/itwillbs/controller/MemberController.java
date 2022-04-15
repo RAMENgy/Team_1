@@ -131,6 +131,17 @@ public class MemberController {
 		return "redirect:/main/main";
 	}
 	
+	
+	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
+	public String deleteMember(HttpSession session) {
+		int id = (int) session.getAttribute("id");
+		memberService.deleteMember(id);
+		session.invalidate();
+		return "redirect:/main/main";
+	}
+	
+	
+	
 	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
 	public String info(HttpSession session, Model model) {
 		String userid = (String) session.getAttribute("userid");
