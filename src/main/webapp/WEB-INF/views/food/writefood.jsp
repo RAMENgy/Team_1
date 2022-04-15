@@ -46,54 +46,35 @@
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
-    <section class="product-shop spad">
+    <section class="product-shop spad checkout-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
-                        <ul class="filter-catagories">
-                        	</br>
-                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
-                            <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
-                            <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
-                        </ul>
-                    </div>
-                   
-                    
-                    
-                    
-                </div>
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
                 <div class="col-lg-9 order-1 order-lg-2">
-                   
-                    <div class="product-list">
-                        <div class="row">
-                        <form action="${pageContext.request.contextPath }/food/writePro" method="post">
-         
-                           <table id="notice">
-							<tr><td>이름 :</td><td> <input type="text" name="subject"></td><tr>
-							<tr><td>가격 :</td><td> <input type="text" name="amount"></td><tr>
-							<tr><td>내용 :</td><td> <input type="text" name="content"></td><tr>
-							<tr><td>내용 :</td><td> <input type="file" name="img"></td><tr>
-							<tr><td>종류 :</td><td><label><input type="radio" name="type" value="1"> 고기</label>
-      											  <label><input type="radio" name="type" value="2"> 채소</label>
-      											  <label><input type="radio" name="type" value="3"> 과일</label></td><tr>
-							<tr><td>
-	
-							<button type="submit" class="site-btn login-btn" name="write">제품등록</button>
-							</td></tr>
-                         </table>
-                         </form>
-                        
-                         
-                        
-                    </div>
                     
+                    <div class="product-list">
+                        <div class="row cart-table">
+                        <form class="checkout-form" action="${pageContext.request.contextPath }/food/writePro" method="post">
+                    
+                           <table id="notice">
+								<tr><td>이름 :</td><td> <input type="text" name="subject"></td></tr>
+								<tr><td>가격 :</td><td> <input type="text" name="amount"></td></tr>
+								<tr><td>내용 :</td><td> <input type="text" name="content"></td></tr>
+								<tr><td>내용 :</td><td> <label><input type="radio" name="fruit" value="1"> 고기</label>
+     												   <label><input type="radio" name="fruit" value="2"> 채소</label>
+     												   <label><input type="radio" name="fruit" value="3"> 과일</label></td></tr>
+                         	</table>
+                         	<button type="submit" class="site-btn login-btn" name="write">제품등록</button>
+                         </form>
+               		 </div>
+                	</div>
                 </div>
-                
             </div>
 
         </div>
+        
     </section>
     
     <!-- Product Shop Section End -->

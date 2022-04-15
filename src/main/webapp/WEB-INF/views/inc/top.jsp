@@ -182,6 +182,11 @@
                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
                             <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
                             <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
+                            <c:if test = "${1==sessionScope.id}" >
+                            <li><a href="${pageContext.request.contextPath }/food/write">제품등록</a></li>
+                            
+                            	
+								</c:if>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
