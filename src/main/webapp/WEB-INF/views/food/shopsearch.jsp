@@ -49,21 +49,11 @@
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
-                        <ul class="filter-catagories">
-                        	</br>
-                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
-                            <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
-                            <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
-                        </ul>
-                    </div>
-                   
-                    
-                    
-                    
-                </div>
+            
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
+                
                 <div class="col-lg-9 order-1 order-lg-2">
                    
                     <div class="product-list">
@@ -106,10 +96,10 @@
 						</c:if>
 						
 						 </div>
-						<form action="${pageContext.request.contextPath }/food/search" method="get">
-						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
-							<button type="submit">검색</button>
-						</form>
+<%-- 						<form action="${pageContext.request.contextPath }/food/search" method="get"> --%>
+<!-- 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >               -->
+<!-- 							<button type="submit">검색</button> -->
+<!-- 						</form> -->
                 </div>
                 
             </div>
