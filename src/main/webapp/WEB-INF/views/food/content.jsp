@@ -53,7 +53,7 @@
                 <jsp:include page="item/side.jsp"></jsp:include>
                 <!-- 사이드 바 끝 -->
                 <div class="col-lg-9 order-1 order-lg-2">
-                   
+                    
                     <div class="product-list">
                         <div class="row cart-table">
                         <form class="checkout-form" action="${pageContext.request.contextPath }/food/basket" method="post">
