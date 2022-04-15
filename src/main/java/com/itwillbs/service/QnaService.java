@@ -36,4 +36,6 @@ public interface QnaService {
 	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO);
 		
 	public int getBoardCountSearch(PageDTO pageDTO);
+	
+	public Integer getMaxNum();
 }
