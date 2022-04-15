@@ -55,27 +55,23 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                    
                     <div class="product-list">
-                        <div class="row">
+                        <div class="row cart-table">
                         <form class="checkout-form" action="${pageContext.request.contextPath }/food/basket" method="post">
                            <input type="hidden" name="member_id" value="${sessionScope.id}">
                            <input type="hidden" name="product_id" value="${foodDTO.id}">
                            <table id="notice">
-							<tr><td>이름 :</td><td> ${foodDTO.subject}</td><tr>
-							<tr><td>가격 :</td><td> ${foodDTO.amount} 원</td><tr>
-							<tr><td>내용 :</td><td> ${foodDTO.content}</td><tr>
-							<c:if test = "${! empty sessionScope.id}" >
-							<tr><td>수량 :</td><td> <input type="number" name="count"></td><tr>
-							<tr><td>
-	
-							<button type="submit" class="site-btn login-btn" name="basket">장바구니담기</button>
-							</c:if>
-							</td></tr>
-                         </table>
+								<tr><td>이름 :</td><td> ${foodDTO.subject}</td></tr>
+								<tr><td>가격 :</td><td> ${foodDTO.amount} 원</td></tr>
+								<tr><td>내용 :</td><td> ${foodDTO.content}</td></tr>
+								<c:if test = "${! empty sessionScope.id}" >
+									<tr><td>수량 :</td><td> <input type="number" name="count"></td></tr>
+								</c:if>
+                         	</table>
+                         	<button type="submit" class="site-btn login-btn" name="basket">장바구니담기</button>
                          </form>
-                        
-                    
+               		 </div>
+                	</div>
                 </div>
-                
             </div>
 
         </div>
