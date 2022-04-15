@@ -97,7 +97,8 @@
 <%-- 						</c:if> --%>
 						
 <!-- 						 </div> -->
-						 
+						 </div>
+						 </div>
 						 
 					 <div class="col">
 						<ul class="pagination justify-content-center">
@@ -125,7 +126,6 @@
 							</c:choose>
 						</ul>
 					</div>
-					</form>
 					                </div>
                 
             </div>
