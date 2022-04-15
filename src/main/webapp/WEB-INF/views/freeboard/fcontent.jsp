@@ -19,8 +19,7 @@
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
     <style type="text/css">
-    textarea {vertical-align: middle;}
-    button {vertical-align: baseline;}
+    textarea,button {vertical-align: middle;}
     </style>
 </head>
 
