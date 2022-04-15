@@ -71,15 +71,6 @@
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
-<!--                         <div class="blog-catagory"> -->
-<!--                             <h4>Categories</h4> -->
-<!--                             <ul> -->
-<!--                                 <li><a href="#">Fashion</a></li> -->
-<!--                                 <li><a href="#">Travel</a></li> -->
-<!--                                 <li><a href="#">Picnic</a></li> -->
-<!--                                 <li><a href="#">Model</a></li> -->
-<!--                             </ul> -->
-<!--                         </div> -->
                         <div class="recent-post">
                             <h4>최근 작성된 레시피</h4>
                             <div class="recent-blog">
@@ -94,47 +85,8 @@
                                     </div>
                                 </a>
                             </c:forEach>
-<!--                                 <a href="#" class="rb-item"> -->
-<!--                                     <div class="rb-pic"> -->
-<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-2.jpg" alt=""> --%>
-<!--                                     </div> -->
-<!--                                     <div class="rb-text"> -->
-<!--                                         <h6>아니면 select max(num)-1 from recipe</h6> -->
-<!--                                         <p>Fashion <span>- May 19, 2019</span></p> -->
-<!--                                     </div> -->
-<!--                                 </a> -->
-<!--                                 <a href="#" class="rb-item"> -->
-<!--                                     <div class="rb-pic"> -->
-<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-3.jpg" alt=""> --%>
-<!--                                     </div> -->
-<!--                                     <div class="rb-text"> -->
-<!--                                         <h6>select max(num)-2 from recipe 이런식으로 보여주기</h6> -->
-<!--                                         <p>ddd <span>- ddd</span></p> -->
-<!--                                     </div> -->
-<!--                                 </a> -->
-<!--                                 <a href="#" class="rb-item"> -->
-<!--                                     <div class="rb-pic"> -->
-<%--                                         <img src="${pageContext.request.contextPath }/resources/img/blog/recent-4.jpg" alt=""> --%>
-<!--                                     </div> -->
-<!--                                     <div class="rb-text"> -->
-<!--                                         <h6>The Personality Trait That Makes...</h6> -->
-<!--                                         <p>Fashion <span>- May 19, 2019</span></p> -->
-<!--                                     </div> -->
-<!--                                 </a> -->
                             </div>
                         </div>
-<!--                         <div class="blog-tags"> -->
-<!--                             <h4>Product Tags</h4> -->
-<!--                             <div class="tag-item"> -->
-<!--                                 <a href="#">Towel</a> -->
-<!--                                 <a href="#">Shoes</a> -->
-<!--                                 <a href="#">Coat</a> -->
-<!--                                 <a href="#">Dresses</a> -->
-<!--                                 <a href="#">Trousers</a> -->
-<!--                                 <a href="#">Men's hats</a> -->
-<!--                                 <a href="#">Backpack</a> -->
-<!--                             </div> -->
-<!--                         </div> -->
                     </div>
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2" style="padding-left: 20%;">
@@ -159,85 +111,6 @@
                                 </c:forEach>
                             </div>
                         </div>
-<!--                         <div class="col-lg-6 col-sm-6"> -->
-<!--                             <div class="blog-item"> -->
-<!--                                 <div class="bi-pic"> -->
-<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-2.jpg" alt=""> --%>
-<!--                                 </div> -->
-<!--                                 <div class="bi-text"> -->
-<!--                                     <a href="./blog-details.html"> -->
-<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
-<!--                                     </a> -->
-<%--                                     <p>${lDTO.id } <span><fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span></p> --%>
-<!--                                     <form action="deleteLikeList"> -->
-<!-- 	                                <button type="submit">   	 -->
-<!--                                    	<i class="fa fa-trash" aria-hidden="true"></i> -->
-<!--                                    	</button> &lt;- 구현 및 추가여부 검토중... -->
-<!--                                    	</form> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="col-lg-6 col-sm-6"> -->
-<!--                             <div class="blog-item"> -->
-<!--                                 <div class="bi-pic"> -->
-<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-3.jpg" alt=""> --%>
-<!--                                 </div> -->
-<!--                                 <div class="bi-text"> -->
-<!--                                     <a href="./blog-details.html"> -->
-<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
-<!--                                     </a> -->
-<!--                                     <p>travel <span>- May 19, 2019</span></p> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="col-lg-6 col-sm-6"> -->
-<!--                             <div class="blog-item"> -->
-<!--                                 <div class="bi-pic"> -->
-<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-4.jpg" alt=""> --%>
-<!--                                 </div> -->
-<!--                                 <div class="bi-text"> -->
-<!--                                     <a href="./blog-details.html"> -->
-<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
-<!--                                     </a> -->
-<!--                                     <p>Fashion <span>- May 19, 2019</span></p> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="col-lg-6 col-sm-6"> -->
-<!--                             <div class="blog-item"> -->
-<!--                                 <div class="bi-pic"> -->
-<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-5.jpg" alt=""> --%>
-<!--                                 </div> -->
-<!--                                 <div class="bi-text"> -->
-<!--                                     <a href="./blog-details.html"> -->
-<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기…</h4> -->
-<!--                                     </a> -->
-<!--                                     <p>Model <span>- May 19, 2019</span></p> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="col-lg-6 col-sm-6"> -->
-<!--                             <div class="blog-item"> -->
-<!--                                 <div class="bi-pic"> -->
-<%--                                     <img src="${pageContext.request.contextPath }/resources/img/blog/blog-6.jpg" alt=""> --%>
-<!--                                 </div> -->
-<!--                                 <div class="bi-text"> -->
-<!--                                     <a href="./blog-details.html"> -->
-<!--                                         <h4>likeList 생성해서 forEach로 recipe테이블에서 제목/작성자/날짜 가져오기</h4> -->
-<!--                                     </a> -->
-<!--                                     <p>Fashion <span>- May 19, 2019</span></p> -->
-<!--                                 </div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="col-lg-12"> -->
-<!--                             <div class="loading-more"> -->
-<!--                                 <i class="icon_loading"></i> -->
-                                
-<!--                                 <a href="#"> -->
-<!--                                     더 펼쳐보기(펼쳐보기 없이 그냥 한번에 다 보여주는게 나아보임) -->
-<!--                                 </a> -->
-<!--                             </div> -->
-<!--                         </div> -->
                     </div>
                 </div>
             </div>

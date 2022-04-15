@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Header Section Begin -->
 <script type="text/javascript">
-    	function f1(id) {
+    	function basketdel(id) {
     	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
     			location.href="basket/delete?id="+id
     		} else {
@@ -66,7 +66,6 @@
                 <div class="col-lg-7 col-lg-7">
                         <form action="${pageContext.request.contextPath }/search" class="input-group" method="post">
                     <div class="advanced-search">
-<!--                         <button type="button" class="category-btn">통합검색</button> -->
 							<select name="casearch" class="category-btn">
 							<option>검색옵션</option>
 							<option value="food">식품</option>
@@ -130,9 +129,7 @@
                                                     	</div>
                                                 	</td>
                                                 	<td class="si-close">
-                                                    <i class="ti-close" onclick="f1(${basketList.bid })"></i>
-                                                    <!-- 항목 옆에 X표시 누르면 바로 삭제?
-                                                    기능 고민중 불필요시 삭제 -->
+                                                    <i class="ti-close" onclick="basketdel(${basketList.bid })"></i>
                                                 	</td>
                                             		</tr>
                                          		</c:forEach>
@@ -161,7 +158,6 @@
                                 			</div>
                                 			<div class="select-button">
                                    				<a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
-                                    			<a href="#" class="primary-btn checkout-btn">장바구니 전체삭제</a>
                                 			</div>
                                 		</c:otherwise>
                                 	</c:choose>
@@ -177,21 +173,6 @@
     <div class="nav-item">
         <div class="container">
             <div class="nav-depart">
-<!--                 <div class="depart-btn"> -->
-<!--                     <i class="ti-menu"></i> -->
-<!--                     <span>카테고리</span> -->
-<!--                     불필요시 삭제 -->
-<!--                     <ul class="depart-hover"> -->
-<!--                         <li class="active"><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                         <li><a href="#">???</a></li> -->
-<!--                     </ul> -->
-<!--                 </div> -->
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
