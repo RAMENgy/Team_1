@@ -27,4 +27,5 @@ public interface FoodService {
 	public int getfruitCountSearch(PageDTO pageDTO);
 	public FoodDTO getfood(int id);
 	public void basket(BasketDTO basketDTO);
+	public void writeFood(FoodDTO foodDTO);
 }

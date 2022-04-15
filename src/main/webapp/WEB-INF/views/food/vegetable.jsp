@@ -119,6 +119,21 @@
 <%-- 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${i}">${i} </a> --%>
 <%-- 						</c:forEach> --%>
 						
+<<<<<<< HEAD
+						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
+						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a>
+						</c:if>
+						<form action="${pageContext.request.contextPath }/vegetable/search" method="get">
+						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
+							<button type="submit">검색</button>
+						</form>
+						<c:if test = "${1==sessionScope.id}" >
+						<form action="${pageContext.request.contextPath }/food/write" method="get">
+						             
+							<button type="submit" >제품등록</button>
+						</form>
+						</c:if>
+=======
 <%-- 						<c:if test="${pageDTO.endPage < pageDTO.pageCount }"> --%>
 <%-- 						<a href="${pageContext.request.contextPath }/vegetable/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a> --%>
 <%-- 						</c:if> --%>
@@ -131,6 +146,7 @@
 <!-- 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >               -->
 <!-- 							<button type="submit">검색</button> -->
 <!-- 						</form> -->
+>>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
                         </div>
                     </div>
                 </div>

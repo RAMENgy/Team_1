@@ -110,5 +110,10 @@ public class FoodDAOImpl implements FoodDAO{
 	public Integer basketgetMaxNum() {
 		return sqlSession.selectOne(namespace+".basketgetMaxNum");
 	}
+	@Override
+	public void writeFood(FoodDTO foodDTO) {
+		sqlSession.insert(namespace+".writeFood", foodDTO);		
+		
+	}
 
 }
