@@ -92,7 +92,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		
 		return freeBoardDAO.getSearchList(pageDTO);
 	}
-	
-	
-	
+
+	@Override
+	public void deleteComment(int commentId) {
+		freeBoardDAO.deleteComment(commentId);
+	}
+
 }

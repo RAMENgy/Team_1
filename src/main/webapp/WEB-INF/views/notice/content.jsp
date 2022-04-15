@@ -64,7 +64,7 @@
 <table id="tablebox" class="table">
 <tr><td>번호</td><td>${noticeDTO.id}</td>
 	<td>작성일</td><td>${noticeDTO.date}</td></tr>
-<tr><td>작성자</td><td>${noticeDTO.member_id}</td>
+<tr><td>작성자</td><td>${noticeDTO.name}</td>
 	<td>조회수</td><td>${noticeDTO.readcount}</td>
 <tr><td>제목</td><td colspan="3">${noticeDTO.subject}</td></tr>
 <tr><td>글내용</td><td colspan="3">${noticeDTO.content}</td></tr>

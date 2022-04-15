@@ -43,11 +43,11 @@ public class QnaController {
 	public String qnawritePro(QnaDTO qnaDTO) {
 		System.out.println("QnaController qnawritePro() ");
 		// member_id
-		/* qnaDTO.setMember_id(2); */
+		/* qnaDTO.setMember_id(2);  */
 
-		qnaService.qnawriteBoard(qnaDTO);
+		qnaService.writeBoard(qnaDTO);
 		// /WEB-INF/views/center/qnawrite.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "redirect:/board/list";
+        return "redirect:/board/list";
 
 	}
 
@@ -192,11 +192,6 @@ public class QnaController {
 		// member_id
 		commentDTO.setMember_id(2);   // **
 		
-		/*System.out.println(commentDTO.getContent());
-		System.out.println(commentDTO.getId());
-		System.out.println(commentDTO.getMember_id());
-		System.out.println(commentDTO.getQna_board_id());
-		System.out.println(commentDTO.getDate());*/
 		
 		qnaService.commentBoard(commentDTO);
 
@@ -205,9 +200,57 @@ public class QnaController {
 
 	}
 
+//  가상주소 http://localhost:8080/Team_1/board/content?id=1
+	@RequestMapping(value = "/board/commentupdate", method = RequestMethod.GET)
+	public String commentupdate(HttpServletRequest request, Model model) {
+		System.out.println("QnaController commentupdate() ");
+		int num = Integer.parseInt(request.getParameter("id"));
 
+		// num에 대한 글 가져오기
+		int qna_board_id = num;
+		CommentDTO commentDTO = qnaService.getCommentBoard(qna_board_id);
 
+		// 디비에서 가져온 글을 model 담아서 update.jsp 전달
+		model.addAttribute("commentDTO", commentDTO);
+ 
+		
+		return "redirect:/board/content?id="+qna_board_id; 
+	}
 
+//	가상주소 http://localhost:8080/Team_1/board/commentupdatePro
+	@RequestMapping(value = "/board/commentupdatePro", method = RequestMethod.POST)
+	public String commentupdatePro(CommentDTO commentDTO) {
+		System.out.println("QnaController commentupdatePro() ");
+
+		qnaService.commentupdateBoard(commentDTO);
+		System.out.println(commentDTO.getQna_board_id());
+		//return "redirect:/board/list";
+		//return "center/content?id="+commentDTO.getQna_board_id(); 
+		return "redirect:/board/content?id="+commentDTO.getQna_board_id(); 
+	}
+	
+//  가상주소 http://localhost:8080/Team_1/board/commentdelete?num=1
+	// /board/commentdelete get방식
+	// commentdeleteBoard(boardDTO);
+	// redirect:/board/list
+	@RequestMapping(value = "/board/commentdelete", method = RequestMethod.GET)
+	public String commentdelete(HttpServletRequest request) {
+		System.out.println("QnaController commentdelete() ");
+//		int num=Integer.parseInt(request.getParameter("num"));
+
+		String number = request.getParameter("id");
+		int num = Integer.parseInt(number);
+		// num에 대한 글 삭제
+		qnaService.commentdeleteBoard(num);
+
+		// 가상주소 로그인주소 이동 /board/list (주소줄에 주소가 바뀌면서 이동)
+		// response.sendRedirect("/board/list");
+		return "redirect:/board/list";
+		//return "center/content";
+		
+		
+	}
+	
 //	가상주소 http://localhost:8080/Team_1/board/search
 	@RequestMapping(value = "/board/search", method = RequestMethod.GET)
 	public String search(HttpServletRequest request, Model model) {

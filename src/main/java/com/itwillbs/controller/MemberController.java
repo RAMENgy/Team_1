@@ -42,6 +42,7 @@ public class MemberController {
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
 		
+		
 		if(ckDTO != null) {
 			
 			int member_id = ckDTO.getId();
@@ -53,6 +54,9 @@ public class MemberController {
 			int sumMoney = basketService.sumMoney(member_id);
 			map.put("sumMoney", sumMoney);
 			model.addAttribute("map", map);
+			
+			session.setAttribute("balist", basketList);
+			session.setAttribute("bamoney", sumMoney);
 			
 			return "main/index";
 			
@@ -77,9 +81,7 @@ public class MemberController {
 			
 		} else if(ca.equals("recipe")) {
 			return "main/main";
-		}
-	
-		return "main/main";
+		} else return "searchmsg";
 	}
 	 
 
@@ -127,6 +129,14 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/main/main";
+	}
+	
+	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
+	public String info(HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
+		MemberDTO memberDTO = memberService.getMember(userid);
+		model.addAttribute("memberDTO", memberDTO);
+		return "member/info";
 	}
 
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)

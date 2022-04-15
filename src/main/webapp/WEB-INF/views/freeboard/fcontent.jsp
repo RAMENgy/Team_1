@@ -11,13 +11,16 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>${FBDTO.subject } : 오늘 뭐 먹지?</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
+    <style type="text/css">
+    textarea,button {vertical-align: middle;}
+    </style>
 </head>
 
 <body>
@@ -55,6 +58,7 @@
                 <!-- 글 내용 시작 -->
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="row container">
+                    	<h3>게시글</h3>
 		                <table class="table">
 							<tr><td>글번호</td><td>${FBDTO.id }</td>
 							     <td>글쓴날짜</td><td><fmt:formatDate value="${FBDTO.date}" pattern="yyyy.MM.dd"/></td></tr>
@@ -62,10 +66,11 @@
 							    <td>조회수</td><td>${FBDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="3">${FBDTO.subject }</td></tr>
 							
-							<tr><td>글내용</td><td colspan="3" style="white-space:pre">${FBDTO.content }</td></tr>
+							<tr><td>글내용</td><td colspan="3" height="400px" style="white-space:pre">${FBDTO.content }</td></tr>
 						</table>
 						
 						<!-- 댓글 리스트 null 인지 판별 후 -->
+						<h3>댓글</h3>
 						<table class="table">
 						 	<thead>
 								<tr>
@@ -81,7 +86,11 @@
 										<!-- id코드로 id 이름 가져오기 -->
 										<td>${FBCDTO.name}</td>
 										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
-										<td>${FBCDTO.content}</td>
+										<td>${FBCDTO.content}
+										<c:if test="${FBCDTO.member_id eq sessionScope.id}">
+											<i class="ti-close" onclick="location.href='${pageContext.request.contextPath }/free/deleteComment?id=${FBCDTO.id }&page=${FBDTO.id }'"></i>
+										</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -91,15 +100,15 @@
 						
 						<!-- session 로그인 여부 판별 후 댓글 입력 창 생성 -->
 						<c:if test="${!empty sessionScope.id }">
-						<div class="blog-details-inner">
+						<div class="blog-details-inner" style="width: 100%">
 							<div class="leave-comment">
 	                            <h4>댓글 남기기</h4>
 	                            <form class="comment-form" action="${pageContext.request.contextPath }/free/writeComment" method="post">
 	                                <div class="">
 	                                    <div class="col-lg-12">
 	                                    	<input type="hidden" name="freeboard_id" value="${FBDTO.id }">
-	                                        <textarea placeholder="Messages" name="content"></textarea>
-	                                        <button type="submit" class="site-btn">Send message</button>
+	                                        <textarea placeholder="Messages" name="content" style="width: 70%"></textarea>
+	                                        <button style="height: 100px" type="submit" class="btn btn-outline-dark">댓글쓰기</button>
 	                                        <!-- ajax? -->
 	                                    </div>
 	                                </div>

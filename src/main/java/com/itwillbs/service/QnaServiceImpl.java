@@ -23,7 +23,7 @@ public class QnaServiceImpl implements QnaService{
 		// num,pass,readcount,date
 		qnaDTO.setReadcount(0);
 		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		
+		qnaDTO.setId(getMaxNum()+1);
 		qnaDAO.writeBoard(qnaDTO);
 		
 	}
@@ -73,13 +73,6 @@ public class QnaServiceImpl implements QnaService{
 		
 	}
 
-	@Override
-	public void qnawriteBoard(QnaDTO qnaDTO) {
-		qnaDTO.setReadcount(0);
-		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		qnaDAO.qnawriteBoard(qnaDTO);
-		
-	}
 
 	@Override
 	public void commentBoard(CommentDTO commentDTO) {
@@ -95,16 +88,17 @@ public class QnaServiceImpl implements QnaService{
 	
 	
 
-	/*
-	 * @Override public void commentupdateBoard(QnaDTO qnaDTO) {
-	 * qnaDAO.commentupdateBoard(qnaDTO);
-	 * 
-	 * }
-	 * 
-	 * @Override public void commentdeleteBoard(int num) { qnaDAO.deleteBoard(num);
-	 * 
-	 * }
-	 */
+	@Override
+	public void commentupdateBoard(CommentDTO commentDTO) {
+		qnaDAO.commentupdateBoard(commentDTO);
+		
+	}
+
+	@Override
+	public void commentdeleteBoard(int num) {
+		qnaDAO.commentdeleteBoard(num);
+		
+	}
 
 	@Override
 	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO) {
@@ -129,6 +123,12 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return qnaDAO.getBoardCountSearch(pageDTO);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		Integer num = qnaDAO.getMaxNum(); 
+		return num == null ? 0 : num;
 	}
 
 	

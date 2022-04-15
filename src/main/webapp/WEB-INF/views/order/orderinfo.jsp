@@ -41,6 +41,59 @@
     			}
     		});
     	});
+    	
+    	function f1(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			           /*  document.getElementById("zip").value=data.zonecode; */
+			           
+			           if(data.userSelectedType === 'J'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.jibunAddress;
+			           }
+			           
+			           if(data.userSelectedType === 'R'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.roadAddress;
+			           }
+			        }
+			    }).open();
+		}
+    	
+    	$(document).ready(function(){
+    		var p=${sessionScope.point };
+    		$("#p").text(p+"포인트");
+    	    $("#point").change(function(){
+    	    	var p=${sessionScope.point };
+    	    	if(${sessionScope.point }<=${map.sumMoney }){
+    	        if($("#point").is(":checked")){
+    	        	var pointSub = ${map.sumMoney } - ${sessionScope.point };
+    	            p=0;
+    	            $("#p").text(p+"포인트");
+    	            $('#pointSub').text(pointSub+"원");
+    	            
+    	        }else{
+    	            var pointSub = ${map.sumMoney }
+    	            p=${sessionScope.point };
+    	            $("#p").text(p+"포인트");
+    	            $('#pointSub').text(pointSub+"원");
+    	            
+    	        }
+    	    	}
+    	    	else {
+    	    		if($("#point").is(":checked")){
+	    	    		var pointSub = 0;
+	    	            $('#pointSub').text(pointSub+"원");
+	    	            $("#p").text(p-${map.sumMoney }+"포인트");
+    	    		}else{
+    	    			p = ${sessionScope.point };
+    	    			$("#p").text(p+"포인트");
+    	    			pointSub = ${map.sumMoney };
+    	    			$('#pointSub').text(pointSub+"원");
+    	    		}
+    	    	}
+    	    });
+    	});
     </script>
     
     
@@ -124,6 +177,7 @@
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
                                 <input type="text" id="jaddress" name="address">
+                                <input type="button" value="주소 검색" onclick="f1()">
                             </div>
                             <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
@@ -143,16 +197,10 @@
                                     <c:forEach var="basketList" items="${basketList }">
                                     <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
-<<<<<<< HEAD
-                                    <li class="total-price">총액 <span>${map.sumMoney - sessionScope.point}</span></li>
-                                    <li>
-                                    <label for="point">
-                                        포인트 사용하기
-                                        <input type="checkbox" id="point">
-                                    </label></li>
-=======
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
+                                    <li class="total-price">현재 포인트 <span id="p"></span></li>
+                                    <li class="total-price"><input type="checkbox" id="point">포인트 사용하기!</li>
+                                    <li class="total-price">최종 결제 금액<span id="pointSub"></span></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">

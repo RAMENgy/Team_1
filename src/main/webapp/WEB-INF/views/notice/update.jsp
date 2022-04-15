@@ -56,10 +56,10 @@
     <!-- Breadcrumb Section Begin -->
 
 <div id="tablebox">   
-<form action="${pageContext.request.contextPath }/notice/writePro" method="post">
+<form action="${pageContext.request.contextPath }/notice/updatePro" method="post">
+	<input type="hidden" name="id" value="${noticeDTO.id}">
 	<table class="table table-hover" style="text-align: center;">
-			<%-- <tr><td>작성자</td>
-   			 <td><input type="text" name="member_id" value="${noticeDTO.name }" class="form-control" readonly ></td></tr> --%>
+	
     	<thead>
 			<tr><td>제목</td>
    				<td><input type="text" name="subject" value="${noticeDTO.subject }" class="form-control"></td></tr>
@@ -76,7 +76,7 @@
 </div>
 </form>
 
-	<!-- </div> -->
+
 </div>
 
  <!-- Partner Logo Section Begin -->

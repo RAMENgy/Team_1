@@ -62,7 +62,7 @@
 		<tr onclick="location.href='${pageContext.request.contextPath }/notice/content?id=${nDTO.id}'">
     		<td>${nDTO.id}</td>
     		<td class="left">${nDTO.subject}</td>
-    		<td>${nDTO.member_id}</td>
+    		<td>${nDTO.name}</td>
     		<td><fmt:formatDate value="${nDTO.date}" pattern="yyyy.MM.dd"/> </td>
 		</tr> 
 	</c:forEach> 
@@ -87,10 +87,10 @@
 	
 <input type="button" value="글쓰기" class="btn btn-default" 
 onclick="location.href='${pageContext.request.contextPath }/notice/write'">		
-<input type="button" value="글수정" class="btn" 
+<%-- <input type="button" value="글수정" class="btn" 
 onclick="location.href='${pageContext.request.contextPath }/notice/update?num=${noticeDTO.num}'">
 <input type="button" value="글삭제" class="btn" 
-onclick="location.href='${pageContext.request.contextPath }/notice/delete?num=${noticeDTO.num}'">	
+onclick="location.href='${pageContext.request.contextPath }/notice/delete?num=${noticeDTO.num}'">	 --%>
 	
 	</c:if>
 	

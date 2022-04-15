@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +35,12 @@ public class NoticeController {
 
 	//	가상주소 http://localhost:8080/Team_1/notice/writePro
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
-	public String writePro(NoticeDTO noticeDTO) {
+	public String writePro(NoticeDTO noticeDTO, HttpSession session) {
 		System.out.println("NoticeController writePro() ");
-		// member_id
+		
+		//세션에서 멤버 아이디 값 가져오기
+		//noticeDTO에 member_id값 주기
+		noticeDTO.setMember_id((int) session.getAttribute("id"));
 		
 		noticeService.writeBoard(noticeDTO);
 		// /WEB-INF/views/notice/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)

@@ -20,9 +20,10 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public void writeBoard(NoticeDTO noticeDTO) {
-		
 		noticeDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		
+		// 게시글 고유 번호가 계속 중복됨
+		// getMaxNum으로 최대값 가져온 후 +1 해서 게시글 번호 세팅
+		noticeDTO.setId(getMaxNum()+1);
 		noticeDAO.writeBoard(noticeDTO);
 		
 	}
@@ -95,5 +96,14 @@ public class NoticeServiceImpl implements NoticeService{
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return noticeDAO.getBoardCountSearch(pageDTO);
 	}
+
+
+	@Override
+	public Integer getMaxNum() {
+		Integer num = noticeDAO.getMaxNum(); 
+		return num == null ? 0 : num;
+	}
+	
+	
 	
 }

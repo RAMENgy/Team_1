@@ -63,7 +63,7 @@
 		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
     		<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.member_id}</td>
+    		<td>${qDTO.name}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
     		<td>${qDTO.readcount}</td>
 		</tr> 
@@ -74,9 +74,9 @@
 				
 				<form action="${pageContext.request.contextPath }/board/search" method="get">
 					<input type="text" name="search" class="input_box">
-					<input type="submit" value="검색" class="btn btn-default">
+					<input type="submit" value="검색" class="btn">
 					</form>
-				<input type="button" value="글쓰기" class="btn btn-default" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
+				<input type="button" value="글쓰기" class="btn" onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">
 			</td> 
 		</tr>
 		</table>

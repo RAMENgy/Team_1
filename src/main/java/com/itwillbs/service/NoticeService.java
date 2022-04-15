@@ -26,4 +26,6 @@ public interface NoticeService {
 	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO);
 		
 	public int getBoardCountSearch(PageDTO pageDTO);
+	
+	public Integer getMaxNum();
 }

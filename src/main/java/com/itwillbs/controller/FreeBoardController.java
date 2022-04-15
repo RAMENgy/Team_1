@@ -88,8 +88,11 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value = "/free/writePro", method = RequestMethod.POST)
-	public String freeWritePro(FreeBoardDTO FBDTO){
+	public String freeWritePro(FreeBoardDTO FBDTO, HttpSession session){
+		int member_id = (int) session.getAttribute("id");
+		
 		FBDTO.setId(freeBoardService.getMaxNum(true)+1);
+		FBDTO.setMember_id(member_id);
 		FBDTO.setDate(new Timestamp(System.currentTimeMillis()));
 		
 		freeBoardService.writeBoard(FBDTO);
@@ -105,7 +108,9 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value = "/free/updatePro", method = RequestMethod.POST)
-	public String freeUpdatePro(FreeBoardDTO FBDTO){
+	public String freeUpdatePro(FreeBoardDTO FBDTO, HttpSession session){
+		int member_id = (int) session.getAttribute("id");
+		FBDTO.setMember_id(member_id);
 		freeBoardService.updateBoard(FBDTO);
 		return "redirect:/free/board";
 	}
@@ -129,45 +134,64 @@ public class FreeBoardController {
 		return "redirect:/free/content?id="+FBCDTO.getFreeboard_id();
 	}
 	
+	@RequestMapping(value = "/free/deleteComment", method = RequestMethod.GET)
+	public String freeDeleteComment(HttpServletRequest request, HttpSession session) {
+		int commentId = Integer.parseInt(request.getParameter("id"));
+		int pageId = Integer.parseInt(request.getParameter("page"));
+		
+		freeBoardService.deleteComment(commentId);
+		
+		
+		// current page 
+		return "redirect:/free/content?id="+pageId;
+	}
+	
+	
+	
 	@RequestMapping(value= "free/search", method = RequestMethod.GET)
 	public String freeSearch(HttpServletRequest request, Model model) {
-	String search = request.getParameter("search");
-	String search2 = "%"+search+"%";
-	int pageSize=10;
-	
-	
-	String pageNum=request.getParameter("pageNum");
-	if (pageNum == null) {
-		pageNum="1";
+		String search = request.getParameter("search");
+		String search2 = "%"+search+"%";
+		int pageSize=10;
+		
+		
+		String pageNum=request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum="1";
+		}
+		
+		
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setSearch(search2);
+		List<FreeBoardDTO> boardList=freeBoardService.getSearchList(pageDTO);
+		
+		int count=freeBoardService.getBoardCount();
+		
+		int currentPage=Integer.parseInt(pageNum);
+		int pageBlock=5;
+		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+		int endPage=startPage+pageBlock-1;
+		int pageCount=count / pageSize +  (count % pageSize == 0 ?0:1);
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+		
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageDTO", pageDTO);
+		
+		return "freeboard/freeboard";
 	}
 	
-	
-	PageDTO pageDTO=new PageDTO();
-	pageDTO.setPageSize(pageSize);
-	pageDTO.setPageNum(pageNum);
-	pageDTO.setSearch(search2);
-	List<FreeBoardDTO> boardList=freeBoardService.getSearchList(pageDTO);
-	
-	int count=freeBoardService.getBoardCount();
-	
-	int currentPage=Integer.parseInt(pageNum);
-	int pageBlock=5;
-	int startPage=(currentPage-1)/pageBlock*pageBlock+1;
-	int endPage=startPage+pageBlock-1;
-	int pageCount=count / pageSize +  (count % pageSize == 0 ?0:1);
-	if(endPage > pageCount){
-		endPage = pageCount;
-	}
-	
-	pageDTO.setCount(count);
-	pageDTO.setPageBlock(pageBlock);
-	pageDTO.setStartPage(startPage);
-	pageDTO.setEndPage(endPage);
-	pageDTO.setPageCount(pageCount);
-	
-	model.addAttribute("boardList", boardList);
-	model.addAttribute("pageDTO", pageDTO);
-	
-	return "freeboard/freeboard";
+	@RequestMapping(value = "/free/test", method = RequestMethod.GET)
+	public String ftest(HttpServletRequest request, HttpSession session) {
+		return "freeboard/ftest";
 	}
 }

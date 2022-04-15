@@ -23,17 +23,16 @@ public interface QnaDAO {
 	
 	public void deleteBoard(int num);
 	
-	public void qnawriteBoard(QnaDTO qnaDTO);
 	
 	public void commentBoard(CommentDTO commentDTO);
 	
 	public CommentDTO getCommentBoard(int num);
 	
-	/*
-	 * public void commentupdateBoard(QnaDTO qnaDTO);
-	 * 
-	 * public void commentdeleteBoard(int num);
-	 */
+	
+	public void commentupdateBoard(CommentDTO commentDTO);
+	
+	public void commentdeleteBoard(int num);
+	
 	
 	
 	// 검색

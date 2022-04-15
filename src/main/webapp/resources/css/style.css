@@ -430,14 +430,14 @@ ol {
 }
 
 .inner-header .advanced-search .category-btn {
-	max-width: 30%;
+	max-width: 80%;
 	float: left;
 	background: transparent;
 	border: none;
 	padding-left: 23px;
 	padding-top: 11px;
 	padding-bottom: 13px;
-	padding-right: 60px;
+	padding-right: 50px;
 	font-size: 16px;
 	color: #252525;
 	position: relative;
@@ -451,6 +451,15 @@ ol {
 	height: 20px;
 	background: #e5e5e5;
 	content: "";
+}
+
+#mainsearch {
+	border: 0px;
+	margin-top: 8px;
+	padding-right: 200px;
+}
+.col-lg-7{
+	padding-left: 100px;
 }
 
 .inner-header .advanced-search .category-btn:after {
@@ -653,6 +662,7 @@ ol {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
+	padding-left: 100px;
 }
 
 .nav-item .nav-depart {
@@ -4086,7 +4096,7 @@ ol {
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
-	.inner-header .advanced-search .category-btn {
+	.inner-header .advanced-search {
 		display: none;
 	}
 	.inner-header .advanced-search .input-group {
@@ -4235,7 +4245,7 @@ ol {
 	.instagram-photo .insta-item {
 		width: 100%;
 	}
-	.inner-header .advanced-search .category-btn {
+	.inner-header .advanced-search {
 		display: none;
 	}
 	.inner-header .advanced-search .input-group {

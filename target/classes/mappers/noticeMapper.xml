@@ -6,24 +6,31 @@
 <mapper namespace="com.itwillbs.mappers.noticeMapper">
 
 	<insert id="writeBoard">
-		insert into notice(member_id,subject,content,readcount,date) 
-		values(#{member_id},#{subject},#{content},#{readcount},#{date})
+		insert into notice(id,member_id,subject,content,readcount,date) 
+		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
 	</insert>
 	
 	<select id="getMaxNum" resultType="java.lang.Integer">
-		select max(num) from notice
+		select max(id) from notice
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from notice order by id desc limit #{startRow},#{pageSize}
+		select n.id,  n.member_id, m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		Join member m
+		ON n.member_id = m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
-		select count(*) from notice
+		select count(id) from notice
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from notice where id=#{id}
+		select n.id, n.member_id, m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		JOIN member m
+		ON n.member_id = m.id where n.id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
@@ -39,11 +46,15 @@
 	</delete>
 	
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from notice where subject like #{search} order by id desc limit #{startRow},#{pageSize}
+		select n.id,  n.member_id,  m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		JOIN member m
+		ON n.member_id = m.id
+		where n.subject like #{search} order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCountSearch" resultType="java.lang.Integer">
-		select count(*) from notice  where subject like #{search}
+		select count(id) from notice  where subject like #{search}
 	</select>
 	
 </mapper>

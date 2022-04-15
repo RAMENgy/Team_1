@@ -11,7 +11,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>자유게시판 : 오늘 뭐 먹지?</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -73,7 +73,11 @@
 								<c:forEach var="FBDTO" items="${boardList }">
 									<tr onclick="location.href='${pageContext.request.contextPath }/free/content?id=${FBDTO.id}'">
 										<td>${FBDTO.id}</td>
-										<td>${FBDTO.subject}</td>
+										<td>${FBDTO.subject} 
+											<c:if test="${FBDTO.comcount ne 0}">
+												(${FBDTO.comcount })
+											</c:if>
+										</td>
 										<td>${FBDTO.name}</td>
 										<!-- TODO member_id 기반 name get 하기 -->
 										<td><fmt:formatDate value="${FBDTO.date}" pattern="yyyy.MM.dd"/></td>
