@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.NoticeDTO">
-		select n.id,<!--  n.member_id, --> m.name, n.subject, n.content,
+		select n.id,  n.member_id, m.name, n.subject, n.content,
 		n.readcount, n.date  from notice n
 		Join member m
 		ON n.member_id = m.id
@@ -46,7 +46,7 @@
 	</delete>
 	
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.NoticeDTO">
-		select n.id, m.name, n.subject, n.content,
+		select n.id,  n.member_id,  m.name, n.subject, n.content,
 		n.readcount, n.date  from notice n
 		JOIN member m
 		ON n.member_id = m.id
