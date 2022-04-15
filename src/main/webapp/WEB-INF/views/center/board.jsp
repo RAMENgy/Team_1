@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
 
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
     <jsp:include page="../inc/top.jsp"></jsp:include>
     <!-- Header End -->
     
-   <!-- Breadcrumb Section Begin -->
+    <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
             <div class="row">
@@ -62,40 +62,35 @@
 			</thead>
 
  	 <c:forEach var="qDTO" items="${boardList }">
-	<c:if test="${ ! empty sessionScope.id }">
-
-  <c:if test="${sessionScope.id eq qDTO.member_id  || sessionScope.userid eq 'admin'}">
-	<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
-		<td>${qDTO.id}</td>
-    		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.name}</td>
-    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
-    		<td>${qDTO.readcount}</td>
-    	</tr>
+		<c:if test="${ ! empty sessionScope.id }">
+			<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
+		 		<td>${qDTO.id}</td>
+    			<td class="left">${qDTO.subject}
+					<c:if test="${qDTO.comcount ne 0}">
+						[${qDTO.comcount }]
+					</c:if>
+				</td>
+    			<td>${qDTO.name}</td>
+    			<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
+    			<td>${qDTO.readcount}</td>
+    		</tr> 
 		</c:if>
-	</c:if>  
-	
-	  <c:if test="${ ! (sessionScope.id eq qnaDTO.member_id  || sessionScope.userid eq 'admin')} ">
-		<tr>
-			<td>${qDTO.id}</td>
-    		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.name}</td>
-    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
-    		<td>${qDTO.readcount}</td>
-    	</tr>
-	</c:if>  
+	 
+	 	<c:if test="${  empty sessionScope.id }">
+			<tr>
+    			<td>${qDTO.id}</td>
+    			<td class="left">${qDTO.subject}
+					<c:if test="${qDTO.comcount ne 0}">
+						[${qDTO.comcount }]
+					</c:if>
+				</td>
+    			<td>${qDTO.name}</td>
+    			<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
+    			<td>${qDTO.readcount}</td>
+			</tr> 
+		
+		</c:if>
 	 </c:forEach>  
-	
-	
-     <c:forEach var="qDTO" items="${boardList }">
-		<tr>
-    		<td>${qDTO.id}</td>
-    		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.name}</td>
-    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
-    		<td>${qDTO.readcount}</td>
-		</tr> 
-	 </c:forEach> 
 	
 	
 		<tr>

@@ -16,21 +16,7 @@
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
-    
-     <!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<style type="text/css">
-	#tablebox{
-		width: 600px;
-		margin: 0 auto;
-	}
-</style>
+  
 </head>
 
 <body>
@@ -58,16 +44,17 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
-
+<!-- id="tablebox" -->
 <body>
-
-<table id="tablebox" class="table">
-<tr><td>번호</td><td>${qnaDTO.id}</td>
-	<td>작성일</td><td>${qnaDTO.date}</td></tr>
-<tr><td>작성자</td><td>${qnaDTO.name}</td>
-	<td>조회수</td><td>${qnaDTO.readcount}</td>
-<tr><td>제목</td><td colspan="3">${qnaDTO.subject}</td></tr>
-<tr><td>글내용</td><td colspan="3">${qnaDTO.content}</td></tr>
+	<div class="col-lg-9 order-1 order-lg-2">
+      <div class="row container">
+		<table class="table">
+			<tr><td>번호</td><td>${qnaDTO.id}</td>
+			<td>작성일</td><td>${qnaDTO.date}</td></tr>
+			<tr><td>작성자</td><td>${qnaDTO.name}</td>
+			<td>조회수</td><td>${qnaDTO.readcount}</td>
+			<tr><td>제목</td><td colspan="3">${qnaDTO.subject}</td></tr>
+			<tr><td>글내용</td><td colspan="3">${qnaDTO.content}</td></tr>
 
 
 <tr>
@@ -138,7 +125,9 @@
 </div>
 	</c:if> 
 	</c:if>
-
+	
+	</div>
+</div>
 
 
 <!-- 댓글 쓰기 화면 -->
@@ -167,9 +156,10 @@
 		</table>
 	</form>
 </div>
-</c:if>	
-	</c:if>
 
+	</c:if>	
+</c:if>
+  
 
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>
