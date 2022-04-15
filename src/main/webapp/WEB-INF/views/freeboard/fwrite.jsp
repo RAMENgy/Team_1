@@ -57,8 +57,8 @@
                     	<!-- 글쓰기 영역 시작 -->
                     	<form class="" action="${pageContext.request.contextPath }/free/writePro" method="post">
 						<table class="table" id="notice">
-						<tr><td>이름</td>
-						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.id }" readonly></td></tr>
+<!-- 						<tr><td>이름</td> -->
+<%-- 						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.id }" readonly></td></tr> --%>
 						<tr><td>제목</td>
 						    <td><input class="form-control" type="text" id="subject" name="subject"></td></tr>
 						<tr><td>내용</td>
