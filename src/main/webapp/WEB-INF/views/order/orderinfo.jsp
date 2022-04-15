@@ -50,7 +50,7 @@
     	            $('#pointSub').text(pointSub+"");
     	            
     	        }else{
-    	            alert("체크박스 체크 해제!");
+    	            alert("체크박스 체크 해제1111");
     	        }
     	    });
     	});
