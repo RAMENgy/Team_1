@@ -58,8 +58,6 @@
                     	<form class="" action="${pageContext.request.contextPath }/free/updatePro" method="post">
                     	<input type="hidden" name="id" value="${FBDTO.id }">
 						<table class="table" id="notice">
-						<tr><td>이름</td>
-						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.id }" readonly></td></tr>
 						<tr><td>제목</td>
 						    <td><input class="form-control" type="text" id="subject" name="subject" value="${FBDTO.subject }"></td></tr>
 						<tr><td>내용</td>

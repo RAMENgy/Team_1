@@ -108,7 +108,9 @@ public class FreeBoardController {
 	}
 	
 	@RequestMapping(value = "/free/updatePro", method = RequestMethod.POST)
-	public String freeUpdatePro(FreeBoardDTO FBDTO){
+	public String freeUpdatePro(FreeBoardDTO FBDTO, HttpSession session){
+		int member_id = (int) session.getAttribute("id");
+		FBDTO.setMember_id(member_id);
 		freeBoardService.updateBoard(FBDTO);
 		return "redirect:/free/board";
 	}
