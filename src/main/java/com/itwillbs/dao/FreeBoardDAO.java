@@ -19,5 +19,6 @@ public interface FreeBoardDAO {
 	public void deleteBoard(int id);
 	public void writeComment(FBCommentDTO FBCDTO);
 	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO);
+	public void deleteComment(int commentId);
 	
 }

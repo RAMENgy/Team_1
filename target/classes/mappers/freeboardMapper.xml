@@ -55,7 +55,7 @@
 	</insert>
 	
 	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
-		select f.id, m.name, f.freeboard_id, f.content, f.date 
+		select f.id, f.member_id, m.name, f.freeboard_id, f.content, f.date 
 		from freeboard_comment f 
 		join member m
 		on f.member_id = m.id
@@ -69,5 +69,9 @@
 		on f.member_id=m.id
 		where f.subject like #{search} order by id desc limit #{startRow},#{pageSize}
 	</select>
+	
+	<delete id="deleteComment">
+		delete from freeboard_comment where id=#{commentId}
+	</delete>
 	
 </mapper>
