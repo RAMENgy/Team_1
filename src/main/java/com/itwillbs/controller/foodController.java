@@ -1,7 +1,9 @@
 package com.itwillbs.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -419,8 +421,25 @@ public class foodController {
 	}
 	@RequestMapping(value = "/food/basket", method = RequestMethod.POST)
 	public String writePro(BasketDTO basketDTO,HttpSession session,Model model) {
-	
+			
 			foodService.basket(basketDTO);
+			//----------------------------------
+			Map<String, Object> map=new HashMap<>();
+			String userid = (String)session.getAttribute("userid");
+			MemberDTO ckDTO = memberService.getMember(userid);
+			
+			int member_id = ckDTO.getId();
+			
+			List<BasketDTO> basketList = basketService.basketList(member_id);
+			
+			model.addAttribute("basketList", basketList);
+			
+			int sumMoney = basketService.sumMoney(member_id);
+			map.put("sumMoney", sumMoney);
+			model.addAttribute("map", map);
+			
+			session.setAttribute("balist", basketList);
+			session.setAttribute("bamoney", sumMoney);
 			
 			return "redirect:/food/list";
 				

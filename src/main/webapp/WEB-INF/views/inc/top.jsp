@@ -102,7 +102,7 @@
                                                     기능 고민중 불필요시 삭제 -->
                                             		</tr>
                                         		</c:when>
-                           						<c:when test="${empty basketList }">
+                           						<c:when test="${empty sessionScope.balist }">
                            							<tr>
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
@@ -114,7 +114,7 @@
                                             		</tr>
                            						</c:when>
                            						<c:otherwise>
-                                        		<c:forEach var="basketList" items="${basketList }">
+                                        		<c:forEach var="basketList" items="${sessionScope.balist }">
                                            			<tr>
                                                		<td class="si-pic"><img src="${basketList.img }" alt=""></td>
                                                 	<td class="si-text">
@@ -139,7 +139,7 @@
                            				<c:when test="${empty sessionScope.userid }">
                            				
                            				</c:when>
-                           				<c:when test="${empty basketList }">
+                           				<c:when test="${empty sessionScope.balist }">
                            					<div class="select-total">
                                    				<span>장바구니 합계 금액</span>
                                     			<h5>0</h5>
@@ -151,7 +151,7 @@
                            				<c:otherwise>
                                 			<div class="select-total">
                                    				<span>장바구니 합계 금액</span>
-                                    			<h5>${map.sumMoney }</h5>
+                                    			<h5>${sessionScope.bamoney }</h5>
                                 			</div>
                                 			<div class="select-button">
                                    				<a href="${pageContext.request.contextPath }/basket" class="primary-btn view-card">구매하러가기</a>
