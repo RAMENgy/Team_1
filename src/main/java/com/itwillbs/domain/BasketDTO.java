@@ -13,8 +13,15 @@ public class BasketDTO {
 	private int order_info_id;
 	private String subject;
 	private int subprice;
+	private int amount;
 	
 
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public int getSubprice() {
 		return subprice;
 	}
