@@ -54,7 +54,7 @@
                         <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
                         <ul class="filter-catagories">
                         	</br>
-                            <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
+                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
                             <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
                             <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
                         </ul>
@@ -68,55 +68,34 @@
                    
                     <div class="product-list">
                         <div class="row">
-                           
-                            
+                        <form action="${pageContext.request.contextPath }/food/writePro" method="post">
+         
+                           <table id="notice">
+							<tr><td>이름 :</td><td> <input type="text" name="subject"></td><tr>
+							<tr><td>가격 :</td><td> <input type="text" name="amount"></td><tr>
+							<tr><td>내용 :</td><td> <input type="text" name="content"></td><tr>
+							<tr><td>내용 :</td><td> <input type="file" name="img"></td><tr>
+							<tr><td>종류 :</td><td><label><input type="radio" name="type" value="1"> 고기</label>
+      											  <label><input type="radio" name="type" value="2"> 채소</label>
+      											  <label><input type="radio" name="type" value="3"> 과일</label></td><tr>
+							<tr><td>
+	
+							<button type="submit" class="site-btn login-btn" name="write">제품등록</button>
+							</td></tr>
+                         </table>
+                         </form>
+                        
                          
-                            
-                         <c:forEach var="fDTO" items="${meatList}">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    
-                                    <div class="pi-text">
-                                   <div class="catagory-name">${fDTO.subject }</div>
-                                        <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
-                                            <h5>${fDTO.subject }</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            ${fDTO.amount }원
-  
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         </c:forEach>
-                         
-                        </div>
-                        <c:if test="${pageDTO.startPage > pageDTO.pageBlock }">
-						<a href="${pageContext.request.contextPath }/meat/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">이전</a>
-						</c:if>
-						
-						<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-						<a href="${pageContext.request.contextPath }/meat/list?pageNum=${i}">${i} </a>
-						</c:forEach>
-						
-						<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-						<a href="${pageContext.request.contextPath }/meat/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">다음</a>
-						</c:if>
-						<form action="${pageContext.request.contextPath }/meat/search" method="get">
-						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
-							<button type="submit">검색</button>
-						</form>
-						<c:if test = "${1==sessionScope.id}" >
-						<form action="${pageContext.request.contextPath }/food/write" method="get">
-						             
-							<button type="submit" >제품등록</button>
-						</form>
-						</c:if>
+                        
                     </div>
+                    
                 </div>
+                
             </div>
+
         </div>
     </section>
+    
     <!-- Product Shop Section End -->
 
   <!-- Partner Logo Section Begin -->
@@ -129,6 +108,8 @@
 
     <!-- Js Plugins -->
     <jsp:include page="../inc/js.jsp"></jsp:include>
+    
+    
 </body>
 
 </html>

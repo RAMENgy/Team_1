@@ -445,6 +445,20 @@ public class foodController {
 				
 
 	}
+	@RequestMapping(value = "/food/write", method = RequestMethod.GET)
+	public String foodwrite() {
+	
+
+		// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "food/writefood";
+	}
+	@RequestMapping(value = "/food/writePro", method = RequestMethod.POST)
+	public String foodwritePro(FoodDTO foodDTO) {
+	
+		foodService.writeFood(foodDTO);
+		// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "redirect:/food/list";
+	}
 	
 	 
 }

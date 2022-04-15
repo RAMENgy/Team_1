@@ -1,5 +1,6 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -181,5 +182,15 @@ public class FoodServiceImpl implements FoodService{
 		}
 		foodDAO.basket(basketDTO);
 	}
-
-}
+	@Override
+	public void writeFood(FoodDTO foodDTO) {
+		foodDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		foodDAO.writeFood(foodDTO);
+		if(foodDAO.getMaxNum()!=null) {
+			// 글이 있는 경우 
+			foodDTO.setId(foodDAO.getMaxNum()+1);
+		}else 
+			// 글이 없는 경우 
+			foodDTO.setId(1);
+		}
+	}
