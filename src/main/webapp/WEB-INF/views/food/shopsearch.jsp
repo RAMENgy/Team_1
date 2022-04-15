@@ -96,23 +96,6 @@
 						</c:if>
 						
 						 </div>
-<<<<<<< HEAD
-						<form action="${pageContext.request.contextPath }/food/search" method="get">
-						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
-							<button type="submit">검색</button>
-						</form>
-						<c:if test = "${1==sessionScope.id}" >
-						<form action="${pageContext.request.contextPath }/food/write" method="get">
-						             
-							<button type="submit" >제품등록</button>
-						</form>
-						</c:if>
-=======
-<%-- 						<form action="${pageContext.request.contextPath }/food/search" method="get"> --%>
-<!-- 						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >               -->
-<!-- 							<button type="submit">검색</button> -->
-<!-- 						</form> -->
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
                 </div>
                 
             </div>
