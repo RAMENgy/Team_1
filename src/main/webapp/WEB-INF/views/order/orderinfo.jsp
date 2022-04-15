@@ -174,7 +174,8 @@
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
                                     <c:forEach var="basketList" items="${basketList }">
-                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
+                                    <li class="fw-normal">${basketList.subject }<br>
+                                    <fmt:formatNumber type="number" value="${basketList.amount }"/>원 * ${basketList.count }개 <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
                                     <li class="total-price">사용 가능 포인트 <span>${sessionScope.point }원</span></li>

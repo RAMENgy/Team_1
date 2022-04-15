@@ -114,7 +114,8 @@
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
                                     <c:forEach var="orderpList" items="${orderpList }">
-                                    <li class="fw-normal">${orderpList.subject } * ${orderpList.count }개 <span><fmt:formatNumber type="number" value="${orderpList.subprice }"/>원</span></li>
+                                    <li class="fw-normal">${orderpList.subject }<br>
+                                    <fmt:formatNumber type="number" value="${orderpList.amount }"/>원 * ${orderpList.count }개<span><fmt:formatNumber type="number" value="${orderpList.subprice }"/>원</span></li>
                                     </c:forEach>
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
                                 </ul>
