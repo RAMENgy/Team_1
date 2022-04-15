@@ -97,8 +97,5 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public void deleteComment(int commentId) {
 		freeBoardDAO.deleteComment(commentId);
 	}
-	
-	
-	
-	
+
 }

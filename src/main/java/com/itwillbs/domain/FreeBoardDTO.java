@@ -10,6 +10,7 @@ public class FreeBoardDTO {
 	private int readcount;
 	private Timestamp date;
 	private String name;
+	private int comcount;
 	
 	public int getId() {
 		return id;
@@ -52,6 +53,12 @@ public class FreeBoardDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getComcount() {
+		return comcount;
+	}
+	public void setComcount(int comcount) {
+		this.comcount = comcount;
 	}
 	
 }
