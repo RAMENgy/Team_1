@@ -74,8 +74,10 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getSearchList", pageDTO);
 	}
-	
-	
-	
+
+	@Override
+	public void deleteComment(int commentId) {
+		sqlSession.delete(namespace+".deleteComment", commentId);
+	}
 	
 }

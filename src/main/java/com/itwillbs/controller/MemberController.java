@@ -55,6 +55,9 @@ public class MemberController {
 			map.put("sumMoney", sumMoney);
 			model.addAttribute("map", map);
 			
+			session.setAttribute("balist", basketList);
+			session.setAttribute("bamoney", sumMoney);
+			
 			return "main/index";
 			
 		} else {

@@ -38,7 +38,7 @@
 
   	<!-- 주문상품 내역 -->
   	<select id="orderpList" resultType="com.itwillbs.domain.BasketDTO">
-  		SELECT *, (p.amount*op.count) subprice
+  		SELECT *, (p.amount*op.count) subprice, p.amount
   		FROM order_info_product op
   		JOIN product p
   		ON p.id=op.product_id

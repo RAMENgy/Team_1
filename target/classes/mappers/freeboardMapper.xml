@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.freeboardMapper">
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.FreeBoardDTO">
-		select f.id, m.name, f.subject, f.content,
-		f.readcount, f.date  from freeboard f
+		select f.id, m.name, f.subject, f.content, f.readcount, f.date, (select count(id) from freeboard_comment where freeboard_id=f.id) as comcount
+		from freeboard f
 		join member m
 		on f.member_id=m.id
 		order by id desc limit #{startRow},#{pageSize}
@@ -55,7 +55,7 @@
 	</insert>
 	
 	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
-		select f.id, m.name, f.freeboard_id, f.content, f.date 
+		select f.id, f.member_id, m.name, f.freeboard_id, f.content, f.date 
 		from freeboard_comment f 
 		join member m
 		on f.member_id = m.id
@@ -68,6 +68,15 @@
 		join member m
 		on f.member_id=m.id
 		where f.subject like #{search} order by id desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<delete id="deleteComment">
+		delete from freeboard_comment where id=#{commentId}
+	</delete>
+	
+	<select id="getCommentCount">
+		SELECT count(id) FROM freeboard_comment
+		where freeboard_id=#{freeboard_id}
 	</select>
 	
 </mapper>
