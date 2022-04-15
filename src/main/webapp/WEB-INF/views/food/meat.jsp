@@ -95,7 +95,7 @@
 								<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/meat/list?pageNum=${i}">${i} </a></li>
 								</c:forEach>
-							
+							 
 								<c:choose>
 									<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
 										<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/meat/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
