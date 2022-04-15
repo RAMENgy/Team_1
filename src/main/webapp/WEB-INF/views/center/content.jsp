@@ -64,18 +64,17 @@
 <table id="tablebox" class="table">
 <tr><td>번호</td><td>${qnaDTO.id}</td>
 	<td>작성일</td><td>${qnaDTO.date}</td></tr>
-<tr><td>작성자</td><td>${qnaDTO.member_id}</td>
+<tr><td>작성자</td><td>${qnaDTO.name}</td>
 	<td>조회수</td><td>${qnaDTO.readcount}</td>
 <tr><td>제목</td><td colspan="3">${qnaDTO.subject}</td></tr>
 <tr><td>글내용</td><td colspan="3">${qnaDTO.content}</td></tr>
 
-<!-- 관리자, 작성자만 볼 수 있게 -->
 
 <tr>
 	<td colspan="10">
 <c:if test="${ ! empty sessionScope.id }">
 
-	<c:if test="${sessionScope.id eq qnaDTO.member_id}">
+	<c:if test="${sessionScope.id eq qnaDTO.member_id  || sessionScope.userid eq 'admin'}">
 	
 	<input type="button" value="글수정" class="btn" style="float: right;"
 	onclick="location.href='${pageContext.request.contextPath }/board/update?id=${qnaDTO.id}'">

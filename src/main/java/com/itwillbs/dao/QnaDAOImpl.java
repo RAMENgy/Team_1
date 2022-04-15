@@ -64,11 +64,6 @@ public class QnaDAOImpl implements QnaDAO{
 		sqlSession.delete(namespace+".deleteBoard", id);
 	}
 
-	@Override
-	public void qnawriteBoard(QnaDTO qnaDTO) {
-		sqlSession.insert(namespace+".qnawriteBoard", qnaDTO);
-		
-	}
 
 	@Override
 	public void commentBoard(CommentDTO commentDTO) {

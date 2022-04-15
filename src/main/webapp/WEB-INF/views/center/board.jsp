@@ -61,10 +61,10 @@
 				</tr>
 			</thead>
 
-	 <c:forEach var="qDTO" items="${boardList }">
+ 	 <c:forEach var="qDTO" items="${boardList }">
 	<c:if test="${ ! empty sessionScope.id }">
 
-	<c:if test="${sessionScope.id eq qnaDTO.member_id}">
+  <c:if test="${sessionScope.id eq qDTO.member_id  || sessionScope.userid eq 'admin'}">
 	<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
 		<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
@@ -73,45 +73,30 @@
     		<td>${qDTO.readcount}</td>
     	</tr>
 		</c:if>
-	</c:if>
-	<c:if test="${sessionScope.userid eq 'admin' } ">
-		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
-		<td>${qDTO.id}</td>
+	</c:if>  
+	
+	  <c:if test="${ ! (sessionScope.id eq qnaDTO.member_id  || sessionScope.userid eq 'admin')} ">
+		<tr>
+			<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
-    		<td>${sessionScope.id } ${qDTO.name}${qDTO.member_id }</td>
+    		<td>${qDTO.name}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
     		<td>${qDTO.readcount}</td>
     	</tr>
-	</c:if> 	
+	</c:if>  
+	 </c:forEach>  
 	
 	
-<%-- 	<c:if test="${ ! (sessionScope.id eq qnaDTO.member_id  || sessionScope.userid eq 'admin') } ">
-		<tr> 
-			
-	</c:if> --%>
-<%-- 	<c:if test="${empty sessionScope.id }">
-		<tr> 
-			
-    	</c:if> --%>
-    	
-			
-		</c:forEach>  
-		
-		<%-- <c:forEach var="qDTO" items="${boardList }">
-		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
+     <c:forEach var="qDTO" items="${boardList }">
+		<tr>
     		<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
     		<td>${qDTO.name}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
     		<td>${qDTO.readcount}</td>
 		</tr> 
-	</c:forEach>  --%>
+	 </c:forEach> 
 	
-    		
-
-		
-		
-
 	
 		<tr>
 			<td colspan="10">

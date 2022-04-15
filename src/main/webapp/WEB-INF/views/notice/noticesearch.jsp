@@ -62,7 +62,7 @@
 		<tr onclick="location.href='${pageContext.request.contextPath }/notice/content?id=${nDTO.id}'">
     		<td>${nDTO.id}</td>
     		<td class="left">${nDTO.subject}</td>
-    		<td>${nDTO.member_id}</td>
+    		<td>${nDTO.name}</td>
     		<td><fmt:formatDate value="${nDTO.date}" pattern="yyyy.MM.dd"/> </td>
 		</tr> 
 	</c:forEach> 

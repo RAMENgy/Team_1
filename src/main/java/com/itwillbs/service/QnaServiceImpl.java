@@ -73,13 +73,6 @@ public class QnaServiceImpl implements QnaService{
 		
 	}
 
-	@Override
-	public void qnawriteBoard(QnaDTO qnaDTO) {
-		qnaDTO.setReadcount(0);
-		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		qnaDAO.qnawriteBoard(qnaDTO);
-		
-	}
 
 	@Override
 	public void commentBoard(CommentDTO commentDTO) {

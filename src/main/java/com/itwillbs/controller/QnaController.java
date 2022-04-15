@@ -43,11 +43,11 @@ public class QnaController {
 	public String qnawritePro(QnaDTO qnaDTO) {
 		System.out.println("QnaController qnawritePro() ");
 		// member_id
-		/* qnaDTO.setMember_id(2); */
+		/* qnaDTO.setMember_id(2);  */
 
-		qnaService.qnawriteBoard(qnaDTO);
+		qnaService.writeBoard(qnaDTO);
 		// /WEB-INF/views/center/qnawrite.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "redirect:/board/list";
+        return "redirect:/board/list";
 
 	}
 
@@ -192,11 +192,6 @@ public class QnaController {
 		// member_id
 		commentDTO.setMember_id(2);   // **
 		
-		/*System.out.println(commentDTO.getContent());
-		System.out.println(commentDTO.getId());
-		System.out.println(commentDTO.getMember_id());
-		System.out.println(commentDTO.getQna_board_id());
-		System.out.println(commentDTO.getDate());*/
 		
 		qnaService.commentBoard(commentDTO);
 

@@ -56,7 +56,8 @@
     <!-- Breadcrumb Section Begin -->
 
 <div id="tablebox">   
-<form action="${pageContext.request.contextPath }/board/qnawritePro" method="post">
+<form action="${pageContext.request.contextPath }/board/updatePro" method="post">
+ <input type="hidden" value="${qnaDTO.id }" name="id">
 	<table class="table table-hover" style="text-align: center;">
 			
     	<thead>

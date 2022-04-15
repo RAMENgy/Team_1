@@ -22,8 +22,6 @@ public interface QnaService {
 	
 	public void deleteBoard(int num);
 	
-	public void qnawriteBoard(QnaDTO qnaDTO);
-	
 	public void commentBoard(CommentDTO commentDTO);
 	
 	public CommentDTO getCommentBoard(int num);

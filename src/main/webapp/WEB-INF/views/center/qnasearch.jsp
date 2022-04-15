@@ -63,7 +63,7 @@
 		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
     		<td>${qDTO.id}</td>
     		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.member_id}</td>
+    		<td>${qDTO.name}</td>
     		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
     		<td>${qDTO.readcount}</td>
 		</tr> 

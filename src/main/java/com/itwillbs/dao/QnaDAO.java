@@ -23,7 +23,6 @@ public interface QnaDAO {
 	
 	public void deleteBoard(int num);
 	
-	public void qnawriteBoard(QnaDTO qnaDTO);
 	
 	public void commentBoard(CommentDTO commentDTO);
 	
