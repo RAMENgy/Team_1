@@ -12,7 +12,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>주문하기</title>
+    <title>Fashi | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -41,22 +41,33 @@
     			}
     		});
     	});
-    	
-    	$(document).ready(function(){
-    	    $("#point").change(function(){
-    	        if($("#point").is(":checked")){
-    	        	var pointSub = ${map.sumMoney } - ${sessionScope.point };
-    	            alert(pointSub+"d11dddd");
-    	            $('#pointSub').text(pointSub+"");
-    	            
-    	        }else{
-    	            alert("체크박스 체크 해제1111");
-    	        }
-    	    });
-    	});
     </script>
     
-    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		function f1(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			           /*  document.getElementById("zip").value=data.zonecode; */
+			           
+			           if(data.userSelectedType === 'J'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.jibunAddress;
+			           }
+			           
+			           if(data.userSelectedType === 'R'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.roadAddress;
+
+			           }
+			           
+			            
+			        }
+			    }).open();
+		}
+	   
+	</script>
+	
 </head>
 
 <body>
@@ -77,7 +88,7 @@
                     <div class="breadcrumb-text product-more">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
                         <a href="./shop.html">Shop</a>
-                        <span>Check Out</span>
+                        <span>Order Info</span>
                     </div>
                 </div>
             </div>
@@ -89,12 +100,7 @@
     <section class="checkout-section spad">
         <div class="container">
             <form action="${pageContext.request.contextPath }/order/insertorder" method="post" class="checkout-form">
-            	<input type="hidden" value="${memberDTO.id }" name="member_id">
-            	<c:forEach var="basketList" items="${basketList }" varStatus="status">
-	            	<input type="hidden" value="${basketList.bid }" name="basketlist[${status.index }].id">
-    	        	<input type="hidden" value="${basketList.pid }" name="basketlist[${status.index }].product_id">
-    	        	<input type="hidden" value="${basketList.count }" name="basketlist[${status.index }].count">
-            	</c:forEach>
+            	
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- <div class="checkout-content">
@@ -137,11 +143,12 @@
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
                                 <input type="text" id="jaddress" name="address">
+                                <input type="button" value="주소 검색" onclick="f1()">
                             </div>
-                            <div class="col-lg-12">
+                           <!--  <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
-                                <input type="text" id="cun">
-                            </div>
+                                <input type="text" id="zip">
+                            </div> -->
                            
                         </div>
                     </div>
@@ -153,13 +160,10 @@
                             <div class="order-total">
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
-                                    <c:forEach var="basketList" items="${basketList }">
+                                    	<c:forEach var="basketList" items="${basketList }">
                                     <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
-                                    <li class="total-price">사용 가능 포인트 <span>${sessionScope.point }원</span></li>
-                                    <li class="total-price"><input type="checkbox" id="point"></li>
-                                    <li class="total-price">포인트 사용 후 금액<span id="pointSub"></span></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">
@@ -179,6 +183,29 @@
                                 </div> -->
                                 <div class="order-btn">
                                     <button type="submit" class="site-btn place-btn">주문하기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    <!-- Partner Logo Section Begin -->
+     <jsp:include page="../inc/partner.jsp"></jsp:include>
+    <!-- Partner Logo Section End -->
+
+    <!-- Footer Section Begin -->
+    <jsp:include page="../inc/bottom.jsp"></jsp:include>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <jsp:include page="../inc/js.jsp"></jsp:include>
+</body>
+
+</html>tton>
                                 </div>
                             </div>
                         </div>
