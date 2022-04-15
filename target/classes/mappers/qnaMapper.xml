@@ -10,10 +10,14 @@
 		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
 	</insert> 
 	
-    <insert id="qnawriteBoard">
-		insert into qna_board(id,member_id,subject,content,readcount,date) 
-		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
-	</insert>
+    <!-- <update id="writeBoard">
+		update qna_board set subject=#{subject}, content=#{content} 
+		where id=#{id}
+	</update>  -->
+	
+	<update id="updateBoard">
+		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
+	</update>
 	
     <select id="getMaxNum" resultType="java.lang.Integer">
 		select max(id) from qna_board
@@ -42,10 +46,6 @@
 		update qna_board set readcount=readcount+1 where id=#{id}
 	</update>
 	
-	<update id="updateBoard">
-		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
-	</update>
-	
 	<delete id="deleteBoard">
 		delete from qna_board where id=#{id}
 	</delete>
@@ -70,7 +70,7 @@
 	</delete>
 	
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.QnaDTO">
-		select q.id, m.name, q.subject, q.content,
+		select q.id, q.member_id, m.name, q.subject, q.content,
 		q.readcount, q.date  from qna_board q
 		JOIN member m
 		ON q.member_id=m.id
