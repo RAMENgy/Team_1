@@ -41,6 +41,19 @@
     			}
     		});
     	});
+    	
+    	$(document).ready(function(){
+    	    $("#point").change(function(){
+    	        if($("#point").is(":checked")){
+    	        	var pointSub = ${map.sumMoney } - ${sessionScope.point };
+    	            alert(pointSub+"d11dddd");
+    	            $('#pointSub').text(pointSub+"");
+    	            
+    	        }else{
+    	            alert("체크박스 체크 해제!");
+    	        }
+    	    });
+    	});
     </script>
     
     
@@ -145,6 +158,8 @@
                                     </c:forEach>
                                     <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
                                     <li class="total-price">사용 가능 포인트 <span>${sessionScope.point }원</span></li>
+                                    <li class="total-price"><input type="checkbox" id="point"></li>
+                                    <li class="total-price">포인트 사용 후 금액<span id="pointSub"></span></li>
                                 </ul>
                                 <!-- <div class="payment-check">
                                     <div class="pc-item">
