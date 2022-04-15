@@ -125,7 +125,7 @@
                                                 	<td class="si-text">
                                                     	<div class="product-selected">
                                                         	<p>${basketList.amount }</p>
-                                                        	<h6>${basketList.subject }</h6>
+                                                        	<h6>${basketList.subject } * ${basketList.count }</h6>
                                                     	</div>
                                                 	</td>
                                                 	<td class="si-close">
