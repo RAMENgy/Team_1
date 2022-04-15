@@ -23,7 +23,7 @@ public class QnaServiceImpl implements QnaService{
 		// num,pass,readcount,date
 		qnaDTO.setReadcount(0);
 		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		
+		qnaDTO.setId(getMaxNum()+1);
 		qnaDAO.writeBoard(qnaDTO);
 		
 	}
@@ -123,6 +123,12 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return qnaDAO.getBoardCountSearch(pageDTO);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		Integer num = qnaDAO.getMaxNum(); 
+		return num == null ? 0 : num;
 	}
 
 	
