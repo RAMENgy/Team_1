@@ -46,7 +46,7 @@
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
-    <section class="product-shop spad">
+    <section class="product-shop spad checkout-section spad">
         <div class="container">
             <div class="row">
                 <!-- 사이드 바 시작 -->
@@ -56,7 +56,7 @@
                    
                     <div class="product-list">
                         <div class="row">
-                        <form action="${pageContext.request.contextPath }/food/basket" method="post">
+                        <form class="checkout-form" action="${pageContext.request.contextPath }/food/basket" method="post">
                            <input type="hidden" name="member_id" value="${sessionScope.id}">
                            <input type="hidden" name="product_id" value="${foodDTO.id}">
                            <table id="notice">
@@ -73,15 +73,13 @@
                          </table>
                          </form>
                         
-                         
-                        
-                    </div>
                     
                 </div>
                 
             </div>
 
         </div>
+        
     </section>
     
     <!-- Product Shop Section End -->
