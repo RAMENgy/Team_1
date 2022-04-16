@@ -193,4 +193,8 @@ public class FoodServiceImpl implements FoodService{
 			// 글이 없는 경우 
 			foodDTO.setId(1);
 		}
+	@Override
+	public Integer getMaxNum() {
+		return foodDAO.getMaxNum();
+	}
 	}

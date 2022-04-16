@@ -28,4 +28,6 @@ public interface FoodService {
 	public FoodDTO getfood(int id);
 	public void basket(BasketDTO basketDTO);
 	public void writeFood(FoodDTO foodDTO);
+	
+	public Integer getMaxNum();
 }

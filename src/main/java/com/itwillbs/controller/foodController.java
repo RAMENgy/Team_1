@@ -485,5 +485,16 @@ public class foodController {
 		return "redirect:/food/list";
 	}
 	
+	@RequestMapping(value = "/food/recent", method = RequestMethod.GET)
+	public String foodrecent(Model model) {
+		int id = foodService.getMaxNum();
+		FoodDTO foodDTO = foodService.getfood(id);
+		
+		model.addAttribute("foodDTO", foodDTO);
+		System.out.println(id);
+
+		return "food/content";
+	}
+	
 	 
 }
