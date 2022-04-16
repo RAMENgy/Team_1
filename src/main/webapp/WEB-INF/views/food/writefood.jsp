@@ -56,15 +56,16 @@
                     
                     <div class="product-list">
                         <div class="row cart-table">
-                        <form class="checkout-form" action="${pageContext.request.contextPath }/food/writePro" method="post">
+                        <form class="checkout-form" action="${pageContext.request.contextPath }/food/writePro" method="post" enctype="multipart/form-data">
                     
                            <table id="notice">
 								<tr><td>이름 :</td><td> <input type="text" name="subject"></td></tr>
 								<tr><td>가격 :</td><td> <input type="text" name="amount"></td></tr>
 								<tr><td>내용 :</td><td> <input type="text" name="content"></td></tr>
-								<tr><td>내용 :</td><td> <label><input type="radio" name="fruit" value="1"> 고기</label>
-     												   <label><input type="radio" name="fruit" value="2"> 채소</label>
-     												   <label><input type="radio" name="fruit" value="3"> 과일</label></td></tr>
+								<tr><td>사진 :</td><td> <input type="file" name="file"></td></tr>
+								<tr><td>분류 :</td><td> <label><input type="radio" name="type" value="1"> 고기</label>
+     												   <label><input type="radio" name="type" value="2"> 채소</label>
+     												   <label><input type="radio" name="type" value="3"> 과일</label></td></tr>
                          	</table>
                          	<button type="submit" class="site-btn login-btn" name="write">제품등록</button>
                          </form>

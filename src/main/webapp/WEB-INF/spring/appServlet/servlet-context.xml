@@ -26,8 +26,10 @@
 	</beans:bean>
 	
 	<!-- 업로드 폴더 설정 -->
+	<!-- 상품 등록 경로로 사용중 -->
+	<!-- value에 자기 컴퓨터에 맞는 food 폴더 경로를 넣어주세요 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\workspace_sts1\\Team_1\\src\\main\\webapp\\resources\\img"></beans:constructor-arg>
+		<beans:constructor-arg value="D:\workspace_sts1\Team_1\src\main\webapp\resources\food"></beans:constructor-arg>
 	</beans:bean>
 	
 	

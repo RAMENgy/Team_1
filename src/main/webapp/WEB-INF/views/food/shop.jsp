@@ -70,7 +70,8 @@
                                  
                                         <div class="catagory-name"></div>
                                         <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
-                                           	<img alt="" src="">
+                                        <img src="${pageContext.request.contextPath }/resources/food/${fDTO.img}"
+                                        onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                             <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">
@@ -100,6 +101,10 @@
 						 </div>
 						 </div>
 						 
+						 <c:if test="${!empty sessionScope.userid }">
+							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/food/write'">상품등록</button>
+						</c:if>
+						 
 					 <div class="col">
 						<ul class="pagination justify-content-center">
 							<c:choose>
@@ -111,7 +116,6 @@
 								</c:otherwise>
 							</c:choose>
 						
-
 							<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/food/list?pageNum=${i}">${i} </a></li>
 							</c:forEach>
@@ -126,6 +130,7 @@
 							</c:choose>
 						</ul>
 					</div>
+					
 					                </div>
                 
             </div>

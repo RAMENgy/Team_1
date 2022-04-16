@@ -92,7 +92,7 @@
                            				<c:forEach var="basketList" items="${basketList }">
                            				<tr>
                            					<td class="cart-pic first-row">
-                                    			${basketList.img}
+                                    			<img src="${pageContext.request.contextPath }/resources/food/${basketList.img}">
                                    			</td>
                                     		<td class="cart-title first-row">
                                        			${basketList.subject }
