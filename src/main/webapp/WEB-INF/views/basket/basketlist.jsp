@@ -128,8 +128,8 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">쇼핑계속하기</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                                <a href="food/list" class="primary-btn continue-shop">쇼핑계속하기</a>
+                                <a href="basket/deleteAll" class="primary-btn up-cart">장바구니 전체 삭제</a>
                             </div>
                         </div>
                        

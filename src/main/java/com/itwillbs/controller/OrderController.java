@@ -53,7 +53,15 @@ public class OrderController {
 			map.put("sumMoney", sumMoney);
 			model.addAttribute("map", map);
 			
-			return "order/orderinfo";
+			if(basketList.isEmpty()) {
+				
+				return "basket/msg";
+				
+			}else {
+				
+				return "order/orderinfo";
+			}
+			
 			
 		} else {
 			
