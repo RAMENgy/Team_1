@@ -1,5 +1,6 @@
 package com.itwillbs.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.FoodDAO;
+import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -169,5 +171,30 @@ public class FoodServiceImpl implements FoodService{
 		// TODO Auto-generated method stub
 		return foodDAO.getfood(id);
 	}
-
-}
+	@Override
+	public void basket(BasketDTO basketDTO) {
+		if(foodDAO.basketgetMaxNum()!=null) {
+			// 글이 있는 경우 
+			basketDTO.setId(foodDAO.basketgetMaxNum()+1);
+		}else {
+			// 글이 없는 경우 
+			basketDTO.setId(1);
+		}
+		foodDAO.basket(basketDTO);
+	}
+	@Override
+	public void writeFood(FoodDTO foodDTO) {
+		foodDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		foodDAO.writeFood(foodDTO);
+		if(foodDAO.getMaxNum()!=null) {
+			// 글이 있는 경우 
+			foodDTO.setId(foodDAO.getMaxNum()+1);
+		}else 
+			// 글이 없는 경우 
+			foodDTO.setId(1);
+		}
+	@Override
+	public Integer getMaxNum() {
+		return foodDAO.getMaxNum();
+	}
+	}

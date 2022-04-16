@@ -11,7 +11,15 @@ public class NoticeDTO {
 	private String content;
 	private int readcount;
 	private Timestamp date;
+	private String name;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getId() {
 		return id;
 	}

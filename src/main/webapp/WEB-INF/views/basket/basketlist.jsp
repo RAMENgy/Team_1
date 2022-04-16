@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -90,17 +92,17 @@
                            				<c:forEach var="basketList" items="${basketList }">
                            				<tr>
                            					<td class="cart-pic first-row">
-                                    			${basketList.img}
+                                    			<img src="${pageContext.request.contextPath }/resources/food/${basketList.img}">
                                    			</td>
                                     		<td class="cart-title first-row">
                                        			${basketList.subject }
                                     		</td>
                                     		<td class="p-price first-row">
-                                    			${basketList.amount }
+                                    			<fmt:formatNumber type="number" value="${basketList.amount }"/>원
                                     		</td>
                                     		<td class="qua-col first-row">
                                     			<form action="${pageContext.request.contextPath }/basket/update">
-                                    			<input type="hidden" value="${basketList.id }" name="id">
+                                    			<input type="hidden" value="${basketList.bid }" name="id">
                                        			<div class="quantity">
                                             		<div class="pro-qty">
                                                			<input type="text" value="${basketList.count }" name="count">
@@ -109,8 +111,8 @@
                                         		<button type="submit">변경</button>
                                         		</form>
                                    			</td>
-                                    		<td class="total-price first-row">${basketList.subprice }</td>
-                                    		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.id })"></i></td>
+                                    		<td class="total-price first-row"><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</td>
+                                    		<td class="close-td first-row"><i class="ti-close" onclick="f1(${basketList.bid })"></i></td>
                                 		</tr> 
                                 		</c:forEach>
                            			</c:otherwise>
@@ -126,15 +128,15 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="#" class="primary-btn continue-shop">쇼핑계속하기</a>
-                                <a href="#" class="primary-btn up-cart">Update cart</a>
+                                <a href="food/list" class="primary-btn continue-shop">쇼핑계속하기</a>
+                                <a href="basket/deleteAll" class="primary-btn up-cart">장바구니 전체 삭제</a>
                             </div>
                         </div>
                        
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                 	<ul>
-                                    	<li class="cart-total">최종가격 <span>0</span></li>
+                                    	<li class="cart-total">최종가격 <span>0원</span></li>
 	                                </ul>
                                 	<a href="order" class="proceed-btn">주문하기</a>
                             </div>
@@ -163,7 +165,7 @@
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                 	<ul>
-                                    	<li class="cart-total">최종가격 <span>${map.sumMoney}</span></li>
+                                    	<li class="cart-total">최종가격 <span><fmt:formatNumber type="number" value="${map.sumMoney}"/>원</span></li>
 	                                </ul>
                                 	<a href="order" class="proceed-btn">주문하기</a>
                             </div>

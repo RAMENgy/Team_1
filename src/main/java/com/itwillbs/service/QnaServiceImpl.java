@@ -23,7 +23,7 @@ public class QnaServiceImpl implements QnaService{
 		// num,pass,readcount,date
 		qnaDTO.setReadcount(0);
 		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		
+		qnaDTO.setId(getMaxNum()+1);
 		qnaDAO.writeBoard(qnaDTO);
 		
 	}
@@ -41,7 +41,6 @@ public class QnaServiceImpl implements QnaService{
 		pageDTO.setStartRow(startRow);
 		pageDTO.setEndRow(endRow);
 	
-//		select * from board order by num desc limit #{startRow}-1,#{pageSize}
 		pageDTO.setStartRow(startRow-1);
 		return qnaDAO.getBoardList(pageDTO);
 	}
@@ -63,8 +62,8 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public void updateBoard(QnaDTO boardDTO) {
-		qnaDAO.updateBoard(boardDTO);
+	public void updateBoard(QnaDTO qnaDTO) {
+		qnaDAO.updateBoard(qnaDTO);
 		
 	}
 
@@ -74,13 +73,6 @@ public class QnaServiceImpl implements QnaService{
 		
 	}
 
-	@Override
-	public void qnawriteBoard(QnaDTO qnaDTO) {
-		qnaDTO.setReadcount(0);
-		qnaDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		qnaDAO.qnawriteBoard(qnaDTO);
-		
-	}
 
 	@Override
 	public void commentBoard(CommentDTO commentDTO) {
@@ -92,6 +84,51 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public CommentDTO getCommentBoard(int num) {
 		return qnaDAO.getCommentBoard(num);
+	}
+	
+	
+
+	@Override
+	public void commentupdateBoard(CommentDTO commentDTO) {
+		qnaDAO.commentupdateBoard(commentDTO);
+		
+	}
+
+	@Override
+	public void commentdeleteBoard(int num) {
+		qnaDAO.commentdeleteBoard(num);
+		
+	}
+
+	@Override
+	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO) {
+		// pageSize , pageNum 가져옴
+		// currentPage, startRow , endRow 구하기 
+		
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+		
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+		
+//		select * from board order by num desc limit #{startRow}-1,#{pageSize}
+		pageDTO.setStartRow(startRow-1);
+		
+		
+		return qnaDAO.getBoardListSearch(pageDTO);
+	}
+
+	@Override
+	public int getBoardCountSearch(PageDTO pageDTO) {
+		return qnaDAO.getBoardCountSearch(pageDTO);
+	}
+
+	@Override
+	public Integer getMaxNum() {
+		Integer num = qnaDAO.getMaxNum(); 
+		return num == null ? 0 : num;
 	}
 
 	

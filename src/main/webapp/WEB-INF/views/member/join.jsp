@@ -36,10 +36,11 @@
 
  </script>
  <![endif]-->
+ <jsp:include page="../inc/postcode.jsp"></jsp:include>
  <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
  <script type="text/javascript">
  
-
+	var userid=0;
  	$(document).ready(function(){
  		// id="ibtn" 중복확인 클릭
  		$('#ibtn').click(function(){
@@ -49,9 +50,11 @@
  				data:{"userid":$('#userid').val()},
  				success:function(rdata){
  					if(rdata=='iddup'){
- 						rdata="아이디 중복";
+ 						userid=1;
+ 						rdata="이미 사용중인 아이디 입니다";
  					}else{
- 						rdata="아이디 사용가능"
+ 						userid=0;
+ 						rdata="사용가능한 아이디 입니다";
  					}
  					$('#iddiv').html(rdata);
  				}
@@ -68,6 +71,7 @@
 					$('#userid').focus();
 					return false;
 				}
+
 				
 				if($('#password').val()==""){
 					alert("비밀번호 입력하세요");
@@ -95,6 +99,11 @@
 				if($('#tel').val()==""){
 					alert("휴대전화 입력하세요");
 					$('#tel').focus();
+					return false;
+				}
+				
+				if(userid==1) {
+					alert("중복된 아이디입니다.");
 					return false;
 				}
 				
@@ -134,7 +143,7 @@
 								<input type="button" value="중복확인" id="ibtn"><br>
 								<label></label><div id="iddiv"></div>
                             </div>
-  
+   
                             <div class="group-input">
                                 <label for="password">비밀번호</label>
                                 <input type="password" id="password" name="password">
@@ -152,9 +161,10 @@
                             
                             <div class="group-input">
                                 <label for="address">주소</label>
-                                <input type="address" id="address" name="address">  
+                                <input type="address" id="address" name="address">
+                                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                             </div>
-                            
+
                             <div class="group-input">
                                 <label for="tel">휴대전화</label>
                                 <input type="tel" id="tel" name="tel">  
@@ -169,8 +179,8 @@
             </div>
         </div>
     </div>
-    <!-- Register Form Section End -->
-
+    <!-- Register Form Section End -->    
+ 
 <article>
 </article>
 

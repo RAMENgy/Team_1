@@ -1,10 +1,12 @@
 package com.itwillbs.controller;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -53,6 +55,9 @@ public class MemberController {
 			map.put("sumMoney", sumMoney);
 			model.addAttribute("map", map);
 			
+			session.setAttribute("balist", basketList);
+			session.setAttribute("bamoney", sumMoney);
+			
 			return "main/index";
 			
 		} else {
@@ -61,6 +66,22 @@ public class MemberController {
 		
 		}
 	  
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String search(HttpServletRequest request) throws Exception {
+		String ca = request.getParameter("casearch");
+
+		String search = request.getParameter("search");
+		search = URLEncoder.encode(search,"UTF-8");
+		System.out.println(search);
+		if(ca.equals("food")) {
+			
+			return "redirect:/food/search?search-food="+search;
+			
+		} else if(ca.equals("recipe")) {
+			return "main/main";
+		} else return "searchmsg";
 	}
 	 
 
@@ -89,6 +110,8 @@ public class MemberController {
 			session.setAttribute("id", ckDTO.getId());
 			session.setAttribute("userid", ckDTO.getUserid());
 			session.setAttribute("name", ckDTO.getName());
+			session.setAttribute("point", (Integer)ckDTO.getPoint());
+			System.out.println("회원 포인트 : "+ckDTO.getPoint());
 			lDTO.setMember_id(ckDTO.getId());
 			// 내가 좋아요 누른 항목 갯수 찾기
 			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
@@ -106,6 +129,25 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/main/main";
+	}
+	
+	
+	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
+	public String deleteMember(HttpSession session) {
+		int id = (int) session.getAttribute("id");
+		memberService.deleteMember(id);
+		session.invalidate();
+		return "redirect:/main/main";
+	}
+	
+	
+	
+	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
+	public String info(HttpSession session, Model model) {
+		String userid = (String) session.getAttribute("userid");
+		MemberDTO memberDTO = memberService.getMember(userid);
+		model.addAttribute("memberDTO", memberDTO);
+		return "member/info";
 	}
 
 	@RequestMapping(value = "/member/update", method = RequestMethod.GET)

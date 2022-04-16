@@ -14,6 +14,7 @@ public class RecipeDTO {
 	private Timestamp date;
 	private String like_search;
 	private int search_id;
+	private String re_id;
 	
 	public int getSearch_id() {
 		return search_id;
@@ -80,6 +81,12 @@ public class RecipeDTO {
 	}
 	public void setLike_search(String likesearch) {
 		this.like_search = likesearch;
+	}
+	public String getRe_id() {
+		return re_id;
+	}
+	public void setRe_id(String re_id) {
+		this.re_id = re_id;
 	}
 	
 	

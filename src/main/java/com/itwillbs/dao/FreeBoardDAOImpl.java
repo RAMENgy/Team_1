@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 
@@ -22,7 +23,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeBoardDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	}
-
+	
 	@Override
 	public int getBoardCount() {
 		return sqlSession.selectOne(namespace+".getBoardCount");
@@ -34,15 +35,14 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public void writeBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void writeBoard(FreeBoardDTO FBDTO) {
+		sqlSession.insert(namespace+".writeBoard", FBDTO);
 	}
 
 	@Override
-	public Integer getMaxNum() {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer getMaxNum(boolean isFreeBoard) {
+		if (isFreeBoard) return sqlSession.selectOne(namespace+".getMaxNum");
+		else return sqlSession.selectOne(namespace+".getMaxNumComment");
 	}
 
 	@Override
@@ -51,16 +51,33 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public void updateBoard(FreeBoardDTO boardDTO) {
-		// TODO Auto-generated method stub
-		
+	public void updateBoard(FreeBoardDTO FBDTO) {
+		sqlSession.update(namespace+".updateBoard", FBDTO);
 	}
 
 	@Override
 	public void deleteBoard(int id) {
 		sqlSession.delete(namespace+".deleteBoard", id);
 	}
-	
-	
+
+	@Override
+	public void writeComment(FBCommentDTO FBCDTO) {
+		sqlSession.insert(namespace+".writeComment", FBCDTO);
+	}
+
+	@Override
+	public List<FBCommentDTO> getCommentList(int content_id) {
+		return sqlSession.selectList(namespace+".getCommentList", content_id);
+	}
+
+	@Override
+	public List<FreeBoardDTO> getSearchList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getSearchList", pageDTO);
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		sqlSession.delete(namespace+".deleteComment", commentId);
+	}
 	
 }

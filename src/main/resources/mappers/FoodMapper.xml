@@ -5,16 +5,16 @@
   
   <mapper namespace="com.itwillbs.mappers.FoodMapper">
   
-<select id="foodList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product order by id desc limit #{startRow},#{pageSize}</select>
-  <select id="meatList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=1 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="vegetableList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=2 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="fruitList" resultType="com.itwillbs.domain.FoodDTO">
-select * from product where type=3 order by id desc limit #{startRow},#{pageSize}</select>
-<select id="getMaxNum" resultType="java.lang.Integer">
-		select max(num) from product
+	<select id="foodList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="meatList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=1 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="vegetableList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=2 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="fruitList" resultType="com.itwillbs.domain.FoodDTO">
+		select * from product where type=3 order by id desc limit #{startRow},#{pageSize}</select>
+	<select id="getMaxNum" resultType="java.lang.Integer">
+		select max(id) from product
 	</select>
 	<select id="getfoodCount" resultType="java.lang.Integer">
 		select count(*) from product
@@ -29,35 +29,46 @@ select * from product where type=3 order by id desc limit #{startRow},#{pageSize
 		select count(*) from product where type=3
 	</select>
 	<select id="getMaxNummeat" resultType="java.lang.Integer">
-		select max(num) from product where type=1
+		select max(id) from product where type=1
 	</select>
 	<select id="getMaxNumfruit" resultType="java.lang.Integer">
-		select max(num) from product where type=3
+		select max(id) from product where type=3
 	</select>
 	<select id="getMaxNumvegetable" resultType="java.lang.Integer">
-		select max(num) from product where type=2
+		select max(id) from product where type=2
 	</select>
 	<select id="foodListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getfoodCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search}
 	</select>
 	<select id="meatListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=1 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=1 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getmeatCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=1
 	</select>
 	<select id="vegetableListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=2 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=2 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getvegetableCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=2
 	</select>
 	<select id="fruitListSearch" resultType="com.itwillbs.domain.FoodDTO">
-		select * from product where subject like #{search} and type=3 order by num desc limit #{startRow},#{pageSize}</select>
+		select * from product where subject like #{search} and type=3 order by id desc limit #{startRow},#{pageSize}</select>
   	<select id="getfruitCountSearch" resultType="java.lang.Integer">
 		select count(*) from product where subject like #{search} and type=3
 	</select>
-  <select id="getfood" resultType="com.itwillbs.domain.FoodDTO">
+  	<select id="getfood" resultType="com.itwillbs.domain.FoodDTO">
 		select * from product where id=#{id}
 	</select>
+	<insert id="basket">
+	insert into basket(id,member_id,product_id,count) 
+		values(#{id}, #{member_id}, #{product_id},#{count})
+	</insert>
+	<select id="basketgetMaxNum" resultType="java.lang.Integer">
+		select max(id) from basket
+	</select>
+	<insert id="writeFood">
+	insert into product(id,subject,img,content,amount,type,date) 
+		values(#{id},#{subject},#{img},#{content},#{amount},#{type},#{date})
+	</insert>
   </mapper>

@@ -45,10 +45,19 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
+    
+     <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
+    
 
 <div class="col-lg-9 order-1 order-lg-2">
     <div class="row container">
-		<table class="table table-hover" style="text-align: center;">
+		<table class="table table-hover" style="text-align: center;" >
 			<thead>
 				<tr> 
 					<th>번호</th> 
@@ -58,55 +67,65 @@
 				</tr>
 			</thead>
 
-	<c:forEach var="qDTO" items="${boardList }">
-		<tr onclick="location.href='${pageContext.request.contextPath }/board/content?id=${qDTO.id}'">
-    		<td>${qDTO.id}</td>
-    		<td class="left">${qDTO.subject}</td>
-    		<td>${qDTO.member_id}</td>
-    		<td><fmt:formatDate value="${qDTO.date}" pattern="yyyy.MM.dd"/> </td>
+	<c:forEach var="nDTO" items="${boardList }">
+		<tr onclick="location.href='${pageContext.request.contextPath }/notice/content?id=${nDTO.id}'">
+    		<td>${nDTO.id}</td>
+    		<td class="left">${nDTO.subject}</td>
+    		<td>${nDTO.name}</td>
+    		<td><fmt:formatDate value="${nDTO.date}" pattern="yyyy.MM.dd"/> </td>
 		</tr> 
 	</c:forEach> 
 	
-		<tr>
-			<td colspan="10">
-				
-				<input type="text" class="input_box" name="검색" maxlength="20">
-				<input type="button" class="btn btn-default" value="검색" maxlength="20">
-				<input type="button" value="글쓰기" class="btn btn-default" 
-				onclick="location.href='${pageContext.request.contextPath }/board/qnawrite'">	
-			</td> 
-		</tr>
+		
 		</table>
-
-
-<c:if test="${ ! empty sessionScope.userid }">
+		
+		
+		<c:if test="${ ! empty sessionScope.userid }">
 
 	<c:if test="${sessionScope.userid eq 'admin'}">
 	
-<input type="button" value="글수정" class="btn" 
-onclick="location.href='${pageContext.request.contextPath }/board/update?num=${qnaDTO.num}'">
-<input type="button" value="글삭제" class="btn" 
-onclick="location.href='${pageContext.request.contextPath }/board/delete?num=${qnaDTO.num}'">	
+<input type="button" value="글쓰기" class="btn btn-outline-dark m-sm-1" 
+onclick="location.href='${pageContext.request.contextPath }/notice/write'">	
+
 	
 	</c:if>
 	
 </c:if>
 
-<input type="button" value="글목록" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/board/list'">	
+<!-- 페이지 번호 영역 시작 -->
+<div class="col">
+	<ul class="pagination justify-content-center">
+		<c:choose>
+			<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
+				<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/notice/list?pageNum=${i}">${i} </a></li>
+		</c:forEach>
 	
-<c:if test="${ pageDTO.startPage > pageDTO.pageBlock }">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}">Prev</a>
-</c:if>
+		<c:choose>
+			<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
+				<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/notice/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+</div>
 
-<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${i}">${i} </a>
-</c:forEach>
+<!-- 페이지 번호 영역 끝 -->	
 
-<c:if test="${pageDTO.endPage < pageDTO.pageCount }">
-<a href="${pageContext.request.contextPath }/board/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}">Next</a>
-</c:if>		
-
+	</div>
+</div>
+ </div>
+        </div>
+    </section>
 		
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

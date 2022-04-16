@@ -46,48 +46,39 @@
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
-    <section class="product-shop spad">
+    <section class="product-shop spad checkout-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <a class="fw-title" href="${pageContext.request.contextPath }/food/list">Categories</a>
-                        <ul class="filter-catagories">
-                        	</br>
-                             <li><a href="${pageContext.request.contextPath }/meat/list">고기</a></li>
-                            <li><a href="${pageContext.request.contextPath }/vegetable/list">채소</a></li>
-                            <li><a href="${pageContext.request.contextPath }/fruit/list">과일</a></li>
-                        </ul>
-                    </div>
-                   
-                    
-                    
-                    
-                </div>
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
                 <div class="col-lg-9 order-1 order-lg-2">
-                   
-                    <div class="product-list">
-                        <div class="row">
-                           <table id="notice">
-							<tr><td>이름 :</td><td> ${foodDTO.subject}</td><tr>
-							<tr><td>가격 :</td><td> ${foodDTO.amount} 원</td><tr>
-							<tr><td>내용 :</td><td> ${foodDTO.content}</td><tr>
-							<tr><td>
-							<form action="#" method="get">
-							<button type="submit" class="site-btn login-btn">장바구니담기</button>
-							</form>
-							</td></tr>
-                         </table>
-                        
-                         
-                        
-                    </div>
                     
+                    <div class="product-list">
+                        <div class="row cart-table">
+                        <form class="checkout-form" action="${pageContext.request.contextPath }/food/basket" method="post">
+                           <input type="hidden" name="member_id" value="${sessionScope.id}">
+                           <input type="hidden" name="product_id" value="${foodDTO.id}">
+                           <table id="notice" style="padding-left: 0px;">
+                           		<tr style="border: 1px solid #E8E8E8;"><td><img src="${pageContext.request.contextPath }/resources/food/${foodDTO.img}"
+                           		onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"></td></tr>
+								<tr style="border: 1px solid #E8E8E8;"><th>이름 :</th><th> ${foodDTO.subject}</th></tr>
+								<tr style="border: 1px solid #E8E8E8;"><th>가격 :</th><th> ${foodDTO.amount} 원</th></tr>
+								<tr style="border: 1px solid #E8E8E8;"><th>내용 :</th><th> ${foodDTO.content}</th></tr>
+								<c:if test = "${! empty sessionScope.id}" >
+									<tr style="border: 1px solid #E8E8E8;"><th>수량 :</th><td> <input type="number" name="count"></td></tr>
+								</c:if>
+                         	</table>
+                         	<button type="submit" class="site-btn login-btn" name="basket">장바구니담기</button>
+                         	<button type="button" class="site-btn login-btn" onclick="history.back();">뒤로가기</button>
+                         </form>
+               		 </div>
+                	</div>
                 </div>
-                
             </div>
 
         </div>
+        
     </section>
     
     <!-- Product Shop Section End -->

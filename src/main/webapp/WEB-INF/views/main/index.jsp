@@ -80,17 +80,19 @@
                     <div class="single-banner">
                         <img src="${pageContext.request.contextPath }/resources/img/Team_1-banner.png" alt="">
                         <div class="inner-text">
-                            <h4>이번주 인기 레시피</h4>
+                            <h4>이번주 좋아요 1위 레시피</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
+                	<a href="${pageContext.request.contextPath }/food/recent">
                     <div class="single-banner">
                         <img src="${pageContext.request.contextPath }/resources/img/Team_1-banner2.png" alt="">
                         <div class="inner-text">
-                            <h4>이번주 인기 식자재</h4>
+                            <h4>최근 들어온 식자재</h4>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">

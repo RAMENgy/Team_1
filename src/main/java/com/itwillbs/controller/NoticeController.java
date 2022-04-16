@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,11 +35,13 @@ public class NoticeController {
 
 	//	가상주소 http://localhost:8080/Team_1/notice/writePro
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
-	public String writePro(NoticeDTO noticeDTO) {
+	public String writePro(NoticeDTO noticeDTO, HttpSession session) {
 		System.out.println("NoticeController writePro() ");
-		// member_id
-		noticeDTO.setMember_id(2);
-
+		
+		//세션에서 멤버 아이디 값 가져오기
+		//noticeDTO에 member_id값 주기
+		noticeDTO.setMember_id((int) session.getAttribute("id"));
+		
 		noticeService.writeBoard(noticeDTO);
 		// /WEB-INF/views/notice/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
 		return "redirect:/notice/list";
@@ -94,7 +97,31 @@ public class NoticeController {
 		return "notice/notice";
 	}
 
+	// 가상주소 http://localhost:8080/Team_1/notice/content?num=1
+		@RequestMapping(value = "/notice/content", method = RequestMethod.GET)
+		public String content(HttpServletRequest request, Model model) {
+			System.out.println("NoticeController content() ");
+			/*
+			 * int num=Integer.parseInt(request.getParameter("num")); String number =
+			 * request.getParameter("num").trim();
+			 */
+			String number = request.getParameter("id");
+			int num = Integer.parseInt(number);
+			
+			// 조회수 증가 update board set readcount=readcount+1 where num=?
+			noticeService.updateReadcount(num);
 
+			// num에 대한 글 가져오기
+			NoticeDTO noticeDTO = noticeService.getBoard(num);
+					 
+			
+			// 디비에서 가져온 글을 model 담아서 content.jsp 전달
+			model.addAttribute("noticeDTO", noticeDTO);
+			
+
+			// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+			return "notice/content";
+		}
 
 	// 가상주소 http://localhost:8080/Team_1/notice/update?num=1
 	@RequestMapping(value = "/notice/update", method = RequestMethod.GET)
@@ -109,7 +136,7 @@ public class NoticeController {
 		model.addAttribute("noticeDTO", noticeDTO);
 
 		// /WEB-INF/views/center/update.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "notice/notice";
+		return "notice/update";
 	}
 
 	//	가상주소 http://localhost:8080/Team_1/notice/updatePro
@@ -139,5 +166,62 @@ public class NoticeController {
 		// 가상주소 로그인주소 이동 /notice/list (주소줄에 주소가 바뀌면서 이동)
 		// response.sendRedirect("/notice/list");
 		return "redirect:/notice/list";
+	}
+	
+//	가상주소 http://localhost:8080/FunWeb/board/search
+	@RequestMapping(value = "/notice/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request, Model model) {
+		System.out.println("NoticeController search() ");
+		//검색어 가져오기
+		String search=request.getParameter("search");
+		String search2="%"+search+"%";
+		
+		// 한화면에 보여줄 글개수 설정
+		int pageSize=15;
+		
+		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
+		String pageNum=request.getParameter("pageNum");
+		if(pageNum==null) {
+			pageNum="1";
+		}
+		
+		
+		PageDTO pageDTO=new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		pageDTO.setSearch(search2);
+		
+		List<NoticeDTO> boardList=noticeService.getBoardListSearch(pageDTO);
+		
+		//전체 글개수 구하기 => 디비에서 가져오기
+		//int  리턴할형  getBoardCount() 메서드 정의
+		//select count(*) from board
+		// int count=bDAO.getBoardCount();
+		int count=noticeService.getBoardCountSearch(pageDTO);
+		
+		int currentPage=Integer.parseInt(pageNum);
+		int pageBlock=10;
+		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
+		int endPage=startPage+pageBlock-1;
+		int pageCount=count / pageSize +  (count % pageSize == 0 ?0:1);
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+		
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+		
+		//검색어
+		pageDTO.setSearch(search);
+		
+		// 디비에서 가져온 글을 model 담아서 notice.jsp 전달
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageDTO", pageDTO);
+		
+		// /WEB-INF/views/notice/noticesearch.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		return "notice/noticesearch";
 	}
 }

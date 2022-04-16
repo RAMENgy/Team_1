@@ -4,12 +4,11 @@ import java.util.List;
 
 import com.itwillbs.domain.NoticeDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.QnaDTO;
 
 public interface NoticeService {
 	
 	public void writeBoard(NoticeDTO noticeDTO);
-	
-	public Integer getMaxNum();
 	
 	public List<NoticeDTO> getBoardList(PageDTO pageDTO);
 	
@@ -22,4 +21,11 @@ public interface NoticeService {
 	public void updateBoard(NoticeDTO noticeDTO);
 	
 	public void deleteBoard(int num);
+	
+	// 검색 
+	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO);
+		
+	public int getBoardCountSearch(PageDTO pageDTO);
+	
+	public Integer getMaxNum();
 }

@@ -8,4 +8,5 @@ public interface MemberDAO {
 	public void updateMember(MemberDTO memberDTO);
 	public MemberDTO userCheck(MemberDTO memberDTO);
 	public void insertMember(MemberDTO memberDTO);
+	public void deleteMember(int id);
 }

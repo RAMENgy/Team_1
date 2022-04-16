@@ -6,54 +6,84 @@
 <mapper namespace="com.itwillbs.mappers.qnaMapper">
   
     <insert id="writeBoard">
-		insert into qna_board(member_id,subject,content,readcount,date) 
-		values(#{member_id},#{subject},#{content},#{readcount},#{date})
-	</insert>
+		insert into qna_board(id,member_id,subject,content,readcount,date) 
+		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
+	</insert> 
 	
-    <insert id="qnawriteBoard">
-		insert into qna_board(member_id,subject,content,readcount,date) 
-		values(#{member_id},#{subject},#{content},#{readcount},#{date})
-	</insert>
 	
-	<insert id="commentBoard">
-		insert into qna_comment(member_id,qna_board_id,content,date)
-		values(#{member_id},#{qna_board_id},#{content},#{date})
-	</insert>
-	
-	<select id="getCommentBoard" resultType="com.itwillbs.domain.CommentDTO">
-		select * from qna_comment where qna_board_id=#{qna_board_id}
-	</select>
+	<update id="updateBoard">
+		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
+	</update>
 	
     <select id="getMaxNum" resultType="java.lang.Integer">
 		select max(id) from qna_board
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.QnaDTO">
-		select * from qna_board order by id desc limit #{startRow},#{pageSize}
+		select q.id, q.member_id, m.name, q.subject, q.content,
+		q.readcount, q.date, (select count(id) from qna_comment where qna_board_id=q.id) as comcount  from qna_board q
+		Join member m
+		ON q.member_id = m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
-		select count(*) from qna_board
+		select count(id) from qna_board
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.QnaDTO">
-		select * from qna_board where id=#{id}
+		select q.id, q.member_id, m.name, q.subject, q.content,
+		q.readcount, q.date  from qna_board q
+		JOIN member m
+		ON q.member_id = m.id where q.id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
 		update qna_board set readcount=readcount+1 where id=#{id}
 	</update>
 	
-	<update id="updateBoard">
-		update qna_board set subject=#{subject}, content=#{content} where id=#{id}
-	</update>
-	
 	<delete id="deleteBoard">
-		delete from qna_board where id=#{id}
+		delete from a,b
+		using qna_board as a
+		left join qna_comment as b
+		on a.id = b.qna_board_id
+		where b.qna_board_id = #{id}
 	</delete>
 	 
-<!-- 	<insert id="commentBoard">
-		insert into
-	</insert>  -->
+	<!--  댓글 -->
+	
+	<insert id="commentBoard">
+		insert into qna_comment(id,member_id,qna_board_id,content,date)
+		values(#{id},#{member_id},#{qna_board_id},#{content},#{date})
+	</insert>
+	
+	<select id="getCommentBoard" resultType="com.itwillbs.domain.CommentDTO">
+		select * from qna_comment where qna_board_id=#{qna_board_id}
+	</select>
+	
+	<update id="commentupdateBoard">
+		update qna_comment set content=#{content} where id=#{id}
+	</update>
+	
+	<delete id="commentdeleteBoard">
+		delete from qna_comment where id=#{id}
+	</delete>
+	
+	<select id="getBoardListSearch" resultType="com.itwillbs.domain.QnaDTO">
+		select q.id, q.member_id, m.name, q.subject, q.content,
+		q.readcount, q.date  from qna_board q
+		JOIN member m
+		ON q.member_id=m.id
+		where q.subject like #{search} order by id desc limit #{startRow},#{pageSize}
+	</select>
+	
+	<select id="getBoardCountSearch" resultType="java.lang.Integer">
+		select count(id) from qna_board  where subject like #{search}
+	</select>
+	
+	<select id="getCommentCount">
+		SELECT count(id) FROM qna_comment
+		where qna_board_id=#{qna_board_id}
+	</select>
 	
   </mapper>

@@ -3,47 +3,58 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.itwillbs.mappers.boardMapper">
+<mapper namespace="com.itwillbs.mappers.noticeMapper">
 
 	<insert id="writeBoard">
-		insert into board(num,pass,name,subject,content,readcount,date,file) 
-		values(#{num},#{pass},#{name},#{subject},#{content},#{readcount},#{date},#{file})
+		insert into notice(id,member_id,subject,content,readcount,date) 
+		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
 	</insert>
 	
 	<select id="getMaxNum" resultType="java.lang.Integer">
-		select max(num) from board
+		select max(id) from notice
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from board order by num desc limit #{startRow},#{pageSize}
+		select n.id,  n.member_id, m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		Join member m
+		ON n.member_id = m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
-		select count(*) from board
+		select count(id) from notice
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from board where num=#{num}
+		select n.id, n.member_id, m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		JOIN member m
+		ON n.member_id = m.id where n.id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
-		update board set readcount=readcount+1 where num=#{num}
+		update notice set readcount=readcount+1 where id=#{id}
 	</update>
 	
 	<update id="updateBoard">
-		update board set subject=#{subject}, content=#{content} where num=#{num}
+		update notice set subject=#{subject}, content=#{content} where id=#{id}
 	</update>
 	
 	<delete id="deleteBoard">
-		delete from board where num=#{num}
+		delete from notice where id=#{id}
 	</delete>
 	
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.NoticeDTO">
-		select * from board where subject like #{search} order by num desc limit #{startRow},#{pageSize}
+		select n.id,  n.member_id,  m.name, n.subject, n.content,
+		n.readcount, n.date  from notice n
+		JOIN member m
+		ON n.member_id = m.id
+		where n.subject like #{search} order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCountSearch" resultType="java.lang.Integer">
-		select count(*) from board  where subject like #{search}
+		select count(id) from notice  where subject like #{search}
 	</select>
 	
 </mapper>

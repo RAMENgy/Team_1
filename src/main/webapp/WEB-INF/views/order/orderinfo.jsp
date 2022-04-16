@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -10,7 +12,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>주문하기</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -38,6 +40,59 @@
     				});
     			}
     		});
+    	});
+    	
+    	function f1(){
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+			            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+			            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+			           /*  document.getElementById("zip").value=data.zonecode; */
+			           
+			           if(data.userSelectedType === 'J'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.jibunAddress;
+			           }
+			           
+			           if(data.userSelectedType === 'R'){
+					        document.getElementById("jaddress").value="(" + data.zonecode + ")" + data.roadAddress;
+			           }
+			        }
+			    }).open();
+		}
+    	
+    	$(document).ready(function(){
+    		var p=${sessionScope.point };
+    		$("#p").text(p+"포인트");
+    	    $("#point").change(function(){
+    	    	var p=${sessionScope.point };
+    	    	if(${sessionScope.point }<=${map.sumMoney }){
+    	        if($("#point").is(":checked")){
+    	        	var pointSub = ${map.sumMoney } - ${sessionScope.point };
+    	            p=0;
+    	            $("#p").text(p+"포인트");
+    	            $('#pointSub').text(pointSub+"원");
+    	            
+    	        }else{
+    	            var pointSub = ${map.sumMoney }
+    	            p=${sessionScope.point };
+    	            $("#p").text(p+"포인트");
+    	            $('#pointSub').text(pointSub+"원");
+    	            
+    	        }
+    	    	}
+    	    	else {
+    	    		if($("#point").is(":checked")){
+	    	    		var pointSub = 0;
+	    	            $('#pointSub').text(pointSub+"원");
+	    	            $("#p").text(p-${map.sumMoney }+"포인트");
+    	    		}else{
+    	    			p = ${sessionScope.point };
+    	    			$("#p").text(p+"포인트");
+    	    			pointSub = ${map.sumMoney };
+    	    			$('#pointSub').text(pointSub+"원");
+    	    		}
+    	    	}
+    	    });
     	});
     </script>
     
@@ -73,7 +128,13 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="${pageContext.request.contextPath }/order/insertOrder" class="checkout-form">
+            <form action="${pageContext.request.contextPath }/order/insertorder" method="post" class="checkout-form">
+            	<input type="hidden" value="${memberDTO.id }" name="member_id">
+            	<c:forEach var="basketList" items="${basketList }" varStatus="status">
+	            	<input type="hidden" value="${basketList.bid }" name="basketlist[${status.index }].id">
+    	        	<input type="hidden" value="${basketList.pid }" name="basketlist[${status.index }].product_id">
+    	        	<input type="hidden" value="${basketList.count }" name="basketlist[${status.index }].count">
+            	</c:forEach>
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- <div class="checkout-content">
@@ -116,6 +177,7 @@
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
                                 <input type="text" id="jaddress" name="address">
+                                <input type="button" value="주소 검색" onclick="f1()">
                             </div>
                             <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
@@ -133,11 +195,14 @@
                                 <ul class="order-table">
                                     <li>Product <span>Total</span></li>
                                     <c:forEach var="basketList" items="${basketList }">
-                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span>${basketList.subprice }</span></li>
+                                    <li class="fw-normal">${basketList.subject } * ${basketList.count } <span><fmt:formatNumber type="number" value="${basketList.subprice }"/>원</span></li>
                                     </c:forEach>
-                                    <li class="total-price">총액 <span>${map.sumMoney }</span></li>
+                                    <li class="total-price">총액 <span><fmt:formatNumber type="number" value="${map.sumMoney }"/>원</span></li>
+                                    <li class="total-price">현재 포인트 <span id="p"></span></li>
+                                    <li class="total-price"><input type="checkbox" id="point">포인트 사용하기!</li>
+                                    <li class="total-price">최종 결제 금액<span id="pointSub"></span></li>
                                 </ul>
-                                <div class="payment-check">
+                                <!-- <div class="payment-check">
                                     <div class="pc-item">
                                         <label for="pc-check">
                                             Cheque Payment
@@ -152,9 +217,9 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="order-btn">
-                                    <button type="submit" class="site-btn place-btn">Place Order</button>
+                                    <button type="submit" class="site-btn place-btn">주문하기</button>
                                 </div>
                             </div>
                         </div>

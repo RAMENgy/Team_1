@@ -51,6 +51,9 @@ public class BasketController {
 			map.put("sumMoney", sumMoney);
 			model.addAttribute("map", map);
 			
+			session.setAttribute("balist", basketList);
+			session.setAttribute("bamoney", sumMoney);
+			
 			return "basket/basketlist";
 			
 		} else {
@@ -89,11 +92,11 @@ public class BasketController {
 			int member_id = ckDTO.getId();
 			basketService.deleteAll(member_id);
 			
-			return "basket/basketlist";
+			return "redirect:/basket";
 			
 		} else {
 			
-			return "basket/nosession";
+			return "redirect:/basket/nosession";
 		}
 		
 	}

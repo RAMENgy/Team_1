@@ -64,11 +64,6 @@ public class QnaDAOImpl implements QnaDAO{
 		sqlSession.delete(namespace+".deleteBoard", id);
 	}
 
-	@Override
-	public void qnawriteBoard(QnaDTO qnaDTO) {
-		sqlSession.insert(namespace+".qnawriteBoard", qnaDTO);
-		
-	}
 
 	@Override
 	public void commentBoard(CommentDTO commentDTO) {
@@ -81,7 +76,33 @@ public class QnaDAOImpl implements QnaDAO{
 		int qna_board_id=num;
 		return sqlSession.selectOne(namespace+".getCommentBoard", qna_board_id);
 	}
+	
+	
 
+	@Override
+	public void commentupdateBoard(CommentDTO commentDTO) {
+		sqlSession.update(namespace+".commentupdateBoard", commentDTO);
+		
+	}
+
+	@Override
+	public void commentdeleteBoard(int num) {
+		int id=num;
+		sqlSession.delete(namespace+".commentdeleteBoard", id);
+		
+	}
+
+	@Override
+	public List<QnaDTO> getBoardListSearch(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getBoardListSearch", pageDTO);
+	}
+
+	@Override
+	public int getBoardCountSearch(PageDTO pageDTO) {
+		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
+	}
+
+	
 	
 	
 	

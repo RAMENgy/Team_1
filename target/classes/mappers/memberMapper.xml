@@ -30,4 +30,8 @@
 		values(#{userid},#{name},#{password},#{address},#{tel},#{point},#{grade},#{date})
 	</insert>
 	
+	<delete id="deleteMember">
+		delete from member where id=#{id}
+	</delete>
+	
 </mapper>

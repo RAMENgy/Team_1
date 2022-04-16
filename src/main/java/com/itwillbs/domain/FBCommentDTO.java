@@ -8,6 +8,7 @@ public class FBCommentDTO {
 	private int freeboard_id;
 	private String content;
 	private Timestamp date;
+	private String name;
 	
 	public int getId() {
 		return id;
@@ -38,6 +39,12 @@ public class FBCommentDTO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
