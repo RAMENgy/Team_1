@@ -38,12 +38,12 @@
 	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\workspace_sts1\Team_1\src\main\webapp\resources\food"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\workspace_sts1\Team_1\src\main\webapp\resources\food"></beans:constructor-arg>
 	</beans:bean>
 	
 	<!-- 레시피 업로드 폴더 설정 -->
 	<beans:bean id="recipeUploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\\workspace_sts1\\Team_1\\src\\main\\webapp\\resources\\recipeimg"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\\workspace_sts1\\Team_1\\src\\main\\webapp\\resources\\recipeimg"></beans:constructor-arg>
 	</beans:bean>
 	
 	<!-- 상품 업로드 폴더 설정 -->

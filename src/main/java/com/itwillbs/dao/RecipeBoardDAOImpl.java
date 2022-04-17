@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.RecipeBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RBCommentDTO;
 
 @Repository
 public class RecipeBoardDAOImpl implements RecipeBoardDAO {
@@ -77,5 +78,25 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 		return sqlSession.selectOne(namespace+".getMaxLike");
 	}
 	
+	@Override
+	public void writeComment(RBCommentDTO RBCDTO) {
+		sqlSession.insert(namespace+".writeComment", RBCDTO);
+	}
+	
+	@Override
+	public List<RBCommentDTO> getCommentList(int content_id) {
+		return sqlSession.selectList(namespace+".getCommentList", content_id);
+	}
+	
+	@Override
+	public Integer getMaxNum(boolean isRecipeBoard) {
+		if (isRecipeBoard) return sqlSession.selectOne(namespace+".getMaxNum");
+		else return sqlSession.selectOne(namespace+".getMaxNumComment");
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		sqlSession.delete(namespace+".deleteComment", commentId);
+	}
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.itwillbs.dao.RecipeBoardDAO;
 import com.itwillbs.domain.RecipeBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RBCommentDTO;
 
 @Service
 public class RecipeBoardServiceImpl implements RecipeBoardService{
@@ -118,6 +119,27 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 	@Override
 	public Integer getMaxLike() {
 		return recipeBoardDAO.getMaxLike();
+	}
+	
+	@Override
+	public void writeComment(RBCommentDTO RBCDTO) {
+		recipeBoardDAO.writeComment(RBCDTO);
+	}
+	
+	@Override
+	public void deleteComment(int commentId) {
+		recipeBoardDAO.deleteComment(commentId);
+	}
+	
+	@Override
+	public List<RBCommentDTO> getCommentList(int content_id) {
+		return recipeBoardDAO.getCommentList(content_id);
+	}
+	
+	@Override
+	public Integer getMaxNum(boolean isRecipeBoard) {
+		Integer num = recipeBoardDAO.getMaxNum(isRecipeBoard); 
+		return num == null ? 0 : num;
 	}
 	
 }

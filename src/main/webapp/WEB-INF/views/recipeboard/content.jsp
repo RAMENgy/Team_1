@@ -80,19 +80,27 @@
 						<!-- 글 수정 삭제 버튼 끝 -->
 						
 						<!-- 댓글 리스트 null 인지 판별 후 -->
+						<h3>댓글</h3>
 						<table class="table">
 						 	<thead>
 								<tr>
 									<th>작성자</th>
-									<th>댓글내용</th>
+									<th>댓글</th>
+									<th>날짜</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="rbDTO" items="${recipeboardList }">
+								<c:forEach var="RBCDTO" items="${CommentList }">
 								<!-- 댓글 리스트 받아오기 -->
 									<tr>
-										<td>작성자</td>
-										<td>내용</td>
+										<!-- id코드로 id 이름 가져오기 -->
+										<td>${RBCDTO.name}</td>
+										<td>${RBCDTO.content}
+										<td><fmt:formatDate value="${RBCDTO.date}" pattern="yyyy.MM.dd"/>
+										<c:if test="${RBCDTO.member_id eq sessionScope.id}">
+											<i class="ti-close" onclick="location.href='${pageContext.request.contextPath }/recipeboard/deleteComment?id=${RBCDTO.id }&page=${rbDTO.id }'"></i>
+										</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -102,14 +110,15 @@
 						
 						<!-- session 로그인 여부 판별 후 댓글 입력 창 생성 -->
 						<c:if test="${!empty sessionScope.id }">
-						<div class="blog-details-inner">
+						<div class="blog-details-inner" style="width: 100%">
 							<div class="leave-comment">
 	                            <h4>댓글 남기기</h4>
-	                            <form action="#" class="comment-form">
+	                            <form class="comment-form" action="${pageContext.request.contextPath }/recipeboard/writeComment" method="post">
 	                                <div class="">
 	                                    <div class="col-lg-12">
-	                                        <textarea placeholder="Messages"></textarea>
-	                                        <button type="submit" class="site-btn">Send message</button>
+	                                    	<input type="hidden" name="recipe_board_id" value="${rbDTO.id }">
+	                                        <textarea placeholder="Messages" name="content" style="width: 70%"></textarea>
+	                                        <button style="height: 100px" type="submit" class="btn btn-outline-dark">댓글쓰기</button>
 	                                        <!-- ajax? -->
 	                                    </div>
 	                                </div>

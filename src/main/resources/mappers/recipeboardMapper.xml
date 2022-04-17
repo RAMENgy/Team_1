@@ -67,4 +67,30 @@
 		where like_count=(select max(like_count) from recipe_board)
 	</select>
 	
+	<insert id="writeComment">
+		insert into recipe_comment(id,member_id,recipe_board_id,content,date)
+		values(#{id},#{member_id},#{recipe_board_id},#{content},#{date})
+	</insert>
+	
+	<delete id="deleteComment">
+		delete from recipe_comment where id=#{commentId}
+	</delete>
+	
+	<select id="getCommentCount">
+		SELECT count(id) FROM recipe_comment
+		where recipeboard_id=#{recipeboard_id}
+	</select>
+	
+	<select id="getMaxNumComment" resultType="java.lang.Integer">
+		select max(id) from recipe_comment
+	</select>
+	
+	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
+		select r.id, r.member_id, m.name, r.recipe_board_id, r.content, r.date 
+		from recipe_comment r 
+		join member m
+		on r.member_id = m.id
+		where r.recipe_board_id=#{content_id}
+	</select>
+	
 </mapper>

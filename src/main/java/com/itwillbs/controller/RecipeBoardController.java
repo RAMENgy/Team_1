@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,11 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.domain.RecipeBoardDTO;
-import com.itwillbs.domain.RecipeDTO;
+import com.itwillbs.domain.FBCommentDTO;
 import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RBCommentDTO;
 import com.itwillbs.service.MemberService;
 import com.itwillbs.service.RecipeBoardService;
 
@@ -128,18 +130,18 @@ public class RecipeBoardController {
 	@RequestMapping(value = "/recipeboard/content", method = RequestMethod.GET)
 	public String content(HttpServletRequest request, Model model) {
 		System.out.println("RecipeBoardController content() ");
-		int id=Integer.parseInt(request.getParameter("id"));
 		
-		//조회수 증가 update board set readcount=readcount+1 where member_id=?
-		recipeBoardService.updateReadcount(id);
-		
-		// id에 대한 글 가져오기
-		RecipeBoardDTO rbDTO=recipeBoardService.getBoard(id);
-			
-		// 디비에서 가져온 글을 model 담아서 content.jsp 전달
+		String id = request.getParameter("id");
+		if (id == null) {
+			id = "1";
+		}
+		int intId = Integer.parseInt(id);
+		RecipeBoardDTO rbDTO = recipeBoardService.getBoard(intId);
 		model.addAttribute("rbDTO", rbDTO);
-			
-		// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
+		
+		List<RBCommentDTO> CommentList=recipeBoardService.getCommentList(intId);
+		
+		model.addAttribute("CommentList", CommentList);
 		return "recipeboard/content";
 	}	
 	
@@ -247,6 +249,26 @@ public class RecipeBoardController {
 		return "recipeboard/content";
 	}
 	
+	@RequestMapping(value = "/recipeboard/writeComment", method = RequestMethod.POST)
+	public String recipeBoardWriteComment(RBCommentDTO RBCDTO, HttpSession session){
+		RBCDTO.setDate(new Timestamp(System.currentTimeMillis()));
+		RBCDTO.setMember_id((int) session.getAttribute("id"));
+		RBCDTO.setId(recipeBoardService.getMaxNum(false)+1);
+		recipeBoardService.writeComment(RBCDTO);
+		return "redirect:/recipeboard/content?id="+RBCDTO.getRecipe_board_id();
+	}
+	
+	@RequestMapping(value = "/recipeboard/deleteComment", method = RequestMethod.GET)
+	public String recipeBoardDeleteComment(HttpServletRequest request, HttpSession session) {
+		int commentId = Integer.parseInt(request.getParameter("id"));
+		int pageId = Integer.parseInt(request.getParameter("page"));
+		
+		recipeBoardService.deleteComment(commentId);
+		
+		
+		// current page 
+		return "redirect:/recipeboard/content?id="+pageId;
+	}
 	
 	
 }
