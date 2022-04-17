@@ -35,7 +35,7 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/new-hero-1.jpg">
+            <div class="single-hero-items set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">

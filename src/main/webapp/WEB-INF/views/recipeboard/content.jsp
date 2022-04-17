@@ -59,7 +59,7 @@
 							     <td>글쓴날짜</td><td>${rbDTO.date }</td></tr>
 							<tr><td>글쓴이</td><td>${rbDTO.member_id }</td>
 							    <td>조회수</td><td>${rbDTO.readcount }</td></tr>
-							<tr><td>글제목</td><td colspan="3">${rbDTO.subject }</td></tr>
+							<tr><td>글제목</td><td colspan="2">${rbDTO.subject }</td><td>좋아요 : <span style="color: red;">${rbDTO.like_count}</span></td></tr>
 							
 							<tr><td>글내용</td><td colspan="3" ><img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}"
 							onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"><br>
@@ -75,6 +75,7 @@
 								</c:if>
 							</c:if>
 							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/recipeboard/list'">글목록</button>
+							<button class="btn btn-outline-dark" type="submit" style="background-color: red;" onclick="">♥</button>
 						</div>
 						<!-- 글 수정 삭제 버튼 끝 -->
 						
