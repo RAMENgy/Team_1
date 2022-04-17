@@ -10,7 +10,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>레시피 작성하기</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -88,13 +88,16 @@
                     	<!-- 글쓰기 영역 시작 -->
                     	<form action="${pageContext.request.contextPath }/recipeboard/writePro" method="post" enctype="multipart/form-data">
 						<table class="table" id="notice">
-						<tr><td>글번호</td>
-						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.id }" readonly></td></tr>
+						<tr><td>작성자</td>
+						    <td><input class="form-control" type="text" id="member_id" name="member_id" value="${sessionScope.name }" readonly></td></tr>
 						<tr><td>제목</td>
 						    <td><input class="form-control" type="text" id="subject" name="subject"></td></tr>
 						<tr><td>내용</td>
-						    <td><div class="full-height form-control" id='image_preview' contentEditable="true" name="content">
+						    <td><div class="full-height form-control" id='image_preview' contentEditable="true">
 						    		<div id='att_zone' data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+						    		<div>
+						    		<textarea id="content" name="content" placeholder="여기에 레시피를 입력해주세요!" cols="70" rows="10"></textarea>
+						    		</div>
 						    	</div>
 						    	</td></tr>
 						</table>

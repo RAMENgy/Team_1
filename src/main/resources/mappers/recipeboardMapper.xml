@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.recipeboardMapper">
 	
 	<insert id="writeBoard">
-		insert into recipe_board(id,member_id,subject,ingredient,content,readcount,like_count) 
-		values(#{id},#{member_id},#{subject},#{ingredient},#{content},#{readcount},#{like_count})
+		insert into recipe_board(id,member_id,subject,img,content,readcount,like_count) 
+		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},#{like_count})
 	</insert>
 	
 	<select id="getMaxId" resultType="java.lang.Integer">

@@ -57,7 +57,7 @@
                             <div class="blog-item">
                             	<c:forEach var="rbDTO" items="${recipeboardList }">
                                 <div class="bi-pic">
-                                    <img src="${rbDTO.img}" alt="">
+                                    <img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                 </div>
                                 <div class="bi-text">
                                     <a onclick="location.href='${pageContext.request.contextPath }/recipeboard/content?id=${rbDTO.id}'">
