@@ -93,7 +93,7 @@ public class MemberController {
 			return "redirect:/food/search?search-food="+search;
 			
 		} else if(ca.equals("recipe")) {
-			return "main/main";
+			return "redirect:/recipeboard/search?search="+search;
 		} else return "searchmsg";
 	}
 	 
