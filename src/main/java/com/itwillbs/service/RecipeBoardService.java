@@ -28,4 +28,8 @@ public interface RecipeBoardService {
 	
 	public int getBoardCountSearch(PageDTO pageDTO); 
 	
+	public int pointUp(int id);
+	
+	public Integer getMaxLike();
+	
 }

@@ -28,4 +28,8 @@ public void writeBoard(NoticeDTO noticeDTO);
 	public List<NoticeDTO> getBoardListSearch(PageDTO pageDTO);
 			
 	public int getBoardCountSearch(PageDTO pageDTO);
+	
+	public List<NoticeDTO> main1();
+	
+	public List<NoticeDTO> main2();
 }

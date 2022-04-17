@@ -66,6 +66,16 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
 	}
+
+	@Override
+	public int pointUp(int id) {
+		return sqlSession.update(namespace+".pointUp", id);
+	}
+
+	@Override
+	public Integer getMaxLike() {
+		return sqlSession.selectOne(namespace+".getMaxLike");
+	}
 	
 	
 }

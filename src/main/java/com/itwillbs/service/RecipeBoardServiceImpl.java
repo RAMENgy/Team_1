@@ -107,5 +107,17 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 				
 		return recipeBoardDAO.getBoardCountSearch(pageDTO);
 	}
+
+
+	@Override
+	public int pointUp(int id) {
+		return recipeBoardDAO.pointUp(id);
+	}
+
+
+	@Override
+	public Integer getMaxLike() {
+		return recipeBoardDAO.getMaxLike();
+	}
 	
 }

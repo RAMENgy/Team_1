@@ -27,4 +27,8 @@ public interface RecipeBoardDAO {
 			
 	public int getBoardCountSearch(PageDTO pageDTO);
 	
+	public int pointUp(int id);
+	
+	public Integer getMaxLike();
+	
 }

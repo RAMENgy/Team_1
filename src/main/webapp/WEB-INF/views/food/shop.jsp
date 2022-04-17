@@ -101,7 +101,7 @@
 						 </div>
 						 </div>
 						 
-						 <c:if test="${!empty sessionScope.userid }">
+						 <c:if test="${sessionScope.id eq 1}">
 							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/food/write'">상품등록</button>
 						</c:if>
 						 

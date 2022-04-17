@@ -35,12 +35,13 @@ public class NoticeController {
 
 	//	가상주소 http://localhost:8080/Team_1/notice/writePro
 	@RequestMapping(value = "/notice/writePro", method = RequestMethod.POST)
-	public String writePro(NoticeDTO noticeDTO, HttpSession session) {
+	public String writePro(NoticeDTO noticeDTO, HttpSession session, HttpServletRequest request) {
 		System.out.println("NoticeController writePro() ");
 		
 		//세션에서 멤버 아이디 값 가져오기
 		//noticeDTO에 member_id값 주기
 		noticeDTO.setMember_id((int) session.getAttribute("id"));
+		noticeDTO.setType(Integer.parseInt(request.getParameter("type")));
 		
 		noticeService.writeBoard(noticeDTO);
 		// /WEB-INF/views/notice/write.jsp 이동(주소줄에 주소가 안바뀌면서 이동)

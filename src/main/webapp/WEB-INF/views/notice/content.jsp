@@ -61,7 +61,7 @@
 <tr><td>작성자</td><td>${noticeDTO.name}</td>
 	<td>조회수</td><td>${noticeDTO.readcount}</td>
 <tr><td>제목</td><td colspan="3">${noticeDTO.subject}</td></tr>
-<tr><td>글내용</td><td colspan="3">${noticeDTO.content}</td></tr>
+<tr><td>글내용</td><td colspan="3" style="white-space:pre">${noticeDTO.content}</td></tr>
 
 
 
@@ -86,10 +86,10 @@ onclick="location.href='${pageContext.request.contextPath }/notice/update?id=${n
 <input type="button" value="글삭제" class="btn" style="float: right;"
 onclick="location.href='${pageContext.request.contextPath }/notice/delete?id=${noticeDTO.id}'">	
 
-<input type="button" value="글목록" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/notice/list'">
 	</c:if>
 </c:if>
+<input type="button" value="글목록" class="btn" style="float: right;"
+onclick="location.href='${pageContext.request.contextPath }/notice/list'">
 		</td>
 	</tr>	
 </table>

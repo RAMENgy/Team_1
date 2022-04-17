@@ -12,6 +12,7 @@ public class NoticeDTO {
 	private int readcount;
 	private Timestamp date;
 	private String name;
+	private int type;
 	
 	
 	public String getName() {
@@ -61,6 +62,12 @@ public class NoticeDTO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }

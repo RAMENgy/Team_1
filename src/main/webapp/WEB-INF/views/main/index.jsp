@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -34,20 +35,17 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/hero-1.jpg">
+            <div class="single-hero-items set-bg" data-setbg="${pageContext.request.contextPath }/resources/img/new-hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>이번주 행사 상품(항목)</span>
-                            <h1>행사중인 식재료 이름(제목)</h1>
-                            <!-- 모바일은 상관없으나 pc에서는 4글자가 최적
-                            아니면 글자 크기를 변경해야 할듯 -->
-                            <p>행사 상세 내역 설명란(내용)</p>
-                            <a href="#" class="primary-btn">해당 게시글 바로가기</a>
+                        	<c:forEach var="n1" items="${sessionScope.notice1 }">
+                            <span>공지사항</span>
+                            <h1><fmt:formatDate value="${n1.date}" pattern="yyyy.MM.dd"/><br>공지사항</h1>
+                            <p>${n1.subject }</p>
+                            <a href="${pageContext.request.contextPath }/notice/content?id=${n1.id}" class="primary-btn">해당 공지사항 바로가기</a>
+                            </c:forEach>
                         </div>
-                    </div>
-                    <div class="off-card">
-                        <h4>부가 설명란 <span>(없어도 될듯)</span></h4>
                     </div>
                 </div>
             </div>
@@ -55,16 +53,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>누적 좋아요 1위 레시피(항목)</span>
-                            <h1>해당 레시피 제목(제목)</h1>
-                            <!-- 모바일은 상관없으나 pc에서는 4글자가 최적
-                            아니면 글자 크기를 변경해야 할듯 -->
-                            <p>레시피 내용 간략 설명(내용)</p>
-                            <a href="#" class="primary-btn">해당 레시피 바로가기</a>
+                            <c:forEach var="n2" items="${sessionScope.notice2 }">
+                            <span>이벤트</span>
+                            <h1><fmt:formatDate value="${n2.date}" pattern="yyyy.MM.dd"/><br>이벤트</h1>
+                            <p>${n2.subject }</p>
+                            <a href="${pageContext.request.contextPath }/notice/content?id=${n2.id}" class="primary-btn">해당 이벤트 바로가기</a>
+                            </c:forEach>
                         </div>
-                    </div>
-                    <div class="off-card">
-                        <h4>부가 설명란 <span>(없어도 될듯)</span></h4>
                     </div>
                 </div>
             </div>
@@ -77,12 +72,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
+                	<a href="${pageContext.request.contextPath }/recipeboard/bestrecipe">
                     <div class="single-banner">
                         <img src="${pageContext.request.contextPath }/resources/img/Team_1-banner.png" alt="">
                         <div class="inner-text">
-                            <h4>이번주 좋아요 1위 레시피</h4>
+                            <h4>좋아요 1위 레시피</h4>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-lg-4">
                 	<a href="${pageContext.request.contextPath }/food/recent">

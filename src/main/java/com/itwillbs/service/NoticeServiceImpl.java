@@ -103,6 +103,18 @@ public class NoticeServiceImpl implements NoticeService{
 		Integer num = noticeDAO.getMaxNum(); 
 		return num == null ? 0 : num;
 	}
+
+
+	@Override
+	public List<NoticeDTO> main1() {
+		return noticeDAO.main1();
+	}
+
+
+	@Override
+	public List<NoticeDTO> main2() {
+		return noticeDAO.main2();
+	}
 	
 	
 	

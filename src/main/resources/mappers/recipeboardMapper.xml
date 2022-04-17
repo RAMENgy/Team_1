@@ -57,4 +57,14 @@
 		on r.member_id = m.id where r.subject like #{search}
 	</select>
 	
+	<update id="pointUp">
+		update member set point=(point+10)
+		where id=#{id}
+	</update>
+	
+	<select id="getMaxLike" resultType="java.lang.Integer">
+		select id from recipe_board
+		where like_count=(select max(like_count) from recipe_board)
+	</select>
+	
 </mapper>

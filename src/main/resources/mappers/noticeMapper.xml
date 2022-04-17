@@ -57,4 +57,18 @@
 		select count(id) from notice  where subject like #{search}
 	</select>
 	
+	<select id="main1" resultType="com.itwillbs.domain.NoticeDTO">
+		select *
+		from notice
+		where type=1 
+		and id=(select max(id) from notice where type=1)
+	</select>
+	
+	<select id="main2" resultType="com.itwillbs.domain.NoticeDTO">
+		select *
+		from notice
+		where type=2
+		and id=(select max(id) from notice where type=2)
+	</select>
+	
 </mapper>

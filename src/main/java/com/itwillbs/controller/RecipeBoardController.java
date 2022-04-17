@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.domain.RecipeBoardDTO;
+import com.itwillbs.domain.RecipeDTO;
+import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.FreeBoardDTO;
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.MemberService;
 import com.itwillbs.service.RecipeBoardService;
 
 @Controller
@@ -27,6 +32,9 @@ public class RecipeBoardController {
 	// RecipeBoardService recipeboardService=new RecipeBoardServiceImpl();
 	@Inject
 	private RecipeBoardService recipeBoardService;
+	
+	@Inject
+	private MemberService memberService;
 	
 	//파일경로 xml 받아옴
 	@Resource(name = "recipeUploadPath")
@@ -40,13 +48,18 @@ public class RecipeBoardController {
 	}
 	
 	@RequestMapping(value = "/recipeboard/writePro", method = RequestMethod.POST)
-	public String writePro(HttpServletRequest request, @RequestParam("file") List<MultipartFile> file) throws Exception{
+	public String writePro(MemberDTO memberDTO,HttpServletRequest request,HttpSession session, @RequestParam("file") List<MultipartFile> file) throws Exception{
 		System.out.println("RecipeBoardController writePro() ");
 		
 		// 제목, 내용 받아오기
 		RecipeBoardDTO rbDTO = new RecipeBoardDTO();
 		rbDTO.setSubject(request.getParameter("subject"));
 		rbDTO.setContent(request.getParameter("content"));
+		
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO mDTO = memberService.getMember(userid);
+		
+		session.setAttribute("point", mDTO.getPoint()+10);
 		
 		// 다중 이미지 업로드 구현
 		String files = "";
@@ -221,6 +234,19 @@ public class RecipeBoardController {
 		
 		// /WEB-INF/views/recipeboard/listSearch.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
 		return "recipeboard/list";
-	}	
+	}
+	
+	@RequestMapping(value = "/recipeboard/bestrecipe", method = RequestMethod.GET)
+	public String bestrecipe(Model model) {
+		int id = recipeBoardService.getMaxLike();
+		RecipeBoardDTO rbDTO=recipeBoardService.getBoard(id);
+		
+		model.addAttribute("rbDTO", rbDTO);;
+		System.out.println("글번호"+id);
+		
+		return "recipeboard/content";
+	}
+	
+	
 	
 }

@@ -58,6 +58,9 @@
    				<td><input type="text" name="subject" class="form-control"></td></tr>
 			<tr><td>내용</td>
     			<td><textarea name="content" rows="10" cols="60" class="form-control"></textarea></td></tr>
+    		<tr><td>글속성</td>
+    			<td><label><input type="radio" name="type" value="1"> 공지사항</label>
+				    <label><input type="radio" name="type" value="2"> 이벤트</label></td></tr>
    		</thead>
 	</table>  
 
