@@ -74,7 +74,6 @@
     </section>
     <!-- Blog Section End -->
 
-
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>
     <!-- Partner Logo Section End -->
