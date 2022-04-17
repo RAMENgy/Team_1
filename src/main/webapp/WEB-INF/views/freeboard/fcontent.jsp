@@ -86,7 +86,7 @@
 										<!-- id코드로 id 이름 가져오기 -->
 										<td>${FBCDTO.name}</td>
 										<td>${FBCDTO.content}
-										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
+										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/>
 										<c:if test="${FBCDTO.member_id eq sessionScope.id}">
 											<i class="ti-close" onclick="location.href='${pageContext.request.contextPath }/free/deleteComment?id=${FBCDTO.id }&page=${FBDTO.id }'"></i>
 										</c:if>
