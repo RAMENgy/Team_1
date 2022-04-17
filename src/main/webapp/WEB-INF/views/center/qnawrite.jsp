@@ -59,7 +59,6 @@
    				<td><input type="text" name="subject" class="form-control"></td></tr>
 			<tr><td>내용</td>
     			<td><textarea name="content" rows="10" cols="60" class="form-control"></textarea></td></tr>
-   		</thead>
 	</table>  
 
 <!-- 디비 이름 설정-->
