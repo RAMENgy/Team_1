@@ -75,7 +75,7 @@
 										<td>${FBDTO.id}</td>
 										<td>${FBDTO.subject} 
 											<c:if test="${FBDTO.comcount ne 0}">
-												(${FBDTO.comcount })
+												[${FBDTO.comcount }]
 											</c:if>
 										</td>
 										<td>${FBDTO.name}</td>
