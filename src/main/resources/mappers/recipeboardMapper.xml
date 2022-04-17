@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.recipeboardMapper">
 	
 	<insert id="writeBoard">
-		insert into recipe_board(id,member_id,subject,img,ingredient,content,readcount,like,date) 
-		values(#{id},#{member_id},#{subject},#{img},#{ingredient},#{content},#{readcount},#{like},#{date})
+		insert into recipe_board(id,member_id,subject,ingredient,content,readcount,like_count) 
+		values(#{id},#{member_id},#{subject},#{ingredient},#{content},#{readcount},#{like_count})
 	</insert>
 	
 	<select id="getMaxId" resultType="java.lang.Integer">
@@ -23,11 +23,11 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board where member_id=#{member_id}
+		select * from recipe_board where id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
-		update recipe_board set readcount=readcount+1 where member_id=#{member_id}
+		update recipe_board set readcount=readcount+1 where id=#{id}
 	</update>
 	
 	<update id="updateBoard">

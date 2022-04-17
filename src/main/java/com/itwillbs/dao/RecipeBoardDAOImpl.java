@@ -26,11 +26,6 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	}
 
 	@Override
-	public Integer getMaxNum() {
-		return sqlSession.selectOne(namespace+".getMaxNum");
-	}
-	
-	@Override
 	public List<RecipeBoardDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
 	}

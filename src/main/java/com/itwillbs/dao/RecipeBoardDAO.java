@@ -9,8 +9,6 @@ public interface RecipeBoardDAO {
 	// 추상메서드 정의
 	public void writeBoard(RecipeBoardDTO recipeboardDTO);
 	
-	public Integer getMaxNum();
-	
 	public List<RecipeBoardDTO> getBoardList(PageDTO pageDTO);
 	
 	public int getBoardCount();
