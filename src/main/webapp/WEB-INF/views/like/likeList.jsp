@@ -100,7 +100,7 @@
                                 <c:forEach var="lDTO" items="${boardList }" varStatus="status">
                                 <div class="bi-text">
                                     <a href="${pageContext.request.contextPath }/recipeboard/content?id=${lDTO.re_id}">
-                                	<img src="" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"/>
+                                	<img src="${pageContext.request.contextPath }/resources/recipeimg" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"/>
                                 	<!-- img칼럼 값 없을때 "이미지 없음" 표시 -->
                                         <h4>${lDTO.id}. ${lDTO.subject } </h4>
                                     </a>

@@ -10,7 +10,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fashi | Template</title>
+    <title>${rbDTO.subject }</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -61,7 +61,8 @@
 							    <td>조회수</td><td>${rbDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="3">${rbDTO.subject }</td></tr>
 							
-							<tr><td>글내용</td><td colspan="3" ><img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}"><br>
+							<tr><td>글내용</td><td colspan="3" ><img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}"
+							onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"><br>
 							<span style="white-space:pre">${rbDTO.content }</span></td></tr>
 						</table>
 						

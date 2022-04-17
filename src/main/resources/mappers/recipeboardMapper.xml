@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.recipeboardMapper">
 	
 	<insert id="writeBoard">
-		insert into recipe_board(id,member_id,subject,img,content,readcount,like_count) 
-		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},#{like_count})
+		insert into recipe_board(id,member_id,subject,img,content,readcount,like_count,date) 
+		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},#{like_count},#{date})
 	</insert>
 	
 	<select id="getMaxId" resultType="java.lang.Integer">
@@ -15,7 +15,11 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board order by id desc limit #{startRow},#{pageSize}
+		select r.id, m.name, r.subject, r.img, r.content, r.readcount, r.like_count, r.date
+		from recipe_board r
+		join member m
+		on r.member_id = m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
@@ -40,11 +44,17 @@
 	
 <!-- 	검색 -->
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board where subject like #{search} order by id desc limit #{startRow},#{pageSize}
+		select r.id, m.name, r.subject, r.img, r.content, r.readcount, r.like_count, r.date
+		from recipe_board r
+		join member m
+		on r.member_id = m.id
+		where r.subject like #{search} order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCountSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select count(*) from recipe_board where subject like #{search}
+		select count(*) from recipe_board r
+		join member m
+		on r.member_id = m.id where r.subject like #{search}
 	</select>
 	
 </mapper>

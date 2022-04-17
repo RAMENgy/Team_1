@@ -37,9 +37,6 @@ public class LikeController {
 	
 	@RequestMapping(value = "like/likelist", method = RequestMethod.GET)
 	public String likelist(Model model, HttpSession session,HttpServletRequest request) {
-		// ----------------------------------
-		Map<String, Object> map=new HashMap<>();
-		// ------------------------------------
 		
 		System.out.println("LikeBoardController likeList()");
 		String userid = (String)session.getAttribute("userid");
@@ -51,15 +48,6 @@ public class LikeController {
 		int member_id = ckDTO.getId();
 		System.out.println("회원번호 : "+member_id);
 		lDTO.setMember_id(ckDTO.getId());
-		// -------------------------------
-		List<BasketDTO> basketList = basketService.basketList(member_id);
-		
-		model.addAttribute("basketList", basketList);
-		
-		int sumMoney = basketService.sumMoney(member_id);
-		map.put("sumMoney", sumMoney);
-		model.addAttribute("map", map);
-		// -------------------------------
 		
 		// likelist에 좋아요한 id값 = 현재 접속중인 id
 		

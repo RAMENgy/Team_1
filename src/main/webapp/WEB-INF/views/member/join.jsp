@@ -139,8 +139,6 @@
                             <div class="group-input">
                                 <label for="userid">아이디</label>
                                 <input type="text" id="userid" name="userid">
-                                <!-- onclick="userCheck()" -->
-								<input type="button" value="중복확인" id="ibtn"><br>
 								<label></label><div id="iddiv"></div>
                             </div>
    

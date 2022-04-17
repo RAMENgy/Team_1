@@ -56,15 +56,14 @@
                         <div class="col-lg-6 col-sm-6">
                             <div class="blog-item">
                             	<c:forEach var="rbDTO" items="${recipeboardList }">
-                                <div class="bi-pic">
-                                    <img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
-                                </div>
                                 <div class="bi-text">
                                     <a onclick="location.href='${pageContext.request.contextPath }/recipeboard/content?id=${rbDTO.id}'">
+                                    <img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                         <h4>${rbDTO.subject}</h4>
+                                    <p>${rbDTO.name} <span>조회수 : ${rbDTO.readcount} / 좋아요 : ${rbDTO.like_count} / <fmt:formatDate value="${rbDTO.date }" pattern="yyyy.MM.dd"/> </span></p>
                                     </a>
-                                    <p>UpdateInfo <span>${rbDTO.id}${rbDTO.member_id}${rbDTO.date}${rbDTO.readcount}${rbDTO.like_count}</span></p>
                                 </div>
+                                <br>
                                 </c:forEach>
                                 
                                 <!-- 게시판 영역 끝 -->

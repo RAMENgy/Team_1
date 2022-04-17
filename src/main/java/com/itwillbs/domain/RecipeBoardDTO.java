@@ -12,6 +12,7 @@ public class RecipeBoardDTO {
 	private int readcount;
 	private int like_count;
 	private Timestamp date;
+	private String name;
 	
 	
 	public int getLike_count() {
@@ -67,6 +68,12 @@ public class RecipeBoardDTO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

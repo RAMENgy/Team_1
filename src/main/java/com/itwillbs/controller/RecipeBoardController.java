@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.domain.RecipeBoardDTO;
+import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.RecipeBoardService;
 
@@ -70,7 +71,7 @@ public class RecipeBoardController {
 	@RequestMapping(value = "/recipeboard/list", method = RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model) {
 		System.out.println("RecipeBoardController list()");
-		int pageSize=15;
+		int pageSize=5;
 		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
 		String pageNum=request.getParameter("pageNum");
 		if(pageNum==null) {
@@ -179,15 +180,13 @@ public class RecipeBoardController {
 	public String search(HttpServletRequest request, Model model) {
 		System.out.println("RecipeBoardController search() ");
 		//검색어 가져오기
-		String search=request.getParameter("search");
-		String search2="%"+search+"%";
+		String search = request.getParameter("search");
+		String search2 = "%"+search+"%";
+		int pageSize=10;
 		
-		// 한화면에 보여줄 글개수 설정
-		int pageSize=15;
 		
-		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
 		String pageNum=request.getParameter("pageNum");
-		if(pageNum==null) {
+		if (pageNum == null) {
 			pageNum="1";
 		}
 		
@@ -196,17 +195,12 @@ public class RecipeBoardController {
 		pageDTO.setPageSize(pageSize);
 		pageDTO.setPageNum(pageNum);
 		pageDTO.setSearch(search2);
-		
 		List<RecipeBoardDTO> recipeboardList=recipeBoardService.getBoardListSearch(pageDTO);
 		
-		//전체 글개수 구하기 => 디비에서 가져오기
-		//int  리턴할형  getBoardCount() 메서드 정의
-		//select count(*) from board
-		// int count=bDAO.getBoardCount();
-		int count=recipeBoardService.getBoardCountSearch(pageDTO);
+		int count=recipeBoardService.getBoardCount();
 		
 		int currentPage=Integer.parseInt(pageNum);
-		int pageBlock=10;
+		int pageBlock=5;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
 		int endPage=startPage+pageBlock-1;
 		int pageCount=count / pageSize +  (count % pageSize == 0 ?0:1);
@@ -220,15 +214,13 @@ public class RecipeBoardController {
 		pageDTO.setEndPage(endPage);
 		pageDTO.setPageCount(pageCount);
 		
-		//검색어
-		pageDTO.setSearch(search);
+		System.out.println("검색어 : "+search2);
 		
-		// 디비에서 가져온 글을 model 담아서 notice.jsp 전달
 		model.addAttribute("recipeboardList", recipeboardList);
 		model.addAttribute("pageDTO", pageDTO);
 		
 		// /WEB-INF/views/recipeboard/listSearch.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
-		return "recipeboard/listSearch";
+		return "recipeboard/list";
 	}	
 	
 }
