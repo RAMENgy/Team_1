@@ -79,7 +79,7 @@
                             <c:forEach var="reDTO" items="${reList }">
                                 <a href="${pageContext.request.contextPath }/recipeboard/content?id=${reDTO.id}" class="rb-item">
                                     <div class="rb-pic">
-                                        <img src="" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
+                                        <img src="${pageContext.request.contextPath }/resources/recipeimg/${reDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                     </div>
                                     <div class="rb-text">
                                         <h6>${reDTO.subject }</h6>

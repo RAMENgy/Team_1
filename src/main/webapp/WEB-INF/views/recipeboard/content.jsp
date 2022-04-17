@@ -61,7 +61,8 @@
 							    <td>조회수</td><td>${rbDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="3">${rbDTO.subject }</td></tr>
 							
-							<tr><td>글내용</td><td colspan="3" style="white-space:pre">${rbDTO.content }${rbDTO.content }</td></tr>
+							<tr><td>글내용</td><td colspan="3" ><img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}"><br>
+							<span style="white-space:pre">${rbDTO.content }</span></td></tr>
 						</table>
 						
 						<!-- session 로그인 여부 판별 후 글 수정 삭제 버튼 생성-->
