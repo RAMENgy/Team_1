@@ -26,6 +26,4 @@ public interface OrderService {
 	//장바구니 금액합계
 	public int sumMoney(int id);
 	
-	public Integer getMaxId();
-	
 }

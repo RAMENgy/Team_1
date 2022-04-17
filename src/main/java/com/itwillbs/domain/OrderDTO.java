@@ -12,6 +12,14 @@ public class OrderDTO {
 	private String address;
 	private String status;
 	private Timestamp date;
+	private int order_info_id;
+	
+	public int getOrder_info_id() {
+		return order_info_id;
+	}
+	public void setOrder_info_id(int order_info_id) {
+		this.order_info_id = order_info_id;
+	}
 	public int getId() {
 		return id;
 	}

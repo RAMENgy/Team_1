@@ -75,12 +75,11 @@ public class OrderController {
 	@RequestMapping(value="/order/insertorder", method = RequestMethod.POST)
 	public String insertOrder(BasketDTO basketDTO, OrderDTO orderDTO) {
 		
-		orderDTO.setId(orderService.getMaxId()+1);
 		orderDTO.setStatus("주문완료"); 
 		orderDTO.setDate(new Timestamp(System.currentTimeMillis())); 
 		orderService.insertOrder1(orderDTO);
 		
-		basketDTO.setOrder_info_id(orderDTO.getId());
+		basketDTO.setOrder_info_id(orderDTO.getOrder_info_id());
 		orderService.insertOrder2(basketDTO);
 		
 		basketService.deleteAll(orderDTO.getMember_id());

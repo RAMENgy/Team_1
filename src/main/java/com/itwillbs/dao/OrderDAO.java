@@ -25,6 +25,4 @@ public interface OrderDAO {
 	//상세주문 합계
 	public int sumMoney(int id);
 	
-	public Integer getMaxId();
-
 }
