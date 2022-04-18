@@ -18,12 +18,7 @@
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
-    
-    <style type="text/css">
-    	.table table-hover{
-    	margin:auto;
-    	}
-    </style>
+
 </head>
 
 <body>
