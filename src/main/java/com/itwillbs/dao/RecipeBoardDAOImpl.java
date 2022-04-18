@@ -54,6 +54,9 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	@Override
 	public void deleteBoard(int id) {
 		sqlSession.delete(namespace+".deleteBoard", id);
+		//
+		sqlSession.delete(namespace+".deleteBoardC", id);
+		sqlSession.delete(namespace+".deleteBoardL", id);
 	}
 	
 	//검색

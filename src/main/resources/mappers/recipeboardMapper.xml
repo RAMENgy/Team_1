@@ -42,6 +42,14 @@
 		delete from recipe_board where id=#{id}
 	</delete>
 	
+	<delete id="deleteBoardC">
+		delete from recipe_comment where recipe_board_id=#{id}
+	</delete>
+	
+	<delete id="deleteBoardL">
+		delete from like_list where recipe_board_id=#{id}
+	</delete>
+	
 <!-- 	검색 -->
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
 		select r.id, m.name, r.subject, r.img, r.content, r.readcount, r.like_count, r.date
