@@ -6,7 +6,7 @@
   <mapper namespace="com.itwillbs.mappers.likeMapper">
   
 	  	<select id="getBoardList" resultType="com.itwillbs.domain.RecipeDTO">
-			select l.id, r.id "re_id", r.subject, r.member_id, r.img, r.ingredient,
+			select l.id, r.id "re_id", r.subject, r.member_id, r.img,
 			r.content, r.readcount, r.like_count, r.date
 			from recipe_board r join like_list l
 			where l.member_id=#{member_id} and r.id = l.recipe_board_id
@@ -30,7 +30,7 @@
   		</select>
   		
   		<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeDTO">
-  			select l.id, r.id "re_id", r.subject, r.member_id, r.img, r.ingredient,
+  			select l.id, r.id "re_id", r.subject, r.member_id, r.img,
   			r.content, r.readcount, r.like_count, r.date
 			from recipe_board r 
 			join like_list l
@@ -56,5 +56,34 @@
 			order by id desc
 			limit 4;
 		</select>
+		
+		<update id="likeUp">
+			update recipe_board set 
+			like_count=like_count+1
+			where id=#{id}
+		</update>
+		
+		<insert id="insertlike">
+			insert into like_list(member_id, recipe_board_id) values(
+			#{member_id}, #{recipe_board_id})
+		</insert>
+		
+		<select id="cklike" resultType="com.itwillbs.domain.LikeDTO">
+			select * from like_list 
+			where recipe_board_id=#{recipe_board_id}
+			and member_id=#{member_id}
+		</select>
+		
+		<update id="likeDown">
+			update recipe_board set 
+			like_count=like_count-1
+			where id=#{id}
+		</update>
+		
+		<delete id="deletelike">
+			delete from like_list
+			where member_id=#{member_id}
+			and recipe_board_id=#{recipe_board_id}
+		</delete>
   
   </mapper>
