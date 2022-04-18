@@ -58,6 +58,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	@Override
 	public void deleteBoard(int id) {
 		sqlSession.delete(namespace+".deleteBoard", id);
+		sqlSession.delete(namespace+".deleteBoardC", id);
 	}
 
 	@Override
