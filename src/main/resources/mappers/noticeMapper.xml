@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.noticeMapper">
 
 	<insert id="writeBoard">
-		insert into notice(id,member_id,subject,content,readcount,date) 
-		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})
+		insert into notice(id,member_id,subject,content,readcount,date,type) 
+		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date}, #{type})
 	</insert>
 	
 	<select id="getMaxNum" resultType="java.lang.Integer">

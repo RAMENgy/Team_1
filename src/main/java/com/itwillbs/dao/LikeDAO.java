@@ -20,4 +20,14 @@ public interface LikeDAO {
 	public int getBoardCountSearch(RecipeDTO rDTO);
 	
 	public List<LikeDTO> getReList(RecipeDTO rDTO);
+	
+	public void likeUp(int id);
+	
+	public void insertlike(LikeDTO lDTO);
+	
+	public LikeDTO cklike(LikeDTO lDTO);
+	
+	public void likeDown(int id);
+	
+	public void deletelike(LikeDTO lDTO);
 }

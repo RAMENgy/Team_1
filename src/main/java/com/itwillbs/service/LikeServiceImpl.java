@@ -67,4 +67,33 @@ public class LikeServiceImpl implements LikeService{
 		return likeDAO.getReList(rDTO);
 	}
 
+	@Override
+	public void likeUp(int id) {
+		likeDAO.likeUp(id);
+		
+	}
+
+	@Override
+	public void insertlike(LikeDTO lDTO) {
+		likeDAO.insertlike(lDTO);
+		
+	}
+
+	@Override
+	public LikeDTO cklike(LikeDTO lDTO) {
+		return likeDAO.cklike(lDTO);
+	}
+
+	@Override
+	public void likeDown(int id) {
+		likeDAO.likeDown(id);
+		
+	}
+
+	@Override
+	public void deletelike(LikeDTO lDTO) {
+		likeDAO.deletelike(lDTO);
+		
+	}
+
 }

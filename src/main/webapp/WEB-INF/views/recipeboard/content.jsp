@@ -75,7 +75,9 @@
 								</c:if>
 							</c:if>
 							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/recipeboard/list'">글목록</button>
-							<button class="btn btn-outline-dark" type="submit" style="background-color: red;" onclick="">♥</button>
+							<c:if test="${!empty sessionScope.id }">
+							<button class="btn btn-outline-dark" type="submit" style="background-color: red;" onclick="location.href='${pageContext.request.contextPath }/like/likeup?reid=${rbDTO.id }'">♥</button>
+							</c:if>
 						</div>
 						<!-- 글 수정 삭제 버튼 끝 -->
 						

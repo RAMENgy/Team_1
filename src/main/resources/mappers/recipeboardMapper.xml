@@ -7,7 +7,7 @@
 	
 	<insert id="writeBoard">
 		insert into recipe_board(id,member_id,subject,img,content,readcount,like_count,date) 
-		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},#{like_count},#{date})
+		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},0,#{date})
 	</insert>
 	
 	<select id="getMaxId" resultType="java.lang.Integer">

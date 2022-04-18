@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.BasketDTO;
+import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
@@ -119,6 +120,28 @@ public class LikeController {
 			} else {
 				return "needLoginMsg";
 			}
+	}
+	
+	@RequestMapping(value = "/like/likeup", method = RequestMethod.GET)
+	public String likeup(HttpSession session, HttpServletRequest request){
+		int reid=Integer.parseInt(request.getParameter("reid"));
+		int id = (Integer)session.getAttribute("id");
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		LikeDTO lDTO = new LikeDTO();
+		lDTO.setMember_id(id);
+		lDTO.setRecipe_board_id(reid);
+		
+		if(likeService.cklike(lDTO)==null) {
+			likeService.likeUp(reid);
+			likeService.insertlike(lDTO);
+			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
+		}else {
+			likeService.likeDown(reid);
+			likeService.deletelike(lDTO);
+			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
+		}
+		return"redirect:/recipeboard/content?id="+reid;
 	}
 	
 }

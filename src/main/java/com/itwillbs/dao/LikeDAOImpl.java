@@ -53,6 +53,34 @@ public class LikeDAOImpl implements LikeDAO {
 	public List<LikeDTO> getReList(RecipeDTO rDTO) {
 		return sqlSession.selectList(namespace+".getReList", rDTO);
 	}
+
+	@Override
+	public void likeUp(int id) {
+		sqlSession.update(namespace+".likeUp", id);
+	}
+
+	@Override
+	public void insertlike(LikeDTO lDTO) {
+		sqlSession.insert(namespace+".insertlike", lDTO);
+		
+	}
+
+	@Override
+	public LikeDTO cklike(LikeDTO lDTO) {
+		return sqlSession.selectOne(namespace+".cklike", lDTO);
+	}
+
+	@Override
+	public void likeDown(int id) {
+		sqlSession.update(namespace+".likeDown", id);
+		
+	}
+
+	@Override
+	public void deletelike(LikeDTO lDTO) {
+		sqlSession.delete(namespace+".deletelike", lDTO);
+		
+	}
 	
 	
 }

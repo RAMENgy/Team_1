@@ -136,6 +136,7 @@ public class RecipeBoardController {
 			id = "1";
 		}
 		int intId = Integer.parseInt(id);
+		recipeBoardService.updateReadcount(intId);
 		RecipeBoardDTO rbDTO = recipeBoardService.getBoard(intId);
 		model.addAttribute("rbDTO", rbDTO);
 		
