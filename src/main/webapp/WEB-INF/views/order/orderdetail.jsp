@@ -74,7 +74,6 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            <form action="${pageContext.request.contextPath }/order/insertorder" method="post" class="checkout-form">
             	
                 <div class="row">
                     <div class="col-lg-6">
@@ -82,7 +81,6 @@
                         <h4>배송정보</h4>
                                 
                         <br>
-                       
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="jname">이름</label>
@@ -105,7 +103,6 @@
                         </div>
                     </div>
                     
-                    
                     <div class="col-lg-6">
                         <div class="place-order">
                             <h4>주문 확인</h4>
@@ -123,7 +120,6 @@
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
     </section>
     <!-- Shopping Cart Section End -->
