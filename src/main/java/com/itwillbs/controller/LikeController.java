@@ -1,8 +1,6 @@
 package com.itwillbs.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -13,22 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.itwillbs.domain.BasketDTO;
-import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
-import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecipeDTO;
-import com.itwillbs.service.BasketService;
 import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
 
 @Controller
 public class LikeController {
 	
-	
-	@Inject
-	private BasketService basketService;
 	
 	@Inject
 	private LikeService likeService;
