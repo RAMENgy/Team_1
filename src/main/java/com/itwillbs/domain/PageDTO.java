@@ -16,6 +16,9 @@ public class PageDTO {
 	//검색어
 	private String search;
 	
+	//내가 작성한 글
+	private int mid;
+	
 	public String getSearch() {
 		return search;
 	}
@@ -81,6 +84,12 @@ public class PageDTO {
 	}
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
+	}
+	public int getMid() {
+		return mid;
+	}
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 	
 	

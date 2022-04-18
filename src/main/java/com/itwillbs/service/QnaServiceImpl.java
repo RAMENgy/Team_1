@@ -131,6 +131,20 @@ public class QnaServiceImpl implements QnaService{
 		return num == null ? 0 : num;
 	}
 
+	@Override
+	public List<QnaDTO> getMyBoardList(PageDTO pageDTO) {
+		int currentPage=Integer.parseInt(pageDTO.getPageNum());
+		int startRow = (currentPage-1)*pageDTO.getPageSize()+1;
+		int endRow=startRow+pageDTO.getPageSize()-1;
+	
+		pageDTO.setCurrentPage(currentPage);
+		pageDTO.setStartRow(startRow);
+		pageDTO.setEndRow(endRow);
+	
+		pageDTO.setStartRow(startRow-1);
+		return qnaDAO.getMyBoardList(pageDTO);
+	}
+
 	
 	
 
