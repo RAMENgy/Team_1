@@ -43,7 +43,7 @@ public class LikeController {
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
 		LikeDTO lDTO = new LikeDTO();
-		RecipeDTO rDTO = new RecipeDTO();
+		RecipeDTO rDTO = new RecipeDTO(); 
 		
 		if(ckDTO != null) {
 		int member_id = ckDTO.getId();
