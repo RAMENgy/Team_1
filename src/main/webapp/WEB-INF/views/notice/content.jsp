@@ -17,20 +17,6 @@
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
-     <!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<style type="text/css">
-	#tablebox{
-		width: 600px;
-		margin: 0 auto;
-	}
-</style>
 </head>
 
 <body>
@@ -59,18 +45,26 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
-<body>
+ <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
 
-<table id="tablebox" class="table">
+<div class="col-lg-9 order-1 order-lg-2">
+    <div class="row container">
+<table class="table">
 <tr><td>번호</td><td>${noticeDTO.id}</td>
 	<td>작성일</td><td>${noticeDTO.date}</td></tr>
 <tr><td>작성자</td><td>${noticeDTO.name}</td>
 	<td>조회수</td><td>${noticeDTO.readcount}</td>
 <tr><td>제목</td><td colspan="3">${noticeDTO.subject}</td></tr>
-<tr><td>글내용</td><td colspan="3">${noticeDTO.content}</td></tr>
+<tr><td>글내용</td><td colspan="3" style="white-space:pre">${noticeDTO.content}</td></tr>
 
 
-<!-- <div> -->
+
 	<tr>
 		<td colspan="10">
 <c:if test="${ ! empty sessionScope.id }">
@@ -92,15 +86,19 @@ onclick="location.href='${pageContext.request.contextPath }/notice/update?id=${n
 <input type="button" value="글삭제" class="btn" style="float: right;"
 onclick="location.href='${pageContext.request.contextPath }/notice/delete?id=${noticeDTO.id}'">	
 
-<input type="button" value="글목록" class="btn" style="float: right;"
-onclick="location.href='${pageContext.request.contextPath }/notice/list'">
 	</c:if>
 </c:if>
+<input type="button" value="글목록" class="btn" style="float: right;"
+onclick="location.href='${pageContext.request.contextPath }/notice/list'">
 		</td>
 	</tr>	
 </table>
 
-
+</div>
+</div>
+ </div>
+        </div>
+    </section>
 
     <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>

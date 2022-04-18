@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.FBCommentDTO;
-import com.itwillbs.domain.FoodDTO;
 import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.service.FreeBoardService;

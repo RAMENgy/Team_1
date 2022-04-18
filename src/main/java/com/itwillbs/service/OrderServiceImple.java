@@ -54,8 +54,4 @@ public class OrderServiceImple implements OrderService {
 		return orderDAO.sumMoney(id);
 	}
 	
-	@Override
-	public Integer getMaxId() {
-		return orderDAO.getMaxId();
-	}
 }

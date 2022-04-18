@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
+import com.itwillbs.domain.NoticeDTO;
 import com.itwillbs.service.BasketService;
 import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
+import com.itwillbs.service.NoticeService;
 
 @Controller
 public class MemberController {
@@ -32,6 +34,9 @@ public class MemberController {
 	
 	@Inject
 	private BasketService basketService;
+	
+	@Inject
+	private NoticeService noticeService;
 
 	
 	@RequestMapping(value = "/main/main", method = RequestMethod.GET) public
@@ -41,6 +46,14 @@ public class MemberController {
 		Map<String, Object> map=new HashMap<>();
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
+		
+		List<NoticeDTO> noticeList1 = noticeService.main1();
+		session.setAttribute("notice1", noticeList1);
+		model.addAttribute("no1", noticeList1);
+		
+		List<NoticeDTO> noticeList2 = noticeService.main2();
+		session.setAttribute("notice2", noticeList2);
+		model.addAttribute("no2", noticeList2);
 		
 		
 		if(ckDTO != null) {
@@ -80,7 +93,7 @@ public class MemberController {
 			return "redirect:/food/search?search-food="+search;
 			
 		} else if(ca.equals("recipe")) {
-			return "main/main";
+			return "redirect:/recipeboard/search?search="+search;
 		} else return "searchmsg";
 	}
 	 
@@ -130,6 +143,17 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/main/main";
 	}
+	
+	
+	@RequestMapping(value = "/member/delete", method = RequestMethod.GET)
+	public String deleteMember(HttpSession session) {
+		int id = (int) session.getAttribute("id");
+		memberService.deleteMember(id);
+		session.invalidate();
+		return "redirect:/main/main";
+	}
+	
+	
 	
 	@RequestMapping(value = "/member/info", method = RequestMethod.GET)
 	public String info(HttpSession session, Model model) {

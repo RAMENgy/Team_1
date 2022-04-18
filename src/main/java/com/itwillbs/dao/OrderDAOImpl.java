@@ -55,9 +55,4 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(namespace+".sumMoney", id);
 	}
 	
-	@Override
-	public Integer getMaxId() {
-		return sqlSession.selectOne(namespace+".getMaxId");
-	}
-
 }

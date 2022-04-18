@@ -15,8 +15,6 @@
 
     <!-- Css Styles -->
     <jsp:include page="../inc/css.jsp"></jsp:include>
-    
-
 
 </head>
 
@@ -42,6 +40,13 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
+<!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
 
 <div class="col-lg-9 order-1 order-lg-2">
       <div class="row container">
@@ -54,7 +59,6 @@
    				<td><input type="text" name="subject" class="form-control"></td></tr>
 			<tr><td>내용</td>
     			<td><textarea name="content" rows="10" cols="60" class="form-control"></textarea></td></tr>
-   		</thead>
 	</table>  
 
 <!-- 디비 이름 설정-->
@@ -69,7 +73,10 @@ onclick="location.href='${pageContext.request.contextPath }/board/list'">
 	</div>
 </div>
 
-
+</div>
+        </div>
+    </section>
+    
  <!-- Partner Logo Section Begin -->
     <jsp:include page="../inc/partner.jsp"></jsp:include>
     <!-- Partner Logo Section End -->

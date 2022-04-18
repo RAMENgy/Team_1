@@ -10,15 +10,16 @@ public class RecipeBoardDTO {
 	private String ingredient;
 	private String content;
 	private int readcount;
-	private int like;
+	private int like_count;
 	private Timestamp date;
+	private String name;
 	
 	
-	public int getLike() {
-		return like;
+	public int getLike_count() {
+		return like_count;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
 	}
 	public int getId() {
 		return id;
@@ -67,6 +68,12 @@ public class RecipeBoardDTO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

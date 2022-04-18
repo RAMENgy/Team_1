@@ -28,4 +28,8 @@ public interface NoticeService {
 	public int getBoardCountSearch(PageDTO pageDTO);
 	
 	public Integer getMaxNum();
+	
+	public List<NoticeDTO> main1();
+	
+	public List<NoticeDTO> main2();
 }

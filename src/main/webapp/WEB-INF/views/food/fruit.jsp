@@ -69,6 +69,8 @@
                                  
                                         <div class="catagory-name">${fDTO.subject }</div>
                                        <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
+                                        <img src="${pageContext.request.contextPath }/resources/food/${fDTO.img}"
+                                        onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                             <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">

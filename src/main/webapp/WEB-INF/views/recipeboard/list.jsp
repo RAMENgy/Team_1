@@ -44,7 +44,6 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
-
     <!-- Blog Section Begin -->
     <section class="blog-section spad">
         <div class="container">
@@ -56,23 +55,50 @@
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             <div class="blog-item">
-                                <div class="bi-pic">
-                                    <img src="img/blog/blog-1.jpg" alt="">
-                                </div>
+                            	<c:forEach var="rbDTO" items="${recipeboardList }">
                                 <div class="bi-text">
-                                    <a href="./blog-details.html">
+                                    <a onclick="location.href='${pageContext.request.contextPath }/recipeboard/content?id=${rbDTO.id}'">
+                                    <img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                         <h4>${rbDTO.subject}</h4>
+                                    <p>${rbDTO.name} <span>조회수 : ${rbDTO.readcount} / 좋아요 : ${rbDTO.like_count} / <fmt:formatDate value="${rbDTO.date }" pattern="yyyy.MM.dd"/> </span></p>
                                     </a>
-                                    <p>UpdateInfo <span>${rbDTO.id}${rbDTO.member_id}${rbDTO.date}${rbDTO.readcount}${rbDTO.like}</span></p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="loading-more">
-                                <i class="icon_loading"></i>
-                                <a href="#">
-                                    Loading More
-                                </a>
+                                <br>
+                                </c:forEach>
+                                
+                                <!-- 게시판 영역 끝 -->
+								<c:if test="${!empty sessionScope.userid }">
+									<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/recipeboard/write'">글쓰기</button>
+								</c:if>
+								
+								<!-- 페이지 번호 영역 시작 -->
+								<div class="col">
+									<ul class="pagination justify-content-center">
+										<c:choose>
+											<c:when test="${ pageDTO.startPage > pageDTO.pageBlock }">
+												<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/recipeboard/list?pageNum=${pageDTO.startPage-pageDTO.pageBlock}' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+											</c:otherwise>
+										</c:choose>
+										
+										<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
+										<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/recipeboard/list?pageNum=${i}">${i} </a></li>
+										</c:forEach>
+									
+										<c:choose>
+											<c:when test="${ pageDTO.endPage < pageDTO.pageCount }">
+												<li class="page-item"><a class="page-link" href='${pageContext.request.contextPath }/recipeboard/list?pageNum=${pageDTO.startPage+pageDTO.pageBlock}' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="disabled page-item"><a class="page-link" href='#' aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></li>
+											</c:otherwise>
+										</c:choose>
+									</ul>
+								</div>
+								
+								<!-- 페이지 번호 영역 끝 -->
                             </div>
                         </div>
                     </div>

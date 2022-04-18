@@ -75,5 +75,15 @@ public class NoticeDAOImpl implements NoticeDAO{
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
 	}
+
+	@Override
+	public List<NoticeDTO> main1() {
+		return sqlSession.selectList(namespace+".main1");
+	}
+
+	@Override
+	public List<NoticeDTO> main2() {
+		return sqlSession.selectList(namespace+".main2");
+	}
 	
 }

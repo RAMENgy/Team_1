@@ -43,7 +43,7 @@
 	var userid=0;
  	$(document).ready(function(){
  		// id="ibtn" 중복확인 클릭
- 		$('#ibtn').click(function(){
+ 		$('#userid').blur(function(){
 //  			alert("메시지");
  			$.ajax({
  				url:'${pageContext.request.contextPath }/member/idcheck',
@@ -139,8 +139,6 @@
                             <div class="group-input">
                                 <label for="userid">아이디</label>
                                 <input type="text" id="userid" name="userid">
-                                <!-- onclick="userCheck()" -->
-								<input type="button" value="중복확인" id="ibtn"><br>
 								<label></label><div id="iddiv"></div>
                             </div>
    

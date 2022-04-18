@@ -70,7 +70,8 @@
                                  
                                         <div class="catagory-name"></div>
                                         <a href="${pageContext.request.contextPath }/food/content?id=${fDTO.id}">
-                                           	<img alt="" src="">
+                                        <img src="${pageContext.request.contextPath }/resources/food/${fDTO.img}"
+                                        onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
                                             <h5>${fDTO.subject }</h5>
                                         </a>
                                         <div class="product-price">
@@ -97,7 +98,12 @@
 <%-- 						</c:if> --%>
 						
 <!-- 						 </div> -->
+						 </div>
+						 </div>
 						 
+						 <c:if test="${sessionScope.id eq 1}">
+							<button class="btn btn-outline-dark" type="submit" onclick="location.href='${pageContext.request.contextPath }/food/write'">상품등록</button>
+						</c:if>
 						 
 					 <div class="col">
 						<ul class="pagination justify-content-center">
@@ -109,13 +115,7 @@
 									<li class="disabled page-item"><a class="page-link" href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
 								</c:otherwise>
 							</c:choose>
-							
-						<form action="${pageContext.request.contextPath }/food/search" method="get">
-						 	<input type="text" name="search-food" placeholder="검색어를 입력하세요." >              
-							<button type="submit">검색</button>
-						</form>
 						
-
 							<c:forEach var="i" begin="${pageDTO.startPage }" end="${pageDTO.endPage }" step="1">
 							<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath }/food/list?pageNum=${i}">${i} </a></li>
 							</c:forEach>
@@ -130,7 +130,7 @@
 							</c:choose>
 						</ul>
 					</div>
-					</form>
+					
 					                </div>
                 
             </div>

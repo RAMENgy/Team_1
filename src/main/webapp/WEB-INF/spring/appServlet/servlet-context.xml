@@ -20,14 +20,35 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 	<!-- 	파일업로드 설정 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+		<beans:property name="maxUploadSize" value="104857600"></beans:property>
 	</beans:bean>
 	
+	
 	<!-- 업로드 폴더 설정 -->
+	<!-- 상품 등록 경로로 사용중 -->
+	<!-- value에 자기 컴퓨터에 맞는 food 폴더 경로를 넣어주세요 -->
+	<!-- 
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	EX) 내 컴퓨터의 스프링 팀플 폴더에 resourcs 안에 있는 food 폴더 위치
+	=> D:\workspace_sts1\Team_1\src\main\webapp\resources\food
+	각자 환경마다 다르니 확인하고 경로 수정해주세요!!!
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\workspace_sts1\\Team_1\\src\\main\\webapp\\resources\\img"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\workspace_sts1\Team_1\src\main\webapp\resources\food"></beans:constructor-arg>
+	</beans:bean>
+	
+	<!-- 레시피 업로드 폴더 설정 -->
+	<beans:bean id="recipeUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\workspace_sts\\Team_1\\src\\main\\webapp\\resources\\recipeimg"></beans:constructor-arg>
+	</beans:bean>
+	
+	<!-- 상품 업로드 폴더 설정 -->
+	<beans:bean id="productUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\workspace_sts1\\Team_1\\src\\main\\webapp\\resources\\productimg"></beans:constructor-arg>
 	</beans:bean>
 	
 	

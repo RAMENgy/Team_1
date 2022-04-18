@@ -1,8 +1,6 @@
 package com.itwillbs.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -13,21 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.itwillbs.domain.BasketDTO;
 import com.itwillbs.domain.LikeDTO;
 import com.itwillbs.domain.MemberDTO;
-import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RecipeDTO;
-import com.itwillbs.service.BasketService;
 import com.itwillbs.service.LikeService;
 import com.itwillbs.service.MemberService;
 
 @Controller
 public class LikeController {
 	
-	
-	@Inject
-	private BasketService basketService;
 	
 	@Inject
 	private LikeService likeService;
@@ -37,29 +29,17 @@ public class LikeController {
 	
 	@RequestMapping(value = "like/likelist", method = RequestMethod.GET)
 	public String likelist(Model model, HttpSession session,HttpServletRequest request) {
-		// ----------------------------------
-		Map<String, Object> map=new HashMap<>();
-		// ------------------------------------
 		
 		System.out.println("LikeBoardController likeList()");
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO ckDTO = memberService.getMember(userid);
 		LikeDTO lDTO = new LikeDTO();
-		RecipeDTO rDTO = new RecipeDTO();
+		RecipeDTO rDTO = new RecipeDTO(); 
 		
 		if(ckDTO != null) {
 		int member_id = ckDTO.getId();
 		System.out.println("회원번호 : "+member_id);
 		lDTO.setMember_id(ckDTO.getId());
-		// -------------------------------
-		List<BasketDTO> basketList = basketService.basketList(member_id);
-		
-		model.addAttribute("basketList", basketList);
-		
-		int sumMoney = basketService.sumMoney(member_id);
-		map.put("sumMoney", sumMoney);
-		model.addAttribute("map", map);
-		// -------------------------------
 		
 		// likelist에 좋아요한 id값 = 현재 접속중인 id
 		
@@ -131,6 +111,28 @@ public class LikeController {
 			} else {
 				return "needLoginMsg";
 			}
+	}
+	
+	@RequestMapping(value = "/like/likeup", method = RequestMethod.GET)
+	public String likeup(HttpSession session, HttpServletRequest request){
+		int reid=Integer.parseInt(request.getParameter("reid"));
+		int id = (Integer)session.getAttribute("id");
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		LikeDTO lDTO = new LikeDTO();
+		lDTO.setMember_id(id);
+		lDTO.setRecipe_board_id(reid);
+		
+		if(likeService.cklike(lDTO)==null) {
+			likeService.likeUp(reid);
+			likeService.insertlike(lDTO);
+			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
+		}else {
+			likeService.likeDown(reid);
+			likeService.deletelike(lDTO);
+			session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
+		}
+		return"redirect:/recipeboard/content?id="+reid;
 	}
 	
 }

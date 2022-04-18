@@ -39,6 +39,14 @@
         </div>
     </div>
     <!-- Breadcrumb Section Begin -->
+    
+     <!-- Blog Section Begin -->
+    <section class="blog-section spad">
+        <div class="container">
+            <div class="row">
+                <!-- 사이드 바 시작 -->
+                <jsp:include page="item/side.jsp"></jsp:include>
+                <!-- 사이드 바 끝 -->
 
 	<div class="col-lg-9 order-1 order-lg-2">
       <div class="row container">
@@ -66,6 +74,9 @@
 
 	 </div>
 	</div>
+	</div>
+        </div>
+    </section>
 
 
  <!-- Partner Logo Section Begin -->

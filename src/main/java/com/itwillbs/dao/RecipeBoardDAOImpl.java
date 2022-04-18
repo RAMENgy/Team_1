@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.RecipeBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RBCommentDTO;
 
 @Repository
 public class RecipeBoardDAOImpl implements RecipeBoardDAO {
@@ -25,11 +26,6 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 		sqlSession.insert(namespace+".writeBoard", recipeboardDTO);
 	}
 
-	@Override
-	public Integer getMaxNum() {
-		return sqlSession.selectOne(namespace+".getMaxNum");
-	}
-	
 	@Override
 	public List<RecipeBoardDTO> getBoardList(PageDTO pageDTO) {
 		return sqlSession.selectList(namespace+".getBoardList", pageDTO);
@@ -71,6 +67,36 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	public int getBoardCountSearch(PageDTO pageDTO) {
 		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
 	}
+
+	@Override
+	public int pointUp(int id) {
+		return sqlSession.update(namespace+".pointUp", id);
+	}
+
+	@Override
+	public Integer getMaxLike() {
+		return sqlSession.selectOne(namespace+".getMaxLike");
+	}
 	
+	@Override
+	public void writeComment(RBCommentDTO RBCDTO) {
+		sqlSession.insert(namespace+".writeComment", RBCDTO);
+	}
+	
+	@Override
+	public List<RBCommentDTO> getCommentList(int content_id) {
+		return sqlSession.selectList(namespace+".getCommentList", content_id);
+	}
+	
+	@Override
+	public Integer getMaxNum(boolean isRecipeBoard) {
+		if (isRecipeBoard) return sqlSession.selectOne(namespace+".getMaxNum");
+		else return sqlSession.selectOne(namespace+".getMaxNumComment");
+	}
+
+	@Override
+	public void deleteComment(int commentId) {
+		sqlSession.delete(namespace+".deleteComment", commentId);
+	}
 	
 }

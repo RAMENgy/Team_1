@@ -75,8 +75,8 @@
 						 	<thead>
 								<tr>
 									<th>작성자</th>
-									<th>날짜</th>
 									<th>댓글</th>
+									<th>날짜</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -85,8 +85,8 @@
 									<tr>
 										<!-- id코드로 id 이름 가져오기 -->
 										<td>${FBCDTO.name}</td>
-										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/></td>
 										<td>${FBCDTO.content}
+										<td><fmt:formatDate value="${FBCDTO.date}" pattern="yyyy.MM.dd"/>
 										<c:if test="${FBCDTO.member_id eq sessionScope.id}">
 											<i class="ti-close" onclick="location.href='${pageContext.request.contextPath }/free/deleteComment?id=${FBCDTO.id }&page=${FBDTO.id }'"></i>
 										</c:if>

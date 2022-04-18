@@ -1,19 +1,25 @@
 package com.itwillbs.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.SessionScope;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.dao.FoodDAO;
 import com.itwillbs.domain.BasketDTO;
@@ -26,6 +32,10 @@ import com.itwillbs.service.MemberService;
 
 @Controller
 public class foodController {
+	//파일경로 xml 받아옴
+	@Resource(name = "uploadPath")
+	private String uploadPath;
+	
 	@Inject
 	private FoodService foodService;
 	@Inject
@@ -453,11 +463,37 @@ public class foodController {
 		return "food/writefood";
 	}
 	@RequestMapping(value = "/food/writePro", method = RequestMethod.POST)
-	public String foodwritePro(FoodDTO foodDTO) {
-	
+	public String foodwritePro(MultipartFile file, HttpServletRequest request) throws IOException {
+		FoodDTO foodDTO = new FoodDTO();
+		
+		foodDTO.setSubject(request.getParameter("subject"));
+		foodDTO.setContent(request.getParameter("content"));
+		foodDTO.setAmount(Integer.parseInt(request.getParameter("amount")));
+		foodDTO.setType(Integer.parseInt(request.getParameter("type")));
+		
+		
+		UUID uid=UUID.randomUUID();
+		String fileName=uid.toString()+"_"+file.getOriginalFilename();
+		// 파일 복사 => upload폴더 파일이름
+		File uploadfile=new File(uploadPath,fileName);
+		FileCopyUtils.copy(file.getBytes(), uploadfile);
+		
+		
+		foodDTO.setImg(fileName);
 		foodService.writeFood(foodDTO);
 		// /WEB-INF/views/center/content.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
 		return "redirect:/food/list";
+	}
+	
+	@RequestMapping(value = "/food/recent", method = RequestMethod.GET)
+	public String foodrecent(Model model) {
+		int id = foodService.getMaxNum();
+		FoodDTO foodDTO = foodService.getfood(id);
+		
+		model.addAttribute("foodDTO", foodDTO);
+		System.out.println(id);
+
+		return "food/content";
 	}
 	
 	 

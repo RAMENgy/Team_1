@@ -9,7 +9,10 @@
 	<!-- 주문 정보 넣기 -->
 	<insert id="insertOrder1">
 		INSERT INTO order_info(member_id, receiver_name, receiver_tel, address, status, date)
-		VALUES(#{member_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})	
+		VALUES(#{member_id}, #{receiver_name}, #{receiver_tel}, #{address}, #{status}, #{date})
+		<selectKey resultType="java.lang.Integer" keyProperty="order_info_id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>  
 	
 	<!-- 주문 상품 정보 넣기 -->

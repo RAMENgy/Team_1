@@ -6,8 +6,8 @@
 <mapper namespace="com.itwillbs.mappers.recipeboardMapper">
 	
 	<insert id="writeBoard">
-		insert into recipe_board(id,member_id,subject,img,ingredient,content,readcount,like,date) 
-		values(#{id},#{member_id},#{subject},#{img},#{ingredient},#{content},#{readcount},#{like},#{date})
+		insert into recipe_board(id,member_id,subject,img,content,readcount,like_count,date) 
+		values(#{id},#{member_id},#{subject},#{img},#{content},#{readcount},0,#{date})
 	</insert>
 	
 	<select id="getMaxId" resultType="java.lang.Integer">
@@ -15,7 +15,11 @@
 	</select>
 	
 	<select id="getBoardList" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board order by id desc limit #{startRow},#{pageSize}
+		select r.id, m.name, r.subject, r.img, r.content, r.readcount, r.like_count, r.date
+		from recipe_board r
+		join member m
+		on r.member_id = m.id
+		order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCount" resultType="java.lang.Integer">
@@ -23,11 +27,11 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board where member_id=#{member_id}
+		select * from recipe_board where id=#{id}
 	</select>
 	
 	<update id="updateReadcount">
-		update recipe_board set readcount=readcount+1 where member_id=#{member_id}
+		update recipe_board set readcount=readcount+1 where id=#{id}
 	</update>
 	
 	<update id="updateBoard">
@@ -40,11 +44,53 @@
 	
 <!-- 	검색 -->
 	<select id="getBoardListSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board where subject like #{search} order by id desc limit #{startRow},#{pageSize}
+		select r.id, m.name, r.subject, r.img, r.content, r.readcount, r.like_count, r.date
+		from recipe_board r
+		join member m
+		on r.member_id = m.id
+		where r.subject like #{search} order by id desc limit #{startRow},#{pageSize}
 	</select>
 	
 	<select id="getBoardCountSearch" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select count(*) from recipe_board where subject like #{search}
+		select count(*) from recipe_board r
+		join member m
+		on r.member_id = m.id where r.subject like #{search}
+	</select>
+	
+	<update id="pointUp">
+		update member set point=(point+10)
+		where id=#{id}
+	</update>
+	
+	<select id="getMaxLike" resultType="java.lang.Integer">
+		select id from recipe_board
+		where like_count=(select max(like_count) from recipe_board)
+	</select>
+	
+	<insert id="writeComment">
+		insert into recipe_comment(id,member_id,recipe_board_id,content,date)
+		values(#{id},#{member_id},#{recipe_board_id},#{content},#{date})
+	</insert>
+	
+	<delete id="deleteComment">
+		delete from recipe_comment where id=#{commentId}
+	</delete>
+	
+	<select id="getCommentCount">
+		SELECT count(id) FROM recipe_comment
+		where recipeboard_id=#{recipeboard_id}
+	</select>
+	
+	<select id="getMaxNumComment" resultType="java.lang.Integer">
+		select max(id) from recipe_comment
+	</select>
+	
+	<select id="getCommentList" resultType="com.itwillbs.domain.FBCommentDTO">
+		select r.id, r.member_id, m.name, r.recipe_board_id, r.content, r.date 
+		from recipe_comment r 
+		join member m
+		on r.member_id = m.id
+		where r.recipe_board_id=#{content_id}
 	</select>
 	
 </mapper>

@@ -4,12 +4,14 @@ import java.util.List;
 import java.sql.Timestamp;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.dao.RecipeBoardDAO;
 import com.itwillbs.domain.RecipeBoardDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.domain.RBCommentDTO;
 
 @Service
 public class RecipeBoardServiceImpl implements RecipeBoardService{
@@ -18,6 +20,8 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 	@Inject
 	private RecipeBoardDAO recipeBoardDAO;
 	
+	@Inject
+	private HttpSession session;
 	
 	@Override
 	public List<RecipeBoardDTO> getBoardList(PageDTO pageDTO) {
@@ -39,19 +43,12 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 	public void writeBoard(RecipeBoardDTO recipeboardDTO) {
 		// name,subject,content 폼에서 입력해서 옴
 		//num,pass,readcount,date
-		recipeboardDTO.setMember_id(1111);
+		int mi = (Integer)session.getAttribute("id");
+		recipeboardDTO.setMember_id(mi);
+		recipeboardDTO.setIngredient("1");
 		recipeboardDTO.setReadcount(0);
+		recipeboardDTO.setLike_count(0);
 		recipeboardDTO.setDate(new Timestamp(System.currentTimeMillis()));
-		
-		// 글번호 :  디비에 저장된 최대번호 구해서 +1 
-		if(recipeBoardDAO.getMaxNum()!=null) {
-			// 글이 있는 경우 
-			recipeboardDTO.setId(recipeBoardDAO.getMaxNum()+1);
-		}else {
-			// 글이 없는 경우 
-			recipeboardDTO.setId(1);
-		}
-		
 		
 		recipeBoardDAO.writeBoard(recipeboardDTO);
 	}
@@ -64,14 +61,14 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 
 
 	@Override
-	public RecipeBoardDTO getBoard(int member_id) {
-		return recipeBoardDAO.getBoard(member_id);
+	public RecipeBoardDTO getBoard(int id) {
+		return recipeBoardDAO.getBoard(id);
 	}
 
 
 	@Override
-	public void updateReadcount(int member_id) {
-		recipeBoardDAO.updateReadcount(member_id);
+	public void updateReadcount(int id) {
+		recipeBoardDAO.updateReadcount(id);
 	}
 
 
@@ -110,6 +107,39 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 	public int getBoardCountSearch(PageDTO pageDTO) {
 				
 		return recipeBoardDAO.getBoardCountSearch(pageDTO);
+	}
+
+
+	@Override
+	public int pointUp(int id) {
+		return recipeBoardDAO.pointUp(id);
+	}
+
+
+	@Override
+	public Integer getMaxLike() {
+		return recipeBoardDAO.getMaxLike();
+	}
+	
+	@Override
+	public void writeComment(RBCommentDTO RBCDTO) {
+		recipeBoardDAO.writeComment(RBCDTO);
+	}
+	
+	@Override
+	public void deleteComment(int commentId) {
+		recipeBoardDAO.deleteComment(commentId);
+	}
+	
+	@Override
+	public List<RBCommentDTO> getCommentList(int content_id) {
+		return recipeBoardDAO.getCommentList(content_id);
+	}
+	
+	@Override
+	public Integer getMaxNum(boolean isRecipeBoard) {
+		Integer num = recipeBoardDAO.getMaxNum(isRecipeBoard); 
+		return num == null ? 0 : num;
 	}
 	
 }
