@@ -85,17 +85,17 @@
                        
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="jname">이름<span>*</span></label>
-                                <input type="text" id="jname" name="receiver_name" value="${orderDTO.receiver_name }">
+                                <label for="jname">이름</label>
+                                <input type="text" id="jname" name="receiver_name" value="${orderDTO.receiver_name }" readonly>
                             </div>
                             <div class="col-lg-6">
-                                <label for="jtel">전화번호<span>*</span></label>
-                                <input type="text" id="jtel" name="receiver_tel" value="${orderDTO.receiver_tel }">
+                                <label for="jtel">전화번호</label>
+                                <input type="text" id="jtel" name="receiver_tel" value="${orderDTO.receiver_tel }" readonly>
                             </div>
                            
                             <div class="col-lg-12">
                                 <label for="jaddress">주소</label>
-                                <input type="text" id="jaddress" name="address" value="${orderDTO.address }">
+                                <input type="text" id="jaddress" name="address" value="${orderDTO.address }" readonly>
                             </div>
                            <!--  <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
