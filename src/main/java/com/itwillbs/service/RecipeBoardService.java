@@ -17,9 +17,11 @@ public interface RecipeBoardService {
 	
 	public RecipeBoardDTO getBoard(int member_id);
 	
+	public RecipeBoardDTO getBestBoard(int member_id);
+	
 	public void updateReadcount(int member_id);
 	
-	public void updateBoard(RecipeBoardDTO RecipeboardDTO);
+	public void updateBoard(RecipeBoardDTO rbDTO);
 	
 	public void deleteBoard(int id);
 	

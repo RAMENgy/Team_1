@@ -95,7 +95,7 @@
                     <div class="single-banner">
                         <img src="${pageContext.request.contextPath }/resources/img/Team_1-banner3.png" alt="">
                         <div class="inner-text">
-                            <h4>지난 인기 레시피 모아보기</h4>
+                            <h4>준비중입니다.</h4>
                         </div>
                     </div>
                 </div>

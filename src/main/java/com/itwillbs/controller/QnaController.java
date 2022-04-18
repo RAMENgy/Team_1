@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.QnaDTO;
 import com.itwillbs.domain.CommentDTO;
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.MemberService;
 import com.itwillbs.service.QnaService;
 
 @Controller
@@ -23,6 +25,9 @@ public class QnaController {
 //	QnaService boardService=new QnaServiceImpl();
 	@Inject
 	private QnaService qnaService;
+	
+	@Inject
+	private MemberService memberService;
 
 	/*
 	 * //파일경로 xml 받아옴
@@ -311,6 +316,10 @@ public class QnaController {
 	@RequestMapping(value = "/board/mylist", method = RequestMethod.GET)
 	public String mylist(HttpServletRequest request, Model model, HttpSession session) {
 		System.out.println("QnaController mylist() ");
+		
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		if(ckDTO != null) {
 		// 한화면에 보여줄 글개수 설정
 		int pageSize = 15;
 
@@ -349,6 +358,7 @@ public class QnaController {
 		model.addAttribute("pageDTO", pageDTO);
 
 		return "center/myboard";
+		} else return"needLoginMsg";
 	}
 
 }

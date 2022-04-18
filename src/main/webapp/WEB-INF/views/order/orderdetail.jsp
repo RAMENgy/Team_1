@@ -74,7 +74,7 @@
     <!-- Shopping Cart Section Begin -->
     <section class="checkout-section spad">
         <div class="container">
-            	
+            	<form class="checkout-form">
                 <div class="row">
                     <div class="col-lg-6">
                     
@@ -120,6 +120,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
         </div>
     </section>
     <!-- Shopping Cart Section End -->

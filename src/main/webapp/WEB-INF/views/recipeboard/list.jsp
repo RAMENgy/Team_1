@@ -36,8 +36,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
-                        <span>Blog</span>
+                        <a href="#"><i class="fa fa-home"></i> 레시피</a>
+                        <span>레시피 둘러보기</span>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,10 @@
                                 <div class="bi-text">
                                     <a onclick="location.href='${pageContext.request.contextPath }/recipeboard/content?id=${rbDTO.id}'">
                                     <img src="${pageContext.request.contextPath }/resources/recipeimg/${rbDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'">
-                                        <h4>${rbDTO.subject}</h4>
+                                        <h4>${rbDTO.subject}
+                                        	<c:if test="${rbDTO.comcount ne 0}">
+												[${rbDTO.comcount }]
+											</c:if></h4>
                                     <p>${rbDTO.name} <span>조회수 : ${rbDTO.readcount} / 좋아요 : ${rbDTO.like_count} / <fmt:formatDate value="${rbDTO.date }" pattern="yyyy.MM.dd"/> </span></p>
                                     </a>
                                 </div>

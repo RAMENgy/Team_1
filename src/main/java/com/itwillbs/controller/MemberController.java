@@ -70,6 +70,7 @@ public class MemberController {
 			
 			session.setAttribute("balist", basketList);
 			session.setAttribute("bamoney", sumMoney);
+			session.setAttribute("name", ckDTO.getName());
 			
 			return "main/index";
 			
@@ -175,15 +176,16 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/updatePro", method = RequestMethod.POST)
-	public String updatePro(MemberDTO memberDTO) {
+	public String updatePro(MemberDTO memberDTO, HttpSession session) {
 		System.out.println("객체 : " + memberDTO);
 		System.out.println("아이디 : " + memberDTO.getUserid());
 		System.out.println("pw : " + memberDTO.getPassword());
 		System.out.println("이름 : " + memberDTO.getName());
 		MemberDTO ckDTO = memberService.userCheck(memberDTO);
-
+		
 		if (ckDTO != null) {
 			memberService.updateMember(memberDTO);
+			session.setAttribute("name", ckDTO.getName());
 			return "redirect:/main/main";
 		} else {
 			return "member/msg";

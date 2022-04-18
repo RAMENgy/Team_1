@@ -192,7 +192,7 @@
                     </li>
                     <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
                         <ul class="dropdown">
-                            <li><a href="#">이번주 인기 레시피</a></li>
+<!--                             <li><a href="#">이번주 인기 레시피</a></li> -->
                             <li><a href="${pageContext.request.contextPath }/recipeboard/list">전체 레시피 모아보기</a></li>
                             <li><a href="${pageContext.request.contextPath }/recipeboard/write">레시피 작성하기</a></li>
                     </ul>

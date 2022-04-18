@@ -27,7 +27,14 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.RecipeBoardDTO">
-		select * from recipe_board where id=#{id}
+		select r.id, r.member_id, m.name, r.subject, r.img, r.content,
+		r.readcount, r.date  from recipe_board r
+		join member m
+		on r.member_id=m.id where r.id=#{id}
+	</select>
+	
+	<select id="getBestBoard" resultType="com.itwillbs.domain.RecipeBoardDTO">
+		select * from recipe_board where id=#{id} order by id desc limit 1;
 	</select>
 	
 	<update id="updateReadcount">
@@ -35,7 +42,7 @@
 	</update>
 	
 	<update id="updateBoard">
-		update recipe_board set subject=#{subject}, content=#{content} where member_id=#{member_id}
+		update recipe_board set subject=#{subject}, img=#{img}, content=#{content} where id=#{id}
 	</update>
 	
 	<delete id="deleteBoard">
@@ -72,7 +79,7 @@
 	
 	<select id="getMaxLike" resultType="java.lang.Integer">
 		select id from recipe_board
-		where like_count=(select max(like_count) from recipe_board)
+		where like_count=(select max(like_count) from recipe_board) order by id desc limit 1
 	</select>
 	
 	<insert id="writeComment">

@@ -73,8 +73,8 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 
 
 	@Override
-	public void updateBoard(RecipeBoardDTO RecipeboardDTO) {
-		recipeBoardDAO.updateBoard(RecipeboardDTO);
+	public void updateBoard(RecipeBoardDTO rbDTO) {
+		recipeBoardDAO.updateBoard(rbDTO);
 	}
 
 
@@ -140,6 +140,12 @@ public class RecipeBoardServiceImpl implements RecipeBoardService{
 	public Integer getMaxNum(boolean isRecipeBoard) {
 		Integer num = recipeBoardDAO.getMaxNum(isRecipeBoard); 
 		return num == null ? 0 : num;
+	}
+
+
+	@Override
+	public RecipeBoardDTO getBestBoard(int id) {
+		return recipeBoardDAO.getBestBoard(id);
 	}
 	
 }
