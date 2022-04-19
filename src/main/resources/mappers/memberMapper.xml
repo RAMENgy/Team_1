@@ -26,8 +26,8 @@
 	</select>
 	
 	<insert id="insertMember">
-		insert into member(userid,name,password,address,tel,point,sign_date) 
-		values(#{userid},#{name},#{password},#{address},#{tel},#{point},#{date})
+		insert into member(userid,name,password,address,tel,point,grade,sign_date) 
+		values(#{userid},#{name},#{password},#{address},#{tel},#{point},#{grade},#{date})
 	</insert>
 	
 	<delete id="deleteMember">
