@@ -5,6 +5,7 @@ import java.util.List;
 /*import javax.annotation.Resource;*/
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.QnaDTO;
 import com.itwillbs.domain.CommentDTO;
+import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
+import com.itwillbs.service.MemberService;
 import com.itwillbs.service.QnaService;
 
 @Controller
@@ -22,6 +25,9 @@ public class QnaController {
 //	QnaService boardService=new QnaServiceImpl();
 	@Inject
 	private QnaService qnaService;
+	
+	@Inject
+	private MemberService memberService;
 
 	/*
 	 * //파일경로 xml 받아옴
@@ -305,6 +311,54 @@ public class QnaController {
 
 		// /WEB-INF/views/center/qnasearch.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
 		return "center/qnasearch";
+	}
+	
+	@RequestMapping(value = "/board/mylist", method = RequestMethod.GET)
+	public String mylist(HttpServletRequest request, Model model, HttpSession session) {
+		System.out.println("QnaController mylist() ");
+		
+		String userid = (String)session.getAttribute("userid");
+		MemberDTO ckDTO = memberService.getMember(userid);
+		if(ckDTO != null) {
+		// 한화면에 보여줄 글개수 설정
+		int pageSize = 15;
+
+		// pageNum 파라미터값 가져오기 => 없으면 1페이지 설정
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageSize(pageSize);
+		pageDTO.setPageNum(pageNum);
+		
+		int mid = (Integer)session.getAttribute("id");
+		pageDTO.setMid(mid);
+		List<QnaDTO> boardList = qnaService.getMyBoardList(pageDTO);
+
+		int count = qnaService.getBoardCount();
+
+		int currentPage = Integer.parseInt(pageNum);
+		int pageBlock = 10;
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+		int endPage = startPage + pageBlock - 1;
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+
+		pageDTO.setCount(count);
+		pageDTO.setPageBlock(pageBlock);
+		pageDTO.setStartPage(startPage);
+		pageDTO.setEndPage(endPage);
+		pageDTO.setPageCount(pageCount);
+
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageDTO", pageDTO);
+
+		return "center/myboard";
+		} else return"needLoginMsg";
 	}
 
 }

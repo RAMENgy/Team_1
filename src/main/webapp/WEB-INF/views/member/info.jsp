@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> 마이페지</a>
+                        <a href="#"><i class="fa fa-home"></i> 마이페이지</a>
                         <span>회원정보조회</span>
                     </div>
                 </div>

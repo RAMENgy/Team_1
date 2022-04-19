@@ -102,6 +102,11 @@ public class QnaDAOImpl implements QnaDAO{
 		return sqlSession.selectOne(namespace+".getBoardCountSearch", pageDTO);
 	}
 
+	@Override
+	public List<QnaDTO> getMyBoardList(PageDTO pageDTO) {
+		return sqlSession.selectList(namespace+".getMyBoardList", pageDTO);
+	}
+
 	
 	
 	

@@ -12,7 +12,7 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>주문하기</title>
+    <title>오늘 뭐 먹지?</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -94,6 +94,28 @@
     	    	}
     	    });
     	});
+    	
+    	
+    	$(document).ready(function(){
+     		$('.checkout-form').submit(function(){
+    				if($('#jname').val()==""){
+    					alert("배송정보를 입력해 주세요.");
+    					$('#jname').focus();
+    					return false;
+    				}
+    				
+    				if($('#jtel').val()==""){
+    					alert("배송정보를 입력해 주세요.");
+    					$('#jtel').focus();
+    					return false;
+    				}
+    				if($('#jaddress').val()==""){
+    					alert("배송정보를 입력해 주세요.");
+    					$('#jaddress').focus();
+    					return false;
+    				}
+     		});
+    	});
     </script>
     
     
@@ -115,9 +137,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">Shop</a>
-                        <span>Check Out</span>
+                        <a href="#"><i class="fa fa-home"></i>마이페이지</a>
+                        <span>주문정보입력</span>
                     </div>
                 </div>
             </div>
@@ -175,14 +196,14 @@
                             </div>
                            
                             <div class="col-lg-12">
-                                <label for="jaddress">주소</label>
+                                <label for="jaddress">주소<span>*</span></label>
                                 <input type="text" id="jaddress" name="address">
                                 <input type="button" value="주소 검색" onclick="f1()">
                             </div>
-                            <div class="col-lg-12">
+                           <!--  <div class="col-lg-12">
                                 <label for="cun">우편번호<span>*</span></label>
                                 <input type="text" id="cun">
-                            </div>
+                            </div> -->
                            
                         </div>
                     </div>

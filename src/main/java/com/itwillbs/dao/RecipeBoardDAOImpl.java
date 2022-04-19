@@ -47,13 +47,16 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	}
 
 	@Override
-	public void updateBoard(RecipeBoardDTO recipeboardDTO) {
-		sqlSession.update(namespace+".updateBoard", recipeboardDTO);
+	public void updateBoard(RecipeBoardDTO rbDTO) {
+		sqlSession.update(namespace+".updateBoard", rbDTO);
 	}
 
 	@Override
 	public void deleteBoard(int id) {
 		sqlSession.delete(namespace+".deleteBoard", id);
+		//
+		sqlSession.delete(namespace+".deleteBoardC", id);
+		sqlSession.delete(namespace+".deleteBoardL", id);
 	}
 	
 	//검색
@@ -97,6 +100,11 @@ public class RecipeBoardDAOImpl implements RecipeBoardDAO {
 	@Override
 	public void deleteComment(int commentId) {
 		sqlSession.delete(namespace+".deleteComment", commentId);
+	}
+
+	@Override
+	public RecipeBoardDTO getBestBoard(int member_id) {
+		return sqlSession.selectOne(namespace+".getBestBoard", member_id);
 	}
 	
 }

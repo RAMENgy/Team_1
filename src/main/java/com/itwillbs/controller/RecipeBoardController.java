@@ -1,6 +1,7 @@
 package com.itwillbs.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -156,7 +157,7 @@ public class RecipeBoardController {
 		RecipeBoardDTO recipeBoardDTO=recipeBoardService.getBoard(id);
 			
 		// 디비에서 가져온 글을 model 담아서 update.jsp 전달
-		model.addAttribute("recipeBoardDTO", recipeBoardDTO);
+		model.addAttribute("rbDTO", recipeBoardDTO);
 			
 		// /WEB-INF/views/center/update.jsp 이동(주소줄에 주소가 안바뀌면서 이동)
 		return "recipeboard/update";
@@ -164,16 +165,29 @@ public class RecipeBoardController {
 	
 	// 가상주소 http://localhost:8080/github/recipeboard/updatePro
 	@RequestMapping(value = "/recipeboard/updatePro", method = RequestMethod.POST)
-		public String updatePro(RecipeBoardDTO recipeBoardDTO) {
+		public String updatePro(HttpServletRequest request, HttpSession session, @RequestParam("file") List<MultipartFile> file) throws IOException {
 		System.out.println("RecipeBoardController updatePro() ");
-		//디비작업
-		// 객체생성
-		//RecipeBoardService recipeBoardService=new RecipeBoardServiceImpl();
-		//메서드 호출
-		recipeBoardService.updateBoard(recipeBoardDTO);
+
+		// 제목, 내용 받아오기
+		RecipeBoardDTO rbDTO = new RecipeBoardDTO();
+		rbDTO.setSubject(request.getParameter("subject"));
+		rbDTO.setContent(request.getParameter("content"));
+		int id=Integer.parseInt(request.getParameter("id"));
+		rbDTO.setId(id);
 		
-		// 가상주소 로그인주소 이동 /recipeboard/list (주소줄에 주소가 바뀌면서 이동)
-		// 	response.sendRedirect("/recipeboard/list");
+ 		// 다중 이미지 업로드 구현
+		String files = "";
+		for(int i=0; i<file.size(); i++) {
+			UUID uid=UUID.randomUUID();
+			String fileName=uid.toString()+"_"+file.get(i).getOriginalFilename();
+			File uploadfile=new File(recipeUploadPath, fileName);
+			FileCopyUtils.copy(file.get(i).getBytes(), uploadfile);
+			files += fileName;
+		}
+		
+		rbDTO.setImg(files);
+		recipeBoardService.updateBoard(rbDTO);
+		
 		return "redirect:/recipeboard/list";
 	}	
 	
@@ -242,7 +256,7 @@ public class RecipeBoardController {
 	@RequestMapping(value = "/recipeboard/bestrecipe", method = RequestMethod.GET)
 	public String bestrecipe(Model model) {
 		int id = recipeBoardService.getMaxLike();
-		RecipeBoardDTO rbDTO=recipeBoardService.getBoard(id);
+		RecipeBoardDTO rbDTO=recipeBoardService.getBestBoard(id);
 		
 		model.addAttribute("rbDTO", rbDTO);;
 		System.out.println("글번호"+id);

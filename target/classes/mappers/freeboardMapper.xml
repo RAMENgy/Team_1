@@ -32,6 +32,10 @@
 		delete from freeboard where id=#{id}
 	</delete>
 	
+	<delete id="deleteBoardC">
+		delete from freeboard_comment where freeboard_id=#{id}
+	</delete>
+	
 	<insert id="writeBoard">
 		insert into freeboard(id,member_id,subject,content,readcount,date) 
 		values(#{id},#{member_id},#{subject},#{content},#{readcount},#{date})

@@ -86,4 +86,13 @@
 		where qna_board_id=#{qna_board_id}
 	</select>
 	
+	<select id="getMyBoardList" resultType="com.itwillbs.domain.QnaDTO">
+		select q.id, q.member_id, m.name, q.subject, q.content,
+		q.readcount, q.date, (select count(id) from qna_comment where qna_board_id=q.id) as comcount  from qna_board q
+		Join member m
+		ON q.member_id = m.id
+		where q.member_id = #{mid}
+		order by id desc limit #{startRow},#{pageSize}
+	</select>
+	
   </mapper>

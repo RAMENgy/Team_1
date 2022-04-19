@@ -13,6 +13,8 @@ public interface QnaDAO {
 	
 	public List<QnaDTO> getBoardList(PageDTO pageDTO);
 	
+	public List<QnaDTO> getMyBoardList(PageDTO pageDTO);
+	
 	public int getBoardCount();
 	
 	public QnaDTO getBoard(int num);
@@ -32,6 +34,7 @@ public interface QnaDAO {
 	public void commentupdateBoard(CommentDTO commentDTO);
 	
 	public void commentdeleteBoard(int num);
+	
 	
 	
 	

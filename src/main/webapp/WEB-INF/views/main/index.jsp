@@ -42,8 +42,8 @@
                         	<c:forEach var="n1" items="${sessionScope.notice1 }">
                             <span>공지사항</span>
                             <h1><fmt:formatDate value="${n1.date}" pattern="yyyy.MM.dd"/><br>공지사항</h1>
-                            <p>${n1.subject }</p>
-                            <a href="${pageContext.request.contextPath }/notice/content?id=${n1.id}" class="primary-btn">해당 공지사항 바로가기</a>
+                            <br>
+                            <a href="${pageContext.request.contextPath }/notice/content?id=${n1.id}" class="primary-btn">${n1.subject }</a>
                             </c:forEach>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                             <c:forEach var="n2" items="${sessionScope.notice2 }">
                             <span>이벤트</span>
                             <h1><fmt:formatDate value="${n2.date}" pattern="yyyy.MM.dd"/><br>이벤트</h1>
-                            <p>${n2.subject }</p>
-                            <a href="${pageContext.request.contextPath }/notice/content?id=${n2.id}" class="primary-btn">해당 이벤트 바로가기</a>
+                            <br>
+                            <a href="${pageContext.request.contextPath }/notice/content?id=${n2.id}" class="primary-btn">${n2.subject }</a>
                             </c:forEach>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="single-banner">
                         <img src="${pageContext.request.contextPath }/resources/img/Team_1-banner3.png" alt="">
                         <div class="inner-text">
-                            <h4>지난 인기 레시피 모아보기</h4>
+                            <h4>준비중입니다.</h4>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ public class RecipeBoardDTO {
 	private int like_count;
 	private Timestamp date;
 	private String name;
+	private int comcount;
 	
 	
 	public int getLike_count() {
@@ -74,6 +75,12 @@ public class RecipeBoardDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getComcount() {
+		return comcount;
+	}
+	public void setComcount(int comcount) {
+		this.comcount = comcount;
 	}
 	
 }

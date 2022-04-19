@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- Header Section Begin -->
 <script type="text/javascript">
     	function basketdel(id) {
@@ -191,7 +192,7 @@
                     </li>
                     <li><a href="${pageContext.request.contextPath }/recipeboard/list">레시피 둘러보기</a>
                         <ul class="dropdown">
-                            <li><a href="#">이번주 인기 레시피</a></li>
+<!--                             <li><a href="#">이번주 인기 레시피</a></li> -->
                             <li><a href="${pageContext.request.contextPath }/recipeboard/list">전체 레시피 모아보기</a></li>
                             <li><a href="${pageContext.request.contextPath }/recipeboard/write">레시피 작성하기</a></li>
                     </ul>
@@ -208,9 +209,8 @@
                             <li><a href="${pageContext.request.contextPath }/member/info">회원정보조회</a></li>
                             <li><a href="${pageContext.request.contextPath }/basket">장바구니</a></li>
                             <li><a href="${pageContext.request.contextPath }/order/orderlist">구매내역보기</a></li>
-                            <li><a href="#">나의 QnA</a></li>
+                            <li><a href="${pageContext.request.contextPath }/board/mylist">나의 QnA</a></li>
                             <li><a href="${pageContext.request.contextPath }/like/likelist">내가 좋아요한 레시피</a></li>
-                            <li><a href="#">???</a></li>
                         </ul>
                     </li>
                 </ul>

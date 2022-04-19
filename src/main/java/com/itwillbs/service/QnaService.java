@@ -11,6 +11,8 @@ public interface QnaService {
 	public void writeBoard(QnaDTO qnaDTO);
 	
 	public List<QnaDTO> getBoardList(PageDTO pageDTO);
+
+	public List<QnaDTO> getMyBoardList(PageDTO pageDTO);
 	
 	public int getBoardCount();
 	
