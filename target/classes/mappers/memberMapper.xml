@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -35,42 +34,4 @@
 		delete from member where id=#{id}
 	</delete>
 	
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<mapper namespace="com.itwillbs.mappers.memberMapper">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<select id="getMember" resultType="com.itwillbs.domain.MemberDTO">
-		select * from member where userid=#{userid}
-	</select>
-	
-	<update id="updateMember">
-		update member set name=#{name}, address=#{address}, tel=#{tel} where userid=#{userid}
-	</update>
-	
-	<select id="userCheck" resultType="com.itwillbs.domain.MemberDTO">
-		select * from member where userid=#{userid} and password=#{password}
-	</select>
-	
-	<insert id="insertMember">
-		insert into member(userid,name,password,address,tel,point,sign_date) 
-		values(#{userid},#{name},#{password},#{address},#{tel},#{point},#{date})
-	</insert>
-	
-	<delete id="deleteMember">
-		delete from member where id=#{id}
-	</delete>
-	
->>>>>>> branch 'master' of https://github.com/RAMENgy/Team_1.git
 </mapper>
