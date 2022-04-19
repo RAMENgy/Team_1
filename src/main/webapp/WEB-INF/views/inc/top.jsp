@@ -165,7 +165,19 @@
                                 	
                             </div>
                         </li>
-                        <li class="cart-price">현재 장바구니 금액</li>
+                        <li class="cart-price">
+                        <c:if test="${empty sessionScope.userid }">
+                        현재 장바구니 금액
+                        </c:if>
+                        <c:if test="${!empty sessionScope.userid }">
+                        	<c:if test="${empty sessionScope.balist }">
+	                        현재 장바구니 금액 : 0원
+	                        </c:if>
+	                        <c:if test="${!empty sessionScope.balist }">
+	                       	현재 장바구니 금액 : ${sessionScope.bamoney }원
+	                        </c:if>
+                        </c:if>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 package com.itwillbs.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -20,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.domain.RecipeBoardDTO;
-import com.itwillbs.domain.FBCommentDTO;
-import com.itwillbs.domain.FoodDTO;
-import com.itwillbs.domain.FreeBoardDTO;
 import com.itwillbs.domain.MemberDTO;
 import com.itwillbs.domain.PageDTO;
 import com.itwillbs.domain.RBCommentDTO;
@@ -51,7 +49,7 @@ public class RecipeBoardController {
 	}
 	
 	@RequestMapping(value = "/recipeboard/writePro", method = RequestMethod.POST)
-	public String writePro(MemberDTO memberDTO,HttpServletRequest request,HttpSession session, @RequestParam("file") List<MultipartFile> file) throws Exception{
+	public String writePro(MemberDTO memberDTO, HttpServletRequest request,HttpSession session, MultipartFile file) throws Exception{
 		System.out.println("RecipeBoardController writePro() ");
 		
 		// 제목, 내용 받아오기
@@ -64,17 +62,15 @@ public class RecipeBoardController {
 		
 		session.setAttribute("point", mDTO.getPoint()+10);
 		
-		// 다중 이미지 업로드 구현
-		String files = "";
-		for(int i=0; i<file.size(); i++) {
-			UUID uid=UUID.randomUUID();
-			String fileName=uid.toString()+"_"+file.get(i).getOriginalFilename();
-			File uploadfile=new File(recipeUploadPath, fileName);
-			FileCopyUtils.copy(file.get(i).getBytes(), uploadfile);
-			files += fileName;
-		}
+		//실제 파일 file.getBytes();  =>파일이름변경 => upload폴더 복사
+		// 랜덤문자_파일이름  파일이름변경
+		UUID uid=UUID.randomUUID();
+		String fileName=uid.toString()+"_"+file.getOriginalFilename();
+		// 파일 복사 => upload폴더 파일이름
+		File uploadfile=new File(recipeUploadPath,fileName);
+		FileCopyUtils.copy(file.getBytes(), uploadfile);
 		
-		rbDTO.setImg(files);
+		rbDTO.setImg(fileName);
 		recipeBoardService.writeBoard(rbDTO);
 		
 		return "redirect:/recipeboard/list";

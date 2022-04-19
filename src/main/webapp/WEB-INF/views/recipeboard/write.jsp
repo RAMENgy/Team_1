@@ -103,7 +103,7 @@
 						</table>
 						<div class="filebox">
 							<label for="btnAtt">사진/파일</label>
-							<input type="file" id="btnAtt" name="file" multiple/>
+							<input type="file" id="btnAtt" name="file"/>
 						</div>
 						<button class="btn btn-outline-dark m-sm-1" type="submit">글쓰기</button>
 						<button class="btn btn-outline-dark m-sm-1" type="button" onclick="location.href='${pageContext.request.contextPath }/recipeboard/list'">글목록</button>

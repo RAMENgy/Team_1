@@ -59,7 +59,7 @@
 		                <table class="table">
 							<tr><td>글번호</td><td>${rbDTO.id }</td>
 							    <td>글쓴날짜</td><td><fmt:formatDate value="${rbDTO.date}" pattern="yyyy.MM.dd"/></td></tr>
-							<tr><td>글쓴이</td><td>${rbDTO.member_id }</td>
+							<tr><td>글쓴이</td><td>${rbDTO.name }</td>
 							    <td>조회수</td><td>${rbDTO.readcount }</td></tr>
 							<tr><td>글제목</td><td colspan="2">${rbDTO.subject }</td><td>좋아요 : <span style="color: red;">${rbDTO.like_count}</span></td></tr>
 							
