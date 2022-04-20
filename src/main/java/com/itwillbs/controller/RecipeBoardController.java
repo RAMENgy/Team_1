@@ -59,6 +59,7 @@ public class RecipeBoardController {
 		
 		String userid = (String)session.getAttribute("userid");
 		MemberDTO mDTO = memberService.getMember(userid);
+		recipeBoardService.pointUp((Integer)session.getAttribute("id"));
 		
 		session.setAttribute("point", mDTO.getPoint()+10);
 		
