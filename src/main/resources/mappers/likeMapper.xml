@@ -21,7 +21,7 @@
   
   		<delete id="deleteBoard">
   			delete from like_list
-  			where id=#{id}
+  			where recipe_board_id=#{recipe_board_id}
   		</delete>
   		
   		<select id="getBoard" resultType="com.itwillbs.domain.LikeDTO">

@@ -69,12 +69,15 @@ public class LikeController {
 	@RequestMapping(value = "/like/deleteLikeList", method = RequestMethod.GET)
 	public String deletelike(HttpServletRequest request, HttpSession session) {
 		System.out.println("LikeController deletelike ");
-		int id=Integer.parseInt(request.getParameter("id"));
+		String userid = (String)session.getAttribute("userid");
+		int reid=Integer.parseInt(request.getParameter("re_id"));
+		MemberDTO ckDTO = memberService.getMember(userid);
 		LikeDTO lDTO = new LikeDTO();
-		lDTO.setId(id);
-		System.out.println("삭제되는 좋아요 게시글 번호"+id);
 		
-		likeService.deleteBoard(id);
+		likeService.deleteBoard(reid);
+		likeService.deletelike(lDTO);
+		likeService.likeDown(reid);
+		session.setAttribute("likecount", likeService.getBoardCount(ckDTO.getId()));
 		
 		return "redirect:/like/likelist";
 	}
