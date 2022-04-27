@@ -6,10 +6,11 @@
   <mapper namespace="com.itwillbs.mappers.likeMapper">
   
 	  	<select id="getBoardList" resultType="com.itwillbs.domain.RecipeDTO">
-			select l.id, r.id "re_id", r.subject, r.member_id, r.img,
+			select l.id, r.id "re_id", m.name "wname", r.subject, r.member_id, r.img,
 			r.content, r.readcount, r.like_count, r.date
-			from recipe_board r join like_list l
+			from recipe_board r join like_list l join member m
 			where l.member_id=#{member_id} and r.id = l.recipe_board_id
+			and r.member_id=m.id
 			order by l.id desc
 	  	</select>
   

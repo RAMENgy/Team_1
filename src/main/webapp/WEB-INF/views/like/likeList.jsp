@@ -106,7 +106,7 @@
                                         <h4>${lDTO.subject } </h4>
                                     </a>
                                     <p>
-                                    ${lDTO.member_id}(작성자 id값) <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>
+                                    ${lDTO.wname} <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>
                                     <button type="submit"><i class="fa fa-trash" aria-hidden="true" onclick="f1(${lDTO.re_id})"></i></button>
                                     </p>
                                 </div>
