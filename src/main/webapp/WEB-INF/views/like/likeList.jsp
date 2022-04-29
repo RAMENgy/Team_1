@@ -24,7 +24,7 @@
     	function f1(id) {
     	 	if (confirm("좋아요목록에서 삭제하시겠습니까?") == true){
     	 		
-    			location.href="${pageContext.request.contextPath }/like/deleteLikeList?id="+id
+    			location.href="${pageContext.request.contextPath }/like/deleteLikeList?re_id="+id
     		} else {
     			return;
     		}
@@ -99,14 +99,15 @@
                                 </div>
                                 <c:forEach var="lDTO" items="${boardList }" varStatus="status">
                                 <div class="bi-text">
+                                <input type="hidden" value="${lDTO.re_id}" name="reid">
                                     <a href="${pageContext.request.contextPath }/recipeboard/content?id=${lDTO.re_id}">
                                 	<img src="${pageContext.request.contextPath }/resources/recipeimg/${lDTO.img}" onerror="this.src='https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'"/>
                                 	<!-- img칼럼 값 없을때 "이미지 없음" 표시 -->
                                         <h4>${lDTO.subject } </h4>
                                     </a>
                                     <p>
-                                    ${lDTO.member_id}(작성자 id값) <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>
-                                    <button><i class="fa fa-trash" aria-hidden="true" onclick="f1(${lDTO.id})"></i></button>
+                                    ${lDTO.wname} <span>- <fmt:formatDate value="${lDTO.date }" pattern="yyyy.MM.dd"/></span>
+                                    <button type="submit"><i class="fa fa-trash" aria-hidden="true" onclick="f1(${lDTO.re_id})"></i></button>
                                     </p>
                                 </div>
                                 </c:forEach>
