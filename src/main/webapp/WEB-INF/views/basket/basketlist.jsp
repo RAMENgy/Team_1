@@ -20,6 +20,7 @@
 
     <jsp:include page="../inc/css.jsp"></jsp:include>
     
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     	function f1(id) {
     	 	if (confirm("장바구니에서 삭제하시겠습니까?") == true){
@@ -29,6 +30,20 @@
     		}
     	}
     	
+    	
+    	//체크박스 전체선택, 해제
+    	$(function(){
+    		
+    		$('#allCheck').click(function(){
+
+				if($('#allCheck').is(':checked')){
+					$("input[id='rowCheck']").prop("checked",true);
+				} else{ 
+					$("input[id='rowCheck']").prop("checked",false); 
+				}
+
+    		});
+    	});
     </script>
     
     
@@ -70,6 +85,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                	<th><input type="checkbox" id="allCheck"></th>
                                     <th>Image</th>
                                     <th class="p-name">상품</th>
                                     <th>가격</th>
@@ -90,6 +106,7 @@
                            			<c:otherwise>
                            				<c:forEach var="basketList" items="${basketList }">
                            				<tr>
+                           					<td class="close-td first-row"><input type="checkbox" id="rowCheck" value="${basketList.bid }"></td>
                            					<td class="cart-pic first-row">
                                     			<img src="${pageContext.request.contextPath }/resources/food/${basketList.img}">
                                    			</td>
