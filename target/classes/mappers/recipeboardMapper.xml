@@ -28,7 +28,7 @@
 	
 	<select id="getBoard" resultType="com.itwillbs.domain.RecipeBoardDTO">
 		select r.id, r.member_id, m.name, r.subject, r.img, r.content,
-		r.readcount, r.date  from recipe_board r
+		r.readcount, r.date, r.like_count from recipe_board r
 		join member m
 		on r.member_id=m.id where r.id=#{id}
 	</select>

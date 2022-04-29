@@ -41,7 +41,6 @@
 				} else{ 
 					$("input[id='rowCheck']").prop("checked",false); 
 				}
-
     		});
     	});
     </script>
